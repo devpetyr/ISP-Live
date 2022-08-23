@@ -4,11 +4,11 @@
     <!-- School & Company Housing start -->
 
     <!-- banner start -->
-    <section class="banner-main_slider">
+    <section class="banner-main_slider inner_pages">
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{{asset('web/images/banner.jpg')}}" class="img-fluid" alt="...">
+                    <img src="{{asset('web/images/about-us-bg.jpg')}}" class="img-fluid" alt="...">
                     <div class="carousel-caption">
                         <div class="container">
                             <div class="row">
@@ -35,16 +35,10 @@
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="text_agent2">
-                                <p>One of our favorite aspects about ISP is the relationships we’ve cultivated with
-                                    companies, high schools, colleges,
-                                    and universities all over the country. With our vast experience providing housing
-                                    and understanding the dynamics of
-                                    international programs, we ensure that our housing placements are close to school,
-                                    reliable, and affordable
-                                    on work</p>
-                                <p>What if students have housing issues? We jump in at lightning speed to fix them.
-                                </p>
-                                <p>What if students have housing issues? We jump in at lightning speed to fix them. </p>
+                                <p>One of our favorite aspects about ISP is the relationships we’ve cultivated with companies, high schools, colleges, and universities all over the country. With our vast experience providing housing and understanding the dynamics of international programs, we ensure that our housing placements are close to school, reliable, and affordable on work</p>
+                               
+                                <p>What if students have housing issues? We jump in at lightning speed to fix them.                                 </p>
+                                <p>If your company needs intern housing, if your school doesn’t have dorms or if they’re full, if you have groups that need housing, or if you’re a high school needing a homestay provider, we’re here for you….let’s connect</p>
                             </div>
                         </div>
                     </div>
@@ -90,8 +84,9 @@
                             </div>
                             <div class="col-md-6">
                                 <label>Country</label>
-                                <select name="cars">
-                                    <option value="volvo">Afercia</option>
+                                <select name="cars" >
+                                    <option value="" selected>Country name here</option>
+                                    <option value="volvo">Africa</option>
                                     <option value="saab">Australia</option>
                                     <option value="mercedes">Canada</option>
                                     <option value="audi">Kenea</option>

@@ -2,17 +2,44 @@
     .main_slider img {
         height: 500px;
     }
+    .icons_sty ul li a {
+    display: inline-flex;
+    border-radius: 5px;
+    width: 48px;
+    height: 50px;
+    margin: 0 3px 0px 0px;
+}
+.Counter_sec {
+    width: 90%;
 
+}
+.form-icon_sty {
+    padding: 0px 41px;
+}
+.blog_slid_text:before{
+    display:none;
+}
+.blog_slid_text:after{
+    display:none;
+}
     .frequently-text h2 {
     font-size: 40px;
 }
+.intern-box {
+    right: 0;
+}
 
-
+.intern-box p {
+    width: 47%;
+    margin: 21px 11px;
+    font-size: 10px;
+    padding: 42px 10px;
+}
     .frequently-text h3 {
     font-size: 40px;
 }
     .linkList {
-        margin: 39px 0 0;
+        /* margin: 39px 0 0; */
     }
 
     .topSec ul li {
@@ -52,7 +79,8 @@
     }
 
     .menuSec ul {
-        display: flex;
+        display: inherit;
+        width: 100%;
     }
 
     .menuSec img {
@@ -156,7 +184,8 @@
 
     .blog_slid img {
         margin: 0 auto 10px;
-        width: 35%;
+        width: 85%;
+        height: 200px;
     }
         /* pages res strat here */
         .img-heading h3 {
@@ -179,15 +208,37 @@
     .footer-form input[type="submit"] {
         padding: 0px 26px;
     }
-    .icons_sty ul li {
-        width: 35px;
-        margin: 0 1px 0px 0px;
-        padding: 6px 11px;
-    }
+
         /* pages res end here */
+        .mytabstyle table tr td {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 28px;
+    padding: 0;
+}
+.portal-fild label {
+    font-size: 17px;
+    padding: 20px 0 5px 10px;
+}
 }
 
 @media (max-width: 768px) {
+    .intern-box {
+    right: 0;
+    background-size: 81%;
+}
+    .icons_sty ul li a {
+    display: inline-flex;
+    width: 33px;
+    height: 40px;
+    margin: 0 3px 0px 0px;
+}
+    .blog_slid_text:before{
+    display:none;
+}
+.blog_slid_text:after{
+    display:none;
+}
     .menuSec ul li a {
         padding: 5px 4px;
         font-size: 15px;
@@ -238,9 +289,7 @@
     font-size: 12px;
 }
 
-h1.wow.zoomIn {
-    font-size: 50px;
-}
+h1.wow.zoomIn {font-size: 26px;}
 
 .form-massage-box p{
     margin:0;
@@ -261,9 +310,9 @@ h1.wow.zoomIn {
     }
 
     .main_slider h1 {
-        font-size: 27px;
+        font-size: 29px;
         font-weight: 600;
-        margin: 76px 0 0px;
+        margin: 76px 0 10px;
         line-height: 29px;
     }
 
@@ -366,9 +415,8 @@ h1.wow.zoomIn {
 
     .foter_sec1 h5 {
         color: white;
-            font-size: 20px;
-        margin: 10px 0 25px;
-
+        font-size: 17px;
+        margin: 40px 0 25px;
     }
 
     .foter_sec2 img {
@@ -384,7 +432,9 @@ h1.wow.zoomIn {
 
     .blog_slid img {
         margin: 0 auto 10px;
-        width: 35%;
+        width: 92%;
+        height: 160px;
+        object-fit: fill;
     }
     /* pages res strat here */
     .img-heading h3 {
@@ -405,17 +455,93 @@ h1.wow.zoomIn {
     margin-top: 10px;
 }
 .footer-form input[type="submit"] {
-    padding: 0px 25px;
+    padding: 0px 15px;
 }
-.icons_sty ul li {
-    width: 35px;
-    margin: 0 1px 0px 0px;
-    padding: 6px 11px;
+.Counter_sec {
+    width: 90%;
 }
     /* pages res end here */
+    .portal-fild label {
+    font-size: 11px;
+    line-height: 38px;
+    padding: 5px 0 5px 9px;
+}
+.mytabstyle table tr th {
+    font-size: 15px;
+    padding: 4px 0 0 0;
+    line-height: 20px;
+}
+.mytabstyle table tr td {
+    font-size: 15px;
+    line-height: 35px;
+    padding: 0;
+}
 }
 
 @media (max-width: 540px) {
+    .intern-box {
+    right: 0;
+    height: auto;
+    background-size: 58%;
+}
+.intern-text ul li {
+    font-size: 12px;
+    margin: 0 0 1px 20px;
+}
+    .icons_sty ul li a {
+    width: 40px;
+    margin: 0 2px 9px 1px;
+    padding: 0;
+    height: 40px;
+}
+    .blog_slid h4 {
+    font-size: 11px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 20px;
+}
+    .blog_slid_text:before{
+    display:none;
+}
+.blog_slid_text:after{
+    display:none;
+}
+    .Portal2_sec.port-two .row {
+    flex-direction: column-reverse;
+}
+    .linkList.one p {
+    font-size: 15px;
+    line-height: 23px;
+    margin: 0;
+}
+.portal-fild label {
+    font-size: 16px;
+    line-height: 38px;
+    padding: 15px 0 5px 4px;
+}
+.Portal_2heading h4 {
+    font-size: 25px;
+    line-height: 38px;
+    padding: 20px 0 0px;
+    margin: 0;
+}
+.banner-content p {
+    font-size: 16px;
+    margin: 20px 0 0;
+    text-align: center;
+}
+    .Counter_sec {
+    width: 100%;
+
+}
+.Agent_fild h3 {
+    font-size: 20px;
+    line-height: 34px;
+    margin: 10px 0 15px;
+}
+.counter_text h3 {
+    font-size: 30px;
+}
     .main_slider img {
     height: 250px;
     object-fit: cover;
@@ -425,7 +551,9 @@ h1.wow.zoomIn {
 }
 
 .intern-headings p {
-    text-align: center;
+    text-align: left;
+    font-size: 14px;
+    line-height: 28px;
 }
 .accordion-body p {
     text-align: center;
@@ -557,12 +685,11 @@ h1.wow.zoomIn {
         line-height: 30px;
     }
 
-    .foter_sec1 h5 {
-        color: white;
-        font-size: 18px;
-        margin: 10px 0 30px;
-
-    }
+.foter_sec1 h5 {
+    color: white;
+    font-size: 18px;
+    margin: 7px 0 10px;
+}
 
     .foter_sec2 img {
         width: 21%;
@@ -577,14 +704,18 @@ h1.wow.zoomIn {
 
     .blog_slid img {
         margin: 0 auto 10px;
-        width: 35%;
+        width: 55%;
+        height: 110px;
+        object-fit: fill;
     }
        /* pages res start here */
 
 
 .banner_text h1 {
     text-align: center;
-    font-size: 33px;
+    font-size: 30px !important;
+    margin: 0 auto 10px;
+    line-height: 35px;
 }
 .story-content h4 {
     text-align: center;
@@ -684,7 +815,7 @@ h1.wow.zoomIn {
 }
 
 .frequently-headings h2 {
-    font-size: 25px;
+    font-size: 20px;
     margin: 0;
 }
 
@@ -724,8 +855,9 @@ p.two {
 }
 
 .blog_slid p {
-    font-size: 14px;
+    font-size: 12px;
     line-height: 20px;
+    text-align: center;
 }
 
 .hosting-headings h2 {
@@ -754,19 +886,64 @@ p.two {
 .intern-headings h2 {
     font-size: 25px;
     margin: 0;
+    text-align: left;
 }
 
 .intern-headings h4 {
     font-size: 18px;
+    text-align: left;
     line-height: 24px;
     margin: 0 0 13px;
 }
 
-
+.link-box {
+    padding: 15% 0;
+}
+.link-box a {
+    font-size: 23px;
+    line-height: 30px;
+}
 /* Agents page res end */
 }
 
 @media (max-width: 425px) {
+    .intern-box {
+    right: 0;
+    height: auto;
+    background-size: 81%;
+}
+.intern-text ul li {
+    font-size: 12px;
+    margin: 0 0 1px 20px;
+}
+    .icons_sty ul li a {
+    width: 40px;
+    margin: 0 2px 9px 1px;
+    padding: 0;
+    height: 40px;
+}
+    .blog_slid_text:before{
+    display:none;
+}
+.blog_slid_text:after{
+    display:none;
+}
+    .side_menu a {
+    padding: 3px 2px 5px 13px;
+    font-size: 14px;
+}
+    .Portal2_sec.port-two .row {
+    flex-direction: column-reverse;
+}
+    .Agent_fild h3 {
+    font-size: 19px;
+    line-height: 34px;
+    margin: 10px 0 15px;
+}
+    .Counter_sec {
+    width: 100%;
+
+}
      .topSec ul li {
         padding-right: 0px;
         font-size: 11px;
@@ -774,6 +951,7 @@ p.two {
 
 .intern-text p {
     text-align: center;
+    font-size: 14px;
 }
     .btn.btn_white {
         font-size: 10px;
@@ -901,8 +1079,9 @@ p.two {
 
 .banner_text h1 {
     text-align: center;
-    font-size: 18px;
+    font-size: 23px !important;
     margin: 0 0 10px;
+    line-height: 35px;
 }
 .story-content h4 {
     text-align: center;
@@ -1193,11 +1372,11 @@ p.two {
 }
 
 .accordion-button:not(.collapsed) {
-    font-size: 12px;
+    font-size: 12px !important;
 }
 
 button.accordion-button.collapsed {
-    font-size: 12px;
+    font-size: 12px !important;
     line-height: 30px;
     margin-bottom: 10px;
 }
@@ -1215,6 +1394,7 @@ button.accordion-button.collapsed {
 
 .link-box {
     margin: 10px 0px 20px;
+    padding: 14% 0;
 }
 
 .link-box a {
@@ -1256,7 +1436,8 @@ p.two {
 
 .blog_slid h4 {
     font-size: 12px;
-    line-height: 0;
+    text-align: center;
+    margin: 0 auto;
 }
 
 /* high-school-program page res end */
@@ -1321,27 +1502,30 @@ p.two {
 /* intern-and-corporate-housing page res start */
 
 .intern-headings h2 {
-    font-size: 14px;
+    font-size: 20px;
     line-height: 20px;
-    margin: 0 0 10px;
+    margin: 0 0 14px;
+    text-align: center;
 }
 
 .intern-headings h4 {
-    font-size: 12px;
+    font-size: 13px;
     line-height: 16px;
+    text-align: center;
 }
 
 .intern-headings p {
-    font-size: 9px;
-    line-height: 14px;
+    font-size: 12px;
+    line-height: 25px;
     padding: 0;
     margin: 0;
     text-align: center;
 }
 
 .intern-text h4 {
-    font-size: 14px;
+    font-size: 20px;
     margin: 0 0 9px;
+    text-align: center;
 }
 
 .intern-text li {
@@ -1350,25 +1534,25 @@ p.two {
 }
 
 .intern-box p {
-    width: 74%;
+    width: 67%;
     margin: 0 33px 0px;
-    padding: 116px 0;
-    line-height: 26px;
-    font-size: 17px;
+    padding: 86px 0;
+    line-height: 25px;
+    font-size: 14px;
 }
 /* intern-and-corporate-housing page res end */
 
 /* isp_portal page res start */
 
 .banner-content p {
-    font-size: 9px;
+    font-size: 12px;
     margin: 0;
     line-height: 12px;
     text-align: center;
 }
 
 .Portal_2heading h4 {
-    font-size: 14px;
+    font-size: 17px;
     line-height: 0;
     padding: 20px 0 0px;
     margin: 0 0 10px;
@@ -1381,8 +1565,8 @@ p.two {
 }
 
 .portal-fild label {
-    font-size: 10px;
-    line-height: 0;
+    font-size: 14px;
+    line-height: 40px;
     padding: 0;
 }
 
@@ -1393,9 +1577,9 @@ p.two {
 }
 
 .portal-button button {
-    width: 80px;
-    height: 25px;
-    font-size: 9px;
+    width: 120px;
+    height: 37px;
+    font-size: 13px;
     padding: 0;
 }
 
@@ -1427,15 +1611,90 @@ p.two {
     overflow-y: hidden;
 }
 /* isp_portal page res end */
+    /*//*/
+.mytabstyle table tr td {
+    font-size: 15px;
+    line-height: 38px;
+}
+.mytabstyle table tr th {
+    font-size: 15px;
+    padding: 9px 0 0 0;
+}
+.linkList.one p {
+    font-size: 13px;
+    line-height: 30px;
+    margin: 0;
+}
+.blog_slid img {
+    margin: 0 auto 10px;
+    width: 46%;
+    height: 150px;
+    object-fit: fill;
+}
 }
 
 @media (max-width: 375px) {
+    .intern-box {
+    right: 0;
+    height: auto;
+    background-size: 75%;
+}
+.intern-text ul li {
+    font-size: 12px;
+    margin: 0 0 1px 20px;
+}
+    .icons_sty ul li a {
+    width: 40px;
+    margin: 0 2px 9px 1px;
+    padding: 0;
+    height: 40px;
+}
+    .blog_slid_text:before{
+    display:none;
+}
+.blog_slid_text:after{
+    display:none;
+}
+    .blog_slid img {
+    margin: 0 auto 10px;
+    width: 48%;
+    height: 140px;
+    object-fit: fill;
+}
+    /*//*/
+    .side_menu a {
+    padding: 3px 2px 5px 13px;
+    font-size: 14px;
+}
+.mytabstyle table tr td {
+    font-size: 13px;
+    line-height: 38px;
+}
+.mytabstyle table tr th {
+    font-size: 13px;
+    padding: 9px 0 0 0;
+}
+.linkList.one p {
+    font-size: 13px;
+    line-height: 30px;
+    margin: 0;
+}
+    .Agent_fild h3 {
+    font-size: 19px;
+    line-height: 34px;
+    margin: 10px 0 15px;
+}
+    .Counter_sec {
+    width: 100%;
+
+}
      .topSec ul li {
         padding-right: 0px;
         font-size: 11px;
     }
     .intern-text p {
     text-align: center;
+    font-size: 13px;
 }
 
     .btn.btn_white {
@@ -1564,8 +1823,9 @@ p.two {
 
 .banner_text h1 {
     text-align: center;
-    font-size: 16px;
+    font-size: 22px !important;
     margin: 0 0 8px;
+    line-height: 30px;
 }
 .story-content h4 {
     text-align: center;
@@ -1856,17 +2116,16 @@ p.two {
 }
 
 .accordion-button:not(.collapsed) {
-    font-size: 12px;
+    font-size: 12px !important;
 }
 
 button.accordion-button.collapsed {
-    font-size: 12px;
+    font-size: 12px !important;
     line-height: 30px;
     margin-bottom: 10px;
 }
 
 .accordion-body {
-    padding: 9px 0 0;
 }
 
 .accordion-body p {
@@ -1878,6 +2137,7 @@ button.accordion-button.collapsed {
 
 .link-box {
     margin: 10px 0px 20px;
+    padding: 12% 0;
 }
 
 .link-box a {
@@ -1916,7 +2176,7 @@ p.two {
 
 .blog_slid h4 {
     font-size: 12px;
-    line-height: 0;
+    line-height: 10px;
 }
 
 /* high-school-program page res end */
@@ -1981,27 +2241,30 @@ p.two {
 /* intern-and-corporate-housing page res start */
 
 .intern-headings h2 {
-    font-size: 14px;
+    font-size: 18px;
     line-height: 20px;
     margin: 0 0 10px;
+    text-align: center;
 }
 
 .intern-headings h4 {
     font-size: 12px;
     line-height: 16px;
+    text-align: center;
 }
 
 .intern-headings p {
-    font-size: 9px;
-    line-height: 14px;
+    font-size: 12px;
+    line-height: 25px;
     padding: 0;
     margin: 0;
     text-align: center;
 }
 
 .intern-text h4 {
-    font-size: 14px;
+    font-size: 18px;
     margin: 0 0 9px;
+    text-align: center;
 }
 
 .intern-text li {
@@ -2021,16 +2284,16 @@ p.two {
 /* isp_portal page res start */
 
 .banner-content p {
-    font-size: 9px;
+    font-size: 11px;
     margin: 0;
     line-height: 12px;
     text-align: center;
 }
 
 .Portal_2heading h4 {
-    font-size: 14px;
+    font-size: 18px;
     line-height: 0;
-    padding: 20px 0 0px;
+    padding: 20px 0 5px;
     margin: 0 0 10px;
 }
 
@@ -2041,8 +2304,8 @@ p.two {
 }
 
 .portal-fild label {
-    font-size: 10px;
-    line-height: 0;
+    font-size: 13px;
+    line-height: 28px;
     padding: 0;
 }
 
@@ -2053,9 +2316,9 @@ p.two {
 }
 
 .portal-button button {
-    width: 80px;
-    height: 25px;
-    font-size: 9px;
+    width: 120px;
+    height: 35px;
+    font-size: 12px;
     padding: 0;
 }
 
@@ -2090,6 +2353,18 @@ p.two {
 }
 
 @media (max-width: 360px) {
+ .icons_sty ul li a {
+    width: 41px;
+    margin: 0 2px 10px 5px;
+    padding: 0;
+    height: 40px;
+}
+.blog_slid img {
+    margin: 0 auto 10px;
+    width: 49%;
+    height: 130px;
+    object-fit: fill;
+}
 
     .topSec ul li {
         padding-right: 0px;
@@ -2207,8 +2482,7 @@ p.two {
     .foter_sec1 h5 {
         color: white;
         font-size: 18px;
-        margin: 10px 0 30px;
-
+        margin: 9px 0 12px;
     }
 
     .foter_sec2 img {
@@ -2222,8 +2496,9 @@ p.two {
 
 .banner_text h1 {
     text-align: center;
-    font-size: 13px;
+    font-size: 20px !important;
     margin: 0 0 5px;
+    line-height: 23px;
 }
 .story-content h4 {
     text-align: center;
@@ -2513,11 +2788,11 @@ p.two {
 }
 
 .accordion-button:not(.collapsed) {
-    font-size: 12px;
+    font-size: 12px !important;
 }
 
 button.accordion-button.collapsed {
-    font-size: 12px;
+    font-size: 12px !important;
     line-height: 30px;
     margin-bottom: 10px;
 }
@@ -2535,6 +2810,7 @@ button.accordion-button.collapsed {
 
 .link-box {
     margin: 10px 0px 20px;
+    padding: 13% 0;
 }
 
 .link-box a {
@@ -2576,7 +2852,7 @@ p.two {
 
 .blog_slid h4 {
     font-size: 12px;
-    line-height: 0;
+    line-height: 9px;
 }
 
 /* high-school-program page res end */
@@ -2631,7 +2907,7 @@ p.two {
     font-size: 8px;
     line-height: 20px;
     padding: 6px 21px;
-    margin: 0 0 0 72px;
+    margin: 0 0 0 103px;
     /* margin: 0; */
     background: #ffffff;
 }
@@ -2641,9 +2917,10 @@ p.two {
 /* intern-and-corporate-housing page res start */
 
 .intern-headings h2 {
-    font-size: 14px;
+    font-size: 17px;
     line-height: 20px;
     margin: 0 0 10px;
+    text-align: center;
 }
 
 .intern-headings h4 {
@@ -2652,8 +2929,8 @@ p.two {
 }
 
 .intern-headings p {
-    font-size: 9px;
-    line-height: 14px;
+    font-size: 12px;
+    line-height: 22px;
     padding: 0;
     margin: 0;
     text-align: center;
@@ -2661,10 +2938,12 @@ p.two {
 
 .intern-text p {
     text-align: center;
+    font-size: 13px;
 }
 
 .intern-text h4 {
-    font-size: 14px;
+    font-size: 18px;
+    text-align: center;
     margin: 0 0 9px;
 }
 
@@ -2705,8 +2984,8 @@ p.two {
 }
 
 .portal-fild label {
-    font-size: 10px;
-    line-height: 0;
+    font-size: 12px;
+    line-height: 31px;
     padding: 0;
 }
 
@@ -2717,9 +2996,9 @@ p.two {
 }
 
 .portal-button button {
-    width: 80px;
-    height: 25px;
-    font-size: 9px;
+    width: 104px;
+    height: 33px;
+    font-size: 12px;
     padding: 0;
 }
 
@@ -2737,7 +3016,7 @@ p.two {
 }
 
 .counter_text h3 {
-    font-size: 23px;
+    font-size: 20px;
     margin: 9px 0 0;
 }
 
@@ -2751,6 +3030,53 @@ p.two {
     overflow-y: hidden;
 }
 /* isp_portal page res end */
+.Counter_sec {
+    width: 100%;
 
-
+}
+.Agent_fild h3 {
+    font-size: 19px;
+    line-height: 34px;
+    margin: 10px 0 15px;
+}
+/*//*/
+.mytabstyle table tr td {
+    font-size: 13px;
+    line-height: 38px;
+}
+.mytabstyle table tr th {
+    font-size: 13px;
+    padding: 9px 0 0 0;
+}
+.linkList.one p {
+    font-size: 13px;
+    line-height: 30px;
+    margin: 0;
+}
+.Portal2_sec.port-two .row {
+    flex-direction: column-reverse;
+}
+.side_menu a {
+    padding: 3px 2px 5px 13px;
+    font-size: 14px;
+}
+.blog_slid_text:before{
+    display:none;
+}
+.blog_slid_text:after{
+    display:none;
+}
+.link-box a {
+    font-size: 18px;
+    line-height: 25px;
+}
+.intern-box {
+    right: 0;
+    height: auto;
+    background-size: 81%;
+}
+.intern-text ul li {
+    font-size: 12px;
+    margin: 0 0 1px 20px;
+}
 }

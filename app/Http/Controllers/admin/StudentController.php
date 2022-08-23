@@ -83,6 +83,11 @@ class StudentController extends EmailController
             $std_application->save();
         }
 
+
+        /** Calling User Model to shoot student application approval email and for other usage */
+        $userfind = User::where('id', $std_application->user_id)->where('user_role', 2)->first();
+
+
         /** Checking for both fields */
         if ($request->application_status == 1 && $request->amount) {
 
@@ -96,8 +101,8 @@ class StudentController extends EmailController
             /** If variable $std_fees not found / Student not paid his/her fees*/
             if (!$std_fees) {
 
-                /** Calling User Model to shoot student application approval email and for other usage */
-                $userfind = User::where('id', $std_application->user_id)->where('user_role', 2)->first();
+                // /** Calling User Model to shoot student application approval email and for other usage */
+                // $userfind = User::where('id', $std_application->user_id)->where('user_role', 2)->first();
 
                 /** Calling Student Application Fees Model to store fees amount to that student */
                 $std_fees = new StudentApplicationFormFeesModel();
@@ -121,13 +126,16 @@ class StudentController extends EmailController
                 $std_application->save();
 
                 /** After Saving Student Application approval shooting email to both student and admin */
-                $this->StdAppApproved($userfind);
+                // $this->StdAppAccept_Reject($userfind,'Accepted');
+                $this->GA_StdAppAccept_Reject($userfind->username,$userfind->email,'Accepted');
 
                 /** Checking process work correctly */
                 if ($std_fees->save()) {
 
                     /** Shooting email to student for card payment (stripe implemented) */
-                    $this->StdAppStripe($userfind, $request->amount);
+                    // $this->StdAppStripe($userfind, $request->amount);
+                    $this->GA_StdAppStripe($userfind->username,$userfind->email,$request->amount,route('web_stripe_form',$userfind->id));
+
                 } else {
                     /** If process not work correctly */
                     return back()->with('error', 'please submit your request again');
@@ -143,6 +151,11 @@ class StudentController extends EmailController
 
             /** If admin reject student application*/
             if($request->application_status == 2){
+                
+                // $this->StdAppAccept_Reject($userfind,'Rejected');
+                $this->GA_StdAppAccept_Reject($userfind->username,$userfind->email,'Rejected');
+
+                
                 return back()->with('error', 'Student application rejected successfully !');
             }
             /** Now the process is complete returning back admin to application with the below message */

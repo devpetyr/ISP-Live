@@ -47,6 +47,19 @@ class StudentDashboardController extends Controller
 //        $countries = CountryModel::orderBy('name', 'Asc')->get(['id', 'name']);
 //        $states = StateModel::orderBy('name', 'Asc')->get(['id', 'name']);
 //        $cities = CityModel::orderBy('name', 'Asc')->get(['id', 'name']);
+
+        if (Auth()->user()->application_submitted === 1) {
+            $stdapp = StudentApplicationFormModel::where('user_id', auth()->user()->id)->first();
+            if ($stdapp->status === 0) {
+                return redirect()->route('web_home')->with('success', 'Please wait for admin approval');
+            }
+            if ($stdapp->status === 2) {
+                return view('student.application-form.application_form', compact('agencies'))->with('success', 'Your Application Rejected');
+            }
+            if ($stdapp->status === 1) {
+                return redirect()->route('web_home')->with('success', 'Please wait, admin will create your student dashboard');
+            }
+        }
         return view('student.application-form.application_form', compact('agencies'));
 //        return view('student.application-form.application_form', compact('agencies', 'countries', 'states', 'cities'));
     }
@@ -427,7 +440,7 @@ class StudentDashboardController extends Controller
                 $user = User::where('id', Auth::user()->id)->where('status',1)->first();
                 $user->application_submitted = 1;
                 $user->save();
-                return redirect()->route('web_home')->with('success', 'Student application form submitted successfully');
+                return redirect()->route('web_home')->with('success', 'Student application form submitted successfully, Please wait for admin approval');
             } else {
                 return back()->with('error', 'Student application form submission unsuccessfully');
             }

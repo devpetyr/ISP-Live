@@ -147,7 +147,7 @@
                     <div class="contact-details-heading">
                         <h4>Got Questions? Looking for Help? Need a Minute of our Time? </h4>
                         <p>We’d love to hear from you!</p>
-                        <p>Please reach out to ISP by phone or text at <a href="#"> 650-947-8879 </a> or send us an
+                        <p>Please reach out to ISP by phone or text at <a href="#"> 650-947-8879 </a> or send us an <br/>
                             email at <a href="#"> admin@isphomestays.com</a> </p>
                         <p>Our offices are open Monday through Friday from 9am – 5 pm, PST</p>
                     </div>
@@ -158,83 +158,123 @@
     </section>
 
     <!-- sec start -->
-    <section class="sec-contact-form">
+    <section class="sec-contact-form conly">
         <div class="container">
             <div class="row">
                 <div class="col-md-7">
                     <div class="Agent_fild">
+                        <h3>Or Leave us a Message</h3>
                         <div class="row">
                             <div class="col-md-6">
-                                <label>First name</label>
+                                <label>First name*</label>
                                 <input type="text">
                             </div>
                             <div class="col-md-6">
-                                <label>Last name</label>
+                                <label>Last name*</label>
                                 <input type="text">
                             </div>
+                         
                             <div class="col-md-12">
-                                <label>i am a...</label>
-                                <input type="text">
-                            </div>
-                            <div class="col-md-12">
-                                <label for="cars">I am a:</label>
+                                <label for="cars">I am a:*</label>
                                 <select id="cars" name="cars">
-                                    <option value="volvo">parent</option>
+                                    <option value="volvo">Parent</option>
                                     <option value="saab">Son</option>
-                                    <option value="fiat">grend father</option>
+                                    <option value="fiat">Grand father</option>
                                 </select>
                             </div>
                             <div class="col-md-6">
-                                <label>Email</label>
+                                <label>Email*</label>
                                 <input type="email">
                             </div>
                             <div class="col-md-6">
-                                <label>mobile Number</label>
-                                <input type="text">
+                                <label>Mobile Phone Number</label>
+                                <input type="number" placeholder="Want a call or text?">
                             </div>
                             <div class="col-md-12">
-
-                                <input type="text" placeholder="We Are here">
+                                <label>Message</label>
+                                <input type="text">
+                                <button>Submit</button>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-5">
                     <div class="form-of-contact">
-                        <div class="form-box">
-                            <div class="form-headings">
-                                <h4>By Phone</h4>
-                            </div>
-                            <div class="form-details">
-                                <p><strong>USA</strong> <span><a href="#"> 650-947-8879</a></span></p>
-                                <hr>
-                            </div>
-                            <div class="form-headings">
-                                <h5>By Email</h5>
-                            </div>
-                            <div class="form-details">
-                                <p><strong>Students</strong> <span><a href="#"> admin@isphomestays.com</a></span></p>
-                                <hr>
-                                <p><strong>Agents</strong> <span><a href="#"> team@isphomestays.com </a></span></p>
-                                <hr>
-                                <p><strong>Partnership</strong> <span><a href="#"> jikeda@isphomestays.com </a></span></p>
-                                <hr>
-                            </div>
-                            <div class="form-icon_sty wow fadeInLeft" data-wow-duration="2s">
-                                <ul>
-                                    <li> <a href="#"> <i class="fa-brands fa-twitter"></i></li>
-                                    <li> <a href="#"> <i class="fa-brands fa-facebook-f"></i></li>
-                                    <li> <a href="#"> <i class="fa-brands fa-linkedin-in"></i></li>
-                                    <li> <a href="#"> <i class="fa-brands fa-instagram"></i></li>
-                                </ul>
-                            </div>
-                            <div class="form-massage-box">
-                                <h3>Lets Talk</h3>
-                                <p>Share your excitement with us.</p>
-                                <a href="#">admin@isphomestays.com</a>
-                            </div>
+                    <div class="form-box">
+  <div class="seprate">
+    <div class="form-headings">
+      <h4>By Phone</h4>
+    </div>
+    <div class="form-details">
+      <div class="row">
+        <div class="col-md-3">
+          <strong>USA</strong>
+        </div>
+        <div class="col-md-9">
+          <a href="#"> 650-947-8879</a>
+        </div>
+        <hr>
+      </div> 
+    </div>
+    <div class="form-headings">
+      <h5>By Email</h5>
+    </div>
+    <div class="form-details">
+      <div class="row">
+        <div class="col-md-3">
+          <strong>Students</strong>
+        </div>
+        <div class="col-md-9">
+          <a href="#"> admin@isphomestays.com</a>
+        </div>
+        <hr>
+      </div> 
+      <div class="row">
+        <div class="col-md-3">
+          <strong>Agents</strong>
+        </div>
+        <div class="col-md-9">
+          <a href="#">  team@isphomestays.com </a>
+        </div>
+        <hr>
+      </div> 
+      <div class="row">
+        <div class="col-md-3">
+          <strong>Partnership</strong>
+        </div>
+        <div class="col-md-9">
+          <a href="#">  jikeda@isphomestays.com </a>
+        </div>
+        <hr>
+      </div> 
+    
+     
+     
+    </div>
+    <div class="form-icon_sty wow fadeInLeft" data-wow-duration="2s"
+      style="visibility: visible; animation-duration: 2s; animation-name: fadeInLeft;">
+      <ul>
+        <li> <a href="#"> <i class="fa-brands fa-twitter"></i></a></li><a href="#">
+        </a>
+        <li><a href="#"> </a><a href="#"> <i class="fa-brands fa-facebook-f"></i></a></li><a href="#">
+        </a>
+        <li><a href="#"> </a><a href="#"> <i class="fa-brands fa-linkedin-in"></i></a></li><a href="#">
+        </a>
+        <li><a href="#"> </a><a href="#"> <i class="fa-brands fa-instagram"></i></a></li><a href="#">
+        </a>
+      </ul><a href="#">
+      </a>
+    </div><a href="#">
+    </a>
+  </div><a href="#">
+  </a>
+  <div class="form-massage-box"><a href="#">
+      <h3>Let's Talk.</h3>
+      <p>Share your excitement with us.</p>
+    </a><a href="#">admin@isphomestays.com</a>
+  </div>
 
-                        </div>
+</div>
                     </div>
                 </div>
 

@@ -186,7 +186,7 @@
                         <h5>Resources </h5>
                         <ul>
                             <li> <a href="{{route('web_blog')}}"> Blogs</a></li>
-                            <li> <a href="{{route('web_menu_isp_portal')}}">ISP Portal</a></li>
+                            <li> <a href="{{route('login')}}">ISP Portal</a></li>
                             <li> <a href="{{route('web_career')}}"> Careers at ISP</a></li>
                             <li> <a href="{{route('web_contact_us')}}"> Contact US</a></li>
                         </ul>
@@ -208,10 +208,10 @@
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="icons_sty wow fadeInLeft" data-wow-duration="2s">
                                 <ul>
-                                    <li> <a href="#"> <i class="fa-brands fa-twitter"></i></li>
-                                    <li> <a href="#"> <i class="fa-brands fa-facebook-f"></i></li>
-                                    <li> <a href="#"> <i class="fa-brands fa-linkedin-in"></i></li>
-                                    <li> <a href="#"> <i class="fa-brands fa-instagram"></i></li>
+                                    <li> <a href="#"> <i class="fa-brands fa-facebook-f"></i></a></li>
+                                    <li> <a href="#"> <i class="fa-brands fa-twitter"></i></a></li>
+                                    <li> <a href="#"> <i class="fa-brands fa-instagram"></i></a></li>
+                                    <li> <a href="#"> <i class="fa-brands fa-vimeo-v"></i></a></li>
                                 </ul>
                             </div>
                         </div>

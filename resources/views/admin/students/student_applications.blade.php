@@ -35,7 +35,13 @@
                                     <td>{{$application->getUser->username}}</td>
                                     <td>{{$application->getUser->email}}</td>
                                     <td>{{$application->created_at->format('d-M-Y')}}</td>
-                                    <td>{{$application->status == 1 ? "Approved"  : "Pending"}}</td>
+                                    @if($application->status == 1)
+                                        <td>Approved</td>
+                                    @elseif($application->status == 2)
+                                        <td>Rejected</td>
+                                    @else
+                                        <td>Pending</td>
+                                    @endif
                                     <td><a href="{{route('admin_view_student_application',[$application->id])}}"><i class="fa fa-bars"></i></a></td>
 {{--                                    <td><a href="notes_list.html" target="blank"> <i class="fa fa-list"></i></a>--}}
 {{--                                        <a href="notes.html" target="_blank"><i class="fa-solid fa-plus"></i></a>--}}

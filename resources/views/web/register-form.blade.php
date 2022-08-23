@@ -46,9 +46,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
-                    <div class="login_fild">
-                        <h3>@if($role){{$role->user_role}}@endif Register Form</h3>
+                    <div class="login_fild new-log1">
                         <form action="{{route('web_registration')}}" method="post">
+                        <h3>@if($role){{$role->user_role}}@endif Register Form</h3>
                             @csrf
                             <input type="text" id="user_name" name="user_name" placeholder="User Name"/>
                             @error('user_name')
@@ -69,7 +69,7 @@
                             </div>
                             @enderror
                             <input type="password" id="password_confirmation" name="password_confirmation"
-                                   placeholder="Conform Password"
+                                   placeholder="Confirm Password"
                             />
                             @error('password_confirmation')
                             <div class="alert alert-danger">

@@ -134,7 +134,7 @@
 {{--    <!-- achievement end -->--}}
 
     <!-- banner start -->
-    <section class="banner-main_slider">
+    <section class="banner-main_slider inner_pages">
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -200,8 +200,8 @@
                         <img src="{{asset('web/images/about-banner-img-2.png')}}" alt="img here">
                     </div>
                     <div class="img-heading">
-                        <h3> Jean Ikeda</h3>
-                        <h4> Executive Director</h4>
+                        <h3> Janaki Padia</h3>
+                        <h4> Program Director</h4>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-10 col-md-8 centerCol">
@@ -212,7 +212,7 @@
                 <div class="col-md-12">
                     <div class="story-text">
                         <h4>Team</h4>
-                        <p>Our additional office staff and area coordinators in all major US cities make ISP a well-run machine, supporting our students 365 days a year.</p>
+                        <p>Our additional office staff and area coordinators in all major US cities make ISP a well-run </br> machine, supporting our students 365 days a year.</p>
                     </div>
                 </div>
             </div>

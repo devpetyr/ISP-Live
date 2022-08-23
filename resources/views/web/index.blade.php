@@ -184,87 +184,209 @@
         </div>
     </div>
 </section>
+
+
 <!-- Group sec end  -->
 
 
 <!-- slick slider start -->
-<section class="blog_sec">
-    <div class="container">
+ <section class="blog_sec">
+      <div class="container">
+          <div class="row">
+              <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10 centerCol">
+                  
+                  <div class="new_slider3 wow fadeInRight" data-wow-duration="2s">
+  <div>
+      <div class="blog_slid">
         <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="blog_hed wow fadeInLeft" data-wow-duration="2s">
-                    <h4>Testimonials</h4>
-                </div>
-            </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            
+          <img src="{{asset('web/images/round_1.jpg')}}" class="img-fluid">
+          </div>            
+          <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+          <div class="blog_slid_text">
+            <p>For me, working for Rustic Pathways has not only fulfilled my personal career goals, but it has also allowed me to fulfill personal goals—teaching the next generation of students the importance of protecting our shared humanity. The experiences I create for students have the power to rectify stereotypes and bring people of different backgrounds together. At Rustic Pathways, I don't only help youth travel but I also help to shape the future!</p>
+            <h4>Chaima Ait El Mekki  |  Morocco Country Director</h4>
+          </div>
+            
+          </div>
         </div>
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="blogslid wow fadeInRight" data-wow-duration="2s">
-
-
-                    <div>
-                        <div class="blog_slid">
-                            <img src="{{asset('web/images/round_1.jpg')}}" class="img-fluid">
-                            <h6>Lorem ipsum dolor sit amet</h6>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply
-                                dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing
-                                and typesetting industry. </p>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="blog_slid">
-                            <img src="{{asset('web/images/round_2.jpg')}}" class="img-fluid">
-                            <h6>Lorem ipsum dolor sit amet</h6>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply
-                                dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing
-                                and typesetting industry. </p>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="blog_slid">
-                            <img src="{{asset('web/images/round_3.jpg')}}" class="img-fluid">
-                            <h6>Lorem ipsum dolor sit amet</h6>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply
-                                dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing
-                                and typesetting industry. </p>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="blog_slid">
-                            <img src="{{asset('web/images/round_1.jpg')}}" class="img-fluid">
-                            <h6>Lorem ipsum dolor sit amet</h6>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply
-                                dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing
-                                and typesetting industry. </p>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="blog_slid">
-                            <img src="{{asset('web/images/round_2.jpg')}}" class="img-fluid">
-                            <h6>Lorem ipsum dolor sit amet</h6>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply
-                                dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing
-                                and typesetting industry. </p>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="blog_slid">
-                            <img src="{{asset('web/images/round_3.jpg')}}" class="img-fluid">
-                            <h6>Lorem ipsum dolor sit amet</h6>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply
-                                dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing
-                                and typesetting industry. </p>
-                        </div>
-                    </div>
-
-
-
-                </div>
-            </div>
+      </div>
+  </div>
+  <div>
+      <div class="blog_slid">
+                  <div class="row">
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            
+          <img src="{{asset('web/images/round_2.jpg')}}" class="img-fluid">
+          </div>            
+          <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+             <div class="blog_slid_text">
+            <p>For me, working for Rustic Pathways has not only fulfilled my personal career goals, but it has also allowed me to fulfill personal goals—teaching the next generation of students the importance of protecting our shared humanity. The experiences I create for students have the power to rectify stereotypes and bring people of different backgrounds together. At Rustic Pathways, I don't only help youth travel but I also help to shape the future!</p>
+            <h4>Chaima Ait El Mekki  |  Morocco Country Director</h4>
+          </div>
+            
+          </div>
         </div>
-    </div>
-    </div>
-</section>
+      </div>
+  </div>
+  <div>
+      <div class="blog_slid">
+                  <div class="row">
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            
+          <img src="{{asset('web/images/round_3.jpg')}}" class="img-fluid">
+          </div>            
+          <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+          <div class="blog_slid_text">
+            <p>For me, working for Rustic Pathways has not only fulfilled my personal career goals, but it has also allowed me to fulfill personal goals—teaching the next generation of students the importance of protecting our shared humanity. The experiences I create for students have the power to rectify stereotypes and bring people of different backgrounds together. At Rustic Pathways, I don't only help youth travel but I also help to shape the future!</p>
+            <h4>Chaima Ait El Mekki  |  Morocco Country Director</h4>
+          </div>
+            
+          </div>
+        </div>
+      </div>
+  </div>
+  <div>
+      <div class="blog_slid">
+                  <div class="row">
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            
+          <img src="{{asset('web/images/round_1.jpg')}}" class="img-fluid">
+          </div>            
+          <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+          <div class="blog_slid_text">
+            <p>For me, working for Rustic Pathways has not only fulfilled my personal career goals, but it has also allowed me to fulfill personal goals—teaching the next generation of students the importance of protecting our shared humanity. The experiences I create for students have the power to rectify stereotypes and bring people of different backgrounds together. At Rustic Pathways, I don't only help youth travel but I also help to shape the future!</p>
+            <h4>Chaima Ait El Mekki  |  Morocco Country Director</h4>
+          </div>
+            
+          </div>
+        </div>
+      </div>
+  </div>
+  <div>
+      <div class="blog_slid">
+                  <div class="row">
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            
+          <img src="{{asset('web/images/round_2.jpg')}}" class="img-fluid">
+          </div>            
+          <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+            <div class="blog_slid_text">
+            <p>For me, working for Rustic Pathways has not only fulfilled my personal career goals, but it has also allowed me to fulfill personal goals—teaching the next generation of students the importance of protecting our shared humanity. The experiences I create for students have the power to rectify stereotypes and bring people of different backgrounds together. At Rustic Pathways, I don't only help youth travel but I also help to shape the future!</p>
+            <h4>Chaima Ait El Mekki  |  Morocco Country Director</h4>
+          </div>
+            
+          </div>
+        </div>
+      </div>
+  </div>
+  <div>
+      <div class="blog_slid">
+                  <div class="row">
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+          <img src="{{asset('web/images/round_3.jpg')}}" class="img-fluid">
+            
+          </div>            
+          <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+          <div class="blog_slid_text">
+            <p>For me, working for Rustic Pathways has not only fulfilled my personal career goals, but it has also allowed me to fulfill personal goals—teaching the next generation of students the importance of protecting our shared humanity. The experiences I create for students have the power to rectify stereotypes and bring people of different backgrounds together. At Rustic Pathways, I don't only help youth travel but I also help to shape the future!</p>
+            <h4>Chaima Ait El Mekki  |  Morocco Country Director</h4>
+          </div>
+            
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+
+                  
+                  
+                
+              </div>
+          </div>
+      </div>
+      </div>
+  </section>
+<!--<section class="blog_sec">-->
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <div class="col-md-12 col-sm-12 col-xs-12">-->
+<!--                <div class="blog_hed wow fadeInLeft" data-wow-duration="2s">-->
+<!--                    <h4>Testimonials</h4>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="row">-->
+<!--            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">-->
+<!--                <div class="blogslid wow fadeInRight" data-wow-duration="2s">-->
+
+
+<!--                    <div>-->
+<!--                        <div class="blog_slid">-->
+<!--                            <img src="{{asset('web/images/round_1.jpg')}}" class="img-fluid">-->
+<!--                            <h6>Lorem ipsum dolor sit amet</h6>-->
+<!--                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply-->
+<!--                                dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing-->
+<!--                                and typesetting industry. </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div>-->
+<!--                        <div class="blog_slid">-->
+<!--                            <img src="{{asset('web/images/round_2.jpg')}}" class="img-fluid">-->
+<!--                            <h6>Lorem ipsum dolor sit amet</h6>-->
+<!--                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply-->
+<!--                                dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing-->
+<!--                                and typesetting industry. </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div>-->
+<!--                        <div class="blog_slid">-->
+<!--                            <img src="{{asset('web/images/round_3.jpg')}}" class="img-fluid">-->
+<!--                            <h6>Lorem ipsum dolor sit amet</h6>-->
+<!--                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply-->
+<!--                                dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing-->
+<!--                                and typesetting industry. </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div>-->
+<!--                        <div class="blog_slid">-->
+<!--                            <img src="{{asset('web/images/round_1.jpg')}}" class="img-fluid">-->
+<!--                            <h6>Lorem ipsum dolor sit amet</h6>-->
+<!--                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply-->
+<!--                                dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing-->
+<!--                                and typesetting industry. </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div>-->
+<!--                        <div class="blog_slid">-->
+<!--                            <img src="{{asset('web/images/round_2.jpg')}}" class="img-fluid">-->
+<!--                            <h6>Lorem ipsum dolor sit amet</h6>-->
+<!--                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply-->
+<!--                                dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing-->
+<!--                                and typesetting industry. </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div>-->
+<!--                        <div class="blog_slid">-->
+<!--                            <img src="{{asset('web/images/round_3.jpg')}}" class="img-fluid">-->
+<!--                            <h6>Lorem ipsum dolor sit amet</h6>-->
+<!--                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply-->
+<!--                                dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing-->
+<!--                                and typesetting industry. </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+
+
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    </div>-->
+<!--</section>-->
+
 <!-- slick slider end -->
 <!-- index end -->
 @endsection

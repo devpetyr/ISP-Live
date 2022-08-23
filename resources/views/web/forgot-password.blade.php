@@ -45,7 +45,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
-                    <div class="login_fild">
+                    <div class="login_fild first-log">
                         <h3>Forgot Password</h3>
                         <form action="{{route('web_forgot_password_email')}}" method="post">
                             @csrf

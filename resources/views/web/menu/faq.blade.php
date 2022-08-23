@@ -3,7 +3,7 @@
 @section('content')
     <!-- faq start -->
     <!-- banner start -->
-    <section class="banner-main_slider">
+    <section class="banner-main_slider inner_pages">
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -99,7 +99,7 @@
                                     Can you place me at anywhere in the US?
                                 </button>
                             </h2>
-                            <div id="collapsefour" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                            <div id="collapsefour" class="accordion-collapse collapse" aria-labelledby="headingfour"
                                  data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <p>Yes, anywhere! </p>
@@ -115,7 +115,7 @@
                                     ISP work for me?
                                 </button>
                             </h2>
-                            <div id="collapsefive" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                            <div id="collapsefive" class="accordion-collapse collapse" aria-labelledby="headingfive"
                                  data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <p>Absolutely! Most of our college students want to be independent. We use the term “host family”
@@ -131,7 +131,7 @@
                                     What does my host provide?
                                 </button>
                             </h2>
-                            <div id="collapsesix" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                            <div id="collapsesix" class="accordion-collapse collapse" aria-labelledby="headingsix"
                                  data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <p>A private bedroom with a desk, storage for clothes, shared bathroom, breakfast and dinner (For
@@ -146,7 +146,7 @@
                                     How much does it cost?
                                 </button>
                             </h2>
-                            <div id="collapseseven" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                            <div id="collapseseven" class="accordion-collapse collapse" aria-labelledby="headingseven"
                                  data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <p>Please refer to your school/location listed on our. If you can’t find your school, please email us.
@@ -161,7 +161,7 @@
                                     How long can I stay with my host?
                                 </button>
                             </h2>
-                            <div id="collapseeight" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                            <div id="collapseeight" class="accordion-collapse collapse" aria-labelledby="headingeight"
                                  data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <p>You can sign up for a 2- or 3-month program, if you like it continue beyond that with no extra
@@ -176,7 +176,7 @@
                                     Can I move to another host if I don’t like it?
                                 </button>
                             </h2>
-                            <div id="collapsenine" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                            <div id="collapsenine" class="accordion-collapse collapse" aria-labelledby="headingnine"
                                  data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <p>We’re flexible about helping students move if they need to. We want you to have a great experience.
@@ -191,7 +191,7 @@
                                     Who picks me up from the airport?
                                 </button>
                             </h2>
-                            <div id="collapseten" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                            <div id="collapseten" class="accordion-collapse collapse" aria-labelledby="headingten"
                                  data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <p>Our ISP driver! If you don’t want to schedule an ISP driver, you can arrange your own
@@ -207,7 +207,7 @@
                                     How do I get my host information?
                                 </button>
                             </h2>
-                            <div id="collapseeleven" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                            <div id="collapseeleven" class="accordion-collapse collapse" aria-labelledby="headingeleven"
                                  data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <p>It will appear in you and we’ll send you an email to tell you it’s there.</p>
@@ -221,7 +221,7 @@
                                     My college requires me to have a guardian since I’m under 18. Can ISP arrange this?
                                 </button>
                             </h2>
-                            <div id="collapsetwelve" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                            <div id="collapsetwelve" class="accordion-collapse collapse" aria-labelledby="headingtwelve"
                                  data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <p>Yes, we can! You must be in our homestay program to qualify for the guardianship program. We charge
@@ -237,7 +237,7 @@
                                     Can I cancel my application?
                                 </button>
                             </h2>
-                            <div id="collapsethirteen" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                            <div id="collapsethirteen" class="accordion-collapse collapse" aria-labelledby="headingthirteen"
                                  data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <p>Our ISP driver! If you don’t want to schedule an ISP driver, you can arrange your own
@@ -254,7 +254,7 @@
                                     Why should I use ISP instead of another agency?
                                 </button>
                             </h2>
-                            <div id="collapsefourteen" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                            <div id="collapsefourteen" class="accordion-collapse collapse" aria-labelledby="headingfourteen"
                                  data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <p>Our experience, our customer service, and our stellar host homes</p>
@@ -271,13 +271,13 @@
                 <div class="col-xs-12 col-sm-8 col-md-12 ">
                     <div class="accordion" id="accordionExample">
                         <div class="accordion-item one">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                                        aria-expanded="true" aria-controls="collapseOne">
+                            <h2 class="accordion-header" id="headingOne1">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne1"
+                                        aria-expanded="true" aria-controls="collapseOne1">
                                     What is the Shared Housing Program?
                                 </button>
                             </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                            <div id="collapseOne1" class="accordion-collapse collapse " aria-labelledby="headingOne1"
                                  data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <p>his is dorm-like living where mixed gender students stay together in one home, each with their own
@@ -287,13 +287,13 @@
                             </div>
                         </div>
                         <div class="accordion-item one">
-                            <h2 class="accordion-header" id="headingTwo">
+                            <h2 class="accordion-header" id="headingTwo2">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        data-bs-target="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo2">
                                     Is it available at all schools?
                                 </button>
                             </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                            <div id="collapseTwo2" class="accordion-collapse collapse" aria-labelledby="headingTwo2"
                                  data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <p>No-please check with us to see if we provide this at your school. </p>
@@ -301,13 +301,13 @@
                             </div>
                         </div>
                         <div class="accordion-item one">
-                            <h2 class="accordion-header" id="headingThree">
+                            <h2 class="accordion-header" id="headingThree3">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        data-bs-target="#collapseThree3" aria-expanded="false" aria-controls="collapseThree3">
                                     How do I apply?
                                 </button>
                             </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                            <div id="collapseThree3" class="accordion-collapse collapse" aria-labelledby="headingThree3"
                                  data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <p>Please email admin@isphomestays.com for an application. </p>
@@ -315,13 +315,13 @@
                             </div>
                         </div>
                         <div class="accordion-item one">
-                            <h2 class="accordion-header" id="headingThree">
+                            <h2 class="accordion-header" id="headingThree4">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        data-bs-target="#collapseThree4" aria-expanded="false" aria-controls="collapseThree4">
                                     When should I apply?
                                 </button>
                             </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                            <div id="collapseThree4" class="accordion-collapse collapse" aria-labelledby="headingThree4"
                                  data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <p>Shared Housing fills very quickly and is often booked so please apply early. </p>
@@ -329,13 +329,13 @@
                             </div>
                         </div>
                         <div class="accordion-item one">
-                            <h2 class="accordion-header" id="headingThree">
+                            <h2 class="accordion-header" id="headingThree4">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        data-bs-target="#collapseThree4" aria-expanded="false" aria-controls="collapseThree4">
                                     How much does it cost?
                                 </button>
                             </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                            <div id="collapseThree4" class="accordion-collapse collapse" aria-labelledby="headingThree4"
                                  data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <p>Our team will let you know the price when you request an application as the fees are relative to
@@ -350,13 +350,13 @@
                             <div class="col-xs-12 col-sm-8 col-md-12 ">
                                 <div class="accordion" id="accordionExample">
                                     <div class="accordion-item one">
-                                        <h2 class="accordion-header" id="headingOne">
+                                        <h2 class="accordion-header" id="headingOne5">
                                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                    data-bs-target="#collapseOne5" aria-expanded="true" aria-controls="collapseOne5">
                                                 What programs do you have for high school students?
                                             </button>
                                         </h2>
-                                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                                        <div id="collapseOne5" class="accordion-collapse collapse" aria-labelledby="headingOne5"
                                              data-bs-parent="#accordionExample">
                                             <div class="accordion-body">
                                                 <p>We offer academic year host placements for F1 high school students and international students
@@ -369,13 +369,13 @@
                                         </div>
                                     </div>
                                     <div class="accordion-item one">
-                                        <h2 class="accordion-header" id="headingTwo">
+                                        <h2 class="accordion-header" id="headingTwo6">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                    data-bs-target="#collapseTwo6" aria-expanded="false" aria-controls="collapseTwo6">
                                                 How do I get more information about the high school program?
                                             </button>
                                         </h2>
-                                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                        <div id="collapseTwo6" class="accordion-collapse collapse" aria-labelledby="headingTwo6"
                                              data-bs-parent="#accordionExample">
                                             <div class="accordion-body">
                                                 <p>Please email us at <a href="#"> admin@isphomestays.com</a></p>
@@ -383,13 +383,13 @@
                                         </div>
                                     </div>
                                     <div class="accordion-item one">
-                                        <h2 class="accordion-header" id="headingThree">
+                                        <h2 class="accordion-header" id="headingThree7">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                    data-bs-target="#collapseThree7" aria-expanded="false" aria-controls="collapseThree7">
                                                 Groups, Executives, Interns, and all other programs?
                                             </button>
                                         </h2>
-                                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                                        <div id="collapseThree7" class="accordion-collapse collapse" aria-labelledby="headingThree7"
                                              data-bs-parent="#accordionExample">
                                             <div class="accordion-body">
                                                 <p>Please contact our office at <a href="#"> admin@isphomestays.com </a> to assist you with your

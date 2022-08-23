@@ -406,7 +406,7 @@
 {{--    <!-- blog carts section end -->--}}
 
     <!-- banner start -->
-    <section class="banner-main_slider">
+    <section class="banner-main_slider inner_pages">
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">

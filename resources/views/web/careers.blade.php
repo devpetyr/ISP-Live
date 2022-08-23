@@ -4,11 +4,11 @@
     <!-- career start -->
 
     {{--    <!-- banner start -->--}}
-    {{--  <section class="banner-main_slider">--}}
+    {{--  <section class="banner-main_slider inner_pages">--}}
     {{--    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">--}}
     {{--      <div class="carousel-inner">--}}
     {{--        <div class="carousel-item active">--}}
-    {{--          <img src="{{asset('web/images/Career.back-img.jpg')}}" class="img-fluid" alt="...">--}}
+    {{--          <img src="{{asset('web/images/about-us-bg.jpg')}}" class="img-fluid" alt="...">--}}
     {{--          <div class="carousel-caption">--}}
     {{--            <div class="container">--}}
     {{--              <div class="row">--}}
@@ -148,11 +148,11 @@
     {{--  </section>--}}
 
     <!-- banner start -->
-    <section class="banner-main_slider">
+    <section class="banner-main_slider inner_pages">
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{{asset('web/images/Career.back-img.jpg')}}" class="img-fluid" alt="...">
+                    <img src="{{asset('web/images/about-us-bg.jpg')}}" class="img-fluid" alt="...">
                     <div class="carousel-caption">
                         <div class="container">
                             <div class="row">

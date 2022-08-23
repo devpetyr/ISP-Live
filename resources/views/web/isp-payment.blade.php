@@ -31,7 +31,7 @@
     </section>
     <!-- banner end -->
     <!-- sec start  -->
-    <section class="Portal2_sec">
+    <section class="Portal2_sec port-two">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-xs-6 centerCol">
@@ -104,7 +104,7 @@
                         <div class="row">
                             <div class="col-xs-12 sign_btn portal-button my-pull-left">
 
-                                <button id="paynow" class="btn  btn-lg btn-block" type="submit" onClick="myFunction()">
+                                <button id="paynow" class="btn  btn-lg btn-block" onclick="myFunction();" type="submit" >
                                     Pay
                                     Now
                                 </button>

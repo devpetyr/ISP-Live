@@ -4,11 +4,11 @@
     <!-- agents start -->
 
     <!-- banner start -->
-    <section class="banner-main_slider">
+    <section class="banner-main_slider inner_pages">
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{{asset('web/images/banner.jpg')}}" class="img-fluid" alt="...">
+                    <img src="{{asset('web/images/about-us-bg.jpg')}}" class="img-fluid" alt="...">
                     <div class="carousel-caption">
                         <div class="container">
                             <div class="row">
@@ -95,17 +95,18 @@
                             <div class="col-md-6">
                                 <label>Zip Code</label>
                                 <input type="password">
+                                <button>Submit</button>
 
                             </div>
                             <div class="col-md-6">
                                 <label>Country</label>
-                                <select name="cars">
-                                    <option value="volvo">Afercia</option>
+                               <select name="cars">
+                                    <option value="" selected="">Country name here</option>
+                                    <option value="volvo">Africa</option>
                                     <option value="saab">Australia</option>
                                     <option value="mercedes">Canada</option>
                                     <option value="audi">Kenea</option>
                                 </select>
-                                <button>Submit</button>
                             </div>
 
                         </div>

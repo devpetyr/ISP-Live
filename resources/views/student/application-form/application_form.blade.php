@@ -1815,7 +1815,7 @@
 
                             <div class="input-flds">
                                 <label><i class="fa-solid fa-address-card"></i>Agency City<span>*</span></label>
-                                <input type="text" name="agency_city" required>
+                                <input type="text" name="agency_city" >
                             </div>
 
                             {{--                        <div class="input-flds before">--}}

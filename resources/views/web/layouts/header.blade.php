@@ -53,8 +53,8 @@
                     <a href="{{route('web_menu_high_school_program')}}">High School Program</a>
                     <a href="{{route('web_menu_hosting_with_isp')}}">Hosting With Isp</a>
                     <a href="{{route('web_menu_intern_and_corporate_housing')}}">Intern And Corporate</a>
-                    <a href="{{route('web_menu_isp_portal')}}">Isp Portal</a>
-                    <a href="{{route('web_about_us')}}">Our Story Isp</a>
+                    <!--<a href="{{route('web_menu_isp_portal')}}">Isp Portal</a>-->
+                    <!--<a href="{{route('web_about_us')}}">Our Story Isp</a>-->
                     <a href="{{route('web_menu_school_and_company_housing')}}">School And Company</a>
 
 

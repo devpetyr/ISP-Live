@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ISP | Forgot Password</title>
+    <title>ISP | Student Application Status</title>
 </head>
 <style>
     .btn_verify {
@@ -45,12 +45,12 @@
                             </tr>
                             <tr>
                                 <td align="center" style="font-family: 'Raleway', sans-serif;font-size:37px;color: #000;line-height:24px;font-weight: bold;letter-spacing: 5px;">
-                                    Forgot Password
+                                    Student Application
                                 </td>
                             </tr>
                             <tr>
                                 <td align="center" style="font-family: 'Lato', sans-serif;font-size:15px;color: #000;line-height:24px;font-weight: 300;">
-                                    Please Confirm To Reset Your Password <br>
+                                    Student Application {{ucfirst($details->status) }}<br>
                                 </td>
                             </tr>
                             <tr>
@@ -74,14 +74,20 @@
                     <td height="35"></td>
                 </tr>
                 <tr>
-                    <td align="center" style="font-family: 'Raleway', sans-serif; font-size:22px; font-weight: bold; color:#333;">Forgot Password Request</td>
+                    <td align="center" style="font-family: 'Raleway', sans-serif; font-size:22px; font-weight: bold; color:#333;">
+                        {{ucfirst($details->username) }} Student Application {{ucfirst($details->status) }}
+                        </td>
                 </tr>
                 <tr>
                     <td height="10"></td>
                 </tr>
+
                 <tr>
+
                     <td align="center" style="font-family: 'Lato', sans-serif; font-size:14px; color:#757575;padding: 0px 51px;line-height: 0.8rem; font-weight: 300;">
-                        <a href="{{route('web_reset_password', $details->id)}}" class="btn_verify" target="_blank" >Reset Password</a>
+                        <p>Student Full Name : <b>{{$details->username}}</b></p>
+
+                        <p>Student Email : <b>{{$details->email}}</b></p>
                     </td>
                 </tr>
                 </tbody>

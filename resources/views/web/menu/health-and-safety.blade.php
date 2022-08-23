@@ -3,7 +3,7 @@
 @section('content')
     <!-- health and safety start -->
     <!-- banner start -->
-    <section class="banner-main_slider">
+    <section class="banner-main_slider inner_pages">
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -28,7 +28,7 @@
     <!-- banner end -->
     <!-- video sec start  -->
 
-    <section class="Covid_19sec">
+    <section class="Covid_19sec hel">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">

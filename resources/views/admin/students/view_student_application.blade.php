@@ -165,7 +165,7 @@
                             {{--                    School END--}}
                             </tbody>
                         </table>
-                        <h5>Airport Airval Details</h5>
+                        <h5>Airport Arrival Details</h5>
                         <table class="table table-bordered table-data3">
                             <thead>
                             <tr>

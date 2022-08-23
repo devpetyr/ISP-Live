@@ -4,7 +4,7 @@
     <!-- blog start -->
 
   <!-- banner start -->
-  <section class="banner-main_slider">
+  <section class="banner-main_slider inner_pages">
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
@@ -15,7 +15,7 @@
                 <div class="col-xs-12 col-sm-8 col-md-8 ">
                 <div class="banner-content">
                   <div class="banner_text wow fadeInLeft" data-wow-duration="2s">
-                    <h1 class="wow zoomIn">isp Blog</h1>
+                    <h1 class="wow zoomIn"> Blog</h1>
                   <!--  <div class="banner-btn">-->
                   <!--  <a href="javascript:void(0)" class="btn btn_badam">Start Here</a>-->
                   <!--</div>-->

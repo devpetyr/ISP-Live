@@ -68,11 +68,14 @@ class WebAuthController extends EmailController
                 $model->password = Hash::make($request->password);
                 $model->user_role = $request->user_role;
                 $model->status = 1;
+                $model->application_submitted = 0;
                 $model->save();
 
                 if ($model->save())
                 {
-                    $this->verifyEmail($model->id);
+                    // $this->verifyEmail($model->id);
+                    $this->GA_VerifyEmail($model->username, $model->email, route('user_verified', $model->id));
+
                     return redirect()->route('login')->with('success', 'You are successfully registered , Please verify your email. ');
                 }
                 else
@@ -93,6 +96,9 @@ class WebAuthController extends EmailController
     public function user_verified($id)
     {
         $user = User::find($id);
+        if ($user->is_active === 1){
+            return redirect()->route('login')->with('error', 'This link is no longer valid.');
+        }
         $user->is_active = 1;
         $user->save();
 
@@ -151,6 +157,10 @@ class WebAuthController extends EmailController
                     if ($userfind->user_role === 2)
                     {
                         Auth::login($userfind);
+                        if($userfind->is_reset === 1){
+                            $userfind->is_reset = 0;
+                            $userfind->save();
+                        }
                         return redirect()->route('student_application_form');
                         // return redirect()->route('student_dashboard');
                     }
@@ -196,7 +206,9 @@ class WebAuthController extends EmailController
             $userfind->is_reset = 1;
             $userfind->save();
             $details = $userfind;
-            $this->forgotpassword($details);
+            // $this->forgotpassword($details);
+            $this->GA_ForgotPassword($userfind->email, route('web_reset_password', $userfind->id));
+
             return redirect()->route('login')->with('success', 'An email has been sent to you!');
         } else {
             return back()->with('error', 'Your email is not valid');
@@ -208,7 +220,7 @@ class WebAuthController extends EmailController
         if ($user->is_reset === 1) {
             return view('web.reset-password', compact('user'));
         } else {
-            return redirect()->route('web_home')->with('error', 'Link not found');
+            return redirect()->route('web_home')->with('error', 'This link is no longer valid.');
         }
 
     }

@@ -4,7 +4,7 @@
     <!-- Intern And Corporate Housing start -->
 
     <!-- banner start -->
-    <section class="banner-main_slider">
+    <section class="banner-main_slider inner_pages">
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -63,7 +63,7 @@
                         </ul>
                         <p>Interns can apply on our portal. For companies needing
                             corporate housing for their employees, please reach out to us for more information at
-                            admin@isphomestays.com.</p>
+                        <a href="mailto:admin@isphomestays.com"> admin@isphomestays.com.</a>    </p>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-8 col-md-6 ">
