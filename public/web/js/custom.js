@@ -193,36 +193,31 @@ function closeNav() {
 
 
 //counter  
-var counted = 0;
-$(window).scroll(function() {
+// counter js start 
 
-  var oTop = $('#counter').offset().top - window.innerHeight;
-  if (counted == 0 && $(window).scrollTop() > oTop) {
-    $('.count').each(function() {
-      var $this = $(this),
-        countTo = $this.attr('data-count');
-      $({
-        countNum: $this.text()
-      }).animate({
-          countNum: countTo
-        },
 
-        {
+$(document).ready(function() {
 
-          duration: 2000,
-          easing: 'swing',
-          step: function() {
-            $this.text(Math.floor(this.countNum));
-          },
-          complete: function() {
-            $this.text(this.countNum);
-            //alert('finished');
-          }
+  var counters = $(".countt");
+  var countersQuantity = counters.length;
+  var counter = [];
 
-        });
-    });
-    counted = 1;
+  for (i = 0; i < countersQuantity; i++) {
+    counter[i] = parseInt(counters[i].innerHTML);
   }
 
+  var countt = function(start, value, id) {
+    var localStart = start;
+    setInterval(function() {
+      if (localStart < value) {
+        localStart++;
+        counters[id].innerHTML = localStart;
+      }
+    }, 40);
+  }
+
+  for (j = 0; j < countersQuantity; j++) {
+    countt(0, counter[j], j);
+  }
 });
 $('.single-item').slick();

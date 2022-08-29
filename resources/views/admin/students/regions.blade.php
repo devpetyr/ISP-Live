@@ -1,52 +1,44 @@
 @extends('admin.layouts.main')
 @section('content')
-    <div class="col-md-9 col-sm-9 col-xs-12">
+
+    <div class="col-md-9 col-sm-9 col-xs-9">
         <div class="main_bg">
             <div class="row">
-                <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="student_1">
-                        <h4>Regions List</h4>
-                        <i class="fa-solid fa-magnifying-glass"></i> <input type="text"
-                                                                            data-kt-user-table-filter="search" value="" id="txt_search"
-                                                                            class="form-control form-control-solid w-250px ps-14"
-                                                                            placeholder="Search . . . .">
+                        <h4>Region List</h4>
                     </div>
                 </div>
-
-                <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="student_2">
-                        <a href="javascript:void(0)" data-bs-toggle="modal"
-                           data-bs-target="#exampleModal_1"><i class="fa-solid fa-plus"></i>New
-                            Regions</a>
-                    </div>
-                </div>
-
             </div>
 
             <div class="main_table">
                 <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="student_2 stu-4">
+                        <a href="{{route('admin_manage_region')}}" ><i class="fa-solid fa-plus"></i>New Region</a>
+                    </div>
+                </div>
                     <div class="col-md-12 col-xs-12 col-xs-12">
                         <div class="table_content">
                             <table id="example" class="display" style="width:100%">
                                 <thead>
                                 <tr>
+                                    <th>S.No</th>
                                     <th>Region Name</th>
-                                    <th>Price</th>
-                                    <th>Actions</th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                @foreach($regions as $key => $region)
                                 <tr>
-                                    <td><a href="javascript:void(0)">Region 1</a></td>
-                                    <td><a href="javascript:void(0)">-</a></td>
-                                    <td><a href="javascript:void(0)" data-bs-toggle="modal"
-                                           data-bs-target="#exampleModal_1"><i
-                                                class="fa-solid fa-pencil"></i></a>
-                                        <a href="#" class="md-trigger" data-modal="modal-12"><i
-                                                class="fa-solid fa-trash"></i></a>
+                                    <td>{{$key + 1}}</td>
+                                    <td class="name-sch">{{$region->name}}</td>
+                                    <td><a class="blue-text" href="{{route('admin_manage_region',$region->id)}}" ><i class="fa-solid fa-pencil"></i></a>
+                                        <a class="red-text" href="{{route('admin_delete_region',$region->id)}}" ><i class="fa-solid fa-trash"></i></a>
+                                        <!--<a href="#" class="md-trigger"><i class="fa-solid fa-trash"></i></a>-->
                                     </td>
-                                </tr>
-
+                                    </tr>
+                                @endforeach
                                 </tbody>
 
                             </table>
@@ -54,45 +46,17 @@
                     </div>
                 </div>
             </div>
-
-
-
-            <div class="pagin_mian">
-                <div class="row">
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <div class="pagi_cont">
-                            <h5>Showing 1 to 1 of 1 entries</h5>
-                        </div>
-                    </div>
-                    <div class="col-md-8 col-sm-8 col-xs-12">
-                        <div class="my_pagi">
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination">
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                        </a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#"><i
-                                                class="fa-solid fa-angle-left"></i></a></li>
-                                    <li class="page-item"><a class="page-link-1"
-                                                             href="#"><small>1</small></a></li>
-                                    <li class="page-item"><a class="page-link" href="#"><i
-                                                class="fa-solid fa-angle-right"></i></a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Next">
-                                            <span aria-hidden="true">&raquo;</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
         </div>
 
     </div>
+
+    @push('js')
+        <script>
+            $(document).ready(function (e)  {
+                var table = $('#example').DataTable({
+                });
+            });
+        </script>
+    @endpush
 @endsection
+

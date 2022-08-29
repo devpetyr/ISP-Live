@@ -99,6 +99,33 @@
                                 {{ $message }}
                             </div>
                             @enderror
+                            <h6 class="age"><i class="fa-solid fa-child"></i>Age <span>*</span></h6>
+                            <div class="input-flds">
+                                <input type="text" name="age" maxlength="3" required>
+                            </div>
+                            @error('age')
+                            <div class="alert alert-danger">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                            <h6 class="passport-number"><i class="fa-solid fa-passport"></i>Passport Number <span>*</span></h6>
+                            <div class="input-flds">
+                                <input type="text" name="passport_number" maxlength="100" required>
+                            </div>
+                            @error('passport_number')
+                            <div class="alert alert-danger">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                            <h6 class="passport-exp"><i class="fa-solid fa-calendar-days"></i>Expiration Date <span>*</span></h6>
+                            <div class="input-flds">
+                                <input type="date" name="passport_exp" required>
+                            </div>
+                            @error('passport_exp')
+                            <div class="alert alert-danger">
+                                {{ $message }}
+                            </div>
+                            @enderror
                         </div>
 
                         <h6 class="pay-method two"><i class="fa-solid fa-user"></i>Gender <span>*</span></h6>
@@ -124,15 +151,15 @@
                         </div>
                         @enderror
 
-                        <div class="input-flds">
-                            <label><i class="fa-solid fa-user"></i>Other Gender-Specify</label>
-                            <input type="text" name="other_gender">
-                        </div>
-                        @error('other_gender')
-                        <div class="alert alert-danger">
-                            {{ $message }}
-                        </div>
-                        @enderror
+                        <!--<div class="input-flds">-->
+                        <!--    <label><i class="fa-solid fa-user"></i>Other Gender-Specify</label>-->
+                        <!--    <input type="text" name="other_gender">-->
+                        <!--</div>-->
+                        <!--@error('other_gender')-->
+                        <!--<div class="alert alert-danger">-->
+                        <!--    {{ $message }}-->
+                        <!--</div>-->
+                        <!--@enderror-->
 
                         <div class="input-flds before">
                             <label><i class="fa-solid fa-earth-americas"></i>Country of Permanent
@@ -415,7 +442,7 @@
                         </div>
 
                         <div class="permanent-adress">
-                            <h3>Your Permanent Adress:</h3>
+                            <h3>Your Permanent Address:</h3>
 
 
                             <div class="input-flds">

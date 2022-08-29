@@ -1,3 +1,33 @@
+
+@media only screen and (min-width:1200px) and (max-width:1440px) { 
+    
+  .menuSec ul li a {
+        padding: 10px 12px;
+        font-size: 19px;
+    }
+    .icons_sty ul li a {
+        width: 50px;
+        height: 50px;
+        margin: 0 12px 0px 0px;
+    }
+   
+    .footer-form input[type="submit"] {
+        padding: 0px 35px;
+    }
+    .form-icon_sty {
+        padding: 0px 61px;
+    }
+        
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
 @media (max-width: 1024px) {
     .main_slider img {
         height: 500px;

@@ -17,12 +17,9 @@
                         <ul class="dropdown-menu">
                             <li><a href="{{route('admin_student_details')}}">Student Details </a></li>
                             <li><a href="{{route('admin_student_applications')}}">Student Applications </a></li>
-                            <li><a href="#">Payments</a></li>
-{{--                            {{route('admin_student_payments')}}--}}
-                            <li><a href="#">Schools</a></li>
-{{--                            {{route('admin_student_schools')}}--}}
-                            <li><a href="#">Regions</a></li>
-{{--                            {{route('admin_student_regions')}}--}}
+                            <li><a href="{{route('admin_student_payments')}}">Payments</a></li>
+                            <li><a href="{{route('admin_student_schools')}}">Schools</a></li>
+                            <li><a href="{{route('admin_student_regions')}}">Regions</a></li>
                         </ul>
                     </li>
 

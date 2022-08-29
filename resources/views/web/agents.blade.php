@@ -135,8 +135,8 @@
                              style="visibility: visible; animation-duration: 2s; animation-name: fadeInLeft;">
                             <img src="{{asset('web/images/counter_1.png')}}" class="img-fluid">
                             <li>
-                                <h3 class="count percent" data-count="210">
-                                    0
+                                <h3 class="countt">
+                                   210
                                 </h3>
                             </li>
 
@@ -149,8 +149,8 @@
                              style="visibility: visible; animation-duration: 2s; animation-name: fadeInLeft;">
                             <img src="{{asset('web/images/counter_2.png')}}" class="img-fluid">
                             <li>
-                                <h3 class="count percent" data-count="130">
-                                    0
+                                <h3 class="countt">
+                                    103
                                 </h3>
                             </li>
 
@@ -162,8 +162,8 @@
                              style="visibility: visible; animation-duration: 2s; animation-name: fadeInLeft;">
                             <img src="{{asset('web/images/counter_3.png')}}" class="img-fluid">
                             <li>
-                                <h3 class="count percent" data-count="30">
-                                    0
+                                <h3 class="countt">
+                                   30
                                 </h3>
                             </li>
 

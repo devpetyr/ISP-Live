@@ -131,6 +131,7 @@
                         <ul>
                             <li> <a href="javascript:void(0)"> College Housing</a></li>
                             <li> <a href="{{route('web_menu_high_school_program')}}"> High School Housing</a></li>
+                            <li><a href="">Company & Intern Housing</a></li>
                             <li> <a href="{{route('web_menu_intern_and_corporate_housing')}}"> Intern and Corporate Housing</a></li>
                         </ul>
                     </div>
@@ -209,8 +210,8 @@
                             <div class="icons_sty wow fadeInLeft" data-wow-duration="2s">
                                 <ul>
                                     <li> <a href="#"> <i class="fa-brands fa-facebook-f"></i></a></li>
-                                    <li> <a href="#"> <i class="fa-brands fa-twitter"></i></a></li>
                                     <li> <a href="#"> <i class="fa-brands fa-instagram"></i></a></li>
+                                    <li> <a href="#"> <i class="fa-brands fa-twitter"></i></a></li>
                                     <li> <a href="#"> <i class="fa-brands fa-vimeo-v"></i></a></li>
                                 </ul>
                             </div>

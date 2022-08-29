@@ -31,67 +31,78 @@
     <!-- sec start  -->
     <section class="high-school-detals">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-xs-12 col-sm-10 col-md-6 centerCol">
-                    <div class="agents-content wow fadeInRight" data-wow-duration="2s">
-                        <h3>ISP High School Programs </h3>
-                        <p class="two">F1 Public School Academic Year Placement with Homestay.</p>
-                        <p class="two">FI Private School Placement with Homestay or Dorm Placement.</p>
-                        <p class="two">Homestay and Guardianship.</p>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-10 col-md-6 centerCol">
-                    <div class="high-main">
-                        <div class="about-img wow fadeInRight" data-wow-duration="2s">
-                            <img src="{{asset('web/images/school-img-1.png')}}" alt="img here">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-10 col-md-6 centerCol">
-                    <div class="high-main">
-                        <div class="high-img wow fadeInRight" data-wow-duration="2s">
-                            <img src="{{asset('web/images/school-img-2.png')}}" alt="img here">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-10 col-md-6 centerCol">
-                    <div class="high-content wow fadeInRight" data-wow-duration="2s">
-                        <h3>F1 Public School Academic Year
-                            Placement with Homestay  </h3>
-                        <p>If you want to attend a public high school for one academic year and live with a host family, this program is for you! Students who enroll in this program want to see for themselves what America is all about and leave with a lifetime of friendships, enriched experiences, and an American high school transcript demonstrating their commitment to global awareness. </p>
-                    </div>
-                </div>
 
-                <div class="col-xs-12 col-sm-10 col-md-6 centerCol">
-                    <div class="agents-content wow fadeInRight" data-wow-duration="2s">
-                        <h3>FI Private School Placement with
-                            Homestay or Dorm Placement </h3>
-                        <p>If you’re an ambitious international student who wants to graduate from an American high school and perhaps go on to college, this program is the perfect fit. We work with our students to determine what school is the best for them among our long list of school partners that all offer a rigorous high school curriculum with national ranking. Depending on the school, you’ll either live with a host family or in on-campus dormitories</p>
+                <div class="space row">
+                    <div class="col-xs-12 col-sm-10 col-md-6 ">
+                        <div class="agents-content wow fadeInRight" data-wow-duration="2s">
+                            <h3>ISP High School Programs </h3>
+                            <p class="two">F1 Public School Academic Year Placement with Homestay.</p>
+                            <p class="two">FI Private School Placement with Homestay or Dorm Placement.</p>
+                            <p class="two">Homestay and Guardianship.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="col-xs-12 col-sm-10 col-md-6 centerCol">
-                    <div class="high-main">
-                        <div class="about-img wow fadeInRight" data-wow-duration="2s">
-                            <img src="{{asset('web/images/housing-img-2.png')}}" alt="img here">
+                    <div class="col-xs-12 col-sm-10 col-md-6 ">
+                        <div class="high-main">
+                            <div class="about-img wow fadeInRight" data-wow-duration="2s">
+                                <img src="{{asset('web/images/school-img-1.png')}}" alt="img here">
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-xs-12 col-sm-10 col-md-6 centerCol">
-                    <div class="high-main">
-                        <div class="high-img wow fadeInRight" data-wow-duration="2s">
-                            <img src="{{asset('web/images/housing-img-4.png')}}" alt="img here">
+                <div class="space row">
+                    <div class="col-xs-12 col-sm-10 col-md-6 ">
+                        <div class="high-main">
+                            <div class="high-img wow fadeInRight" data-wow-duration="2s">
+                                <img src="{{asset('web/images/school-img-2.png')}}" alt="img here">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-10 col-md-6 ">
+                        <div class="high-content wow fadeInRight" data-wow-duration="2s">
+                            <h3>F1 Public School Academic Year
+                                Placement with Homestay  </h3>
+                            <p>If you want to attend a public high school for one academic year and live with a host family, this program is for you! Students who enroll in this program want to see for themselves what America is all about and leave with a lifetime of friendships, enriched experiences, and an American high school transcript demonstrating their commitment to global awareness. </p>
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-10 col-md-6 centerCol">
-                    <div class="high-content wow fadeInRight" data-wow-duration="2s">
-                        <h3>Homestay and Guardianship
-                            Without School Placement </h3>
-                        <p>If you found your own high school but still need a place to live, we’ve got you covered.  We provide the homestay placement, guardianship, student management, academic and cultural support, and a personal ISP coordinator to ensure your success. </p>
+                <div class="space row">
+                    <div class="col-xs-12 col-sm-10 col-md-6 ">
+                        <div class="agents-content wow fadeInRight" data-wow-duration="2s">
+                            <h3>FI Private School Placement with
+                                Homestay or Dorm Placement </h3>
+                            <p>If you’re an ambitious international student who wants to graduate from an American high school and perhaps go on to college, this program is the perfect fit. We work with our students to determine what school is the best for them among our long list of school partners that all offer a rigorous high school curriculum with national ranking. Depending on the school, you’ll either live with a host family or in on-campus dormitories</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-10 col-md-6 ">
+                        <div class="high-main">
+                            <div class="about-img wow fadeInRight" data-wow-duration="2s">
+                                <img src="{{asset('web/images/housing-img-2.png')}}" alt="img here">
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+                <div class="space row">
+                    <div class="col-xs-12 col-sm-10 col-md-6 ">
+                        <div class="high-main">
+                            <div class="high-img wow fadeInRight" data-wow-duration="2s">
+                                <img src="{{asset('web/images/housing-img-4.png')}}" alt="img here">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-10 col-md-6 ">
+                        <div class="high-content wow fadeInRight" data-wow-duration="2s">
+                            <h3>Homestay and Guardianship
+                                Without School Placement </h3>
+                            <p>If you found your own high school but still need a place to live, we’ve got you covered.  We provide the homestay placement, guardianship, student management, academic and cultural support, and a personal ISP coordinator to ensure your success. </p>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+                
+                
+ 
         </div>
         </div>
         </div>

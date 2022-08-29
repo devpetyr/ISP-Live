@@ -161,27 +161,16 @@
     <!-- video sec start  -->
     <section class="sec-hostfamily">
         <div class="container">
-            <div class="row align-items-center">
+            <div class="row">
                 <div class="col-xs-12 col-sm-10 col-md-8 centerCol">
-                    <div class="story-content  wow fadeInLeft" data-wow-duration="2s">
+                    <div class="story-content story-content-about   wow fadeInLeft" data-wow-duration="2s">
                         <h4>Our Story Team</h4>
-                        <p>Jean Ikeda started her career as a Program Coordinator for international programs at Foothill College in Northern California. At that time, Foothill had the largest, most robust programs for international students in the country. During her many years on campus, Jean led student orientations, executed immersion programs for sister-school groups, managed summer internship placements for J1 students, recruited students overseas, and fostered agent partnerships. She was immersed in everything related to international education.
-
-                            With no dorms on campus, the constant need for reliable, affordable, and safe housing for students was how ISP was born.
-                            Starting first with homestay placements for Foothill College students, word to other colleges that also needed housing quickly spread and soon Jean was placing students throughout California and neighboring states, while responding to growing requests from agents to not only provide homestays but a variety of programs.
-
-                            Fast Forward 30 years……
-
-                            Today, ISP is pleased to welcome 2-3,000 students annually to our homestay and group programs throughout the United States. We’re proud of the partnerships with colleges, universities, corporations, and agents who trust ISP to deliver the best programs and housing options possible.
-
-                            The ISP team is keenly aware of all facets required to manage a successful international program and the many layers of support required to do so. Our job is challenging, meaningful, and sometimes very chaotic….but we stop at nothing to meet our superior standards for excellence, ensuring that no detail is missed.
-                        </p>
-                        <p>With no dorms on campus, the constant need for reliable, affordable, and safe housing for students was how ISP was born.
-                            Starting first with homestay placements for Foothill College students, word to other colleges that also needed housing quickly spread and soon Jean was placing students throughout California and neighboring states, while responding to growing requests from agents to not only provide homestays but a variety of programs.
-                        </p>
+                        <p>Jean Ikeda started her career as a Program Coordinator for international programs at Foothill College in Northern California. At that time, Foothill had the largest, most robust programs for international students in the country. During her many years on campus, Jean led student orientations, executed immersion programs for sister-school groups, managed summer internship placements for J1 students, recruited students overseas, and fostered agent partnerships. She was immersed in everything related to international education. </p>
+                        <p>With no dorms on campus, the constant need for reliable, affordable, and safe housing for students was how ISP was born.</p>
+                        <p>Starting first with homestay placements for Foothill College students, word to other colleges that also needed housing quickly spread and soon Jean was placing students throughout California and neighboring states, while responding to growing requests from agents to not only provide homestays but a variety of programs. </p>
 
                         <h5>Fast forward 30 years </h5>
-                        <p> Today, ISP is pleased to welcome 2-3,000 students annually to our homestay and group programs throughout the United States. We’re proud of the partnerships with colleges, universities, corporations, and agents who trust ISP to deliver the best programs and housing options possible.
+                        <p> Today, ISP is pleased to welcome 2-3,000 students annually to our homestay and group programs throughout the United States. We’re proud of the partnerships with colleges, universities, corporations, and agents who trust ISP to deliver the best programs and housing options possible. <br>
                             The ISP team is keenly aware of all facets required to manage a successful international program and the many layers of support required to do so. Our job is challenging, meaningful, and sometimes very chaotic, but we stop at nothing to meet our superior standards for excellence, ensuring that no detail is missed.  </p>
                     </div>
                 </div>
@@ -196,7 +185,7 @@
                 </div>
 
                 <div class="col-xs-12 col-sm-10 col-md-4 centerCol">
-                    <div class="story-img  wow fadeInLeft" data-wow-duration="2s">
+                    <div class="story-img   wow fadeInLeft" data-wow-duration="2s">
                         <img src="{{asset('web/images/about-banner-img-2.png')}}" alt="img here">
                     </div>
                     <div class="img-heading">
@@ -205,7 +194,7 @@
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-10 col-md-8 centerCol">
-                    <div class="story-content  wow fadeInLeft" data-wow-duration="2s">
+                    <div class="story-content Janaki-Padia  wow fadeInLeft" data-wow-duration="2s">
                         <p>Janaki manages well, everything. Overseeing every single detail of every single program, she juggles so many things with style and grace that everyone is in awe of her. Our agents, internal staff, students, and hosts think she’s simply amazing. If you’re lucky to enough come into contact with her, you’ll quickly think the same. </p>
                     </div>
                 </div>

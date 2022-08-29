@@ -985,9 +985,9 @@ input[type="tel"] {
 
 .student_2 a {
     float: right;
-    color: #7e8299;
+    color: #ffffff;
     border-color: #f5f8fa;
-    background-color: #f5f8fa;
+    background-color: #0b406c;
     width: 170px;
     height: 39px;
     border-radius: 8px;
@@ -1001,9 +1001,9 @@ input[type="tel"] {
 }
 
 .student_2 a:hover {
-    color: #fff;
-    border-color: #009ef7;
-    background-color: #009ef7;
+    color: #0b406c;
+    border: 1px solid #0b406c;
+    background-color: transparent;
 }
 
 .main_bg {
@@ -1372,10 +1372,10 @@ input[type="tel"] {
 }
 
 .table_content td a i {
-    background: #f5f8fa;
+    background: #105b99;
     padding: 10px;
     border-radius: 10px;
-    color: #a1a5b7;
+    color: white;
 }
 
 .table_content td a i:hover {
@@ -2040,4 +2040,66 @@ h4.left_home {
     font-weight: 500;
 }
 /*login page css ends*/
+.main_bg.sec-bg td {
+    font-size: 13px;
+    text-align: left;
+}
+.main_bg.sec-bg{
+    
+}
+td.sub-wid {
+    width: 16%;
+}
+td.rou-td {
+    width: 10%;
+}
 
+.student_2.stu-4 a {
+    margin: 10px 0 15px;
+}
+td.name-sch {
+    width: 70%;
+    text-align: left;
+}
+.green-text {
+    color:#008000;
+    background-color:#e0ede0;
+}
+.yellow-text {
+    color:#b4b411;
+    background-color: #fbfbdd;
+}
+a.red-text i {
+    background: #a90000 !important;
+}
+a.red-text i:hover {
+    background: white !important;
+    color: #a90000 !important;
+}
+.table_content td a i:hover {
+    color: #0b406c;
+    background: white;
+}
+label.control-label.mb-1 {
+    font-weight: 500;
+}
+.main_bg.inp-main input {
+    width: 80%;
+    border: 1px solid #0b406c;
+    margin: 10px 0 0 60px;
+    border-radius: 10px;
+}
+.main_bg.inp-main select {
+    width: 83%;
+    border: 1px solid #0b406c;
+    margin: 10px 0 0 60px;
+    border-radius: 10px;
+    height: auto;
+}
+.main_bg.inp-main button {
+    float: right;
+    margin-right: 100px;
+}
+td.table-actions {
+    width: 12%;
+}

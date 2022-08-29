@@ -18,7 +18,6 @@
             <div class="row">
                 <div id="mySidemenu" class="side_menu">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-
 {{--                    <a href="{{route('web_menu_college_housing')}}">College Housing</a>--}}
 {{--                    <a href="{{route('web_menu_company_housing')}}">Company Housing</a>--}}
 {{--                    <a href="{{route('web_menu_faq')}}">Faq</a>--}}
@@ -41,26 +40,23 @@
 {{--                    <a href="{{route('web_menu_safety')}}">Safety</a>--}}
 {{--                    <a href="{{route('web_menu_school')}}">School</a>--}}
 {{--                    <a href="{{route('web_menu_team')}}">Team</a>--}}
-
-                    <a href="{{route('web_agent')}}">Agents</a>
-                    <a href="{{route('web_blog')}}">Blog</a>
-                    <a href="{{route('web_menu_faq')}}">Faq</a>
-                    <a href="{{route('web_career')}}">Careers</a>
-                    <a href="{{route('web_contact_us')}}">Contact Us</a>
-                    <a href="{{route('web_menu_covid_19')}}">Covid 19</a>
-                    <a href="{{route('web_menu_group_program')}}">Group Our Program</a>
-                    <a href="{{route('web_menu_health_and_safety')}}">Health And Safety</a>
-                    <a href="{{route('web_menu_high_school_program')}}">High School Program</a>
-                    <a href="{{route('web_menu_hosting_with_isp')}}">Hosting With Isp</a>
-                    <a href="{{route('web_menu_intern_and_corporate_housing')}}">Intern And Corporate</a>
-                    <!--<a href="{{route('web_menu_isp_portal')}}">Isp Portal</a>-->
-                    <!--<a href="{{route('web_about_us')}}">Our Story Isp</a>-->
-                    <a href="{{route('web_menu_school_and_company_housing')}}">School And Company</a>
-
-
+                        <a href="{{route('web_agent')}}">Agents</a>
+                        <a href="{{route('web_blog')}}">Blog</a>
+                        <a href="{{route('web_menu_faq')}}">Faq</a>
+                        <a href="{{route('web_career')}}">Careers</a>
+                        <a href="{{route('web_contact_us')}}">Contact Us</a>
+                        <a href="{{route('web_menu_covid_19')}}">Covid 19</a>
+                        <a href="{{route('web_menu_group_program')}}">Group Our Program</a>
+                        <a href="{{route('web_menu_health_and_safety')}}">Health And Safety</a>
+                        <a href="{{route('web_menu_high_school_program')}}">High School Program</a>
+                        <a href="{{route('web_menu_hosting_with_isp')}}">Hosting With Isp</a>
+                        <a href="{{route('web_menu_intern_and_corporate_housing')}}">Intern And Corporate</a>
+                        <!--<a href="{{route('web_menu_isp_portal')}}">Isp Portal</a>-->
+                        <!--<a href="{{route('web_about_us')}}">Our Story Isp</a>-->
+                        <a href="{{route('web_menu_school_and_company_housing')}}">School And Company</a>
                 </div>
                 <div class="col-md-3 col-sm-6 col-xs-6">
-                    <a href="{{route('web_home')}}"><img src="{{asset('web/images/logo.jpg')}}" alt="img"></a>
+                    <a href="{{route('web_home')}}"><img src="{{asset('web/images/logg.png')}}" alt="img"></a>
                 </div>
                 <div class="col-md-9 col-sm-9 col-xs-12 text-right">
                     <ul id="menu">

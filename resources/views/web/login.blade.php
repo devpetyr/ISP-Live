@@ -56,7 +56,9 @@
                           <div class="row">
                               <div class="col-md-6 col-sm-6 col-xs-12">
                                 @csrf
-                                <input type="email" id="email" name="email" placeholder="Email" required/>
+                                <label>Email</label>
+                                <div class="clear-fix"></div>
+                                <input type="email" id="email" name="email" placeholder="Enter Your Email" required/>
                                 @error('email')
                                 <div class="alert alert-danger">
                                     {{ $message }}
@@ -64,7 +66,9 @@
                                 @enderror
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="password" id="password" name="password" placeholder="Password" required/>
+                                <label>Password</label>
+                                <div class="clear-fix"></div>
+                                <input type="password" id="password" name="password" placeholder="Enter Your Password" required/>
                                 @error('password')
                                 <div class="alert alert-danger">
                                     {{ $message }}

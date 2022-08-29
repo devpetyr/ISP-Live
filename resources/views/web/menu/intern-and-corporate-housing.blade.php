@@ -61,8 +61,8 @@
                             <li> Assigned ISP Coordinator-your personal concierge.</li>
                             <li> Airport pick up if you need it.</li>
                         </ul>
-                        <p>Interns can apply on our portal. For companies needing
-                            corporate housing for their employees, please reach out to us for more information at
+                        <p>Interns can apply on our portal. For companies needing <br>
+                            corporate housing for their employees, please reach out to us for more information <br> at
                         <a href="mailto:admin@isphomestays.com"> admin@isphomestays.com.</a>    </p>
                     </div>
                 </div>

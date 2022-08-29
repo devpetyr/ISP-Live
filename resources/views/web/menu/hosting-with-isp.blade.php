@@ -12,7 +12,7 @@
                     <div class="carousel-caption">
                         <div class="container">
                             <div class="row">
-                                <div class="col-xs-12 col-sm-8 col-md-8 centerCol ">
+                                <div class="col-xs-12 col-sm-8 col-md-8">
                                     <div class="banner_text wow fadeInLeft" data-wow-duration="2s">
                                         <h1 class="wow zoomIn">Hosting With ISP</h1>
 
@@ -38,31 +38,13 @@
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-8 col-md-12 ">
-                    <div class="accordion" id="accordionExample">
-                        <div class=" accordion-item one">
-                            <h2 class="accordion-header" id="headingOne1">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne1" aria-expanded="true" aria-controls="collapseOne1">
-                                    Why be a host family?
-                                </button>
-                            </h2>
-                            <div id="collapseOne1" class="accordion-collapse collapse show" aria-labelledby="headingOne1" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <p>Hosting an international student allows you the unique opportunity to be a powerful role model to a young person. The student’s journey to cultural immersion is supported by living and experiencing life through their host’s family life. More importantly, hosting gives people a deeper understanding of human values that unite people across the globe. </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item one">
-                            <h2 class="accordion-header" id="headingTwo2">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo2">
-                                    Who are our students?
-                                </button>
-                            </h2>
-                            <div id="collapseTwo2" class="accordion-collapse collapse show" aria-labelledby="headingTwo2" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <p>Students are all different ages from all different countries with one thing in common they want to experience American culture with the support of their host.  </p>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="acord_main">
+                      <h3>Why be a host family?</h3>
+                      <p>Hosting an international student allows you the unique opportunity to be a powerful role model to a young person. The student’s journey to cultural immersion is supported by living and experiencing life through their host’s family life. More importantly, hosting gives people a deeper understanding of human values that unite people across the globe. </p>
+                    </div>
+                    <div class="acord_main">
+                        <h3> Who are our students?</h3>
+                        <p>Students are all different ages from all different countries with one thing in common they want to experience American culture with the support of their host.  </p>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-8 col-md-12 ">

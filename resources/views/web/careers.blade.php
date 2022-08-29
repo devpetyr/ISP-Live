@@ -178,7 +178,7 @@
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="carrers_2heading">
-                        <h4>Work hard. Meet People. Enjoy Challenges Embrace
+                        <h4>Work hard. Meet People. Enjoy Challenges Embrace <br>
                             Cultural Diversity.Laugh. </h4>
                     </div>
                 </div>

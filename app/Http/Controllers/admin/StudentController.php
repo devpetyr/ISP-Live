@@ -4,8 +4,11 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\StudentApplicationFormFeesModel;
+use App\Models\StudentApplicationFormFeePaymentModel;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\SchoolModel;
+use App\Models\RegionModel;
 use App\Http\Controllers\EmailController;
 
 
@@ -169,16 +172,85 @@ class StudentController extends EmailController
 
     public function payments()
     {
-        return view('admin.students.payments');
+        $fees_model = StudentApplicationFormFeesModel::with('getUser')->with('getPayment')->get();
+        return view('admin.students.payments', compact('fees_model'));
     }
 
+    // School Start
     public function schools()
     {
-        return view('admin.students.schools');
+        $schools = SchoolModel::with('getRegion')->get();
+        return view('admin.students.schools', compact('schools'));
+    }
+    public function manage_school(SchoolModel $id)
+    {
+        $regions = RegionModel::all();
+        return view('admin.students.manage-schools', compact('id','regions'));
     }
 
+    public function manage_school_process(Request $request, SchoolModel $id)
+    {
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+        if ($id->id > 0) {
+            $model = $id;
+            $msg = 'School updated successfully.';
+        } else {
+            $model = new SchoolModel();
+            $msg = "School added successfully.";
+            $model->status = 1;
+        }
+        $model->name = $request->name;
+        $model->region_id = $request->region_id;
+        
+        $model->save();
+        return redirect()->route('admin_student_schools')->with('success',$msg);
+    }
+
+    public function delete_school(SchoolModel $id)
+    {
+        $id->delete();
+        return redirect()->route('admin_student_schools')->with('success','School record deleted successfully.');
+    }
+    // School End
+
+    // Region Start
     public function regions()
     {
-        return view('admin.students.regions');
+        $regions = RegionModel::all();
+        return view('admin.students.regions',compact('regions'));
     }
+    public function manage_region(RegionModel $id)
+    {
+        return view('admin.students.manage-regions', compact('id'));
+    }
+
+    public function manage_region_process(Request $request, RegionModel $id)
+    {
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+        if ($id->id > 0) {
+            $model = $id;
+            $msg = 'Region updated successfully.';
+        } else {
+            $model = new RegionModel();
+            $msg = "Region added successfully.";
+            $model->status = 1;
+        }
+        $model->name = $request->name;
+        
+        $model->save();
+        return redirect()->route('admin_student_regions')->with('success',$msg);
+    }
+
+    public function delete_region(RegionModel $id)
+    {
+        $id->delete();
+        return redirect()->route('admin_student_regions')->with('success','Region record deleted successfully.');
+    }
+    // Region End
 }

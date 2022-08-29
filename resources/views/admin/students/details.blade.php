@@ -2,7 +2,7 @@
 @section('content')
 
     <div class="col-md-9 col-sm-9 col-xs-9">
-        <div class="main_bg">
+        <div class="main_bg sec-bg">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="student_1">
@@ -37,14 +37,14 @@
                                         <td>{{$user->username}}</td>
                                         <td>{{$user->email}}</td>
                                         @if($user->application_submitted == 1)
-                                            <td>Submitted</td>
+                                            <td class="sub-wid green-text">Submitted</td>
                                         @elseif($user->application_submitted == 0)
-                                            <td>Pending</td>
+                                            <td class="sub-wid yellow-text">Pending</td>
                                         @else
                                             <td>-</td>
                                         @endif
-                                        <td>{{$user->is_active == 1 ? "Verified"  : "Pending"}}</td>
-                                        <td>{{$user->status == 1 ? "Approved"  : "Pending"}}</td>
+                                        <td >{{$user->is_active == 1 ? "Verified"  : "Pending"}}</td>
+                                        <td >{{$user->status == 1 ? "Approved"  : "Pending"}}</td>
 {{--                                        <td><a href="{{route('admin_view_student_application',[$application->id])}}"><i--}}
 {{--                                                        class="fa fa-bars"></i></a></td>--}}
 {{--                                        <td><a href="notes_list.html" target="blank"> <i class="fa fa-list"></i></a>--}}

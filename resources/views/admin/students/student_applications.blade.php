@@ -2,7 +2,7 @@
 @section('content')
 
     <div class="col-md-9 col-sm-9 col-xs-9">
-        <div class="main_bg">
+        <div class="main_bg sec-bg">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="student_1">
@@ -21,17 +21,19 @@
                             <table id="example" class="display" style="width:100%">
                                 <thead>
                                 <tr>
+                                    <th>Id</th>
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Submission Date</th>
                                     <th>Status</th>
-                                    <th>View Application</th>
+                                    <th>View</th>
 {{--                                    <th>Actions</th>--}}
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($applications as $key => $application)
                                 <tr>
+                                    <td>{{$key + 1}}</td>
                                     <td>{{$application->getUser->username}}</td>
                                     <td>{{$application->getUser->email}}</td>
                                     <td>{{$application->created_at->format('d-M-Y')}}</td>
@@ -42,7 +44,7 @@
                                     @else
                                         <td>Pending</td>
                                     @endif
-                                    <td><a href="{{route('admin_view_student_application',[$application->id])}}"><i class="fa fa-bars"></i></a></td>
+                                    <td class="rou-td"><a href="{{route('admin_view_student_application',[$application->id])}}"><i class="fa fa-bars"></i></a></td>
 {{--                                    <td><a href="notes_list.html" target="blank"> <i class="fa fa-list"></i></a>--}}
 {{--                                        <a href="notes.html" target="_blank"><i class="fa-solid fa-plus"></i></a>--}}
 {{--                                    </td>--}}

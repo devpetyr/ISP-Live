@@ -55,8 +55,8 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-10 col-md-12 centerCol">
                     <div class="link-box">
-                        <a href="#">Get a Quote for your Group</br>
-                            groups@isphomestays.com </a>
+                        <p>Get a Quote for your Group</br>
+                            <a href="#">groups@isphomestays.com </a></p>
                     </div>
                 </div>
             </div>

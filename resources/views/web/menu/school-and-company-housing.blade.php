@@ -38,7 +38,7 @@
                                 <p>One of our favorite aspects about ISP is the relationships we’ve cultivated with companies, high schools, colleges, and universities all over the country. With our vast experience providing housing and understanding the dynamics of international programs, we ensure that our housing placements are close to school, reliable, and affordable on work</p>
                                
                                 <p>What if students have housing issues? We jump in at lightning speed to fix them.                                 </p>
-                                <p>If your company needs intern housing, if your school doesn’t have dorms or if they’re full, if you have groups that need housing, or if you’re a high school needing a homestay provider, we’re here for you….let’s connect</p>
+                                <p>If your company needs intern housing, if your school doesn’t have dorms or if they’re full, if you have groups that need housing, or if you’re a high school needing a homestay provider, we’re here for you….<strong>let’s connect</strong></p>
                             </div>
                         </div>
                     </div>

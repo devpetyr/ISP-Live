@@ -417,7 +417,7 @@
                                 <div class="col-xs-12 col-sm-8 col-md-8 ">
                                     <div class="banner-content">
                                         <div class="banner_text wow fadeInLeft" data-wow-duration="2s">
-                                            <h1 class="wow zoomIn">COVID-19 </h1>
+                                            <h1 class="wow zoomIn">Covid-19 </h1>
                                         </div>
                                     </div>
                                 </div>
@@ -434,37 +434,20 @@
     <section class="Covid_19sec">
         <div class="container">
             <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="col-md-10 col-sm-10 col-xs-10 centerCol">
                     <div class="covid_heading">
                         <h4>COVID-19 Protocol for Students </h4>
-                        <p>All students must provide proof of their COVID-19 vaccination (2 doses and 1 booster approved
-                            by the WHO) and upload their COVID-19 vaccine card when applying to the program. If students
-                            can’t get a booster in their home country, they must get one within 2 days of arrival to the
-                            US.</p>
-                        <p>Students must monitor their health for 7 days before traveling to the US. Students who
-                            exhibit flu-like symptoms (which include fever, body aches, stuffy/runny nose, cough, etc.)
-                            upon arrival or at any point during their stay must self-quarantine in their bedroom and
-                            take a COVID-19 rapid test. </p>
-
-                        <p>If the test is negative but symptoms persist, the student must take a rapid test every day
-                            for 3 days until it turns positive OR have a PCR test. If the PCR is negative, the student
-                            can end the quarantine. If the PCR is positive, the student must quarantine until their
-                            symptoms subside and they have a negative rapid test. </p>
-                        <p>If a student contracts COVID-19 and their host isn’t comfortable with them staying in their
-                            home, the student will check into a
-                            local hotel at their own expense until above protocol is followed. </p>
-                        <p>Host preference will be disclose throughout the student’s stay, state and local governments
-                            will continue to adjust their COVID policies according to the prevalence of the virus in the
-                            community. ISP students are expected to adhere to current regulations, practice good
-                            hygiene, clean and disinfect their bedroom and bathroom, and practice social distancing.
-                            Intentional disregard, for these protocol could result in the students’ dismissal from the
-                            program.</p>
-                        <h4>COVID-19 Protocol for Hosts</h4>
-                        <p>Hosts will clean and disinfect their home to the best of their ability and provide their
-                            student with cleaning wipes for the bedroom and bathroom. Hosts will assist their students
-                            with getting a PCR tests and stock 1-2 rapid tests for their student. If member of the
-                            household host tests positive for COVID-19, they will follow the same protocol as the
-                            students outlined above. </p>
+                        <p>All students must provide proof of their COVID-19 vaccination (2 doses and 1 booster approved by the WHO) and upload their COVID-19 vaccine card when applying to the program. If students can’t get a booster in their home country, they must get one within 2 days of arrival to the US.</p>
+                       
+                       
+                        <p> Students must monitor their health for 7 days before traveling to the US. Students who exhibit flu-like symptoms (which include fever, body aches, stuffy/runny nose, cough, etc.) upon arrival or at any point during their stay must self-quarantine in their bedroom and take a COVID-19 rapid test. </p>
+                        <p>If the test is negative but symptoms persist, the student must take a rapid test every day for 3 days until it turns positive OR have a PCR test. If the PCR is negative, the student can end the quarantine. If the PCR is positive, the student must quarantine until their symptoms subside and they have a negative rapid test.  </p>
+                        <p> If a student contracts COVID-19 and their host isn’t comfortable with them staying in their home, the student will check into a local hotel at their own expense until above protocol is followed. </p>
+                        <p> Host preference will be disclose throughout the student’s stay, state and local governments will continue to adjust their COVID policies according to the prevalence of the virus in the community. ISP students are expected to adhere to current regulations, practice good hygiene, clean and disinfect their bedroom and bathroom, and practice social distancing. Intentional disregard, for these protocol could result in the students’ dismissal from the program.</p>
+                        
+                        <h4>COVID-19 Protocol for Hosts </h4>
+                        
+                        <p> Hosts will clean and disinfect their home to the best of their ability and provide their student with cleaning wipes for the bedroom and bathroom. Hosts will assist their students with getting a PCR tests and stock 1-2 rapid tests for their student. If member of the household host tests positive for COVID-19, they will follow the same protocol as the students outlined above. </p>
                     </div>
                 </div>
             </div>

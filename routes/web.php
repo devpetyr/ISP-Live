@@ -80,9 +80,21 @@ Route::group(['prefix' => 'admin', 'middleware' => 'AdminAuthMiddleware'], funct
     Route::get('student/view-applications/{application}', [StudentController::class, 'view_student_applications'])->name('admin_view_student_application');
     Route::post('student/applications/{app_id}', [StudentController::class, 'student_application_status'])->name('admin_student_application_status');
     Route::get('student/payments', [StudentController::class, 'payments'])->name('admin_student_payments');
+    
+    /* Admin School Start */
     Route::get('student/schools', [StudentController::class, 'schools'])->name('admin_student_schools');
+    Route::get('student/schools/manage-schools/{id?}', [StudentController::class, 'manage_school'])->name('admin_manage_school');
+    Route::post('student/schools/manage-schools-process/{id?}', [StudentController::class, 'manage_school_process'])->name('admin_manage_school_process');
+    Route::get('student/schools/delete/{id?}', [StudentController::class, 'delete_school'])->name('admin_delete_school');
+    /* Admin School End */
+    
+    /* Admin Region Start */
     Route::get('student/regions', [StudentController::class, 'regions'])->name('admin_student_regions');
-
+    Route::get('student/regions/manage-regions/{id?}', [StudentController::class, 'manage_region'])->name('admin_manage_region');
+    Route::post('student/regions/manage-regions-process/{id?}', [StudentController::class, 'manage_region_process'])->name('admin_manage_region_process');
+    Route::get('student/regions/delete/{id?}', [StudentController::class, 'delete_region'])->name('admin_delete_region');
+    /* Admin Region End */
+    
     /*Host Routes*/
     Route::get('host/details', [HostController::class, 'details'])->name('admin_host_details');
     Route::get('host/visits', [HostController::class, 'visits'])->name('admin_host_visits');
@@ -193,6 +205,11 @@ Route::get('/logout', [WebAuthController::class, 'logout'])->name('logout');
 /** For stripe */
 Route::get('stripe-form/{userId}', [WebPaymentController::class, 'stripe_form'])->name('web_stripe_form');
 Route::post('/payment/{userId}', [WebPaymentController::class, 'event_stripe'])->name('web_stripe_post');
+
+
+    Route::get('new-application-form', [StudentDashboardController::class, 'new_application_form']);
+    Route::post('new-application-form-submit', [StudentDashboardController::class, 'new_application_form_submit'])->name('new_student_application_form_submit');
+
 
 
 /** Forgot Password View */
