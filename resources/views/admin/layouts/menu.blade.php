@@ -38,12 +38,29 @@
                         <ul class="dropdown-menu">
                             <li><a href="#">Airport Pickup</a></li>
 {{--                            {{route('admin_airport_pickup')}}    --}}
-                            <li><a href="#">Drivers</a></li>
-{{--                            {{route('admin_host_drivers')}}--}}
-                            <li><a href="#">Airlines</a></li>
-{{--                            {{route('admin_host_airlines')}}--}}
+                            <!--<li><a href="#">Drivers</a></li>-->
+{{--                            {{route('admin_drivers')}}--}}
+                            <li><a href="{{route('admin_airport_pickup_airlines')}}">Airlines</a></li>
+{{--                            {{route('admin_airlines')}}--}}
                         </ul>
                     </li>
+                    
+                     <li class="dropdown">
+                        <a href="#"><i class="fa-solid fa-right-long"></i>Drivers
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{route('admin_driver_details')}}">Drivers</a></li>
+{{--                            {{route('admin_driver')}}    --}}
+                            <li><a href="#">Payment</a></li>
+{{--                            {{route('admin_drivers')}}--}}
+                            <!--<li><a href="{{route('admin_airport_pickup_airlines')}}">Airlines</a></li>-->
+{{--                            {{route('admin_airlines')}}--}}
+                        </ul>
+                    </li>
+                    
+                    
+                    
+                    
                     <li>
                         <a href="#"><i class="fa-solid fa-right-long"></i>Agents</a>
 {{--                        {{route('admin_agent')}}--}}

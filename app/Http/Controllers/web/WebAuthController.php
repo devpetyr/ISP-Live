@@ -36,14 +36,16 @@ class WebAuthController extends EmailController
     public function register(Request $request)
     {
         $request->validate([
-            'user_name' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
             'user_role' => 'required|integer|min:1|digits_between: 1,5',
             'email' => 'required|email|unique:users',
             'password' => ['required', 'string', 'min:8', 'required_with:password_confirmation'],
             'password_confirmation' => ['required', 'string', 'required_with:password', 'same:password'],
         ],
             [
-                'user_name.required' => 'The student name field is required',
+                'first_name.required' => 'The first name field is required',
+                'last_name.required' => 'The last name field is required',
             ]
         );
 
@@ -63,7 +65,8 @@ class WebAuthController extends EmailController
             if (!$result)
             {
                 $model = new User();
-                $model->username = $request->user_name;
+                $model->first_name = $request->first_name;
+                $model->last_name = $request->last_name;
                 $model->email = $request->email;
                 $model->password = Hash::make($request->password);
                 $model->user_role = $request->user_role;
@@ -74,7 +77,7 @@ class WebAuthController extends EmailController
                 if ($model->save())
                 {
                     // $this->verifyEmail($model->id);
-                    $this->GA_VerifyEmail($model->username, $model->email, route('user_verified', $model->id));
+                    $this->GA_VerifyEmail($model->first_name,$model->last_name, $model->email, route('user_verified', $model->id));
 
                     return redirect()->route('login')->with('success', 'You are successfully registered , Please verify your email. ');
                 }

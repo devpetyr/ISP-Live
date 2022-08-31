@@ -8,7 +8,6 @@
             }
         </style>
     @endpush
-
     <div class="col-md-9 col-sm-9 col-xs-9">
         <div class="main_bg inp-main">
             <h4 style="color: #000">Manage School</h4> <br>
@@ -37,18 +36,16 @@
                                             class="text-danger">*</span></label>
                                     
                                     <select class="form-control" name="region_id">
-                                        <option selected="" hidden="" disabled="">Select Region</option>
+                                        <option hidden disabled selected value="">Please select region</option>
                                         @foreach($regions as $region)
                                         <option {{ $region->id == $id->region_id ? 'selected' : ''}} value="{{$region->id}}">{{$region->name}}</option>
                                         @endforeach
-                                            @error('name')
-                                                <div class="alert alert-danger">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
                                     </select>
-                                    
-                                    
+                                    @error('region_id')
+                                        <div class="alert alert-danger">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                             </div>
                         </div>

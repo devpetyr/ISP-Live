@@ -2806,7 +2806,7 @@ h5 {
     font-family: 'Proxima Nova Rg';
     font-size: 20px;
     line-height: 25px;
-    color: #fff;
+    color: #393939;
     font-weight: 500;
     margin: 0 0 20px;
 }
@@ -3505,7 +3505,7 @@ h3.method {
 }
 
 .payment-ckbx input {
-    margin: 6px 10px 6px 19px;
+    margin: 6px 0px 6px 19px;
     height: 16px;
     width: 17px;
 }
@@ -3517,7 +3517,7 @@ h6.pay-method {
 }
 
 h6.pay-method.two {
-    padding: 0px 0 0;
+    padding: 25px 0 0;
 }
 
 .payment-ckbx.two {
@@ -3536,21 +3536,12 @@ h6.pay-method i {
     padding-right: 5px;
 }
 
-/*.form-main {*/
-/*    position: relative;*/
-/*    width: 70%;*/
-/*    margin: 0px auto;*/
-/*    border: 1px solid #c7c7c7;*/
-/*    padding: 45px;*/
-/*    background: #15304e;*/
-/*    border-radius: 20px;*/
-/*}*/
 .form-main {
     position: relative;
-    width: 100%;
+    width: 70%;
     margin: 0px auto;
     border: 1px solid #c7c7c7;
-    padding: 22px 10px;
+    padding: 45px;
     background: #15304e;
     border-radius: 20px;
 }
@@ -3591,41 +3582,21 @@ h6.pay-method span {
     margin: 33px 0;
 }
 
-/*.input-flds input {*/
-/*    margin: 0;*/
-/*    border: none;*/
-/*    width: 100%;*/
-/*    background: transparent;*/
-/*    color: white;*/
-/*}*/
 .input-flds input {
     margin: 0;
     border: none;
     width: 100%;
-    background: #fff;
+    background: transparent;
     color: white;
-    font-size: 16px;
-    height: 44px;
-    border-radius: 6px;
 }
 
 .input-flds {
-    border-bottom: 0px solid #fff;
+    border-bottom: 1px solid #fff;
     border-radius: 6px;
-    padding: 0px 6px 0px;
+    padding: 10px 12px 0px;
     position: relative;
-    margin-bottom: 0px;
+    margin-bottom: 20px;
     border-radius: 0;
-}
-.input-flds .text-danger {
-    color: #dc3545 !important;
-    font-size: 20px;
-    margin: 0 0 18px;
-    display: inline-block;
-    border-color: #f5c2c7;
-    background-color: #f8d7da;
-    padding: 0 10px;
-    border-radius: 0.25rem;
 }
 
 .input-flds.before::after {
@@ -3634,7 +3605,7 @@ h6.pay-method span {
     position: absolute;
     font-size: 30px;
     right: 28px;
-    bottom: 20px;
+    bottom: 28px;
     color: #fff;
 }
 
@@ -3645,8 +3616,7 @@ h6.pay-method span {
 .input-flds label {
     display: inline-block;
     color: #ffffff;
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 14px;
 }
 
 .input-flds i {
@@ -3704,17 +3674,12 @@ h6.passport-exp span {
     top: 11px;
 }
 
-/*p.birhdate {*/
-/*    margin: 0 0 7px;*/
-/*    color: white;*/
-/*    font-weight: 400;*/
-/*}*/
 p.birhdate {
-    margin: 0 0 0px;
+    margin: 0 0 7px;
     color: white;
     font-weight: 400;
-    font-size: 16px;
 }
+
 
 .permanent-adress {
     margin-top: 35px;
@@ -3723,7 +3688,7 @@ p.birhdate {
 .input-flds select {
     border: none;
     margin: 0;
-    background: #fff;
+    background: transparent;
     color: white;
 }
 
@@ -3760,12 +3725,12 @@ p.birhdate {
 }
 
 .permanent-adress.homestay h3 {
-    margin: 0 0 0px;
+    margin: 0 0 10px;
 }
 
 .permanent-adress.homestay p {
     font-size: 18px;
-    margin-bottom: 0px;
+    margin-bottom: 17px;
 }
 
 .permanent-adress.homestay h6 {
@@ -3885,14 +3850,9 @@ p.birhdate {
 .para-scroll p {
     color: white;
 }
-/*.payment-ckbx.plane span {*/
-/*    color: #ffffff;*/
-/*    font-size: unset;*/
-/*}*/
 .payment-ckbx.plane span {
     color: #ffffff;
     font-size: unset;
-    font-size: 22px;
 }
 
 .airport .drivers {
@@ -3913,7 +3873,7 @@ p.birhdate {
 }
 
 .refundable-payment .payment-ckbx.three {
-    margin-bottom: 0;
+    margin-bottom: 18px;
 }
 
 .refundable-payment h3 {
@@ -3924,7 +3884,7 @@ p.birhdate {
 }
 
 .refundable-payment h6 {
-    font-size: 15px;
+    font-size: 16px;
     margin: 0px 0 5px;
     line-height: 23px;
     color: white;
@@ -4025,7 +3985,7 @@ button.payment:hover{
 
 .form-submit #myFile {
     width: 100%;
-    margin: 0px 0 0px;
+    margin: 0px 0 10px;
     height: 67px;
     border-bottom: 1px solid #fff !important;
     padding: 7px;
@@ -5287,9 +5247,7 @@ p.already_text a:hover{
 
 .form_style h3 {
     color: #fff;
-    margin: 0 0 0px;
-    font-size: 23px;
-    font-weight: 600;
+    margin: 0 0 10px;
 }
 
 
@@ -5560,7 +5518,7 @@ h6 {
     line-height: 23px;
     color: #393939;
     font-weight: 500;
-    margin: 0 0 0px;
+    margin: 0 0 22px;
 }
 
 input[type="text"],
@@ -5577,23 +5535,15 @@ input[type="tel"] {
     line-height: 20px;
     color: #575757;
     height: 40px;
-    margin-bottom: 5px;
+    margin-bottom: 20px;
     width: 100%;
     padding: 0px 15px;
     border-radius: 7px;
 }
-.input-flds .alert-danger {
-    color: #DC3546;
-    font-size: 20px;
-    padding: 0 10px;
-    margin: 0 0 17px;
-    display: inline-block;
-    border-color: #f5c2c7;
-}
 
 textarea {
     padding: 10px;
-    height: 126px;
+    height: 167px;
 }
 
 input[type="submit"] {
@@ -8763,9 +8713,6 @@ hr.hr-style {
     color: white;
     height: 3px;
 }
-.payment-ckbx label {
-    display: inline-flex;
-}
 .accordion-body {
     padding: 1rem 1.25rem;
     background-color: #15304e;
@@ -8816,18 +8763,18 @@ button.accordion-button.collapsed {
 }
 .btn-acr button {
     color: #fff;
-    padding: 6px 70px;
+    padding: 2px 19px;
     border: 1px solid white;
     margin: 16px auto 0;
     display: block;
 }
-/*.form_style {*/
-/*    border: 1px solid #fff;*/
-/*    padding: 35px;*/
-/*    border-radius: 10px;*/
-/*    box-shadow: 0px 0px 10px #ffffff;*/
-/*    margin: 8px 0 30px;*/
-/*}*/
+.form_style {
+    border: 1px solid #fff;
+    padding: 35px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #ffffff;
+    margin: 8px 0 30px;
+}
 .btn:hover {
     color: #212529;
     background: #fff;
@@ -8844,131 +8791,3 @@ button.accordion-button.collapsed {
 
     display: none;
 }
-
-
-
-
-
-
-
-
-/* My Form css start here  */
-
-
-* {
-  margin: 0;
-  scroll-behavior: smooth;
-}
-
-::-webkit-scrollbar {
-  display: none;
-}
-
-
-
- article {
-  display: flex;
-  flex-direction: row;
-  width: fit-content;
-  height: fit-content;
-  transform-origin: top left;
-  transform: rotate(90deg) translateY(-100vh);
-}
-
-.my-newfrm {
-  width: 100vw;
-  height: 100vh;
-  /*   scroll-snap-align: start; */
-  overflow-y: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* font-family: monospace; */
-  /* font-size: 3rem; */
-/*  backface visibility keeps font from looking weird  */
-  /* -webkit-backface-visibility: hidden; */
-  /* backface-visibility: hidden; */
-}
-
-
-.main-newfrm {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100vh;
-    height: 97vw;
-    transform-origin: top left;
-    transform: rotate(-90deg) translateX(-100vh);
-    overflow-x: hidden;
-    /* overflow-y: scroll; */
-    /* scroll-snap-type: y mandatory; */
-}
-
-/*section:nth-of-type(odd) {*/
-/*    background: #15304e;*/
-/*    color: #fff;*/
-/*}*/
-
-/*section:nth-of-type(even) {*/
-/*  background:#15304e;*/
-/*  color: #fff;*/
-/*}*/
-.form-main2 {
-    position: relative;
-    width: 100%;
-    height: 110vh;
-    margin: 0px auto;
-    border: 1px solid #c7c7c7;
-    padding: 45px 10px;
-    background: #15304e;
-    border-radius: 20px;
-}
-.form_style {
-    border: 1px solid #fff;
-    padding: 35px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px #ffffff;
-    margin: 87px 25px 30px;
-    top: 0px;
-    position: absolute;
-}
-.medical-info .row {
-    align-items: center;
-}
-
-.main-cardbox {
-    width: 90vw;
-    margin: 0 auto;
-    display: table;
-}
-
-.form_style.five {
-    position: inherit;
-}
-
-.my-newfrm h5 {
-    font-family: 'Proxima Nova Rg';
-    font-size: 20px;
-    line-height: 25px;
-    color: #ffff;
-    font-weight: 500;
-    margin: 0 0 20px;
-}
-.my-newfrm h6 {
-    font-family: 'Proxima Nova Rg';
-    font-size: 20px;
-    line-height: 25px;
-    color: #ffff;
-    font-weight: 500;
-    margin: 0 0 20px;
-}
-.my-newfrm p {
-    font-family: 'Proxima Nova Rg';
-    font-size: 16px;
-    line-height: 25px;
-    color: #ffff;
-    font-weight: 400;
-    margin: 0 0 20px;
-}
-
-/* My Form css end here  */

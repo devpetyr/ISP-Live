@@ -15,12 +15,13 @@
             <div class="main_table">
                 <div class="row">
                     <div class="col-md-12 col-xs-12 col-xs-12">
-                        <div class="table_content">
-                            <table id="example" class="display" style="width:100%">
+                        <div class="table_content ">
+                            <table class="display data-table" style="width:100%">
                                 <thead>
                                 <tr>
                                     <th>S.No</th>
-                                    <th>Student Name</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
                                     <th>Student Email</th>
                                     <th>Fees Amount</th>
                                     <th>Transaction Date</th>
@@ -28,24 +29,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($fees_model as $key => $fee)
-                                <tr>
-                                    <td>{{$key + 1}}</td>
-                                    <td>{{$fee->getUser->username}}</td>
-                                    <td>{{$fee->getUser->email}}</td>
-                                    <td>${{$fee->fees}}</td>
-                                    @if($fee->is_paid == 1)
-                                    <td>{{$fee->getPayment->created_at->format('d-M-Y')}}</td>
-                                    @else
-                                    <td></td>
-                                    @endif
-                                    @if($fee->is_paid == 1)
-                                        <td style="color:#008000;background-color:#e0ede0;">Succeeded</td>
-                                    @else
-                                        <td style="color:#b4b411;background-color: #fbfbdd;">Pending</td>
-                                    @endif
-                                    </tr>
-                                @endforeach
+
                                 </tbody>
 
                             </table>
@@ -58,12 +42,33 @@
     </div>
 
     @push('js')
-        <script>
-            $(document).ready(function (e)  {
-                var table = $('#example').DataTable({
+        <script type="text/javascript">
+            $(function () {
+                var table = $('.data-table').DataTable({
+                    processing: true,
+                    serverSide: true,
+                    ajax: "{{ route('admin_student_payments') }}",
+                    columns: [
+                        {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false },
+                        {data: 'student_fname', name: 'getUser.first_name'},
+                        {data: 'student_lname', name: 'getUser.last_name'},
+                        {data: 'student_email', name: 'getUser.email'},
+                        {data: 'fees', name: 'fees'},
+                        {data: 'payment_transaction_date', name: 'getPayment.created_at'},
+                        {data: 'is_paid', name: 'is_paid'},
+                    ],
+                    createdRow: function ( row, data, index ) {
+                        if (data['is_paid'] === "Succeeded") {
+                            $('td', row).eq(6).css('background-color', '#e0ede0');
+                            $('td', row).eq(6).css('color','#008000');
+                        } else {
+                            $('td', row).eq(6).css('background-color', '#fbfbdd');
+                            $('td', row).eq(6).css('color','#b4b411');
+                        }
+                        $('td', row).eq(6).addClass('text-right');
+                    }
                 });
             });
         </script>
     @endpush
 @endsection
-

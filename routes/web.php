@@ -11,7 +11,8 @@ use App\Http\Controllers\admin\
     HostController,
     StudentController,
     CoordinatorController,
-    AuthController
+    AuthController,
+    DriverController
 };
 use App\Http\Controllers\student\
 {
@@ -101,9 +102,20 @@ Route::group(['prefix' => 'admin', 'middleware' => 'AdminAuthMiddleware'], funct
 
     /*Airport Routes*/
     Route::get('airport-pickup/', [AirportPickupController::class, 'airport_pickup'])->name('admin_airport_pickup');
-    Route::get('airport-pickup/drivers', [AirportPickupController::class, 'drivers'])->name('admin_host_drivers');
-    Route::get('airport-pickup/airlines', [AirportPickupController::class, 'airlines'])->name('admin_host_airlines');
-    Route::get('airport-pickup/add-airlines', [AirportPickupController::class, 'add_airlines'])->name('admin_host_add_airlines');
+    Route::get('airport-pickup/drivers', [AirportPickupController::class, 'drivers'])->name('admin_drivers');
+    
+    /**Admin Airlines */
+    Route::get('airport-pickup/airlines', [AirportPickupController::class, 'airlines'])->name('admin_airport_pickup_airlines');
+    Route::get('airport-pickup/airlines/manage-airlines/{id?}', [AirportPickupController::class, 'manage_airline'])->name('admin_manage_airlines');
+    Route::post('airport-pickup/airlines/manage-airlines-process/{id?}', [AirportPickupController::class, 'manage_airline_process'])->name('admin_manage_airlines_process');
+    Route::get('airport-pickup/airlines/delete/{id?}', [AirportPickupController::class, 'delete_airline'])->name('admin_delete_airline');
+    
+    
+    /**Admin Driver */
+    Route::get('drivers/details', [DriverController::class, 'drivers'])->name('admin_driver_details');
+    Route::get('drivers/details/manage-driver/{id?}', [DriverController::class, 'manage_driver'])->name('admin_manage_driver_details');
+    Route::post('drivers/details/manage-driver-process/{id?}', [DriverController::class, 'manage_driver_process'])->name('admin_driver_details_process');
+    Route::get('drivers/details/delete/{id?}', [DriverController::class, 'delete_driver'])->name('admin_delete_driver');
 
     /*Agent Routes*/
     Route::get('agent/', [AgentController::class, 'agent'])->name('admin_agent');
@@ -207,8 +219,12 @@ Route::get('stripe-form/{userId}', [WebPaymentController::class, 'stripe_form'])
 Route::post('/payment/{userId}', [WebPaymentController::class, 'event_stripe'])->name('web_stripe_post');
 
 
-    Route::get('new-application-form', [StudentDashboardController::class, 'new_application_form']);
-    Route::post('new-application-form-submit', [StudentDashboardController::class, 'new_application_form_submit'])->name('new_student_application_form_submit');
+    Route::get('new-application-form',function(){
+//        $agencies = AgentModel::where('status', 1)->get();
+        return view('student.application-form.new-application-form');
+    });
+//    Route::get('new-application-form', [StudentDashboardController::class, 'new_application_form']);
+//    Route::post('new-application-form-submit', [StudentDashboardController::class, 'new_application_form_submit'])->name('new_student_application_form_submit');
 
 
 

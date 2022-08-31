@@ -12,11 +12,12 @@ class EmailController extends Controller
 {
     public $adminmail = 'admin@mail.com';
 
-        public function GA_VerifyEmail($name, $email, $url)
+        public function GA_VerifyEmail($fname,$lname, $email, $url)
     {
         $fields = array(
             'fields' => array(
-                "Name" => $name,
+                "FirstName" => $fname,
+                "LastName" => $lname,
                 "Email" => $email,
                 "UserIdUrl" => $url,
                 "EmailSubject" => 'Verify Your Email',
@@ -73,16 +74,15 @@ class EmailController extends Controller
     }
 
 
-    public function GA_StdAppAccept_Reject($username,$email, $status)
+    public function GA_StdAppAccept_Reject($fname,$lname,$email, $status)
     {
-        $user_name = $username;
-        $user_email = $email;
 
         $fields = array(
             'fields' => array(
                 "AdminEmail" => env('ADMIN_EMAIL'),
-                "UserName" => $user_name,
-                "UserEmail" => $user_email,
+                "StudentFirstName" => $fname,
+                "StudentLastName" => $lname,
+                "UserEmail" => $email,
                 "StdAppStatus" => $status,
                 "EmailSubject" => 'Student Application Status',
             )
@@ -106,11 +106,12 @@ class EmailController extends Controller
         return false;
     }
     
-        public function GA_StdAppStripe($user_name,$user_email,$amount,$url)
+        public function GA_StdAppStripe($fname,$lname,$user_email,$amount,$url)
     {
         $fields = array(
             'fields' => array(
-                "UserName" => $user_name,
+                "FirstName" => $fname,
+                "LastName" => $lname,
                 "UserEmail" => $user_email,
                 "PayAmount" => $amount,
                 "PayNowUrl" => $url,

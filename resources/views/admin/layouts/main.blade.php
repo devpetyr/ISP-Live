@@ -4,6 +4,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--yajra table link-->
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+
 
     <!-- css start -->
     @include('admin.layouts.css')

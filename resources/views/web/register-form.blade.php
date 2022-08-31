@@ -50,8 +50,14 @@
                         <form action="{{route('web_registration')}}" method="post">
                         <h3>@if($role){{$role->user_role}}@endif Register Form</h3>
                             @csrf
-                            <input type="text" id="user_name" name="user_name" placeholder="User Name"/>
-                            @error('user_name')
+                            <input type="text" id="first_name" name="first_name" placeholder="First Name"/>
+                            @error('first_name')
+                            <div class="alert alert-danger">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                            <input type="text" id="last_name" name="last_name" placeholder="Last Name"/>
+                            @error('last_name')
                             <div class="alert alert-danger">
                                 {{ $message }}
                             </div>
