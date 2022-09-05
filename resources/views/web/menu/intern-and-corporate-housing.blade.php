@@ -12,11 +12,11 @@
                     <div class="carousel-caption">
                         <div class="container">
                             <div class="row">
-                                <div class="col-xs-12 col-sm-8 col-md-8 centerCol ">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="banner_text wow fadeInLeft" data-wow-duration="2s">
                                         <h1 class="wow zoomIn">Intern and Corporate Housing</h1>
 
-                                        <a href="javascript:void(0)" class="host-btn">Start Here</a>
+                                        <a href="javascript:void(0)" class="host-btn">Request More Info</a>
                                     </div>
                                 </div>
                             </div>

@@ -12,7 +12,9 @@ use App\Http\Controllers\admin\
     StudentController,
     CoordinatorController,
     AuthController,
-    DriverController
+    DriverController,
+    AgencyController,
+    AdminProfileController
 };
 use App\Http\Controllers\student\
 {
@@ -96,9 +98,15 @@ Route::group(['prefix' => 'admin', 'middleware' => 'AdminAuthMiddleware'], funct
     Route::get('student/regions/delete/{id?}', [StudentController::class, 'delete_region'])->name('admin_delete_region');
     /* Admin Region End */
     
-    /*Host Routes*/
+    /*Host Routes Start */
     Route::get('host/details', [HostController::class, 'details'])->name('admin_host_details');
+    Route::get('host/details/manage-host/{id}', [HostController::class, 'manage_host'])->name('admin_manage_host');
+    Route::post('host/details/manage-host-process/{id}', [HostController::class, 'manage_host_process'])->name('admin_manage_host_process');
+//      Delete User not in flow
+//    Route::get('host/details/delete/{id?}', [HostController::class, 'delete_host'])->name('admin_delete_host');
+
     Route::get('host/visits', [HostController::class, 'visits'])->name('admin_host_visits');
+    /*Host Routes End */
 
     /*Airport Routes*/
     Route::get('airport-pickup/', [AirportPickupController::class, 'airport_pickup'])->name('admin_airport_pickup');
@@ -118,11 +126,30 @@ Route::group(['prefix' => 'admin', 'middleware' => 'AdminAuthMiddleware'], funct
     Route::get('drivers/details/delete/{id?}', [DriverController::class, 'delete_driver'])->name('admin_delete_driver');
 
     /*Agent Routes*/
-    Route::get('agent/', [AgentController::class, 'agent'])->name('admin_agent');
+    Route::get('agents/details', [AgentController::class, 'agents'])->name('admin_agents_details');
+    Route::get('agents/details/manage-agent/{id?}', [AgentController::class, 'manage_agent'])->name('admin_manage_agent_details');
+    Route::post('agents/details/manage-agent-process/{id?}', [AgentController::class, 'manage_agent_process'])->name('admin_agent_details_process');
+    Route::get('agents/details/delete/{id?}', [AgentController::class, 'delete_agent'])->name('admin_delete_agent');
+    
+    /*agencies Routes*/
+    Route::get('agencies/details', [AgencyController::class, 'agencies'])->name('admin_agencies_details');
+    Route::get('agencies/details/manage-agency/{id?}', [AgencyController::class, 'manage_agency'])->name('admin_manage_agency_details');
+    Route::post('agencies/details/manage-agency-process/{id?}', [AgencyController::class, 'manage_agency_process'])->name('admin_agency_details_process');
+    Route::get('agencies/details/delete/{id?}', [AgencyController::class, 'delete_agency'])->name('admin_delete_agency');
 
     /*Coordinators Routes*/
-    Route::get('coordinators/', [CoordinatorController::class, 'coordinators'])->name('admin_coordinators');
+    Route::get('coordinators/details', [CoordinatorController::class, 'coordinators'])->name('admin_coordinators_details');
+    Route::get('coordinators/details/manage-coordinator/{id?}', [CoordinatorController::class, 'manage_coordinator'])->name('admin_manage_coordinator_details');
+    Route::post('coordinators/details/manage-coordinator-process/{id?}', [CoordinatorController::class, 'manage_coordinator_process'])->name('admin_coordinator_details_process');
+    Route::get('coordinators/details/delete/{id?}', [CoordinatorController::class, 'delete_coordinator'])->name('admin_delete_coordinator');
 
+
+    /*Admin Profile Routes*/
+    Route::get('admin/admin-profile/admin-manage-password', [AdminProfileController::class, 'manage_password'])->name('admin_manage_password');
+    Route::post('admin/admin-profile/admin-password-process', [AdminProfileController::class, 'password_process'])->name('admin_password_process');
+    Route::get('admin/admin-profile/admin-manage-profile', [AdminProfileController::class, 'manage_profile'])->name('admin_manage_profile');
+    Route::post('admin/admin-profile/admin-profile-process', [AdminProfileController::class, 'profile_process'])->name('admin_profile_process');
+    
     /*Reports Routes*/
     Route::get('reports/placements', [CoordinatorController::class, 'placements'])->name('admin_reports_placements');
 });
@@ -224,7 +251,7 @@ Route::post('/payment/{userId}', [WebPaymentController::class, 'event_stripe'])-
         return view('student.application-form.new-application-form');
     });
 //    Route::get('new-application-form', [StudentDashboardController::class, 'new_application_form']);
-//    Route::post('new-application-form-submit', [StudentDashboardController::class, 'new_application_form_submit'])->name('new_student_application_form_submit');
+    Route::post('new-application-form-submit', [StudentDashboardController::class, 'new_application_form_submit'])->name('new_student_application_form_submit');
 
 
 

@@ -27,7 +27,7 @@
                                         <div
                                             class="banner_text wow fadeInLeft"
                                             data-wow-duration="2s">
-                                            <h1 class="wow zoomIn">Portal 
+                                            <h1 class="wow zoomIn">ISP Portal 
                                             </h1>
                                             <p>For help, please email admin@isphomestays.com or call 650-947-8879.</p>
                                         </div>

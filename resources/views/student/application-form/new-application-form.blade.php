@@ -500,7 +500,7 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <h6 class="passport-number"><i class="fa-solid fa-passport"></i>Passport
                                                     Number
-                                                    <span>*</span></h6>*
+                                                    <span>*</span></h6>
                                                 <div class="input-flds">
                                                     <input type="text" name="passport_number" maxlength="100" required>
 
@@ -542,6 +542,9 @@
                                                     @enderror
                                                 </div>
                                             </div>
+                                        </div>
+                                        <div class="sav-btn" id="Btn1">
+                                            <a href="#">Save</a>
                                         </div>
                                     </div>
 
@@ -1120,6 +1123,9 @@
                                                     </div>
                                                     @enderror
                                                 </div>
+                                            </div>
+                                            <div class="sav-btn">
+                                                <a href="#">Save</a>
                                             </div>
                                         </div>
                                     </div>
@@ -1974,6 +1980,9 @@
                                             </div>
                                         </div>
                                         <!--Will You Have A Car End-->
+                                        <div class="sav-btn">
+                                            <a href="#">Save</a>
+                                        </div>
 
                                     </div>
                                 </div>
@@ -2140,6 +2149,9 @@
                                                     @enderror
                                                 </div>
                                             </div>
+                                            <div class="sav-btn">
+                                                <a href="#">Save</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -2247,6 +2259,9 @@
                                                     </div>
                                                     @enderror
                                                 </div>
+                                            </div>
+                                            <div class="sav-btn">
+                                                <a href="#">Save</a>
                                             </div>
                                         </div>
                                     </div>
@@ -2488,6 +2503,9 @@
                                                     @enderror
                                                 </div>
                                             </div>
+                                            <div class="sav-btn">
+                                                <a href="#">Save</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -2673,6 +2691,9 @@
                                                 </div>
                                                 @enderror
                                             </div>
+                                            <div class="sav-btn">
+                                                <a href="#">Save</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -2680,8 +2701,8 @@
                             <!--Section 6 End-->
                             <!--Section 7 Start-->
                             <section class="my-newfrm">
-                                 <div class="form_style  main-cardbox">
-                                <!--<div class="form_style five">-->
+                                <div class="form_style  main-cardbox">
+                                    <!--<div class="form_style five">-->
                                     <div class="refundable-payment">
                                         <div class="row">
                                             <h5>Payment Form</h5>
@@ -3374,6 +3395,9 @@
                                                     @enderror
                                                 </div>
                                             </div>
+                                            <div class="sav-btn">
+                                                <a href="#">Save</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -3394,9 +3418,9 @@
                                             <div class="row">
                                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                                     <div class="payment-ckbx three">
-                                                        <label>
+                                                        <label class="boxs-siz">
                                                             <input type="checkbox" value="yes" name="fees_agreement">
-                                                            <span class="checkmark">Fees: </br>The placement fee, deposit, late fee, and airport pick up fee will be charged to the student’s credit card when they submit their application. Applications are not processed until the payment is made. If a student decides to cancel the program, all fees are non-refundable.</span>
+                                                            <span class="checkmark ex1">Fees: </br>The placement fee, deposit, late fee, and airport pick up fee will be charged to the student’s credit card when they submit their application. Applications are not processed until the payment is made. If a student decides to cancel the program, all fees are non-refundable.</span>
                                                         </label>
 
                                                         @error('fees_agreement')
@@ -3409,10 +3433,10 @@
                                                 <!--<hr>-->
                                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                                     <div class="payment-ckbx three">
-                                                        <label>
+                                                        <label class="boxs-siz">
                                                             <input type="checkbox" value="yes"
                                                                    name="contract_period_agreement">
-                                                            <span class="checkmark">
+                                                            <span class="checkmark ex1">
                                                                 Contract Period:</br> Students must stay with their assigned host for the entire contract period they signed up for. Students can extend their contract with the consent of their host on a month-to-month basis once their initial contract period has concluded. If a student chooses to leave their host home prior to the end of their contract, they must pay rent for the remainder of the contract period. All students must inform their host and ISP 30 days prior to leaving their host home indicating that they are ending their participation in the program.
                                                             </span>
                                                         </label>
@@ -3427,11 +3451,11 @@
 
                                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                                     <div class="payment-ckbx three">
-                                                        <label>
+                                                        <label class="boxs-siz">
                                                             <input type="checkbox" value="yes"
                                                                    name="payments_agreement">
-                                                            <span class="checkmark">
-                                                                Payments: Students who pay rent directly to their host will pay on the day they arrive and each month thereafter.  Students must pay the rent in full and on time each month. Failure to do so will result in termination from the program. Students understand that ISP does not get involved in rent disputes between hosts and students. Host payment information and the monthly rent amount will be in the student’s ISP portal.
+                                                            <span class="checkmark ex1">
+                                                                Payments:</br> Students who pay rent directly to their host will pay on the day they arrive and each month thereafter.  Students must pay the rent in full and on time each month. Failure to do so will result in termination from the program. Students understand that ISP does not get involved in rent disputes between hosts and students. Host payment information and the monthly rent amount will be in the student’s ISP portal.
                                                             </span>
                                                         </label>
 
@@ -3446,10 +3470,10 @@
                                             <div class="row">
                                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                                     <div class="payment-ckbx three">
-                                                        <label>
+                                                        <label class="boxs-siz">
                                                             <input type="checkbox" value="yes" name="deposit_agreement">
-                                                            <span class="checkmark">
-                                                               Deposit: Each student pays a deposit to ensure they keep their bedroom and bathroom clean and that no damage was done to the bedroom or bathroom. Students must request their deposit returned from ISP within 30 days of leaving the host home. Deposit checks are payable only in the student’s name and are mailed only to a US address. Students must read and understand the deposit information sheet that is in student’s ISP portal.
+                                                            <span class="checkmark ex1">
+                                                               Deposit:</br> Each student pays a deposit to ensure they keep their bedroom and bathroom clean and that no damage was done to the bedroom or bathroom. Students must request their deposit returned from ISP within 30 days of leaving the host home. Deposit checks are payable only in the student’s name and are mailed only to a US address. Students must read and understand the deposit information sheet that is in student’s ISP portal.
                                                             </span>
                                                         </label>
 
@@ -3463,12 +3487,12 @@
 
                                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                                     <div class="payment-ckbx three">
-                                                        <label>
+                                                        <label class="boxs-siz">
                                                             <input type="checkbox" value="yes"
                                                                    name="meal_plans_agreement">
-                                                            <span class="checkmark">
+                                                            <span class="checkmark ex1">
 
-                                                                Meal Plans: Students on the meal plan will receive breakfast and dinner provided by their host every day. Continental breakfast includes juice, bread, cereal, fruit, etc. Dinner is prepared at least 5 nights per week and includes a typical American dinner (protein, vegetable, and bread/pasta). On nights when the host isn’t cooking, students can make dinner using the host’s food. Lunch and snacks are not included in the program and students are responsible for buying those on their own.
+                                                                Meal Plans:</br> Students on the meal plan will receive breakfast and dinner provided by their host every day. Continental breakfast includes juice, bread, cereal, fruit, etc. Dinner is prepared at least 5 nights per week and includes a typical American dinner (protein, vegetable, and bread/pasta). On nights when the host isn’t cooking, students can make dinner using the host’s food. Lunch and snacks are not included in the program and students are responsible for buying those on their own.
                                                                 If a student doesn’t sign up for the meal plan, only light cooking is permitted in the host’s kitchen like microwaving and heating up cooked food.
                                                                 Students can switch their meal plan after arrival with their host’s consent. If a student has strict dietary needs, ISP recommends they select the no-meal option to best suit their needs.
 
@@ -3485,11 +3509,11 @@
 
                                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                                     <div class="payment-ckbx three">
-                                                        <label>
+                                                        <label class="boxs-siz">
                                                             <input type="checkbox" value="yes"
                                                                    name="student_faq_sheet_agreement">
-                                                            <span class="checkmark">
-                                                                Student FAQ Sheet: Students must read and understand the Student FAQ sheet that will be in the student’s ISP portal.
+                                                            <span class="checkmark ex1">
+                                                                Student FAQ Sheet: </br> Students must read and understand the Student FAQ sheet that will be in the student’s ISP portal.
                                                             </span>
                                                         </label>
 
@@ -3504,11 +3528,11 @@
                                             <div class="row">
                                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                                     <div class="payment-ckbx three">
-                                                        <label>
+                                                        <label class="boxs-siz">
                                                             <input type="checkbox" value="yes"
                                                                    name="airport_pickup_agreement">
-                                                            <span class="checkmark">
-                                                                Airport Pickup: ISP provides airport pickup only in a few areas in the US. If
+                                                            <span class="checkmark ex1">
+                                                                Airport Pickup: </br> ISP provides airport pickup only in a few areas in the US. If
                                                                 parents or other chaperones arrive with the student at the airport, a reservation
                                                                 and payment must have been made in advance for the extra passengers. If a student is
                                                                 under 18 years old, they may not fly as an unaccompanied minor. ISP has no liability
@@ -3528,12 +3552,12 @@
 
                                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                                     <div class="payment-ckbx three">
-                                                        <label>
+                                                        <label class="boxs-siz">
                                                             <input type="checkbox" value="yes"
                                                                    name="transportation_agreement">
-                                                            <span class="checkmark">
+                                                            <span class="checkmark ex1">
 
-                                                            Transportation: All students take public transportation to and from school and
+                                                            Transportation:</br>  All students take public transportation to and from school and
                                                             should expect a commute time of at least 45-55 minutes each way. Host families do
                                                             not drive students to school.
 
@@ -3550,12 +3574,12 @@
 
                                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                                     <div class="payment-ckbx three">
-                                                        <label>
+                                                        <label class="boxs-siz">
                                                             <input type="checkbox" value="yes"
                                                                    name="host_possessions_agreement">
-                                                            <span class="checkmark">
+                                                            <span class="checkmark ex1">
 
-                                                                Host Possessions: Students agree to take good care of their host possessions and
+                                                                Host Possessions:</br> Students agree to take good care of their host possessions and
                                                                 be financially responsible for the costs of repairs associated with breakage or
                                                                 loss.
 
@@ -3570,317 +3594,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!--<div class="row">-->
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="prohibited_activities_agreement">-->
-                                            <!--                <span class="checkmark">-->
 
-                                            <!--                Prohibited Activities: Students must not engage in any illegal activities,-->
-                                            <!--                including the use of drugs or alcohol (the use of alcohol & tobacco is not legal in-->
-                                            <!--                the US until the age of 21). Excessive alcohol consumption, theft, abuse of-->
-                                            <!--                property, verbal or physical abuse, impolite language and/or behavior will result in-->
-                                            <!--                termination from the program. Students must stay informed of all laws in the US and-->
-                                            <!--                agree to abide by them. Students must not smoke cigarettes, marijuana, or vape-->
-                                            <!--                inside or outside the host home. If a student violates these rules, they may be-->
-                                            <!--                asked to leave their host home. In this case, ISP will not provide alternative-->
-                                            <!--                housing and the student will forfeit all fees.-->
-
-                                            <!--            </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('prohibited_activities_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="medical_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                Medical: Students certify that they’re healthy and able to participate in the ISP-->
-                                            <!--                program and have no medical or mental conditions that would make their participation-->
-                                            <!--                unsafe or dangerous to themselves or others. Students must have a physical exam-->
-                                            <!--                within one year before starting the program to ensure they are healthy and capable-->
-                                            <!--                of the demands that studying overseas requires. Students must disclose all-->
-                                            <!--                allergies, medications, past and current psychological, psychiatric, and physical-->
-                                            <!--                health issues truthfully on their application. Failure to do so will result in-->
-                                            <!--                termination from the program.-->
-
-                                            <!--            </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('medical_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="request_for_host_change_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                Request for Host change: If a student has an issue with their host during their-->
-                                            <!--                initial contract period, ISP will assist them in resolving the problem. If the-->
-                                            <!--                problem can’t be resolved, ISP will provide the student with a second host home. ISP-->
-                                            <!--                has the final authority whether to move a student and will determine if additional-->
-                                            <!--                fees will be charged.-->
-
-                                            <!--            </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('request_for_host_change_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-                                            <!--</div>-->
-                                            <!--<div class="row">-->
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="media_photo_release_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                    Media/Photo Release: Students grant ISP and its representatives the right and-->
-                                            <!--                    permission to use photographs, videos, and any other media taken of them for company-->
-                                            <!--                    advertising, publicity, and promotion. Students hold ISP harmless from all claims in-->
-                                            <!--                    connection with the foregoing and waive the right of inspection and approval.-->
-
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('media_photo_release_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="covid_19_protocol_for_students_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                    COVID-19 Protocol for Students: All students must provide proof of their COVID-->
-                                            <!--                    vaccination status and upload their vaccine card when applying to the program. In-->
-                                            <!--                    addition to the first and second doses, students must have received a booster shot.-->
-                                            <!--                    If boosters are not available in the student’s home country or if not enough time-->
-                                            <!--                    has passed between the second dose and the booster before departure, students must-->
-                                            <!--                    agree to receive the booster in the US within 3 days of being eligible.-->
-
-                                            <!--                    <br>-->
-
-                                            <!--                    <p>-->
-
-                                            <!--                    Prior to departure, students will be asked to monitor their health 10 days before-->
-                                            <!--                    traveling to the US. Students who exhibit flu-like symptoms (which includes fever,-->
-                                            <!--                    body aches, stuffy/runny nose, cough, etc.) upon arrival or at any point during-->
-                                            <!--                    their stay will need to self-quarantine in their host home bedroom AND take a rapid-->
-                                            <!--                    test. If the test is negative, the student may end their self-quarantine. If the-->
-                                            <!--                    result is positive, the student must continue to self-quarantine for at least 5 days-->
-                                            <!--                    or until their symptoms subside and a second test is negative.-->
-                                            <!--                    </p>-->
-
-                                            <!--                    <p>-->
-
-                                            <!--                    If a student contracts COVID and their host is not comfortable with them staying in-->
-                                            <!--                    their home, the student will check into a local hotel at their own expense for at-->
-                                            <!--                    least 5 days or until they get a negative test result and symptoms subside. Students-->
-                                            <!--                    must arrive with face masks and be prepared to wear them in the host home for the-->
-                                            <!--                    first 3 days after arrival if the host requests this.-->
-                                            <!--                    </p>-->
-
-                                            <!--                    <p>-->
-
-                                            <!--                    Throughout the student’s stay, local governments will continue to adjust their COVID-->
-                                            <!--                    policies according to the prevalence of the virus in the community. ISP students are-->
-                                            <!--                    expected to adhere to current regulations, practice good hygiene, clean and-->
-                                            <!--                    disinfect their bedroom and bathroom, and practice social distancing. Intentional-->
-                                            <!--                    disregard could result in the students’ dismissal from the program. Students-->
-                                            <!--                    understand that living in a host home comes with risk and that ISP cannot guarantee-->
-                                            <!--                    nor control whether a student will contract COVID from any members of the host home.-->
-                                            <!--                    The student assumes all liability for any injury, loss, damage, accident, delay, or-->
-                                            <!--                    expense resulting from contracting COVID during their stay.-->
-                                            <!--                    <p>-->
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('covid_19_protocol_for_students_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="program_termination_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                    Program Termination: If a student violates the Student Agreement or if ISP-->
-                                            <!--                    decides that the student is not an appropriate candidate for a homestay program, ISP-->
-                                            <!--                    will terminate the student and the student will forfeit all program fees.-->
-
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('program_termination_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-                                            <!--</div>-->
-                                            <!--<div class="row">-->
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="warranties_consent_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                    Warranties/Consent: The student warrants that the information provided on their-->
-                                            <!--                    application is true and correct, that they are not a sex offender nor have been-->
-                                            <!--                    accused of or convicted any crimes. Students authorize ISP, its employees,-->
-                                            <!--                    coordinators, and assigned host family to consent on their behalf to any x-ray-->
-                                            <!--                    examinations, anesthetic, medical or surgical treatment, and emergency hospital care-->
-                                            <!--                    on their behalf. Students agree that ISP, it’s employees, coordinators, and assigned-->
-                                            <!--                    host family can take any action whatsoever regarding their safety without incurring-->
-                                            <!--                    any liability or expense.-->
-
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('warranties_consent_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="limitation_of_liability_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                    Limitation of Liability: IN NO EVENT SHALL ISP HAVE ANY LIABILITY TO ANY STUDENT-->
-                                            <!--                    FOR ANY INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES, HOWEVER CAUSED, AND-->
-                                            <!--                    UNDER ANY THEORY OF LIABILITY, WHETHER OR NOT ISP HAS BEEN ADVISED OF THE-->
-                                            <!--                    POSSIBILITY OF SUCH DAMAGES. FURTHER, ISP SHALL NOT BE NAMED AS A PARTY, CALLED AS A-->
-                                            <!--                    WITNESS, OR SERVED DISCOVERY REQUESTS IN ANY DISPUTE BETWEEN STUDENTS AND HOSTS-->
-                                            <!--                    REGARDING THE FINANCIAL OR INTERPERSONAL DEALINGS BETWEEN STUDENTS AND HOSTS.-->
-
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('limitation_of_liability_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="indemnification_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                    Indemnification: Students understand that hosts are not ISP’s employees or-->
-                                            <!--                    agents, and that ISP has no constructive control of the hosts’ behavior. Students-->
-                                            <!--                    understand that the information provided by ISP about each host family is not a-->
-                                            <!--                    perfect predictor of how the host will act in the future, and that the background-->
-                                            <!--                    and safety of each host is not guaranteed. Students acknowledge that it is voluntary-->
-                                            <!--                    for them to participate in trips and activities with their host and that ISP does-->
-                                            <!--                    not require their participation. Students assume all risks associated with injury or-->
-                                            <!--                    loss arising from their participation in the ISP program and release ISP of any-->
-                                            <!--                    liability for any claim of injury, death, property damage, or other loss.-->
-
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('indemnification_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-                                            <!--</div>-->
-                                            <!--<div class="row">-->
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="governing_law_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                    Governing Law: All parties agree to solve any dispute and resolution of this-->
-                                            <!--                    Agreement using arbitration services in Santa Clara County with the American-->
-                                            <!--                    Arbitration Association before using any other means to solve the dispute.-->
-
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('governing_law_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="force_majeure_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                Force Majeure: The parties will not be liable for delays or errors in its-->
-                                            <!--                performance or for non-performance due to causes beyond its reasonable control-->
-                                            <!--                (“Force Majeure Event”) including Acts of god and pandemics.-->
-
-                                            <!--            </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('force_majeure_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-                                            <!--</div>-->
                                         </div>
 
                                     </div>
@@ -3888,9 +3602,6 @@
                             </section>
 
                             <!--Section 8 First Half End-->
-                            
-                            
-                            
                             <!--Section 8 First Half Start-->
                             <section class="my-newfrm">
                                 <div class="form_style  main-cardbox">
@@ -3900,195 +3611,15 @@
 
                                         <!-- Agreements Start -->
                                         <div class="agreement-conditions">
-                                            <!--<div class="para-scroll">-->
-                                            <!--<div class="row">-->
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes" name="fees_agreement">-->
-                                            <!--                <span class="checkmark">Fees: </br>The placement fee, deposit, late fee, and airport pick up fee will be charged to the student’s credit card when they submit their application. Applications are not processed until the payment is made. If a student decides to cancel the program, all fees are non-refundable.</span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('fees_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-                                                <!--<hr>-->
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="contract_period_agreement">-->
-                                            <!--                <span class="checkmark">-->
-                                            <!--                    Contract Period:</br> Students must stay with their assigned host for the entire contract period they signed up for. Students can extend their contract with the consent of their host on a month-to-month basis once their initial contract period has concluded. If a student chooses to leave their host home prior to the end of their contract, they must pay rent for the remainder of the contract period. All students must inform their host and ISP 30 days prior to leaving their host home indicating that they are ending their participation in the program.-->
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('contract_period_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="payments_agreement">-->
-                                            <!--                <span class="checkmark">-->
-                                            <!--                    Payments: Students who pay rent directly to their host will pay on the day they arrive and each month thereafter.  Students must pay the rent in full and on time each month. Failure to do so will result in termination from the program. Students understand that ISP does not get involved in rent disputes between hosts and students. Host payment information and the monthly rent amount will be in the student’s ISP portal.-->
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('payments_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-                                            <!--</div>-->
-                                            <!--<div class="row">-->
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes" name="deposit_agreement">-->
-                                            <!--                <span class="checkmark">-->
-                                            <!--                   Deposit: Each student pays a deposit to ensure they keep their bedroom and bathroom clean and that no damage was done to the bedroom or bathroom. Students must request their deposit returned from ISP within 30 days of leaving the host home. Deposit checks are payable only in the student’s name and are mailed only to a US address. Students must read and understand the deposit information sheet that is in student’s ISP portal.-->
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('deposit_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="meal_plans_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                    Meal Plans: Students on the meal plan will receive breakfast and dinner provided by their host every day. Continental breakfast includes juice, bread, cereal, fruit, etc. Dinner is prepared at least 5 nights per week and includes a typical American dinner (protein, vegetable, and bread/pasta). On nights when the host isn’t cooking, students can make dinner using the host’s food. Lunch and snacks are not included in the program and students are responsible for buying those on their own.-->
-                                            <!--                    If a student doesn’t sign up for the meal plan, only light cooking is permitted in the host’s kitchen like microwaving and heating up cooked food.-->
-                                            <!--                    Students can switch their meal plan after arrival with their host’s consent. If a student has strict dietary needs, ISP recommends they select the no-meal option to best suit their needs.-->
-
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('meal_plans_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="student_faq_sheet_agreement">-->
-                                            <!--                <span class="checkmark">-->
-                                            <!--                    Student FAQ Sheet: Students must read and understand the Student FAQ sheet that will be in the student’s ISP portal.-->
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('student_faq_sheet_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-                                            <!--</div>-->
-                                            <!--<div class="row">-->
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="airport_pickup_agreement">-->
-                                            <!--                <span class="checkmark">-->
-                                            <!--                    Airport Pickup: ISP provides airport pickup only in a few areas in the US. If-->
-                                            <!--                    parents or other chaperones arrive with the student at the airport, a reservation-->
-                                            <!--                    and payment must have been made in advance for the extra passengers. If a student is-->
-                                            <!--                    under 18 years old, they may not fly as an unaccompanied minor. ISP has no liability-->
-                                            <!--                    for the third-party airport company assigned to the student. Airport pick up-->
-                                            <!--                    instructions and driver contact information will be in the student’s ISP-->
-                                            <!--                    portal.-->
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('airport_pickup_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="transportation_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                Transportation: All students take public transportation to and from school and-->
-                                            <!--                should expect a commute time of at least 45-55 minutes each way. Host families do-->
-                                            <!--                not drive students to school.-->
-
-                                            <!--            </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('transportation_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="host_possessions_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                    Host Possessions: Students agree to take good care of their host possessions and-->
-                                            <!--                    be financially responsible for the costs of repairs associated with breakage or-->
-                                            <!--                    loss.-->
-
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('host_possessions_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-                                            <!--</div>-->
                                             <div class="row">
                                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                                     <div class="payment-ckbx three">
-                                                        <label>
+                                                        <label class="boxs-siz">
                                                             <input type="checkbox" value="yes"
                                                                    name="prohibited_activities_agreement">
-                                                            <span class="checkmark">
+                                                            <span class="checkmark ex1">
 
-                                                            Prohibited Activities: Students must not engage in any illegal activities,
+                                                            Prohibited Activities:</br> Students must not engage in any illegal activities,
                                                             including the use of drugs or alcohol (the use of alcohol & tobacco is not legal in
                                                             the US until the age of 21). Excessive alcohol consumption, theft, abuse of
                                                             property, verbal or physical abuse, impolite language and/or behavior will result in
@@ -4111,12 +3642,12 @@
 
                                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                                     <div class="payment-ckbx three">
-                                                        <label>
+                                                        <label class="boxs-siz">
                                                             <input type="checkbox" value="yes"
                                                                    name="medical_agreement">
-                                                            <span class="checkmark">
+                                                            <span class="checkmark ex1">
 
-                                                            Medical: Students certify that they’re healthy and able to participate in the ISP
+                                                            Medical: </br> Students certify that they’re healthy and able to participate in the ISP
                                                             program and have no medical or mental conditions that would make their participation
                                                             unsafe or dangerous to themselves or others. Students must have a physical exam
                                                             within one year before starting the program to ensure they are healthy and capable
@@ -4138,12 +3669,12 @@
 
                                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                                     <div class="payment-ckbx three">
-                                                        <label>
+                                                        <label class="boxs-siz">
                                                             <input type="checkbox" value="yes"
                                                                    name="request_for_host_change_agreement">
-                                                            <span class="checkmark">
+                                                            <span class="checkmark ex1">
 
-                                                            Request for Host change: If a student has an issue with their host during their
+                                                            Request for Host change: </br> If a student has an issue with their host during their
                                                             initial contract period, ISP will assist them in resolving the problem. If the
                                                             problem can’t be resolved, ISP will provide the student with a second host home. ISP
                                                             has the final authority whether to move a student and will determine if additional
@@ -4160,522 +3691,15 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!--<div class="row">-->
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="media_photo_release_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                    Media/Photo Release: Students grant ISP and its representatives the right and-->
-                                            <!--                    permission to use photographs, videos, and any other media taken of them for company-->
-                                            <!--                    advertising, publicity, and promotion. Students hold ISP harmless from all claims in-->
-                                            <!--                    connection with the foregoing and waive the right of inspection and approval.-->
-
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('media_photo_release_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="covid_19_protocol_for_students_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                    COVID-19 Protocol for Students: All students must provide proof of their COVID-->
-                                            <!--                    vaccination status and upload their vaccine card when applying to the program. In-->
-                                            <!--                    addition to the first and second doses, students must have received a booster shot.-->
-                                            <!--                    If boosters are not available in the student’s home country or if not enough time-->
-                                            <!--                    has passed between the second dose and the booster before departure, students must-->
-                                            <!--                    agree to receive the booster in the US within 3 days of being eligible.-->
-
-                                            <!--                    <br>-->
-
-                                            <!--                    <p>-->
-
-                                            <!--                    Prior to departure, students will be asked to monitor their health 10 days before-->
-                                            <!--                    traveling to the US. Students who exhibit flu-like symptoms (which includes fever,-->
-                                            <!--                    body aches, stuffy/runny nose, cough, etc.) upon arrival or at any point during-->
-                                            <!--                    their stay will need to self-quarantine in their host home bedroom AND take a rapid-->
-                                            <!--                    test. If the test is negative, the student may end their self-quarantine. If the-->
-                                            <!--                    result is positive, the student must continue to self-quarantine for at least 5 days-->
-                                            <!--                    or until their symptoms subside and a second test is negative.-->
-                                            <!--                    </p>-->
-
-                                            <!--                    <p>-->
-
-                                            <!--                    If a student contracts COVID and their host is not comfortable with them staying in-->
-                                            <!--                    their home, the student will check into a local hotel at their own expense for at-->
-                                            <!--                    least 5 days or until they get a negative test result and symptoms subside. Students-->
-                                            <!--                    must arrive with face masks and be prepared to wear them in the host home for the-->
-                                            <!--                    first 3 days after arrival if the host requests this.-->
-                                            <!--                    </p>-->
-
-                                            <!--                    <p>-->
-
-                                            <!--                    Throughout the student’s stay, local governments will continue to adjust their COVID-->
-                                            <!--                    policies according to the prevalence of the virus in the community. ISP students are-->
-                                            <!--                    expected to adhere to current regulations, practice good hygiene, clean and-->
-                                            <!--                    disinfect their bedroom and bathroom, and practice social distancing. Intentional-->
-                                            <!--                    disregard could result in the students’ dismissal from the program. Students-->
-                                            <!--                    understand that living in a host home comes with risk and that ISP cannot guarantee-->
-                                            <!--                    nor control whether a student will contract COVID from any members of the host home.-->
-                                            <!--                    The student assumes all liability for any injury, loss, damage, accident, delay, or-->
-                                            <!--                    expense resulting from contracting COVID during their stay.-->
-                                            <!--                    <p>-->
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('covid_19_protocol_for_students_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="program_termination_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                    Program Termination: If a student violates the Student Agreement or if ISP-->
-                                            <!--                    decides that the student is not an appropriate candidate for a homestay program, ISP-->
-                                            <!--                    will terminate the student and the student will forfeit all program fees.-->
-
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('program_termination_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-                                            <!--</div>-->
-                                            <!--<div class="row">-->
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="warranties_consent_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                    Warranties/Consent: The student warrants that the information provided on their-->
-                                            <!--                    application is true and correct, that they are not a sex offender nor have been-->
-                                            <!--                    accused of or convicted any crimes. Students authorize ISP, its employees,-->
-                                            <!--                    coordinators, and assigned host family to consent on their behalf to any x-ray-->
-                                            <!--                    examinations, anesthetic, medical or surgical treatment, and emergency hospital care-->
-                                            <!--                    on their behalf. Students agree that ISP, it’s employees, coordinators, and assigned-->
-                                            <!--                    host family can take any action whatsoever regarding their safety without incurring-->
-                                            <!--                    any liability or expense.-->
-
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('warranties_consent_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="limitation_of_liability_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                    Limitation of Liability: IN NO EVENT SHALL ISP HAVE ANY LIABILITY TO ANY STUDENT-->
-                                            <!--                    FOR ANY INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES, HOWEVER CAUSED, AND-->
-                                            <!--                    UNDER ANY THEORY OF LIABILITY, WHETHER OR NOT ISP HAS BEEN ADVISED OF THE-->
-                                            <!--                    POSSIBILITY OF SUCH DAMAGES. FURTHER, ISP SHALL NOT BE NAMED AS A PARTY, CALLED AS A-->
-                                            <!--                    WITNESS, OR SERVED DISCOVERY REQUESTS IN ANY DISPUTE BETWEEN STUDENTS AND HOSTS-->
-                                            <!--                    REGARDING THE FINANCIAL OR INTERPERSONAL DEALINGS BETWEEN STUDENTS AND HOSTS.-->
-
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('limitation_of_liability_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="indemnification_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                    Indemnification: Students understand that hosts are not ISP’s employees or-->
-                                            <!--                    agents, and that ISP has no constructive control of the hosts’ behavior. Students-->
-                                            <!--                    understand that the information provided by ISP about each host family is not a-->
-                                            <!--                    perfect predictor of how the host will act in the future, and that the background-->
-                                            <!--                    and safety of each host is not guaranteed. Students acknowledge that it is voluntary-->
-                                            <!--                    for them to participate in trips and activities with their host and that ISP does-->
-                                            <!--                    not require their participation. Students assume all risks associated with injury or-->
-                                            <!--                    loss arising from their participation in the ISP program and release ISP of any-->
-                                            <!--                    liability for any claim of injury, death, property damage, or other loss.-->
-
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('indemnification_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-                                            <!--</div>-->
-                                            <!--<div class="row">-->
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="governing_law_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                    Governing Law: All parties agree to solve any dispute and resolution of this-->
-                                            <!--                    Agreement using arbitration services in Santa Clara County with the American-->
-                                            <!--                    Arbitration Association before using any other means to solve the dispute.-->
-
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('governing_law_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="force_majeure_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                Force Majeure: The parties will not be liable for delays or errors in its-->
-                                            <!--                performance or for non-performance due to causes beyond its reasonable control-->
-                                            <!--                (“Force Majeure Event”) including Acts of god and pandemics.-->
-
-                                            <!--            </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('force_majeure_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-                                            <!--</div>-->
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </section>
-
-                            <!--Section 8 First Half End-->
-                            <!--Section 8 First Half Start-->
-                            <section class="my-newfrm">
-                                <div class="form_style  main-cardbox">
-                                    <div class="refundable-payment termsconditions">
-                                        <!--<h3>International Student Placements</h3>-->
-                                        <!--<h5>Student Agreement</h5>-->
-
-                                        <!-- Agreements Start -->
-                                        <div class="agreement-conditions">
-                                            <!--<div class="para-scroll">-->
-                                            <!--<div class="row">-->
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes" name="fees_agreement">-->
-                                            <!--                <span class="checkmark">Fees: </br>The placement fee, deposit, late fee, and airport pick up fee will be charged to the student’s credit card when they submit their application. Applications are not processed until the payment is made. If a student decides to cancel the program, all fees are non-refundable.</span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('fees_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-                                                <!--<hr>-->
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="contract_period_agreement">-->
-                                            <!--                <span class="checkmark">-->
-                                            <!--                    Contract Period:</br> Students must stay with their assigned host for the entire contract period they signed up for. Students can extend their contract with the consent of their host on a month-to-month basis once their initial contract period has concluded. If a student chooses to leave their host home prior to the end of their contract, they must pay rent for the remainder of the contract period. All students must inform their host and ISP 30 days prior to leaving their host home indicating that they are ending their participation in the program.-->
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('contract_period_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="payments_agreement">-->
-                                            <!--                <span class="checkmark">-->
-                                            <!--                    Payments: Students who pay rent directly to their host will pay on the day they arrive and each month thereafter.  Students must pay the rent in full and on time each month. Failure to do so will result in termination from the program. Students understand that ISP does not get involved in rent disputes between hosts and students. Host payment information and the monthly rent amount will be in the student’s ISP portal.-->
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('payments_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-                                            <!--</div>-->
-                                            <!--<div class="row">-->
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes" name="deposit_agreement">-->
-                                            <!--                <span class="checkmark">-->
-                                            <!--                   Deposit: Each student pays a deposit to ensure they keep their bedroom and bathroom clean and that no damage was done to the bedroom or bathroom. Students must request their deposit returned from ISP within 30 days of leaving the host home. Deposit checks are payable only in the student’s name and are mailed only to a US address. Students must read and understand the deposit information sheet that is in student’s ISP portal.-->
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('deposit_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="meal_plans_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                    Meal Plans: Students on the meal plan will receive breakfast and dinner provided by their host every day. Continental breakfast includes juice, bread, cereal, fruit, etc. Dinner is prepared at least 5 nights per week and includes a typical American dinner (protein, vegetable, and bread/pasta). On nights when the host isn’t cooking, students can make dinner using the host’s food. Lunch and snacks are not included in the program and students are responsible for buying those on their own.-->
-                                            <!--                    If a student doesn’t sign up for the meal plan, only light cooking is permitted in the host’s kitchen like microwaving and heating up cooked food.-->
-                                            <!--                    Students can switch their meal plan after arrival with their host’s consent. If a student has strict dietary needs, ISP recommends they select the no-meal option to best suit their needs.-->
-
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('meal_plans_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="student_faq_sheet_agreement">-->
-                                            <!--                <span class="checkmark">-->
-                                            <!--                    Student FAQ Sheet: Students must read and understand the Student FAQ sheet that will be in the student’s ISP portal.-->
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('student_faq_sheet_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-                                            <!--</div>-->
-                                            <!--<div class="row">-->
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="airport_pickup_agreement">-->
-                                            <!--                <span class="checkmark">-->
-                                            <!--                    Airport Pickup: ISP provides airport pickup only in a few areas in the US. If-->
-                                            <!--                    parents or other chaperones arrive with the student at the airport, a reservation-->
-                                            <!--                    and payment must have been made in advance for the extra passengers. If a student is-->
-                                            <!--                    under 18 years old, they may not fly as an unaccompanied minor. ISP has no liability-->
-                                            <!--                    for the third-party airport company assigned to the student. Airport pick up-->
-                                            <!--                    instructions and driver contact information will be in the student’s ISP-->
-                                            <!--                    portal.-->
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('airport_pickup_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="transportation_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                Transportation: All students take public transportation to and from school and-->
-                                            <!--                should expect a commute time of at least 45-55 minutes each way. Host families do-->
-                                            <!--                not drive students to school.-->
-
-                                            <!--            </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('transportation_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="host_possessions_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                    Host Possessions: Students agree to take good care of their host possessions and-->
-                                            <!--                    be financially responsible for the costs of repairs associated with breakage or-->
-                                            <!--                    loss.-->
-
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('host_possessions_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-                                            <!--</div>-->
-                                            <!--<div class="row">-->
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="prohibited_activities_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                Prohibited Activities: Students must not engage in any illegal activities,-->
-                                            <!--                including the use of drugs or alcohol (the use of alcohol & tobacco is not legal in-->
-                                            <!--                the US until the age of 21). Excessive alcohol consumption, theft, abuse of-->
-                                            <!--                property, verbal or physical abuse, impolite language and/or behavior will result in-->
-                                            <!--                termination from the program. Students must stay informed of all laws in the US and-->
-                                            <!--                agree to abide by them. Students must not smoke cigarettes, marijuana, or vape-->
-                                            <!--                inside or outside the host home. If a student violates these rules, they may be-->
-                                            <!--                asked to leave their host home. In this case, ISP will not provide alternative-->
-                                            <!--                housing and the student will forfeit all fees.-->
-
-                                            <!--            </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('prohibited_activities_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="medical_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                Medical: Students certify that they’re healthy and able to participate in the ISP-->
-                                            <!--                program and have no medical or mental conditions that would make their participation-->
-                                            <!--                unsafe or dangerous to themselves or others. Students must have a physical exam-->
-                                            <!--                within one year before starting the program to ensure they are healthy and capable-->
-                                            <!--                of the demands that studying overseas requires. Students must disclose all-->
-                                            <!--                allergies, medications, past and current psychological, psychiatric, and physical-->
-                                            <!--                health issues truthfully on their application. Failure to do so will result in-->
-                                            <!--                termination from the program.-->
-
-                                            <!--            </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('medical_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="request_for_host_change_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                Request for Host change: If a student has an issue with their host during their-->
-                                            <!--                initial contract period, ISP will assist them in resolving the problem. If the-->
-                                            <!--                problem can’t be resolved, ISP will provide the student with a second host home. ISP-->
-                                            <!--                has the final authority whether to move a student and will determine if additional-->
-                                            <!--                fees will be charged.-->
-
-                                            <!--            </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('request_for_host_change_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-                                            <!--</div>-->
                                             <div class="row">
                                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                                     <div class="payment-ckbx three">
-                                                        <label>
+                                                        <label class="boxs-siz">
                                                             <input type="checkbox" value="yes"
                                                                    name="media_photo_release_agreement">
-                                                            <span class="checkmark">
+                                                            <span class="checkmark ex1">
 
-                                                                Media/Photo Release: Students grant ISP and its representatives the right and
+                                                                Media/Photo Release: </br> Students grant ISP and its representatives the right and
                                                                 permission to use photographs, videos, and any other media taken of them for company
                                                                 advertising, publicity, and promotion. Students hold ISP harmless from all claims in
                                                                 connection with the foregoing and waive the right of inspection and approval.
@@ -4693,12 +3717,12 @@
 
                                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                                     <div class="payment-ckbx three">
-                                                        <label>
+                                                        <label class="boxs-siz">
                                                             <input type="checkbox" value="yes"
                                                                    name="covid_19_protocol_for_students_agreement">
-                                                            <span class="checkmark">
+                                                            <span class="checkmark ex1">
 
-                                                                COVID-19 Protocol for Students: All students must provide proof of their COVID
+                                                                COVID-19 Protocol for Students: </br> All students must provide proof of their COVID
                                                                 vaccination status and upload their vaccine card when applying to the program. In
                                                                 addition to the first and second doses, students must have received a booster shot.
                                                                 If boosters are not available in the student’s home country or if not enough time
@@ -4752,12 +3776,12 @@
 
                                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                                     <div class="payment-ckbx three">
-                                                        <label>
+                                                        <label class="boxs-siz">
                                                             <input type="checkbox" value="yes"
                                                                    name="program_termination_agreement">
-                                                            <span class="checkmark">
+                                                            <span class="checkmark ex1">
 
-                                                                Program Termination: If a student violates the Student Agreement or if ISP
+                                                                Program Termination:</br> If a student violates the Student Agreement or if ISP
                                                                 decides that the student is not an appropriate candidate for a homestay program, ISP
                                                                 will terminate the student and the student will forfeit all program fees.
 
@@ -4772,525 +3796,15 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!--<div class="row">-->
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="warranties_consent_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                    Warranties/Consent: The student warrants that the information provided on their-->
-                                            <!--                    application is true and correct, that they are not a sex offender nor have been-->
-                                            <!--                    accused of or convicted any crimes. Students authorize ISP, its employees,-->
-                                            <!--                    coordinators, and assigned host family to consent on their behalf to any x-ray-->
-                                            <!--                    examinations, anesthetic, medical or surgical treatment, and emergency hospital care-->
-                                            <!--                    on their behalf. Students agree that ISP, it’s employees, coordinators, and assigned-->
-                                            <!--                    host family can take any action whatsoever regarding their safety without incurring-->
-                                            <!--                    any liability or expense.-->
-
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('warranties_consent_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="limitation_of_liability_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                    Limitation of Liability: IN NO EVENT SHALL ISP HAVE ANY LIABILITY TO ANY STUDENT-->
-                                            <!--                    FOR ANY INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES, HOWEVER CAUSED, AND-->
-                                            <!--                    UNDER ANY THEORY OF LIABILITY, WHETHER OR NOT ISP HAS BEEN ADVISED OF THE-->
-                                            <!--                    POSSIBILITY OF SUCH DAMAGES. FURTHER, ISP SHALL NOT BE NAMED AS A PARTY, CALLED AS A-->
-                                            <!--                    WITNESS, OR SERVED DISCOVERY REQUESTS IN ANY DISPUTE BETWEEN STUDENTS AND HOSTS-->
-                                            <!--                    REGARDING THE FINANCIAL OR INTERPERSONAL DEALINGS BETWEEN STUDENTS AND HOSTS.-->
-
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('limitation_of_liability_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="indemnification_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                    Indemnification: Students understand that hosts are not ISP’s employees or-->
-                                            <!--                    agents, and that ISP has no constructive control of the hosts’ behavior. Students-->
-                                            <!--                    understand that the information provided by ISP about each host family is not a-->
-                                            <!--                    perfect predictor of how the host will act in the future, and that the background-->
-                                            <!--                    and safety of each host is not guaranteed. Students acknowledge that it is voluntary-->
-                                            <!--                    for them to participate in trips and activities with their host and that ISP does-->
-                                            <!--                    not require their participation. Students assume all risks associated with injury or-->
-                                            <!--                    loss arising from their participation in the ISP program and release ISP of any-->
-                                            <!--                    liability for any claim of injury, death, property damage, or other loss.-->
-
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('indemnification_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-                                            <!--</div>-->
-                                            <!--<div class="row">-->
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="governing_law_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                    Governing Law: All parties agree to solve any dispute and resolution of this-->
-                                            <!--                    Agreement using arbitration services in Santa Clara County with the American-->
-                                            <!--                    Arbitration Association before using any other means to solve the dispute.-->
-
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('governing_law_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="force_majeure_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                Force Majeure: The parties will not be liable for delays or errors in its-->
-                                            <!--                performance or for non-performance due to causes beyond its reasonable control-->
-                                            <!--                (“Force Majeure Event”) including Acts of god and pandemics.-->
-
-                                            <!--            </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('force_majeure_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-                                            <!--</div>-->
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </section>
-
-                            <!--Section 8 First Half End-->
-                            
-                            
-                            
-                            <!--Section 8 First Half Start-->
-                            <section class="my-newfrm">
-                                <div class="form_style  main-cardbox">
-                                    <div class="refundable-payment termsconditions">
-                                        <!--<h3>International Student Placements</h3>-->
-                                        <!--<h5>Student Agreement</h5>-->
-
-                                        <!-- Agreements Start -->
-                                        <div class="agreement-conditions">
-                                            <!--<div class="para-scroll">-->
-                                            <!--<div class="row">-->
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes" name="fees_agreement">-->
-                                            <!--                <span class="checkmark">Fees: </br>The placement fee, deposit, late fee, and airport pick up fee will be charged to the student’s credit card when they submit their application. Applications are not processed until the payment is made. If a student decides to cancel the program, all fees are non-refundable.</span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('fees_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-                                                <!--<hr>-->
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="contract_period_agreement">-->
-                                            <!--                <span class="checkmark">-->
-                                            <!--                    Contract Period:</br> Students must stay with their assigned host for the entire contract period they signed up for. Students can extend their contract with the consent of their host on a month-to-month basis once their initial contract period has concluded. If a student chooses to leave their host home prior to the end of their contract, they must pay rent for the remainder of the contract period. All students must inform their host and ISP 30 days prior to leaving their host home indicating that they are ending their participation in the program.-->
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('contract_period_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="payments_agreement">-->
-                                            <!--                <span class="checkmark">-->
-                                            <!--                    Payments: Students who pay rent directly to their host will pay on the day they arrive and each month thereafter.  Students must pay the rent in full and on time each month. Failure to do so will result in termination from the program. Students understand that ISP does not get involved in rent disputes between hosts and students. Host payment information and the monthly rent amount will be in the student’s ISP portal.-->
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('payments_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-                                            <!--</div>-->
-                                            <!--<div class="row">-->
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes" name="deposit_agreement">-->
-                                            <!--                <span class="checkmark">-->
-                                            <!--                   Deposit: Each student pays a deposit to ensure they keep their bedroom and bathroom clean and that no damage was done to the bedroom or bathroom. Students must request their deposit returned from ISP within 30 days of leaving the host home. Deposit checks are payable only in the student’s name and are mailed only to a US address. Students must read and understand the deposit information sheet that is in student’s ISP portal.-->
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('deposit_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="meal_plans_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                    Meal Plans: Students on the meal plan will receive breakfast and dinner provided by their host every day. Continental breakfast includes juice, bread, cereal, fruit, etc. Dinner is prepared at least 5 nights per week and includes a typical American dinner (protein, vegetable, and bread/pasta). On nights when the host isn’t cooking, students can make dinner using the host’s food. Lunch and snacks are not included in the program and students are responsible for buying those on their own.-->
-                                            <!--                    If a student doesn’t sign up for the meal plan, only light cooking is permitted in the host’s kitchen like microwaving and heating up cooked food.-->
-                                            <!--                    Students can switch their meal plan after arrival with their host’s consent. If a student has strict dietary needs, ISP recommends they select the no-meal option to best suit their needs.-->
-
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('meal_plans_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="student_faq_sheet_agreement">-->
-                                            <!--                <span class="checkmark">-->
-                                            <!--                    Student FAQ Sheet: Students must read and understand the Student FAQ sheet that will be in the student’s ISP portal.-->
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('student_faq_sheet_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-                                            <!--</div>-->
-                                            <!--<div class="row">-->
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="airport_pickup_agreement">-->
-                                            <!--                <span class="checkmark">-->
-                                            <!--                    Airport Pickup: ISP provides airport pickup only in a few areas in the US. If-->
-                                            <!--                    parents or other chaperones arrive with the student at the airport, a reservation-->
-                                            <!--                    and payment must have been made in advance for the extra passengers. If a student is-->
-                                            <!--                    under 18 years old, they may not fly as an unaccompanied minor. ISP has no liability-->
-                                            <!--                    for the third-party airport company assigned to the student. Airport pick up-->
-                                            <!--                    instructions and driver contact information will be in the student’s ISP-->
-                                            <!--                    portal.-->
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('airport_pickup_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="transportation_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                Transportation: All students take public transportation to and from school and-->
-                                            <!--                should expect a commute time of at least 45-55 minutes each way. Host families do-->
-                                            <!--                not drive students to school.-->
-
-                                            <!--            </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('transportation_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="host_possessions_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                    Host Possessions: Students agree to take good care of their host possessions and-->
-                                            <!--                    be financially responsible for the costs of repairs associated with breakage or-->
-                                            <!--                    loss.-->
-
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('host_possessions_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-                                            <!--</div>-->
-                                            <!--<div class="row">-->
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="prohibited_activities_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                Prohibited Activities: Students must not engage in any illegal activities,-->
-                                            <!--                including the use of drugs or alcohol (the use of alcohol & tobacco is not legal in-->
-                                            <!--                the US until the age of 21). Excessive alcohol consumption, theft, abuse of-->
-                                            <!--                property, verbal or physical abuse, impolite language and/or behavior will result in-->
-                                            <!--                termination from the program. Students must stay informed of all laws in the US and-->
-                                            <!--                agree to abide by them. Students must not smoke cigarettes, marijuana, or vape-->
-                                            <!--                inside or outside the host home. If a student violates these rules, they may be-->
-                                            <!--                asked to leave their host home. In this case, ISP will not provide alternative-->
-                                            <!--                housing and the student will forfeit all fees.-->
-
-                                            <!--            </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('prohibited_activities_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="medical_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                Medical: Students certify that they’re healthy and able to participate in the ISP-->
-                                            <!--                program and have no medical or mental conditions that would make their participation-->
-                                            <!--                unsafe or dangerous to themselves or others. Students must have a physical exam-->
-                                            <!--                within one year before starting the program to ensure they are healthy and capable-->
-                                            <!--                of the demands that studying overseas requires. Students must disclose all-->
-                                            <!--                allergies, medications, past and current psychological, psychiatric, and physical-->
-                                            <!--                health issues truthfully on their application. Failure to do so will result in-->
-                                            <!--                termination from the program.-->
-
-                                            <!--            </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('medical_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="request_for_host_change_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                Request for Host change: If a student has an issue with their host during their-->
-                                            <!--                initial contract period, ISP will assist them in resolving the problem. If the-->
-                                            <!--                problem can’t be resolved, ISP will provide the student with a second host home. ISP-->
-                                            <!--                has the final authority whether to move a student and will determine if additional-->
-                                            <!--                fees will be charged.-->
-
-                                            <!--            </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('request_for_host_change_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-                                            <!--</div>-->
-                                            <!--<div class="row">-->
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="media_photo_release_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                    Media/Photo Release: Students grant ISP and its representatives the right and-->
-                                            <!--                    permission to use photographs, videos, and any other media taken of them for company-->
-                                            <!--                    advertising, publicity, and promotion. Students hold ISP harmless from all claims in-->
-                                            <!--                    connection with the foregoing and waive the right of inspection and approval.-->
-
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('media_photo_release_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="covid_19_protocol_for_students_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                    COVID-19 Protocol for Students: All students must provide proof of their COVID-->
-                                            <!--                    vaccination status and upload their vaccine card when applying to the program. In-->
-                                            <!--                    addition to the first and second doses, students must have received a booster shot.-->
-                                            <!--                    If boosters are not available in the student’s home country or if not enough time-->
-                                            <!--                    has passed between the second dose and the booster before departure, students must-->
-                                            <!--                    agree to receive the booster in the US within 3 days of being eligible.-->
-
-                                            <!--                    <br>-->
-
-                                            <!--                    <p>-->
-
-                                            <!--                    Prior to departure, students will be asked to monitor their health 10 days before-->
-                                            <!--                    traveling to the US. Students who exhibit flu-like symptoms (which includes fever,-->
-                                            <!--                    body aches, stuffy/runny nose, cough, etc.) upon arrival or at any point during-->
-                                            <!--                    their stay will need to self-quarantine in their host home bedroom AND take a rapid-->
-                                            <!--                    test. If the test is negative, the student may end their self-quarantine. If the-->
-                                            <!--                    result is positive, the student must continue to self-quarantine for at least 5 days-->
-                                            <!--                    or until their symptoms subside and a second test is negative.-->
-                                            <!--                    </p>-->
-
-                                            <!--                    <p>-->
-
-                                            <!--                    If a student contracts COVID and their host is not comfortable with them staying in-->
-                                            <!--                    their home, the student will check into a local hotel at their own expense for at-->
-                                            <!--                    least 5 days or until they get a negative test result and symptoms subside. Students-->
-                                            <!--                    must arrive with face masks and be prepared to wear them in the host home for the-->
-                                            <!--                    first 3 days after arrival if the host requests this.-->
-                                            <!--                    </p>-->
-
-                                            <!--                    <p>-->
-
-                                            <!--                    Throughout the student’s stay, local governments will continue to adjust their COVID-->
-                                            <!--                    policies according to the prevalence of the virus in the community. ISP students are-->
-                                            <!--                    expected to adhere to current regulations, practice good hygiene, clean and-->
-                                            <!--                    disinfect their bedroom and bathroom, and practice social distancing. Intentional-->
-                                            <!--                    disregard could result in the students’ dismissal from the program. Students-->
-                                            <!--                    understand that living in a host home comes with risk and that ISP cannot guarantee-->
-                                            <!--                    nor control whether a student will contract COVID from any members of the host home.-->
-                                            <!--                    The student assumes all liability for any injury, loss, damage, accident, delay, or-->
-                                            <!--                    expense resulting from contracting COVID during their stay.-->
-                                            <!--                    <p>-->
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('covid_19_protocol_for_students_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-
-                                            <!--    <div class="col-md-4 col-sm-4 col-xs-12">-->
-                                            <!--        <div class="payment-ckbx three">-->
-                                            <!--            <label>-->
-                                            <!--                <input type="checkbox" value="yes"-->
-                                            <!--                       name="program_termination_agreement">-->
-                                            <!--                <span class="checkmark">-->
-
-                                            <!--                    Program Termination: If a student violates the Student Agreement or if ISP-->
-                                            <!--                    decides that the student is not an appropriate candidate for a homestay program, ISP-->
-                                            <!--                    will terminate the student and the student will forfeit all program fees.-->
-
-                                            <!--                </span>-->
-                                            <!--            </label>-->
-
-                                            <!--            @error('program_termination_agreement')-->
-                                            <!--            <div class="alert alert-danger">-->
-                                            <!--                {{ $message }}-->
-                                            <!--            </div>-->
-                                            <!--            @enderror-->
-                                            <!--        </div>-->
-                                            <!--    </div>-->
-                                            <!--</div>-->
                                             <div class="row">
                                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                                     <div class="payment-ckbx three">
-                                                        <label>
+                                                        <label class="boxs-siz">
                                                             <input type="checkbox" value="yes"
                                                                    name="warranties_consent_agreement">
-                                                            <span class="checkmark">
+                                                            <span class="checkmark ex1">
 
-                                                                Warranties/Consent: The student warrants that the information provided on their
+                                                                Warranties/Consent: </br> The student warrants that the information provided on their
                                                                 application is true and correct, that they are not a sex offender nor have been
                                                                 accused of or convicted any crimes. Students authorize ISP, its employees,
                                                                 coordinators, and assigned host family to consent on their behalf to any x-ray
@@ -5312,12 +3826,12 @@
 
                                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                                     <div class="payment-ckbx three">
-                                                        <label>
+                                                        <label class="boxs-siz">
                                                             <input type="checkbox" value="yes"
                                                                    name="limitation_of_liability_agreement">
-                                                            <span class="checkmark">
+                                                            <span class="checkmark ex1">
 
-                                                                Limitation of Liability: IN NO EVENT SHALL ISP HAVE ANY LIABILITY TO ANY STUDENT
+                                                                Limitation of Liability: </br> IN NO EVENT SHALL ISP HAVE ANY LIABILITY TO ANY STUDENT
                                                                 FOR ANY INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES, HOWEVER CAUSED, AND
                                                                 UNDER ANY THEORY OF LIABILITY, WHETHER OR NOT ISP HAS BEEN ADVISED OF THE
                                                                 POSSIBILITY OF SUCH DAMAGES. FURTHER, ISP SHALL NOT BE NAMED AS A PARTY, CALLED AS A
@@ -5337,12 +3851,12 @@
 
                                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                                     <div class="payment-ckbx three">
-                                                        <label>
+                                                        <label class="boxs-siz">
                                                             <input type="checkbox" value="yes"
                                                                    name="indemnification_agreement">
-                                                            <span class="checkmark">
+                                                            <span class="checkmark ex1">
 
-                                                                Indemnification: Students understand that hosts are not ISP’s employees or
+                                                                Indemnification: </br> Students understand that hosts are not ISP’s employees or
                                                                 agents, and that ISP has no constructive control of the hosts’ behavior. Students
                                                                 understand that the information provided by ISP about each host family is not a
                                                                 perfect predictor of how the host will act in the future, and that the background
@@ -5366,12 +3880,12 @@
                                             <div class="row">
                                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                                     <div class="payment-ckbx three">
-                                                        <label>
+                                                        <label class="boxs-siz">
                                                             <input type="checkbox" value="yes"
                                                                    name="governing_law_agreement">
-                                                            <span class="checkmark">
+                                                            <span class="checkmark ex1">
 
-                                                                Governing Law: All parties agree to solve any dispute and resolution of this
+                                                                Governing Law: </br> All parties agree to solve any dispute and resolution of this
                                                                 Agreement using arbitration services in Santa Clara County with the American
                                                                 Arbitration Association before using any other means to solve the dispute.
 
@@ -5388,12 +3902,12 @@
 
                                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                                     <div class="payment-ckbx three">
-                                                        <label>
+                                                        <label class="boxs-siz">
                                                             <input type="checkbox" value="yes"
                                                                    name="force_majeure_agreement">
-                                                            <span class="checkmark">
+                                                            <span class="checkmark ex1">
 
-                                                            Force Majeure: The parties will not be liable for delays or errors in its
+                                                            Force Majeure:</br> The parties will not be liable for delays or errors in its
                                                             performance or for non-performance due to causes beyond its reasonable control
                                                             (“Force Majeure Event”) including Acts of god and pandemics.
 
@@ -5415,6 +3929,7 @@
                             </section>
 
                             <!--Section 8 First Half End-->
+
 
                             <!--Section 8 Second Half Start-->
                             <section class="my-newfrm">
@@ -5507,4 +4022,14 @@
             </form>
         </div>
     </section>
+{{--    @push('js')--}}
+{{--        <script>--}}
+{{--            $(document).ready(function () {--}}
+{{--                const Btn1 = document.querySelector("#Btn1");--}}
+{{--                let url = '{{route('new_student_application_form_submit'}}';--}}
+{{--                let data = {'_token': '{{csrf_token()}}'};--}}
+{{--                let result = AjaxRequest(url, data);--}}
+{{--            });--}}
+{{--        </script>--}}
+{{--    @endpush--}}
 @endsection

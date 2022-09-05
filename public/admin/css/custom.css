@@ -992,11 +992,14 @@ input[type="tel"] {
     height: 39px;
     border-radius: 8px;
     text-align: center;
+    display: flex;
     line-height: 37px;
+    justify-content: center;
+    align-items: center;
 }
 
 .student_2 a i {
-    margin: 5px 8px 0;
+    margin: 0px 8px 0;
     font-size: 22px;
 }
 
@@ -1082,11 +1085,12 @@ input[type="tel"] {
 }
 
 .admin_1 label {
-    color: #92929f;
+    color: #000000;
     line-height: 18px;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 500;
-    margin: 25px 5px 0;
+    margin: 25px 5px 3px;
+    display: block;
 }
 
 .admin_1 .form-check label {
@@ -1527,13 +1531,13 @@ input[type="tel"] {
     background: #0b406c;
     background-color: #0b406c;
     color: white;
-    width: 23%;
-    height: 41px;
+    width: 20%;
+    height: 53px;
     border: 1px solid #0b406c;
-    border-radius: 7px;
     margin: 20px 0 0;
     font-size: 16px;
     font-weight: 500;
+    border-radius: 40px;
 }
 
 .my_button1 button {
@@ -2045,7 +2049,7 @@ h4.left_home {
     text-align: left;
 }
 .main_bg.sec-bg{
-    
+
 }
 td.sub-wid {
     width: 16%;
@@ -2086,15 +2090,15 @@ label.control-label.mb-1 {
 .main_bg.inp-main input {
     width: 80%;
     border: 1px solid #0b406c;
-    margin: 10px 0 0 60px;
+    margin: 3px 0 0 60px;
     border-radius: 10px;
 }
 .main_bg.inp-main select {
-    width: 83%;
+    width: 80%;
     border: 1px solid #0b406c;
     margin: 10px 0 0 60px;
     border-radius: 10px;
-    height: auto;
+    height: 38px;
 }
 .main_bg.inp-main button {
     float: right;
@@ -2102,4 +2106,57 @@ label.control-label.mb-1 {
 }
 td.table-actions {
     width: 12%;
+}
+label.radio-status-label {
+    width: 17%;
+    display: block;
+    margin: 0px 0 0 60px;
+}
+label.radio-status-label input {
+    margin: 0 6px 0px 0px !important;
+    display: inline-flex;
+    width: 6% !important;
+}
+
+label.control-label.mb-1 {
+    margin: 15px 0 0;
+    margin-bottom: 0 !important;
+}
+.action-right {
+    float: right;
+}
+label.radio-status-label {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    height: 25px;
+}
+
+th.sorting_disabled {
+    width: 50px !important;
+}
+td.action-right {
+    text-align: right !important;
+}
+.new-claas th {
+    width: 0px !important;
+}
+th.sorting_asc {
+    padding: 0px !important;
+    width: 50px !important;
+}
+th.sno-width.sorting_asc {
+    width: 10px !important;
+}
+th.dt-fn-width.sorting {
+    width: 70px !important;
+}
+th.dt-ln-width.sorting {
+    width: 67px !IMPORTANT;
+}
+th.dt-stat-width.sorting {
+    width: 50px !important;
+}
+th.dt-v-width.sorting {
+    width: 50px !important;
 }

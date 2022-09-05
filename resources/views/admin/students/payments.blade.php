@@ -19,13 +19,13 @@
                             <table class="display data-table" style="width:100%">
                                 <thead>
                                 <tr>
-                                    <th>S.No</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Student Email</th>
-                                    <th>Fees Amount</th>
-                                    <th>Transaction Date</th>
-                                    <th>Status</th>
+                                    <th class="dt-sno-width">S.No</th>
+                                    <th class="dt-fn-width">First Name</th>
+                                    <th class="dt-ln-width">Last Name</th>
+                                    <th class="dt-e-width">Student Email</th>
+                                    <th class="dt-prc-width">Fees Amount</th>
+                                    <th class="dt-td-width">Transaction Date</th>
+                                    <th class="dt-stat-width">Status</th>
                                 </tr>
                                 </thead>
                                 <tbody>

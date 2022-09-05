@@ -53,7 +53,10 @@
                         {data: 'name', name: 'Name'},
                         {data: 'RegionName', name: 'RegionName'},
                         {data: 'action', name: 'Action', orderable: false, searchable: false},
-                    ]
+                    ],
+                    createdRow: function (row, data, index) {
+                        $('td', row).eq(3).addClass('action-right');
+                    }
                 });
             });
         </script>

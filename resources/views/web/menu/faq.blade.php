@@ -240,10 +240,7 @@
                             <div id="collapsethirteen" class="accordion-collapse collapse" aria-labelledby="headingthirteen"
                                  data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    <p>Our ISP driver! If you don’t want to schedule an ISP driver, you can arrange your own
-                                        transportation. We recommend using ISP because our drivers wait for you at the gate…not at the
-                                        curb…so you don’t have to worry about navigating an unfamiliar airport.Sometimes we allow this but
-                                        if we’ve done the work to place you, chances are there will be no refund. </p>
+                                    <p>Sometimes we allow this but if we’ve done the work to place you, chances are there will be no refund.  </p>
                                 </div>
                             </div>
                         </div>
@@ -310,7 +307,7 @@
                             <div id="collapseThree3" class="accordion-collapse collapse" aria-labelledby="headingThree3"
                                  data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    <p>Please email admin@isphomestays.com for an application. </p>
+                                    <p>Please email  <a href="javascript:void(0)">admin@isphomestays.com</a> for an application. </p>
                                 </div>
                             </div>
                         </div>
@@ -329,13 +326,13 @@
                             </div>
                         </div>
                         <div class="accordion-item one">
-                            <h2 class="accordion-header" id="headingThree4">
+                            <h2 class="accordion-header" id="headingThreee">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseThree4" aria-expanded="false" aria-controls="collapseThree4">
+                                        data-bs-target="#collapseThreee" aria-expanded="false" aria-controls="collapseThreee">
                                     How much does it cost?
                                 </button>
                             </h2>
-                            <div id="collapseThree4" class="accordion-collapse collapse" aria-labelledby="headingThree4"
+                            <div id="collapseThreee" class="accordion-collapse collapse" aria-labelledby="headingThreee"
                                  data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <p>Our team will let you know the price when you request an application as the fees are relative to

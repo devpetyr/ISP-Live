@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="student_1">
-                        <h4>Driver List</h4>
+                        <h4>Agents List</h4>
                     </div>
                 </div>
             </div>
@@ -14,17 +14,19 @@
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="student_2 stu-4">
-                            <a href="{{route('admin_manage_driver_details')}}"><i class="fa-solid fa-plus"></i>New Driver</a>
+                            <a href="{{route('admin_manage_agent_details')}}"><i class="fa-solid fa-plus"></i>New Agent</a>
                         </div>
                     </div>
                              <div class="col-md-12 col-xs-12 col-xs-12">
                             <div class="container">
-                            <table class="table table_content table-bordered data-table">
+                            <table class="table table_content new-claas table-bordered data-table">
                                 <thead>
                                 <tr>
-                                    <th>S.No</th>
+                                    <th class="sno-width">S.No</th>
+                                    <th>Agency</th>
                                     <th>First Name</th>
-                                    <th>Last Name</th>
+                                    <!--<th>Last Name</th>-->
+                                    <!--<th>Number</th>-->
                                     <th>Email</th>
                                     <th>Status</th>
                                     <th width="100px">Action</th>
@@ -51,11 +53,13 @@
         var table = $('.data-table').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('admin_driver_details') }}",
+            ajax: "{{ route('admin_agents_details') }}",
             columns: [
                 { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false },
+                {data: 'agency_name', name: 'agency_name'},
                 {data: 'first_name', name: 'first_name'},
-                {data: 'last_name', name: 'last_name'},
+                // {data: 'last_name', name: 'last_name'},
+                // {data: 'phone_number', name: 'phone_number'},
                 {data: 'email', name: 'email'},
                 {data: 'status', name: 'status'},
                 {data: 'action', name: 'Action', orderable: false, searchable: false},

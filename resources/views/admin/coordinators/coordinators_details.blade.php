@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="student_1">
-                        <h4>Driver List</h4>
+                        <h4>Coordinater List</h4>
                     </div>
                 </div>
             </div>
@@ -14,7 +14,7 @@
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="student_2 stu-4">
-                            <a href="{{route('admin_manage_driver_details')}}"><i class="fa-solid fa-plus"></i>New Driver</a>
+                            <a href="{{route('admin_manage_coordinator_details')}}"><i class="fa-solid fa-plus"></i>New Coordinator</a>
                         </div>
                     </div>
                              <div class="col-md-12 col-xs-12 col-xs-12">
@@ -37,10 +37,6 @@
                     </div>
                 </div>
             </div>
-
-
-
-
         </div>
 
     </div>
@@ -51,7 +47,7 @@
         var table = $('.data-table').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('admin_driver_details') }}",
+            ajax: "{{ route('admin_coordinators_details') }}",
             columns: [
                 { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false },
                 {data: 'first_name', name: 'first_name'},

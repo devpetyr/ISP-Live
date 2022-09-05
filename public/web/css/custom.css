@@ -3605,8 +3605,9 @@ h6.pay-method span {
     background: #fff;
     color: white;
     font-size: 16px;
-    height: 44px;
+    height: 50px;
     border-radius: 6px;
+    border: 1px solid #00000059;
 }
 
 .input-flds {
@@ -3620,7 +3621,7 @@ h6.pay-method span {
 .input-flds .text-danger {
     color: #dc3545 !important;
     font-size: 20px;
-    margin: 0 0 18px;
+    margin: 4px 0 18px;
     display: inline-block;
     border-color: #f5c2c7;
     background-color: #f8d7da;
@@ -3644,8 +3645,8 @@ h6.pay-method span {
 
 .input-flds label {
     display: inline-block;
-    color: #ffffff;
-    font-size: 16px;
+    color: #000;
+    font-size: 18px;
     font-weight: 600;
 }
 
@@ -3683,7 +3684,7 @@ h6.passport-number {
     margin: 0;
     font-weight: 500;
     color: #fff;
-    padding-top: 25px;
+    padding-top: 1px;
 }
 h6.passport-number span {
     color: #8E2F2E;
@@ -3717,14 +3718,15 @@ p.birhdate {
 }
 
 .permanent-adress {
-    margin-top: 35px;
+    margin-top: 0px;
 }
 
 .input-flds select {
-    border: none;
+    border: 1px solid #0000004d !important;
     margin: 0;
     background: #fff;
     color: white;
+    height: 60px;
 }
 
 .using-agent h4 {
@@ -3792,7 +3794,7 @@ p.birhdate {
 
 .food-restrictions textarea {
     resize: none;
-    border: none;
+    border: 1px solid #0000006b;
     padding: 0;
     background: #dafff3;
     padding: 10px;
@@ -3839,7 +3841,7 @@ p.birhdate {
 .airport h4 {
     font-size: 22px;
     font-weight: 500;
-    color: #fff;
+    color: #000;
     margin-bottom: 25px;
 }
 
@@ -3861,7 +3863,7 @@ p.birhdate {
     margin: 20px 0 10px;
 }
 .drivers label {
-    color: #ffffff;
+    color: #000;
     font-size: 17px;
     text-align: center;
 }
@@ -3890,7 +3892,7 @@ p.birhdate {
 /*    font-size: unset;*/
 /*}*/
 .payment-ckbx.plane span {
-    color: #ffffff;
+    color: #000;
     font-size: unset;
     font-size: 22px;
 }
@@ -3931,7 +3933,7 @@ p.birhdate {
 }
 
 .refundable-payment.termsconditions {
-    padding: 30px 0 0;
+    padding: 20px 0 0;
 }
 
 .refundable-payment.termsconditions h3 {
@@ -5029,9 +5031,10 @@ h1.other {
 }
 
 .payment-ckbx span {
-    color: white;
+    color: black;
     font-size: 16px;
     vertical-align: text-bottom;
+    font-weight: 600;
 }
 a.other {
     float: left;
@@ -5136,11 +5139,11 @@ option {
     background: black;
 }
 .payment-form {
-    background: #d2b48c00;
+    background: #15304e;
     padding: 3% 0;
 }
 .permanent-adress.homestay p {
-    color: white;
+    color: black;
 }
 
 /*register css*/
@@ -5286,9 +5289,9 @@ p.already_text a:hover{
 
 
 .form_style h3 {
-    color: #fff;
+    color: #040404;
     margin: 0 0 0px;
-    font-size: 23px;
+    font-size: 20px;
     font-weight: 600;
 }
 
@@ -5571,13 +5574,13 @@ input[type="url"],
 input[type="number"],
 textarea,
 input[type="tel"] {
-    border: 1px solid #ececec;
+    border: 1px solid #8988888f;
     background-color: #fff;
     font-size: 14px;
     line-height: 20px;
     color: #575757;
-    height: 40px;
-    margin-bottom: 5px;
+    height: 50px;
+    margin-bottom: 0px;
     width: 100%;
     padding: 0px 15px;
     border-radius: 7px;
@@ -5586,7 +5589,7 @@ input[type="tel"] {
     color: #DC3546;
     font-size: 20px;
     padding: 0 10px;
-    margin: 0 0 17px;
+    margin: 8px 0 10px;
     display: inline-block;
     border-color: #f5c2c7;
 }
@@ -7793,6 +7796,7 @@ button.accordion-button.collapsed {
     box-shadow: none;
 }
 
+
 /* /////////////// frequently css end here/////////// */
 /* ////////////// hosting css start */
 .frequently-box {
@@ -7896,7 +7900,7 @@ button.accordion-button.collapsed {
     color: #15304e;
     line-height: 0px;
     padding-top: 26px;
-    text-transform: uppercase;
+    text-transform: capitalize;
     margin: 20px 0 20px;
     font-family: 'Daddy Rewind';
 }
@@ -8153,9 +8157,9 @@ ul#menu-two {
 .counter_text h3 {
     text-align: center;
     color: white;
-    font-size: 60px;
+    font-size: 55px;
     margin: 30px 0  10px;
-    font-weight: 700;
+    font-weight: 500;
     font-family: 'Poppins', sans-serif;
 }
 .counter_text img {
@@ -8354,10 +8358,10 @@ ul#menu-two {
 
 
 .inner_pages h1 {
-    font-size: 60px;
+    font-size: 55px;
     line-height: 60px;
     color: #fff;
-    font-weight: 700;
+    font-weight: 600;
     margin: 0 0 17px;
     font-family: 'Poppins', sans-serif;
     text-transform: uppercase;
@@ -8765,55 +8769,63 @@ hr.hr-style {
 }
 .payment-ckbx label {
     display: inline-flex;
-}
-.accordion-body {
-    padding: 1rem 1.25rem;
-    background-color: #15304e;
-}
-.accordion-button {
-    background-color: #15304e;
-    border: 1px solid #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px #ffffff;
-    margin: 0 0 16px;
-}
-button.accordion-button.collapsed {
-    color: #fff;
-}
-.accordion-button:not(.collapsed) {
-    color: #fff;
-    background-color: #15304e;
-    box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
-    font-size: 18px;
-    font-weight: 600;
-    margin: 0;
 
 }
-.accordion-item {
-    background-color: #15304e;
-    border: none;
+.boxs-siz{
+        box-shadow: 0px 1px 7px white;
+        margin: 0 0 20px;
+        border: 1px solid #7a7878;
+        border-radius: 9px;
+        padding: 11px;
 }
-.accordion-button:focus {
-    z-index: 3;
-    border-color: #ffffff;
-    box-shadow: 0px 0px 10px #ffffff;
-}
-.accordion-item  .accordion-button::after {
-    flex-shrink: 0;
-    width: 1.25rem;
-    height: 1.25rem;
-    margin-left: auto;
-    content: "";
-    background-image: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e);
-    background-repeat: no-repeat;
-    background-size: 1.25rem;
-    transition: transform 0.2s ease-in-out;
-    filter: brightness(0) invert(1);
-}
-.accordion-item:first-of-type .accordion-button {
-    border-radius: 9px;
-}
+/*.accordion-body {*/
+/*    padding: 1rem 1.25rem;*/
+/*    background-color: #15304e;*/
+/*}*/
+/*.accordion-button {*/
+/*    background-color: #15304e;*/
+/*    border: 1px solid #fff;*/
+/*    padding: 20px;*/
+/*    border-radius: 10px;*/
+/*    box-shadow: 0px 0px 10px #ffffff;*/
+/*    margin: 0 0 16px;*/
+/*}*/
+/*button.accordion-button.collapsed {*/
+/*    color: #fff;*/
+/*}*/
+/*.accordion-button:not(.collapsed) {*/
+/*    color: #fff;*/
+/*    background-color: #15304e;*/
+/*    box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);*/
+/*    font-size: 18px;*/
+/*    font-weight: 600;*/
+/*    margin: 0;*/
+
+/*}*/
+/*.accordion-item {*/
+/*    background-color: #15304e;*/
+/*    border: none;*/
+/*}*/
+/*.accordion-button:focus {*/
+/*    z-index: 3;*/
+/*    border-color: #ffffff;*/
+/*    box-shadow: 0px 0px 10px #ffffff;*/
+/*}*/
+/*.accordion-item  .accordion-button::after {*/
+/*    flex-shrink: 0;*/
+/*    width: 1.25rem;*/
+/*    height: 1.25rem;*/
+/*    margin-left: auto;*/
+/*    content: "";*/
+/*    background-image: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e);*/
+/*    background-repeat: no-repeat;*/
+/*    background-size: 1.25rem;*/
+/*    transition: transform 0.2s ease-in-out;*/
+/*    filter: brightness(0) invert(1);*/
+/*}*/
+/*.accordion-item:first-of-type .accordion-button {*/
+/*    border-radius: 9px;*/
+/*}*/
 .btn-acr button {
     color: #fff;
     padding: 6px 70px;
@@ -8833,7 +8845,7 @@ button.accordion-button.collapsed {
     background: #fff;
 }
 .label-color {
-    color: #fff;
+    color: #000;
 }
 .label-color span {
     color: #8e2f2e;
@@ -8861,7 +8873,7 @@ button.accordion-button.collapsed {
 }
 
 ::-webkit-scrollbar {
-  display: none;
+  /* display: none; */
 }
 
 
@@ -8878,16 +8890,14 @@ button.accordion-button.collapsed {
 .my-newfrm {
   width: 100vw;
   height: 100vh;
-  /*   scroll-snap-align: start; */
   overflow-y: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* font-family: monospace; */
-  /* font-size: 3rem; */
+  
+  
 /*  backface visibility keeps font from looking weird  */
-  /* -webkit-backface-visibility: hidden; */
-  /* backface-visibility: hidden; */
+  /* overflow-x: scroll; */
 }
 
 
@@ -8900,8 +8910,6 @@ button.accordion-button.collapsed {
     transform-origin: top left;
     transform: rotate(-90deg) translateX(-100vh);
     overflow-x: hidden;
-    /* overflow-y: scroll; */
-    /* scroll-snap-type: y mandatory; */
 }
 
 /*section:nth-of-type(odd) {*/
@@ -8918,14 +8926,14 @@ button.accordion-button.collapsed {
     width: 100%;
     height: 110vh;
     margin: 0px auto;
-    border: 1px solid #c7c7c7;
+    /* border: 1px solid #c7c7c7; */
     padding: 45px 10px;
     background: #15304e;
     border-radius: 20px;
 }
 .form_style {
-    border: 1px solid #fff;
-    padding: 35px;
+    border: 1px solid #958b8bdb;
+    padding: 17px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px #ffffff;
     margin: 87px 25px 30px;
@@ -8938,8 +8946,10 @@ button.accordion-button.collapsed {
 
 .main-cardbox {
     width: 90vw;
-    margin: 0 auto;
+    margin: 20px auto 0;
     display: table;
+    background: #fff;
+    padding: 5px 20px 9px;
 }
 
 .form_style.five {
@@ -8950,25 +8960,104 @@ button.accordion-button.collapsed {
     font-family: 'Proxima Nova Rg';
     font-size: 20px;
     line-height: 25px;
-    color: #ffff;
+    color: #000;
     font-weight: 500;
     margin: 0 0 20px;
 }
 .my-newfrm h6 {
     font-family: 'Proxima Nova Rg';
-    font-size: 20px;
+    font-size: 18px;
     line-height: 25px;
-    color: #ffff;
-    font-weight: 500;
-    margin: 0 0 20px;
+    color: #000;
+    margin: 2px 0 0px;
+    font-weight: 600;
 }
 .my-newfrm p {
     font-family: 'Proxima Nova Rg';
     font-size: 16px;
     line-height: 25px;
-    color: #ffff;
+    color: #000;
     font-weight: 400;
-    margin: 0 0 20px;
+    margin: 0 0 10px;
 }
 
 /* My Form css end here  */
+
+
+.ex1 {
+  height: 130px;
+  width: auto;
+  overflow-y: scroll;
+  margin: 0;
+}
+
+.boxs-siz ::-webkit-scrollbar {
+  width: 10px;
+}
+
+.boxs-siz ::-webkit-scrollbar {display: inherit;}
+
+/* Track */
+.boxs-siz ::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+ 
+/* Handle */
+.boxs-siz ::-webkit-scrollbar-thumb {
+  background: #748da9;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+
+.boxs-siz :-webkit-scrollbar {
+    display: inherit;
+}
+.sav-btn a {
+    background: #15304e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 50px;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    font-size: 16px;
+    margin: 3px auto 0px;
+}
+.sav-btn a:hover {
+    background: white;
+    color: black;
+    font-size: 20px;
+}
+span.checkmark.ex1 {
+    font-weight: 400 !important;
+}
+
+
+
+/*////////////////*/
+
+.main-newfrm::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+	border-radius: 50px;
+}
+
+.main-newfrm::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #F5F5F5;
+	border-radius: 20px;
+}
+.main-newfrm::-webkit-scrollbar-thumb
+{
+	background-color:#15304e;
+	border: 2px solid #555555;
+	border-radius: 50px;
+}
+
+

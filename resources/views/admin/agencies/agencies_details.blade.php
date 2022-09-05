@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="student_1">
-                        <h4>Driver List</h4>
+                        <h4>Agencies List</h4>
                     </div>
                 </div>
             </div>
@@ -14,7 +14,7 @@
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="student_2 stu-4">
-                            <a href="{{route('admin_manage_driver_details')}}"><i class="fa-solid fa-plus"></i>New Driver</a>
+                            <a href="{{route('admin_manage_agency_details')}}"><i class="fa-solid fa-plus"></i>New Agency</a>
                         </div>
                     </div>
                              <div class="col-md-12 col-xs-12 col-xs-12">
@@ -23,9 +23,12 @@
                                 <thead>
                                 <tr>
                                     <th>S.No</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Email</th>
+                                    <th>Name</th>
+                                    <!--<th>City</th>-->
+                                    <!--<th>State</th>-->
+                                    <!--<th>Country</th>-->
+                                    <th>Address</th>
+                                    <th>Contact</th>
                                     <th>Status</th>
                                     <th width="100px">Action</th>
                                 </tr>
@@ -51,12 +54,15 @@
         var table = $('.data-table').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('admin_driver_details') }}",
+            ajax: "{{ route('admin_agencies_details') }}",
             columns: [
                 { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false },
-                {data: 'first_name', name: 'first_name'},
-                {data: 'last_name', name: 'last_name'},
-                {data: 'email', name: 'email'},
+                {data: 'name', name: 'name'},
+                // {data: 'city', name: 'city'},
+                // {data: 'state', name: 'state'},
+                // {data: 'country', name: 'country'},
+                {data: 'address', name: 'address'},
+                {data: 'contact', name: 'contact'},
                 {data: 'status', name: 'status'},
                 {data: 'action', name: 'Action', orderable: false, searchable: false},
             ],

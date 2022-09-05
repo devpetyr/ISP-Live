@@ -6,24 +6,24 @@
              <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="host">
-                    <h4>Driver</h4>
+                    <h4>Agencies</h4>
                     <ul>
-                        <li><a href="{{ route('admin_driver_details')}}">Dashboard</a></li>
-                        <li>Driver</li>
+                        <li><a href="{{ route('admin_agencies_details')}}">Dashboard</a></li>
+                        <li>Agencies</li>
                     </ul>
                 </div>
             </div>
         </div>
-            <form action="{{ route('admin_driver_details_process',[$id->id ?? '']) }}" method="post">
+            <form action="{{ route('admin_agency_details_process',[$id->id ?? '']) }}" method="post">
                 @csrf
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="admin_1 mother_1">
                         <div class="col-md-12">
                             
-                            <label class="form-label">First Name<span>*</span></label>
-                            <input type="text" placeholder="Enter driver first name" name="first_name" value="{{ $id->first_name ?? '' }}">                                
-                           @error('first_name')
+                            <label class="form-label">Name<span>*</span></label>
+                            <input type="text" placeholder="Enter agency name" name="name" value="{{ $id->name ?? '' }}">                                
+                           @error('name')
                                     <div class="alert alert-danger">
                                         {{ $message }}
                                     </div>
@@ -32,9 +32,9 @@
                         </div>
                         
                           <div class="col-md-12">
-                            <label class="form-label">Last Name<span>*</span></label>
-                            <input type="text" placeholder="Enter driver last name" name="last_name" value="{{ $id->last_name ?? '' }}">                                
-                           @error('last_name')
+                            <label class="form-label">City<span>*</span></label>
+                            <input type="text" placeholder="Enter agency city" name="city" value="{{ $id->city ?? '' }}">                                
+                           @error('city')
                                     <div class="alert alert-danger">
                                         {{ $message }}
                                     </div>
@@ -43,9 +43,9 @@
                         </div>
                         
                         <div class="col-md-12">
-                            <label class="form-label">Email<span>*</span></label>
-                            <input type="email" placeholder="Enter driver email" name="email" value="{{ $id->email ?? '' }}">                                
-                           @error('email')
+                            <label class="form-label">State<span>*</span></label>
+                            <input type="text" placeholder="Enter agency state" name="state" value="{{ $id->state ?? '' }}">                                
+                           @error('state')
                                     <div class="alert alert-danger">
                                         {{ $message }}
                                     </div>
@@ -53,18 +53,37 @@
 
                         </div>
                         
-                           <div class="col-md-12">
-                            <label class="form-label">Password<span>*</span></label>
-                            <input type="password" placeholder="Enter driver password" name="password" value="">                                
-                           @error('password')
+                        <div class="col-md-12">
+                            <label class="form-label">Country<span>*</span></label>
+                            <input type="text" placeholder="Ente agency country" name="country" value="{{ $id->country ?? '' }}">                                
+                           @error('country')
                                     <div class="alert alert-danger">
                                         {{ $message }}
                                     </div>
                             @enderror
 
                         </div>
-                        
-                           <div class="col-md-12">
+                        <div class="col-md-12">
+                            <label class="form-label">Address<span>*</span></label>
+                            <input type="text" placeholder="Enter agency address" name="address" value="{{ $id->address ?? '' }}">                                
+                           @error('address')
+                                    <div class="alert alert-danger">
+                                        {{ $message }}
+                                    </div>
+                            @enderror
+
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label">Contact<span>*</span></label>
+                            <input type="number" placeholder="Enter contact " name="contact" value="{{ $id->contact ?? '' }}">                                
+                           @error('contact')
+                                    <div class="alert alert-danger">
+                                        {{ $message }}
+                                    </div>
+                            @enderror
+
+                        </div>
+                             <div class="col-md-12">
                                     <div class="admin-status-radio">
                                         <label for="status" class="control-label mb-1">Status<span
                                                     class="text-danger">*</span></label>
@@ -76,15 +95,14 @@
                                              </label>
                                     </div>
                                 </div>
-                        
                     </div>
                 </div>
-              
+                
             </div>
             <div class="row">
                 <div class="col-12">
                     <div class="my_button ">
-                        <button class="save">Save</button>
+                        <button class="save">Submit</button>
                     </div>
                 </div>
             </div>

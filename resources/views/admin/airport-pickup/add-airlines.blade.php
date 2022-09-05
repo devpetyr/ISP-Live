@@ -1,22 +1,23 @@
 @extends('admin.layouts.main')
 @section('content')
     <div class="col-md-9 col-sm-9 col-xs-12">
-        <div class="row">
+        
+        <div class="main_bg inp-main">
+            <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="host">
                     <h4>Airlines</h4>
                     <ul>
-                        <li><a href="index.html">Dashboard</a></li>
+                        <li><a href="{{ route('admin_airport_pickup_airlines')}}">Dashboard</a></li>
                         <li>Airlines</li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="main_bg">
             <form action="{{ route('admin_manage_airlines_process',[$id->id ?? '']) }}" method="post">
                 @csrf
             <div class="row">
-                <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="admin_1 mother_1">
                         <div class="col-md-12">
                             
@@ -31,9 +32,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-sm-6 col-xs-12">
-
-                </div>
+               
             </div>
             <div class="row">
                 <div class="col-12">

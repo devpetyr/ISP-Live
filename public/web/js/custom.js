@@ -221,3 +221,41 @@ $(document).ready(function() {
   }
 });
 $('.single-item').slick();
+
+// ====================================== JS GET N POST REQUEST ======================================
+function AjaxRequest(url, data) {
+  var res;
+  $.ajax({
+    url: url,
+    data: data,
+    async: false,
+    error: function () {
+      console.log("error");
+    },
+    dataType: "json",
+    success: function (data) {
+      res = data;
+    },
+    type: "POST",
+  });
+  return res;
+}
+
+function AjaxRequest_get(url, data) {
+  var res;
+  $.ajax({
+    url: url,
+    data: data,
+    async: false,
+    type: "GET",
+    dataType: "json",
+    success: function (data) {
+      res = data;
+    },
+    error: function () {
+      console.log("error");
+    },
+  });
+  return res;
+}
+// ============================================================================

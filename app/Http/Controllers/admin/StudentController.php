@@ -22,10 +22,45 @@ class StudentController extends EmailController
 //    {
 //        return view('admin.students.profile');
 //    }
-    public function details()
+    public function details(Request $request)
     {
-        $users = User::where('user_role', 2)->get();
-        return view('admin.students.details', compact('users'));
+//        $users = User::where('user_role', 2)->get();
+//        dd($users);
+        if ($request->ajax()) {
+            // using eloquent model donot use get()
+            $model = User::where('user_role', 2);
+
+            return DataTables::eloquent($model)
+                //adding index or s.no
+                ->addIndexColumn()
+                ->editColumn('application_submitted', function ($model) {
+                    return $model->application_submitted === 1 ? 'Submitted' : 'Pending';
+//                    if($model->application_submitted === 1){
+//                        return "Submitted";
+//                    }else{
+//                        return "Pending";
+//                    }
+                })
+//                ->filterColumn('status', function ($query, $keyword) {
+//                    $query->whereRaw('status(1,Succeeded)', 'like', ["%$keyword%"]);
+//                })
+                ->editColumn('is_active', function ($model) {
+                    if ($model->is_active === 1) {
+                        return "Verified";
+                    } else {
+                        return "Pending";
+                    }
+                })
+                ->editColumn('status', function ($model) {
+                    if ($model->status === 1) {
+                        return "Approved";
+                    } else {
+                        return "Pending";
+                    }
+                })
+                ->toJson();
+        }
+        return view('admin.students.details');
     }
 
     public function student_applications()
@@ -190,19 +225,19 @@ class StudentController extends EmailController
                 ->addColumn('student_email', function ($model) {
                     return empty($model->getUser) ? '' : $model->getUser->email;
                 })
-                ->addColumn('payment_transaction_date', function($model) {
+                ->addColumn('payment_transaction_date', function ($model) {
                     return empty($model->getPayment) ? '' : $model->getPayment->created_at->format('d-m-Y');
                 })
                 ->filterColumn('payment_transaction_date', function ($query, $keyword) {
                     $query->whereRaw("DATE_FORMAT(payment_transaction_date,'%d-%m-%Y') like ?", ["%$keyword%"]);
                 })
                 ->editColumn('fees', function ($model) {
-                        return "$".$model->fees;
+                    return "$" . $model->fees;
                 })
                 ->editColumn('is_paid', function ($model) {
-                    if($model->is_paid === 1){
+                    if ($model->is_paid === 1) {
                         return "Succeeded";
-                    }else{
+                    } else {
                         return "Pending";
                     }
                 })

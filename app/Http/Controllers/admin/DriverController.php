@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Crypt;
 
 use Yajra\DataTables\Facades\DataTables;
 
@@ -26,9 +27,13 @@ class DriverController extends Controller
                         <a class="red-text" href="' . route('admin_delete_driver', [$model->id]) . '" ><i class="fa-solid fa-trash"></i></a>';
                     return $btn;
                 })
-                // ->addColumn('RegionName', function ($model) {
-                //     return $model->getRegion->name;
-                // })
+               ->editColumn('status', function ($model) {
+                    if ($model->status === 1) {
+                        return "Active";
+                    } else {
+                        return "Inactive";
+                    }
+                })
                 ->toJson();
         }
         return view('admin.drivers.driver_details');
@@ -36,6 +41,9 @@ class DriverController extends Controller
     
     public function manage_driver(User $id)
     {
+        // dd(Hash::needsRehash($id->password));
+        
+        // $decrypt= Crypt::decrypt($id->password);  
         return view('admin.drivers.add-driver',compact('id'));
     }
     
@@ -45,7 +53,7 @@ class DriverController extends Controller
           $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',
-            'email' => 'required',
+            'email' => 'required'
         ], [
             'first_name.required' => 'The driver first name is required.',
             'last_name.required' => 'The driver last name is required.',
@@ -57,13 +65,30 @@ class DriverController extends Controller
         } else {
             $model = new User();
             $msg = "Driver added successfully.";
+               $request->validate([
+            'password' => 'required',
+        ], [
+            'password.required' => 'The driver password is required.'
+        ]);
+            foreach($model->get() as $checkUser)
+            {
+                if($request->email == $checkUser->email)
+                {
+                    // dd('yes');
+                    return back()->with('error','The driver email is exist.');
+                }
+            }
         }
+       
+        
         $model->first_name = $request->first_name;
         $model->last_name = $request->last_name;
         $model->email = $request->email;
-        // $model->password = Hash::make($request->password);
-        $model->password = Hash::make('passwordIsNotSet');
+        $model->password = Hash::make($request->password);
         $model->user_role = 5 ;
+        $model->status = $request->status ;
+        $model->is_active = 1 ;
+        // $model->application_submitted = 0 ;
 
         $model->save();
          return redirect()->route('admin_driver_details')->with('success', $msg);
