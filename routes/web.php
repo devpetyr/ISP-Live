@@ -18,12 +18,14 @@ use App\Http\Controllers\admin\
 };
 use App\Http\Controllers\student\
 {
-    StudentDashboardController
+    StudentDashboardController,
+    StudentApplicationController
 };
 
 use App\Http\Controllers\host\
 {
-    HostDashboardController
+    HostDashboardController,
+    HostApplicationController
 };
 
 use App\Http\Controllers\coordinator\
@@ -83,21 +85,21 @@ Route::group(['prefix' => 'admin', 'middleware' => 'AdminAuthMiddleware'], funct
     Route::get('student/view-applications/{application}', [StudentController::class, 'view_student_applications'])->name('admin_view_student_application');
     Route::post('student/applications/{app_id}', [StudentController::class, 'student_application_status'])->name('admin_student_application_status');
     Route::get('student/payments', [StudentController::class, 'payments'])->name('admin_student_payments');
-    
+
     /* Admin School Start */
     Route::get('student/schools', [StudentController::class, 'schools'])->name('admin_student_schools');
     Route::get('student/schools/manage-schools/{id?}', [StudentController::class, 'manage_school'])->name('admin_manage_school');
     Route::post('student/schools/manage-schools-process/{id?}', [StudentController::class, 'manage_school_process'])->name('admin_manage_school_process');
     Route::get('student/schools/delete/{id?}', [StudentController::class, 'delete_school'])->name('admin_delete_school');
     /* Admin School End */
-    
+
     /* Admin Region Start */
     Route::get('student/regions', [StudentController::class, 'regions'])->name('admin_student_regions');
     Route::get('student/regions/manage-regions/{id?}', [StudentController::class, 'manage_region'])->name('admin_manage_region');
     Route::post('student/regions/manage-regions-process/{id?}', [StudentController::class, 'manage_region_process'])->name('admin_manage_region_process');
     Route::get('student/regions/delete/{id?}', [StudentController::class, 'delete_region'])->name('admin_delete_region');
     /* Admin Region End */
-    
+
     /*Host Routes Start */
     Route::get('host/details', [HostController::class, 'details'])->name('admin_host_details');
     Route::get('host/details/manage-host/{id}', [HostController::class, 'manage_host'])->name('admin_manage_host');
@@ -111,14 +113,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'AdminAuthMiddleware'], funct
     /*Airport Routes*/
     Route::get('airport-pickup/', [AirportPickupController::class, 'airport_pickup'])->name('admin_airport_pickup');
     Route::get('airport-pickup/drivers', [AirportPickupController::class, 'drivers'])->name('admin_drivers');
-    
+
     /**Admin Airlines */
     Route::get('airport-pickup/airlines', [AirportPickupController::class, 'airlines'])->name('admin_airport_pickup_airlines');
     Route::get('airport-pickup/airlines/manage-airlines/{id?}', [AirportPickupController::class, 'manage_airline'])->name('admin_manage_airlines');
     Route::post('airport-pickup/airlines/manage-airlines-process/{id?}', [AirportPickupController::class, 'manage_airline_process'])->name('admin_manage_airlines_process');
     Route::get('airport-pickup/airlines/delete/{id?}', [AirportPickupController::class, 'delete_airline'])->name('admin_delete_airline');
-    
-    
+
+
     /**Admin Driver */
     Route::get('drivers/details', [DriverController::class, 'drivers'])->name('admin_driver_details');
     Route::get('drivers/details/manage-driver/{id?}', [DriverController::class, 'manage_driver'])->name('admin_manage_driver_details');
@@ -130,7 +132,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'AdminAuthMiddleware'], funct
     Route::get('agents/details/manage-agent/{id?}', [AgentController::class, 'manage_agent'])->name('admin_manage_agent_details');
     Route::post('agents/details/manage-agent-process/{id?}', [AgentController::class, 'manage_agent_process'])->name('admin_agent_details_process');
     Route::get('agents/details/delete/{id?}', [AgentController::class, 'delete_agent'])->name('admin_delete_agent');
-    
+
     /*agencies Routes*/
     Route::get('agencies/details', [AgencyController::class, 'agencies'])->name('admin_agencies_details');
     Route::get('agencies/details/manage-agency/{id?}', [AgencyController::class, 'manage_agency'])->name('admin_manage_agency_details');
@@ -149,7 +151,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'AdminAuthMiddleware'], funct
     Route::post('admin/admin-profile/admin-password-process', [AdminProfileController::class, 'password_process'])->name('admin_password_process');
     Route::get('admin/admin-profile/admin-manage-profile', [AdminProfileController::class, 'manage_profile'])->name('admin_manage_profile');
     Route::post('admin/admin-profile/admin-profile-process', [AdminProfileController::class, 'profile_process'])->name('admin_profile_process');
-    
+
     /*Reports Routes*/
     Route::get('reports/placements', [CoordinatorController::class, 'placements'])->name('admin_reports_placements');
 });
@@ -180,7 +182,18 @@ Route::group(['prefix' => 'host', 'middleware' => 'HostAuthMiddleware'], functio
     /*Dashboard Routes*/
     Route::get('dashboard', [HostDashboardController::class, 'dashboard'])->name('host_dashboard');
 
+
 });
+// host application route start
+Route::post('host-information-application', [HostApplicationController::class, 'host_information_application'])->name('host_information_application');
+Route::post('host-partner-application', [HostApplicationController::class, 'host_partner_application'])->name('host_partner_application');
+Route::post('host-adult-application', [HostApplicationController::class, 'host_adult_application'])->name('host_adult_application');
+Route::post('host-childs-application', [HostApplicationController::class, 'host_childs_application'])->name('host_childs_application');
+Route::post('host-pets-house-student-school-application', [HostApplicationController::class, 'host_pets_house_student_school_application'])->name('host_pets_house_student_school_application');
+Route::post('host-personal-detail-application', [HostApplicationController::class, 'host_personal_detail_application'])->name('host_personal_detail_application');
+Route::post('host-emergency-contact-application', [HostApplicationController::class, 'host_emergency_contact_application'])->name('host_emergency_contact_application');
+// host application route end
+
 /*
 |--------------------------------------------------------------------------
 | coordinators routes
@@ -246,14 +259,26 @@ Route::get('stripe-form/{userId}', [WebPaymentController::class, 'stripe_form'])
 Route::post('/payment/{userId}', [WebPaymentController::class, 'event_stripe'])->name('web_stripe_post');
 
 
-    Route::get('new-application-form',function(){
-//        $agencies = AgentModel::where('status', 1)->get();
-        return view('student.application-form.new-application-form');
-    });
+Route::get('new-application-form',[StudentApplicationController::class, 'application_form'])->name('web_saf');
+
+
+Route::get('new-host-application-form', function () {
+    return view('host.application-form.new-application-form');
+});
 //    Route::get('new-application-form', [StudentDashboardController::class, 'new_application_form']);
-    Route::post('new-application-form-submit', [StudentDashboardController::class, 'new_application_form_submit'])->name('new_student_application_form_submit');
+Route::post('check-application-section-status', [StudentApplicationController::class, 'saf_section_status'])->name('saf_section_status');
 
-
+Route::post('application-form-submit1', [StudentApplicationController::class, 'saf_submit_1'])->name('saf_submit_1');
+Route::post('application-form-submit2-1', [StudentApplicationController::class, 'saf_submit_2_1'])->name('saf_submit_2_1');
+Route::post('application-form-submit2-2', [StudentApplicationController::class, 'saf_submit_2_2'])->name('saf_submit_2_2');
+Route::post('application-form-submit3', [StudentApplicationController::class, 'saf_submit_3'])->name('saf_submit_3');
+Route::post('application-form-submit4', [StudentApplicationController::class, 'saf_submit_4'])->name('saf_submit_4');
+Route::post('application-form-submit5', [StudentApplicationController::class, 'saf_submit_5'])->name('saf_submit_5');
+Route::post('application-form-submit6', [StudentApplicationController::class, 'saf_submit_6'])->name('saf_submit_6');
+Route::post('application-form-submit7', [StudentApplicationController::class, 'saf_submit_7'])->name('saf_submit_7');
+Route::post('application-form-submit8-1-1', [StudentApplicationController::class, 'saf_submit_8_1_1'])->name('saf_submit_8_1_1');
+Route::post('application-form-submit8-1-2', [StudentApplicationController::class, 'saf_submit_8_1_2'])->name('saf_submit_8_1_2');
+Route::post('application-form-submit8-2', [StudentApplicationController::class, 'saf_submit_8_2'])->name('saf_submit_8_2');
 
 /** Forgot Password View */
 Route::get('/forgot-password', [WebAuthController::class, 'forgot_password_view'])->name('web_forgot_Password');

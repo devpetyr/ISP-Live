@@ -224,6 +224,8 @@ $('.single-item').slick();
 
 // ====================================== JS GET N POST REQUEST ======================================
 function AjaxRequest(url, data) {
+  console.log(url,data);
+  return false;
   var res;
   $.ajax({
     url: url,

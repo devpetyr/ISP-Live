@@ -1,49 +1,33 @@
-<!doctype html>
-<html lang="en">
+@extends('web.layouts.main')
+@section('page_title','ISP - Student - Application Form')
+@section('content')
+{{--    @if ($errors->any())--}}
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- css start -->
-@include('web.layouts.std_css')
-<!-- css ends -->
-    <title>ISP - Student - Application Form</title>
-</head>
-
-<body>
-<!-- header-top -->
-
-
-<!-- header-top-end -->
-
-<!-- header start -->
-@include('web.layouts.header')
-<!-- header end -->
-
-
-
-{{--@extends('web.layouts.main')--}}
-{{--@section('page_title','ISP - Student - Application Form')--}}
-{{--@section('content')--}}
-
+{{--        <div class="alert alert-danger">--}}
+{{--            <ul class="list-unstyled">--}}
+{{--                @foreach ($errors->all() as $error)--}}
+{{--                    <li>{{ $error }}</li>--}}
+{{--                @endforeach--}}
+{{--            </ul>--}}
+{{--        </div>--}}
+{{--    @endif--}}
 <!-- banner start -->
-<section class="banner-main_slider">
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="{{asset('web/images/Blog.banner-img.jpg')}}" class="img-fluid" alt="...">
-                <div class="carousel-caption">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-8 col-md-8 ">
-                                <div class="banner-content">
-                                    <div class="banner_text wow fadeInLeft" data-wow-duration="2s">
-                                        <h1 class="wow zoomIn">Application Form</h1>
-                                        <!--  <div class="banner-btn">-->
-                                        <!--  <a href="javascript:void(0)" class="btn btn_badam">Start Here</a>-->
-                                        <!--</div>-->
+    <section class="banner-main_slider">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{{asset('web/images/Blog.banner-img.jpg')}}" class="img-fluid" alt="...">
+                    <div class="carousel-caption">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-8 col-md-8 ">
+                                    <div class="banner-content">
+                                        <div class="banner_text wow fadeInLeft" data-wow-duration="2s">
+                                            <h1 class="wow zoomIn">Application Form</h1>
+                                            <!--  <div class="banner-btn">-->
+                                            <!--  <a href="javascript:void(0)" class="btn btn_badam">Start Here</a>-->
+                                            <!--</div>-->
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -52,39 +36,23 @@
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 <!-- banner end -->
-{{--@if ($errors->any())--}}
 
-{{--    <div class="alert alert-danger">--}}
-{{--        <ul class="list-unstyled">--}}
-{{--            @foreach ($errors->all() as $error)--}}
-{{--                <li>{{ $error }}</li>--}}
-{{--            @endforeach--}}
-{{--        </ul>--}}
-{{--    </div>--}}
-{{--@endif--}}
 <section class="payment-form">
     <div class="container-fluid">
-
-        {{--        <form action="#" method="post" enctype="multipart/form-data">--}}
-        {{--            @csrf--}}
 
 
         <div class="form-main2">
             <!-- form new start-->
             <main class="main-newfrm">
                 <article class=form-article>
-
-                    <form action="{{route('saf_submit_1')}}" id="Form-Section1" method="post"
-                          enctype="multipart/form-data">
-                        @csrf
-{{--                        <input type="hidden" name="section" value="Form-Section1"/>--}}
-                        <!--Section 1 Start-->
+                    <form action="#" id="section1" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <!--Section 1 Start-->
                         <section class="my-newfrm">
                             <div class="form_style  main-cardbox">
-                                @csrf
+
                                 <h3> Choose Program</h3>
                                 <div class="payment-ckbx">
                                     <label>
@@ -113,54 +81,58 @@
                                             <div class="input-flds">
                                                 <label><i class="fa-solid fa-user"></i>First
                                                     Name<span>*</span></label>
-                                                <input class="form1" type="text" name="first_name" value="{{$data1 ? $data1->first_name : ""}}" required>
+                                                <input type="text" name="first_name">
 
-                                                @error('first_name')
+                                                {{--                                                    @error('first_name')--}}
                                                 <div class="text-danger">
-                                                    {{ $message }}
+                                                    message
+                                                    {{--                                                        {{ $message }}--}}
                                                 </div>
-                                                @enderror
+                                                {{--                                                    @enderror--}}
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <div class="input-flds">
                                                 <label><i class="fa-solid fa-user"></i>Last
                                                     Name<span>*</span></label>
-                                                <input class="form1" type="text" name="last_name" value="{{$data1 ? $data1->last_name : ""}}" required>
+                                                <input type="text" name="last_name" required>
 
-                                                @error('last_name')
+                                                {{--                                                    @error('last_name')--}}
                                                 <div class="alert alert-danger">
-                                                    {{ $message }}
+                                                    message
+                                                    {{--                                                        {{ $message }}--}}
                                                 </div>
-                                                @enderror
+                                                {{--                                                    @enderror--}}
                                             </div>
                                         </div>
                                     </div>
                                     <!--end-->
                                     <div class="row">
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <h6 class="birhdate">Birthdate:</h6>
-                                            <p class="birhdate">(To select a year quickly, click the year number
-                                                (like
-                                                "2020") and then
-                                                the
-                                                << symbol. To select a month quickly, click the month name.)</p>
+                                            <!--<h6 class="birhdate">Birthdate:</h6>-->
+                                            <!--<p class="birhdate">(To select a year quickly, click the year number-->
+                                            <!--    (like-->
+                                            <!--    "2020") and then-->
+                                            <!--    the-->
+                                            <!--    << symbol. To select a month quickly, click the month name.)</p>-->
                                             <div class="input-flds">
                                                 <label><i class="fa-solid fa-calendar-days"></i>Date of Birth
                                                     <span>*</span></label><br>
-                                                <input type="date" name="dob"  value="{{$data1 ? $data1->dob : ""}}" required>
+                                                <input type="date" name="dob" required>
 
-                                                @error('dob')
+                                                {{--                                                    @error('dob')--}}
                                                 <div class="alert alert-danger">
-                                                    {{ $message }}
+                                                    date of birth required
+                                                    {{--                                                        {{ $message }}--}}
                                                 </div>
-                                                @enderror
+                                                {{--                                                    @enderror--}}
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <h6 class="age"><i class="fa-solid fa-child"></i>Age <span>*</span></h6>
                                             <div class="input-flds">
-                                                <input type="number" name="age" maxlength="3" value="{{$data1 ? $data1->age : ""}}" required>
+                                                <input type="text" name="age" maxlength="3" required>
+
                                                 @error('age')
                                                 <div class="alert alert-danger">
                                                     {{ $message }}
@@ -177,16 +149,16 @@
                                             <div class="payment-ckbx two">
 
                                                 <label>
-                                                    <input type="radio" value="Male" checked="{{$data1 && $data1->gender == "Male" ? "checked" : "" }}"
+                                                    <input type="radio" value="Male" checked="checked"
                                                            name="gender">
                                                     <span class="checkmark">Male</span>
                                                 </label>
                                                 <label>
-                                                    <input type="radio" value="Female" name="gender" checked="{{$data1 && $data1->gender == "Female" ? "checked" : "" }}">
+                                                    <input type="radio" value="Female" name="gender">
                                                     <span class="checkmark">Female</span>
                                                 </label>
                                                 <label>
-                                                    <input type="radio" value="Other" name="gender" checked="{{$data1 && $data1->gender == "Other" ? "checked" : "" }}">
+                                                    <input type="radio" value="Other" name="gender">
                                                     <span class="checkmark">Other</span>
                                                 </label>
 
@@ -203,13 +175,14 @@
                                                 <label><i class="fa-solid fa-earth-americas"></i>Country of
                                                     Permanent
                                                     Residence<span>*</span></label>
+
                                                 <select class="yd-select " required="" data-parsley-required=""
                                                         data-parsley-required-message="This field is Required."
                                                         name="country_of_permanent_residence"
                                                         id="country_of_permanent_residence"
                                                         placeholder=""
                                                         tabindex="1" data-parsley-group="block-0">
-                                                    <option value="{{$data1 ? $data1->country_of_permanent_residence : ""}}">{{$data1 ? $data1->country_of_permanent_residence : ""}}</option>
+                                                    <option value=""></option>
                                                     <option value="Afghanistan">Afghanistan</option>
                                                     <option value="Åland Islands">Åland Islands</option>
                                                     <option value="Albania">Albania</option>
@@ -523,7 +496,7 @@
                                                 Number
                                                 <span>*</span></h6>
                                             <div class="input-flds">
-                                                <input type="text" name="passport_number" maxlength="100" value="{{$data1 ? $data1->passport_number : ""}}" required>
+                                                <input type="text" name="passport_number" maxlength="100" required>
 
                                                 @error('passport_number')
                                                 <div class="alert alert-danger">
@@ -537,7 +510,7 @@
                                                 Date
                                                 <span>*</span></h6>
                                             <div class="input-flds">
-                                                <input type="date" name="passport_exp" value="{{$data1 ? $data1->passport_exp : ""}}" required>
+                                                <input type="date" name="passport_exp" required>
 
                                                 @error('passport_exp')
                                                 <div class="alert alert-danger">
@@ -549,7 +522,7 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-md-4 col-sm-4 col-xs-12">
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
                                             <h6 class="passport-exp"><i class="fa-solid fa-calendar-days"></i>Attach
                                                 Profile Photo
                                                 <span>*</span></h6>
@@ -564,25 +537,21 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <button type="submit" class="sav-btn" id="sav-Btn1">
+                                        Save
+                                    </button>
+                                </div>
 
-                                </div>
-                                <div class="sav-btn">
-                                    <button type="submit">Save</button>
-                                    {{--                                    <a href="javascript:void(0)" class="form-submit"--}}
-                                    {{--                                       onclick="getFormObj('Form-Section1');">Save</a>--}}
-                                    {{--                                    <button type="button" onclick="getFormObj('Form-Section1');">save</button>--}}
-                                </div>
                                 <!--Student Details End-->
                             </div>
                         </section>
                         <!--Section 1 End-->
                     </form>
+                    <form action="#" method="post" enctype="multipart/form-data">
+                    @csrf
                     <!--Section 2 Start-->
-                    <form action="{{route('saf_submit_2_1')}}" id="Form-Section2-1" method="post">
-                        @csrf
-{{--                        <input type="hidden" name="section" value="Form-Section2-1"/>--}}
                         <!--Section 2 First Half Start-->
-                        <section class="my-newfrm" id="section-Section2-1">
+                        <section class="my-newfrm">
                             <div class="form_style  main-cardbox">
                                 <h3>Student Details</h3>
 
@@ -922,7 +891,7 @@
                                             <div class="input-flds">
                                                 <label><i class="fa-solid fa-number"></i>Zip
                                                     Code<span>*</span></label>
-                                                <input type="number" name="student_address_zip_code" required>
+                                                <input type="tel" name="student_address_zip_code" required>
 
                                                 @error('student_address_zip_code')
                                                 <div class="alert alert-danger">
@@ -1151,21 +1120,18 @@
                                                 @enderror
                                             </div>
                                         </div>
-
+                                        <div class="sav-btn">
+                                            <a href="#">Save</a>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="sav-btn">
-                                    <button type="submit">Save</button>
-                                </div>
+
                             </div>
                         </section>
                         <!--Section 2 First Half End-->
-                    </form>
 
-                    <form action="{{route('saf_submit_2_2')}}" id="Form-Section2-2" method="post">
-                    @csrf
-                    <!--Section 2 Second Half Start-->
-                        <section class="my-newfrm" id="section-Section2-2" >
+                        <!--Section 2 Second Half Start-->
+                        <section class="my-newfrm">
                             <div class="form_style  main-cardbox">
 
                                 <!--Emergency Contact End-->
@@ -1771,7 +1737,7 @@
                                                 <label><i class="fa-solid fa-graduation-cap"></i>Contract Start
                                                     Date:
                                                     <span>*</span></label>
-                                                <input type="date" name="contract_start_date">
+                                                <input type="text" name="contract_start_date">
 
                                                 @error('contract_start_date')
                                                 <div class="alert alert-danger">
@@ -1784,7 +1750,7 @@
                                             <div class="input-flds">
                                                 <label><i class="fa-solid fa-graduation-cap"></i>Contract End Date:
                                                     <span>*</span></label>
-                                                <input type="date" name="contract_end_date">
+                                                <input type="text" name="contract_end_date">
 
                                                 @error('contract_end_date')
                                                 <div class="alert alert-danger">
@@ -2010,19 +1976,17 @@
                                         </div>
                                     </div>
                                     <!--Will You Have A Car End-->
-                                </div>
-                                <div class="sav-btn">
-                                    <button type="submit">Save</button>
+                                    <div class="sav-btn">
+                                        <a href="#">Save</a>
+                                    </div>
+
                                 </div>
                             </div>
                         </section>
                         <!--Section 2 Second Half End-->
-                    </form>
-                    <!--Section 2 End-->
+                        <!--Section 2 End-->
 
-                    <form action="{{route('saf_submit_3')}}" id="Form-Section3" method="post">
-                    @csrf
-                    <!--Section 3 Start-->
+                        <!--Section 3 Start-->
                         <section class="my-newfrm ">
                             <div class="form_style main-cardbox">
                                 <h3>Agent Details</h3>
@@ -2181,19 +2145,16 @@
                                                 @enderror
                                             </div>
                                         </div>
+                                        <div class="sav-btn">
+                                            <a href="#">Save</a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="sav-btn">
-                                    <button type="submit">Save</button>
                                 </div>
                             </div>
                         </section>
                         <!--Section 3 End-->
-                    </form>
 
-                    <form action="{{route('saf_submit_4')}}" id="Form-Section4" method="post">
-                    @csrf
-                    <!--Section 4 Start-->
+                        <!--Section 4 Start-->
                         <section class="my-newfrm">
                             <div class="form_style main-cardbox">
                                 <div class="food-restrictions">
@@ -2295,19 +2256,17 @@
                                                 @enderror
                                             </div>
                                         </div>
+                                        <div class="sav-btn">
+                                            <a href="#">Save</a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="sav-btn">
-                                    <button type="submit">Save</button>
                                 </div>
                             </div>
                         </section>
                         <!--Section 4 End-->
-                    </form>
 
-                    <form action="{{route('saf_submit_5')}}" id="Form-Section5" method="post" enctype="multipart/form-data">
-                    @csrf
-                    <!--Section 5 Start-->
+                        <!--Section 5 Start-->
+
                         <section class="my-newfrm">
                             <div class="form_style  main-cardbox">
                                 <div class="medical-info">
@@ -2540,19 +2499,16 @@
                                                 @enderror
                                             </div>
                                         </div>
+                                        <div class="sav-btn">
+                                            <a href="#">Save</a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="sav-btn">
-                                    <button type="submit">Save</button>
                                 </div>
                             </div>
                         </section>
                         <!--Section 5 End-->
-                    </form>
 
-                    <form action="{{route('saf_submit_6')}}" id="Form-Section6" method="post">
-                    @csrf
-                    <!--Section 6 Start-->
+                        <!--Section 6 Start-->
                         <section class="my-newfrm">
                             <div class="form_style  main-cardbox">
                                 <div class="airport">
@@ -2731,20 +2687,15 @@
                                             </div>
                                             @enderror
                                         </div>
-
+                                        <div class="sav-btn">
+                                            <a href="#">Save</a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="sav-btn">
-                                    <button type="submit">Save</button>
                                 </div>
                             </div>
                         </section>
                         <!--Section 6 End-->
-                    </form>
-
-                    <form action="{{route('saf_submit_7')}}" id="Form-Section7" method="post">
-                    @csrf
-                    <!--Section 7 Start-->
+                        <!--Section 7 Start-->
                         <section class="my-newfrm">
                             <div class="form_style  main-cardbox">
                                 <!--<div class="form_style five">-->
@@ -3440,20 +3391,17 @@
                                                 @enderror
                                             </div>
                                         </div>
+                                        <div class="sav-btn">
+                                            <a href="#">Save</a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="sav-btn">
-                                    <button type="submit">Save</button>
                                 </div>
                             </div>
                         </section>
                         <!--Section 7 End-->
-                    </form>
 
-                    <!--Section 8 Start-->
-                    <form action="{{route('saf_submit_8_1_1')}}" id="Form-Section8-1-1" method="post">
-                    @csrf
-                    <!--Section 8 First Half Start-->
+                        <!--Section 8 Start-->
+                        <!--Section 8 First Half Start-->
                         <section class="my-newfrm">
                             <div class="form_style  main-cardbox">
                                 <div class="refundable-payment termsconditions">
@@ -3644,18 +3592,13 @@
                                         </div>
 
                                     </div>
-                                </div>
-                                <div class="sav-btn">
-                                    <button type="submit">Save</button>
+
                                 </div>
                             </div>
                         </section>
-                        <!--Section 8 First Half End-->
-                    </form>
 
-                    <form action="{{route('saf_submit_8_1_2')}}" id="Form-Section8-1-2" method="post">
-                    @csrf
-                    <!--Section 8 First Half Start-->
+                        <!--Section 8 First Half End-->
+                        <!--Section 8 First Half Start-->
                         <section class="my-newfrm">
                             <div class="form_style  main-cardbox">
                                 <div class="refundable-payment termsconditions">
@@ -3976,18 +3919,15 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="sav-btn">
-                                    <button type="submit">Save</button>
+
                                 </div>
                             </div>
                         </section>
-                        <!--Section 8 First Half End-->
-                    </form>
 
-                    <form action="{{route('saf_submit_8_2')}}" id="Form-Section8-2" method="post">
-                    @csrf
-                    <!--Section 8 Second Half Start-->
+                        <!--Section 8 First Half End-->
+
+
+                        <!--Section 8 Second Half Start-->
                         <section class="my-newfrm">
                             <div class="form_style  main-cardbox">
 
@@ -4063,9 +4003,8 @@
                             </div>
                         </section>
                         <!--Section 8 Second Half End-->
-                    </form>
-                    <!--Section 8 End-->
-
+                        <!--Section 8 End-->
+</form>
                 </article>
             </main>
 
@@ -4076,109 +4015,35 @@
 
         </div>
         <!-- main -->
-        {{--        </form>--}}
+        
     </div>
 </section>
+@push('js')section1
+    <script>
+        $(document).ready(function () {
+            $('#sav-Btn1').click(function (){
 
-<!-- footer start  -->
-@include('web.layouts.footer')
-<!-- footer end  -->
+                var formData = {
+                    program: $("input[name=program]").val(),
+                    first_name: $("input[name=first_name]").val(),
+                    last_name: $("input[name=last_name]").val(),
+                    dob: $("input[name=dob]").val(),
+                    age: $("input[name=age]").val(),
+                    gender: $("input[name=gender]").val(),
+                    country_of_permanent_residence: $("#country_of_permanent_residence").val(),
+                    passport_number: $("input[name=passport_number]").val(),
+                    passport_exp: $("input[name=passport_exp]").val(),
+                    student_profile_photo: $("input[name=student_profile_photo]").val(),
 
+                };
 
-<!-- js start -->
-@include('web.layouts.js')
-<!-- js ends -->
-{{--@push('js')--}}
-<script>
-    // $(document).ready(function () {
-    {{--$('.get-id').click(function (){--}}
-    {{--    order_id= $(this).data("orderid");--}}
-    {{--    var data = {'order_id':order_id,'_token':'{{csrf_token()}}'};--}}
-    {{--    var url = '{{route('admin_internal_notes')}}';--}}
-    {{--    var res = AjaxRequest(url,data);--}}
-    {{--    if(res.status==1)--}}
-    {{--    {--}}
-    {{--        $('#internal_notes').val(res.data);--}}
-    {{--    }--}}
-    {{--})--}}
-    // function MyAjaxRequest(url, data) {
-    //     var res;
-    //     $.ajax({
-    //         url: url,
-    //         data: data,
-    //         async: false,
-    //         error: function () {
-    //             console.log('error');
-    //         },
-    //         dataType: 'json',
-    //         success: function (data) {
-    //             res = data;
-    //
-    //         },
-    //         type: 'POST'
-    //     });
-    //
-    //     return res;
-    // }
-
-
-    // $('.Section-Btn').click(function () {
-    {{--function getFormObj(formId) {--}}
-
-
-    {{--var formdata = $('#Form-Section1 :input').serialize();--}}
-    {{--alert(formdata);--}}
-    {{--let url = '{{route('new_student_application_form_submit')}}';--}}
-    {{--// let data = formData;--}}
-    {{--let data = {'data': formdata, 'Section':formId , '_token': '{{csrf_token()}}'};--}}
-    {{--let res = MyAjaxRequest(url, data);--}}
-    {{--if (res.status == 1) {--}}
-    {{--    console.log(res.data);--}}
-    {{--} else {--}}
-    {{--    console.log(res + 'error');--}}
-    {{--}--}}
-    {{--return false;--}}
-
-
-    //
-    // var inputs = $(".form1");
-    // var mydata;
-    // for(var i = 0; i < inputs.length; i++){
-    //     var myname = $(inputs[i]).attr("name");
-    //     var myvalue = $(inputs[i]).val();
-    //     var combine = myname+myvalue;
-    //     mydata += combine;
-    //     // mydata +=( $(inputs[i]).attr("name")+' '+$(inputs[i]).val());
-    // }
-    // console.log(mydata);
-    //
-
-
-    // data = $('#myform1').serialize();
-    // console.log(data, formId);
-    // return false;
-    // var formData = {
-    //     program: $("input[name=program]").val(),
-    //     first_name: $("input[name=first_name]").val(),
-    //     last_name: $("input[name=last_name]").val(),
-    //     dob: $("input[name=dob]").val(),
-    //     age: $("input[name=age]").val(),
-    //     gender: $("input[name=gender]").val(),
-    //     country_of_permanent_residence: $("#country_of_permanent_residence").val(),
-    //     passport_number: $("input[name=passport_number]").val(),
-    //     passport_exp: $("input[name=passport_exp]").val(),
-    //     student_profile_photo: $("input[name=student_profile_photo]").val(),
-    //
-    // };
-    // alert(formData); console.log(formData); return false;
-
-    // };
-    // });
-</script>
-{{--@endpush--}}
-</body>
-
-
-{{--@endsection--}}
-
-</html>
+                let url = '{{route('new_student_application_form_submit')}}';
+                // let data = formData;
+                let data = {'data': formData,'_token': '{{csrf_token()}}'};
+                let result = AjaxRequest(url, data);
+                console.log(result);
+            });
+        });
+    </script>
+@endpush
+@endsection

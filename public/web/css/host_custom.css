@@ -9031,7 +9031,7 @@ hr.hr-style {
 .boxs-siz :-webkit-scrollbar {
     display: inherit;
 }
-.sav-btn a {
+.sav-btn button {
     background: #15304e;
     display: flex;
     justify-content: center;
@@ -9044,7 +9044,7 @@ hr.hr-style {
     font-size: 16px;
     margin: 15px auto 0px;
 }
-.sav-btn a:hover {
+.sav-btn button:hover {
     background: white;
     color: black;
     font-size: 20px;
