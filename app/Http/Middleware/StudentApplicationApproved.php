@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\StudentApplicationFormModel;
+use App\Models\SafStudentBasicInformationModel;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,11 +18,11 @@ class StudentApplicationApproved
      */
     public function handle(Request $request, Closure $next)
     {
-        $application = StudentApplicationFormModel::where('user_id', Auth::user()->id)->first();
+        $application = SafStudentBasicInformationModel::where('user_id', Auth::user()->id)->first();
 
         if (Auth::user()->application_submitted === '1') {
             if ($application) {
-                if ($application->status === '1') {
+                if ($application->application_status === '1') {
                     return $next($request);
                 }
                 return redirect()->route('web_home')->with('failed', 'Your application submitted , please wait for admin approval');

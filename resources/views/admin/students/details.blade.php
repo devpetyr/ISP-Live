@@ -62,23 +62,29 @@
                         console.log(data)
                         if (data['application_submitted'] === "Submitted") {
                             $('td', row).eq(4).css('background-color', '#e0ede0');
+                            $('td', row).eq(4).css('width', '12%');
                             $('td', row).eq(4).css('color', '#008000');
                         } else {
                             $('td', row).eq(4).css('background-color', '#fbfbdd');
+                            $('td', row).eq(4).css('width', '12%');
                             $('td', row).eq(4).css('color', '#b4b411');
                         }
                         if (data['is_active'] === "Verified") {
                             $('td', row).eq(5).css('background-color', '#e0ede0');
+                            $('td', row).eq(5).css('width', '12%');
                             $('td', row).eq(5).css('color', '#008000');
                         } else {
                             $('td', row).eq(5).css('background-color', '#fbfbdd');
+                            $('td', row).eq(5).css('width', '12%');
                             $('td', row).eq(5).css('color', '#b4b411');
                         }
                         if (data['status'] === "Approved") {
                             $('td', row).eq(6).css('background-color', '#e0ede0');
+                            $('td', row).eq(6).css('width', '12%');
                             $('td', row).eq(6).css('color', '#008000');
                         } else {
                             $('td', row).eq(6).css('background-color', '#fbfbdd');
+                            $('td', row).eq(6).css('width', '12%');
                             $('td', row).eq(6).css('color', '#b4b411');
                         }
                     }

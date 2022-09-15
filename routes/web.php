@@ -16,6 +16,10 @@ use App\Http\Controllers\admin\
     AgencyController,
     AdminProfileController
 };
+use App\Http\Controllers\admin\student\
+{
+    AdminStudentApplicationController
+};
 use App\Http\Controllers\student\
 {
     StudentDashboardController,
@@ -82,8 +86,18 @@ Route::group(['prefix' => 'admin', 'middleware' => 'AdminAuthMiddleware'], funct
     /*Student Routes*/
     Route::get('student/details', [StudentController::class, 'details'])->name('admin_student_details');
     Route::get('student/applications', [StudentController::class, 'student_applications'])->name('admin_student_applications');
-    Route::get('student/view-applications/{application}', [StudentController::class, 'view_student_applications'])->name('admin_view_student_application');
-    Route::post('student/applications/{app_id}', [StudentController::class, 'student_application_status'])->name('admin_student_application_status');
+    Route::get('student/view-applications/{user_id}', [StudentController::class, 'view_student_applications'])->name('admin_view_student_application');
+    //Student Application Update Start
+    Route::post('student/applications/application-form-submit1/{user_id}', [AdminStudentApplicationController::class, 'saf_submit_1'])->name('admin_saf_submit_1');
+    Route::post('student/applications/application-form-submit2-1/{user_id}', [AdminStudentApplicationController::class, 'saf_submit_2_1'])->name('admin_saf_submit_2_1');
+    Route::post('student/applications/application-form-submit2-2/{user_id}', [AdminStudentApplicationController::class, 'saf_submit_2_2'])->name('admin_saf_submit_2_2');
+    Route::post('student/applications/application-form-submit3/{user_id}', [AdminStudentApplicationController::class, 'saf_submit_3'])->name('admin_saf_submit_3');
+    Route::post('student/applications/application-form-submit4/{user_id}', [AdminStudentApplicationController::class, 'saf_submit_4'])->name('admin_saf_submit_4');
+    Route::post('student/applications/application-form-submit5/{user_id}', [AdminStudentApplicationController::class, 'saf_submit_5'])->name('admin_saf_submit_5');
+    Route::post('student/applications/application-form-submit6/{user_id}', [AdminStudentApplicationController::class, 'saf_submit_6'])->name('admin_saf_submit_6');
+    Route::post('student/applications/application-form-submit7/{user_id}', [AdminStudentApplicationController::class, 'saf_submit_7'])->name('admin_saf_submit_7');
+    //Student Application Update End
+    Route::post('student/applications/{user_id}', [AdminStudentApplicationController::class, 'student_application_status'])->name('admin_student_application_status');
     Route::get('student/payments', [StudentController::class, 'payments'])->name('admin_student_payments');
 
     /* Admin School Start */
@@ -104,6 +118,20 @@ Route::group(['prefix' => 'admin', 'middleware' => 'AdminAuthMiddleware'], funct
     Route::get('host/details', [HostController::class, 'details'])->name('admin_host_details');
     Route::get('host/details/manage-host/{id}', [HostController::class, 'manage_host'])->name('admin_manage_host');
     Route::post('host/details/manage-host-process/{id}', [HostController::class, 'manage_host_process'])->name('admin_manage_host_process');
+
+    Route::get('host/host-applications', [HostController::class, 'host_applications'])->name('admin_host_applications');
+    Route::get('host/host-applications/host-application-detail/{id?}', [HostController::class, 'host_application_detail'])->name('admin_host_application_detail');
+    Route::post('host/host-applications/host-application-detail/host-application-status/{id?}', [HostController::class, 'host_application_detail_status'])->name('admin_host_application_status');
+    // dd(Route::post('host-information-application/{$id?}', [HostController::class, 'host_information_application'])->name('admin_host_information_application'));
+
+    // Route::post('host-partner-application', [HostController::class, 'host_partner_application'])->name('admin_host_partner_application');
+    // Route::post('host-adult-application', [HostController::class, 'host_adult_application'])->name('admin_host_adult_application');
+    // Route::post('host-childs-application', [HostController::class, 'host_childs_application'])->name('admin_host_childs_application');
+    // Route::post('host-pets-house-student-school-application', [HostController::class, 'host_pets_house_student_school_application'])->name('admin_host_pets_house_student_school_application');
+    // Route::post('host-personal-detail-application', [HostController::class, 'host_personal_detail_application'])->name('admin_host_personal_detail_application');
+    // Route::post('host-emergency-contact-application', [HostController::class, 'host_emergency_contact_application'])->name('admin_host_emergency_contact_application');
+
+
 //      Delete User not in flow
 //    Route::get('host/details/delete/{id?}', [HostController::class, 'delete_host'])->name('admin_delete_host');
 
@@ -155,6 +183,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'AdminAuthMiddleware'], funct
     /*Reports Routes*/
     Route::get('reports/placements', [CoordinatorController::class, 'placements'])->name('admin_reports_placements');
 });
+
+
+Route::post('host-information-application/{id?}', [HostController::class, 'host_information_application'])->name('admin_update_host_application');
+Route::post('host-partner-application/{id?}', [HostController::class, 'host_partner_application'])->name('admin_update_partner_application');
+Route::post('host-adult-application/{id?}', [HostController::class, 'host_adult_application'])->name('admin_update_adult_application');
+Route::post('host-child-application/{id?}', [HostController::class, 'host_childs_application'])->name('admin_update_child_application');
+Route::post('host-pets-application/{id?}', [HostController::class, 'host_pets_application'])->name('admin_update_pets_application');
+Route::post('host-house-school-student-application/{id?}', [HostController::class, 'host_house_school_student_application'])->name('admin_update_house_school_student_application');
+Route::post('host-personal-details-application/{id?}', [HostController::class, 'host_personal_details_application'])->name('admin_update_personal_details_application');
+Route::post('host-emergency-details-application/{id?}', [HostController::class, 'host_emergency_details_application'])->name('admin_update_emergency_details_application');
 /*
 |--------------------------------------------------------------------------
 | student routes
@@ -165,8 +203,24 @@ Route::group(['prefix' => 'student', 'middleware' => 'UserAuthMiddleware'], func
     /*Application Form*/
     Route::get('application-form', [StudentDashboardController::class, 'application_form'])->name('student_application_form')->middleware('preventSubmitApplication');
     Route::post('application-form-submit', [StudentDashboardController::class, 'application_form_submit'])->name('student_application_form_submit')->middleware('preventSubmitApplication');
-//    Route::get('get-country-state', [StudentDashboardController::class, 'get_country_state'])->name('get_country_state');
-//    Route::group(['middleware' => 'StudentApplicationApproved'], function () {
+
+
+    Route::get('new-application-form', [StudentApplicationController::class, 'application_form'])->name('web_saf');
+
+    Route::post('application-form-submit1', [StudentApplicationController::class, 'saf_submit_1'])->name('saf_submit_1');
+    Route::post('application-form-submit2-1', [StudentApplicationController::class, 'saf_submit_2_1'])->name('saf_submit_2_1');
+    Route::post('application-form-submit2-2', [StudentApplicationController::class, 'saf_submit_2_2'])->name('saf_submit_2_2');
+    Route::post('application-form-submit3', [StudentApplicationController::class, 'saf_submit_3'])->name('saf_submit_3');
+    Route::post('application-form-submit4', [StudentApplicationController::class, 'saf_submit_4'])->name('saf_submit_4');
+    Route::post('application-form-submit5', [StudentApplicationController::class, 'saf_submit_5'])->name('saf_submit_5');
+    Route::post('application-form-submit6', [StudentApplicationController::class, 'saf_submit_6'])->name('saf_submit_6');
+    Route::post('application-form-submit7', [StudentApplicationController::class, 'saf_submit_7'])->name('saf_submit_7');
+    Route::post('application-form-submit8-1-1', [StudentApplicationController::class, 'saf_submit_8_1_1'])->name('saf_submit_8_1_1');
+    Route::post('application-form-submit8-1-2', [StudentApplicationController::class, 'saf_submit_8_1_2'])->name('saf_submit_8_1_2');
+    Route::post('application-form-submit8-2', [StudentApplicationController::class, 'saf_submit_8_2'])->name('saf_submit_8_2');
+
+
+    //    Route::group(['middleware' => 'StudentApplicationApproved'], function () {
     /*Dashboard Routes*/
     Route::get('dashboard', [StudentDashboardController::class, 'dashboard'])->name('student_dashboard');
 //    });
@@ -181,18 +235,19 @@ Route::group(['prefix' => 'student', 'middleware' => 'UserAuthMiddleware'], func
 Route::group(['prefix' => 'host', 'middleware' => 'HostAuthMiddleware'], function () {
     /*Dashboard Routes*/
     Route::get('dashboard', [HostDashboardController::class, 'dashboard'])->name('host_dashboard');
-
+// host application route start
+    Route::get('new-host-application-form', [HostApplicationController::class, 'host_application_form'])->name('host_application_form');
+    Route::post('host-information-application', [HostApplicationController::class, 'host_information_application'])->name('host_information_application');
+    Route::post('host-partner-application', [HostApplicationController::class, 'host_partner_application'])->name('host_partner_application');
+    Route::post('host-adult-application', [HostApplicationController::class, 'host_adult_application'])->name('host_adult_application');
+    Route::post('host-childs-application', [HostApplicationController::class, 'host_childs_application'])->name('host_childs_application');
+    Route::post('host-pets-house-student-school-application', [HostApplicationController::class, 'host_pets_house_student_school_application'])->name('host_pets_house_student_school_application');
+    Route::post('host-personal-detail-application', [HostApplicationController::class, 'host_personal_detail_application'])->name('host_personal_detail_application');
+    Route::post('host-emergency-contact-application', [HostApplicationController::class, 'host_emergency_contact_application'])->name('host_emergency_contact_application');
+// host application route end
 
 });
-// host application route start
-Route::post('host-information-application', [HostApplicationController::class, 'host_information_application'])->name('host_information_application');
-Route::post('host-partner-application', [HostApplicationController::class, 'host_partner_application'])->name('host_partner_application');
-Route::post('host-adult-application', [HostApplicationController::class, 'host_adult_application'])->name('host_adult_application');
-Route::post('host-childs-application', [HostApplicationController::class, 'host_childs_application'])->name('host_childs_application');
-Route::post('host-pets-house-student-school-application', [HostApplicationController::class, 'host_pets_house_student_school_application'])->name('host_pets_house_student_school_application');
-Route::post('host-personal-detail-application', [HostApplicationController::class, 'host_personal_detail_application'])->name('host_personal_detail_application');
-Route::post('host-emergency-contact-application', [HostApplicationController::class, 'host_emergency_contact_application'])->name('host_emergency_contact_application');
-// host application route end
+
 
 /*
 |--------------------------------------------------------------------------
@@ -259,27 +314,6 @@ Route::get('stripe-form/{userId}', [WebPaymentController::class, 'stripe_form'])
 Route::post('/payment/{userId}', [WebPaymentController::class, 'event_stripe'])->name('web_stripe_post');
 
 
-Route::get('new-application-form',[StudentApplicationController::class, 'application_form'])->name('web_saf');
-
-
-Route::get('new-host-application-form', function () {
-    return view('host.application-form.new-application-form');
-});
-//    Route::get('new-application-form', [StudentDashboardController::class, 'new_application_form']);
-Route::post('check-application-section-status', [StudentApplicationController::class, 'saf_section_status'])->name('saf_section_status');
-
-Route::post('application-form-submit1', [StudentApplicationController::class, 'saf_submit_1'])->name('saf_submit_1');
-Route::post('application-form-submit2-1', [StudentApplicationController::class, 'saf_submit_2_1'])->name('saf_submit_2_1');
-Route::post('application-form-submit2-2', [StudentApplicationController::class, 'saf_submit_2_2'])->name('saf_submit_2_2');
-Route::post('application-form-submit3', [StudentApplicationController::class, 'saf_submit_3'])->name('saf_submit_3');
-Route::post('application-form-submit4', [StudentApplicationController::class, 'saf_submit_4'])->name('saf_submit_4');
-Route::post('application-form-submit5', [StudentApplicationController::class, 'saf_submit_5'])->name('saf_submit_5');
-Route::post('application-form-submit6', [StudentApplicationController::class, 'saf_submit_6'])->name('saf_submit_6');
-Route::post('application-form-submit7', [StudentApplicationController::class, 'saf_submit_7'])->name('saf_submit_7');
-Route::post('application-form-submit8-1-1', [StudentApplicationController::class, 'saf_submit_8_1_1'])->name('saf_submit_8_1_1');
-Route::post('application-form-submit8-1-2', [StudentApplicationController::class, 'saf_submit_8_1_2'])->name('saf_submit_8_1_2');
-Route::post('application-form-submit8-2', [StudentApplicationController::class, 'saf_submit_8_2'])->name('saf_submit_8_2');
-
 /** Forgot Password View */
 Route::get('/forgot-password', [WebAuthController::class, 'forgot_password_view'])->name('web_forgot_Password');
 /** Forgot Password Email Shoot */
@@ -288,3 +322,5 @@ Route::post('/forgot-password-email', [WebAuthController::class, 'forgot_passwor
 Route::get('/reset-password/{user}', [WebAuthController::class, 'reset_password'])->name('web_reset_password');
 /** Reset Password Submit */
 Route::post('/reset-password-data/{user}', [WebAuthController::class, 'reset_password_submit'])->name('web_reset_password_submit');
+
+

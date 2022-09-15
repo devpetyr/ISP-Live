@@ -167,11 +167,12 @@ class WebAuthController extends EmailController
                         return redirect()->route('student_application_form');
                         // return redirect()->route('student_dashboard');
                     }
-//                    elseif($userfind->user_role === 3)
-//                    {
-//                        Auth::login($userfind);
-//                        return redirect()->route('host_dashboard');
-//                    }
+                    elseif($userfind->user_role === 3)
+                    {
+                        Auth::login($userfind);
+                        return redirect()->route('host_application_form');
+                        // return redirect()->route('host_dashboard');
+                    }
                     else {
                         return back()->with('error', 'This area is for student and host only.');
                     }

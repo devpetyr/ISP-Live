@@ -40,7 +40,7 @@
                             <div class="col-xs-12 col-sm-8 col-md-8 ">
                                 <div class="banner-content">
                                     <div class="banner_text wow fadeInLeft" data-wow-duration="2s">
-                                        <h1 class="wow zoomIn">Application Form</h1>
+                                        <h1 class="wow zoomIn">Student Application Form</h1>
                                         <!--  <div class="banner-btn">-->
                                         <!--  <a href="javascript:void(0)" class="btn btn_badam">Start Here</a>-->
                                         <!--</div>-->
@@ -71,7 +71,6 @@
         {{--        <form action="#" method="post" enctype="multipart/form-data">--}}
         {{--            @csrf--}}
 
-
         <div class="form-main2">
             <!-- form new start-->
             <main class="main-newfrm">
@@ -88,16 +87,19 @@
                                 <h3> Choose Program</h3>
                                 <div class="payment-ckbx">
                                     <label>
-                                        <input type="radio" checked="checked" value="College Student"
-                                               name="program">
+                                        <input type="radio" {{$Saf_BasicInfo && $Saf_BasicInfo->program == "College Student" ? "checked=checked" : "" }}
+                                        value="College Student" name="program">
                                         <span class="checkmark">College Student</span>
                                     </label>
                                     <label>
-                                        <input type="radio" value="High School Student" name="program">
+                                        <input type="radio" value="High School Student"
+                                               {{$Saf_BasicInfo && $Saf_BasicInfo->program == "High School Student" ? "checked=checked" : "" }}
+                                               name="program">
                                         <span class="checkmark">High School Student</span>
                                     </label>
                                     <label>
-                                        <input type="radio" value="Junior High School Student" name="program">
+                                        <input type="radio" value="Junior High School Student" name="program"
+                                                {{$Saf_BasicInfo && $Saf_BasicInfo->program == "Junior High School Student" ? "checked=checked" : "" }}>
                                         <span class="checkmark">Junior High School Student</span>
                                     </label>
                                 </div>
@@ -113,10 +115,10 @@
                                             <div class="input-flds">
                                                 <label><i class="fa-solid fa-user"></i>First
                                                     Name<span>*</span></label>
-                                                <input class="form1" type="text" name="first_name" value="{{$data1 ? $data1->first_name : ""}}" required>
+                                                <input class="form1" type="text" name="first_name" value="{{$Saf_BasicInfo ? $Saf_BasicInfo->first_name : ""}}" required>
 
                                                 @error('first_name')
-                                                <div class="text-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -126,10 +128,10 @@
                                             <div class="input-flds">
                                                 <label><i class="fa-solid fa-user"></i>Last
                                                     Name<span>*</span></label>
-                                                <input class="form1" type="text" name="last_name" value="{{$data1 ? $data1->last_name : ""}}" required>
+                                                <input class="form1" type="text" name="last_name" value="{{$Saf_BasicInfo ? $Saf_BasicInfo->last_name : ""}}" required>
 
                                                 @error('last_name')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -139,19 +141,19 @@
                                     <!--end-->
                                     <div class="row">
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <h6 class="birhdate">Birthdate:</h6>
-                                            <p class="birhdate">(To select a year quickly, click the year number
+                                            <h6 class="birhdate">Birthdate: <span class="birhdate">(To select a year quickly, click the year number
                                                 (like
                                                 "2020") and then
                                                 the
-                                                << symbol. To select a month quickly, click the month name.)</p>
+                                                << symbol. To select a month quickly, click the month name.)</span></h6>
+
                                             <div class="input-flds">
                                                 <label><i class="fa-solid fa-calendar-days"></i>Date of Birth
                                                     <span>*</span></label><br>
-                                                <input type="date" name="dob"  value="{{$data1 ? $data1->dob : ""}}" required>
+                                                <input type="date" name="dob"  value="{{$Saf_BasicInfo ? $Saf_BasicInfo->dob : ""}}" required>
 
                                                 @error('dob')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -160,9 +162,9 @@
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <h6 class="age"><i class="fa-solid fa-child"></i>Age <span>*</span></h6>
                                             <div class="input-flds">
-                                                <input type="number" name="age" maxlength="3" value="{{$data1 ? $data1->age : ""}}" required>
+                                                <input type="number" name="age" maxlength="3" value="{{$Saf_BasicInfo ? $Saf_BasicInfo->age : ""}}" required>
                                                 @error('age')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -177,22 +179,22 @@
                                             <div class="payment-ckbx two">
 
                                                 <label>
-                                                    <input type="radio" value="Male" checked="{{$data1 && $data1->gender == "Male" ? "checked" : "" }}"
+                                                    <input type="radio" value="Male" {{$Saf_BasicInfo && $Saf_BasicInfo->gender == "Male" ? "checked=checked" : "" }}
                                                            name="gender">
                                                     <span class="checkmark">Male</span>
                                                 </label>
                                                 <label>
-                                                    <input type="radio" value="Female" name="gender" checked="{{$data1 && $data1->gender == "Female" ? "checked" : "" }}">
+                                                    <input type="radio" value="Female" name="gender" {{$Saf_BasicInfo && $Saf_BasicInfo->gender == "Female" ? "checked=checked" : "" }}>
                                                     <span class="checkmark">Female</span>
                                                 </label>
                                                 <label>
-                                                    <input type="radio" value="Other" name="gender" checked="{{$data1 && $data1->gender == "Other" ? "checked" : "" }}">
+                                                    <input type="radio" value="Other" name="gender" {{$Saf_BasicInfo && $Saf_BasicInfo->gender == "Other" ? "checked=checked" : "" }}>
                                                     <span class="checkmark">Other</span>
                                                 </label>
 
 
                                                 @error('gender')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -209,7 +211,7 @@
                                                         id="country_of_permanent_residence"
                                                         placeholder=""
                                                         tabindex="1" data-parsley-group="block-0">
-                                                    <option value="{{$data1 ? $data1->country_of_permanent_residence : ""}}">{{$data1 ? $data1->country_of_permanent_residence : ""}}</option>
+                                                    <option value="{{$Saf_BasicInfo ? $Saf_BasicInfo->country_of_permanent_residence : ""}}">{{$Saf_BasicInfo ? $Saf_BasicInfo->country_of_permanent_residence : ""}}</option>
                                                     <option value="Afghanistan">Afghanistan</option>
                                                     <option value="Åland Islands">Åland Islands</option>
                                                     <option value="Albania">Albania</option>
@@ -509,7 +511,7 @@
                                                 </select>
 
                                                 @error('country_of_permanent_residence')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -523,10 +525,10 @@
                                                 Number
                                                 <span>*</span></h6>
                                             <div class="input-flds">
-                                                <input type="text" name="passport_number" maxlength="100" value="{{$data1 ? $data1->passport_number : ""}}" required>
+                                                <input type="text" name="passport_number" maxlength="100" value="{{$Saf_BasicInfo ? $Saf_BasicInfo->passport_number : ""}}" required>
 
                                                 @error('passport_number')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -537,10 +539,10 @@
                                                 Date
                                                 <span>*</span></h6>
                                             <div class="input-flds">
-                                                <input type="date" name="passport_exp" value="{{$data1 ? $data1->passport_exp : ""}}" required>
+                                                <input type="date" name="passport_exp" value="{{$Saf_BasicInfo ? $Saf_BasicInfo->passport_exp : ""}}" required>
 
                                                 @error('passport_exp')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -549,7 +551,7 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-md-4 col-sm-4 col-xs-12">
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
                                             <h6 class="passport-exp"><i class="fa-solid fa-calendar-days"></i>Attach
                                                 Profile Photo
                                                 <span>*</span></h6>
@@ -557,7 +559,7 @@
                                                 <input type="file" id="myFile" name="student_profile_photo">
 
                                                 @error('student_profile_photo')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -594,10 +596,10 @@
                                         <div class="col-md-4 col-sm-4 col-xs-12">
                                             <div class="input-flds">
                                                 <label><i class="fa-solid fa-address"></i>Address<span>*</span></label>
-                                                <input type="text" name="student_address" required>
+                                                <input type="text" name="student_address" value="{{$SafStudentInfo ? $SafStudentInfo->student_address : ""}}" required>
 
                                                 @error('student_address')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -611,7 +613,7 @@
                                                         id="student_country"
                                                         placeholder=""
                                                         tabindex="1" data-parsley-group="block-0">
-                                                    <option value=""></option>
+                                                    <option value="{{$SafStudentInfo ? $SafStudentInfo->student_country : ""}}">{{$SafStudentInfo ? $SafStudentInfo->student_country : ""}}</option>
                                                     <option value="Afghanistan">Afghanistan</option>
                                                     <option value="Åland Islands">Åland Islands</option>
                                                     <option value="Albania">Albania</option>
@@ -911,7 +913,7 @@
                                                 </select>
 
                                                 @error('student_country')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -922,10 +924,10 @@
                                             <div class="input-flds">
                                                 <label><i class="fa-solid fa-number"></i>Zip
                                                     Code<span>*</span></label>
-                                                <input type="number" name="student_address_zip_code" required>
+                                                <input type="number" name="student_address_zip_code" value="{{$SafStudentInfo ? $SafStudentInfo->student_address_zip_code : ""}}" required>
 
                                                 @error('student_address_zip_code')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -945,10 +947,10 @@
 
                                             <div class="input-flds">
                                                 <label><i class="fa-solid fa-phone"></i>Name<span>*</span></label>
-                                                <input type="text" name="father_name" required>
+                                                <input type="text" name="father_name" value="{{$SafStudentInfo ? $SafStudentInfo->father_name : ""}}" required>
 
                                                 @error('father_name')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -957,10 +959,10 @@
                                         <div class="col-md-4 col-sm-4 col-xs-12">
                                             <div class="input-flds">
                                                 <label><i class="fa-solid fa-phone"></i>Phone<span>*</span></label>
-                                                <input type="tel" name="father_phone" required>
+                                                <input type="tel" name="father_phone" value="{{$SafStudentInfo ? $SafStudentInfo->father_phone : ""}}" required>
 
                                                 @error('father_phone')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -969,10 +971,10 @@
                                         <div class="col-md-4 col-sm-4 col-xs-12">
                                             <div class="input-flds">
                                                 <label><i class="fa-solid fa-email"></i>Email<span>*</span></label>
-                                                <input type="email" name="father_email" required>
+                                                <input type="email" name="father_email"  value="{{$SafStudentInfo ? $SafStudentInfo->father_email : ""}}" required>
 
                                                 @error('father_email')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -985,10 +987,10 @@
 
                                             <div class="input-flds">
                                                 <label><i class="fa-solid fa-phone"></i>Name<span>*</span></label>
-                                                <input type="text" name="mother_name" required>
+                                                <input type="text" name="mother_name"  value="{{$SafStudentInfo ? $SafStudentInfo->mother_name : ""}}" required>
 
                                                 @error('mother_name')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -997,10 +999,10 @@
                                         <div class="col-md-4 col-sm-4 col-xs-12">
                                             <div class="input-flds">
                                                 <label><i class="fa-solid fa-phone"></i>Phone<span>*</span></label>
-                                                <input type="tel" name="mother_phone" required>
+                                                <input type="tel" name="mother_phone"  value="{{$SafStudentInfo ? $SafStudentInfo->mother_phone : ""}}" required>
 
                                                 @error('mother_phone')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -1009,10 +1011,10 @@
                                         <div class="col-md-4 col-sm-4 col-xs-12">
                                             <div class="input-flds">
                                                 <label><i class="fa-solid fa-email"></i>Email<span>*</span></label>
-                                                <input type="email" name="mother_email" required>
+                                                <input type="email" name="mother_email" value="{{$SafStudentInfo ? $SafStudentInfo->mother_email : ""}}" required>
 
                                                 @error('mother_email')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -1031,10 +1033,10 @@
                                             <div class="input-flds">
                                                 <label><i class="fa-solid fa-mobile-button"></i>Phone
                                                     Number<span>*</span></label>
-                                                <input type="text" name="student_contact_phone_number" required>
+                                                <input type="text" name="student_contact_phone_number" value="{{$SafStudentInfo ? $SafStudentInfo->student_contact_phone_number : ""}}" required>
 
                                                 @error('student_contact_phone_number')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -1044,10 +1046,10 @@
 
                                             <div class="input-flds">
                                                 <label><i class="fa-solid fa-envelope"></i>Email<span>*</span></label>
-                                                <input type="text" name="student_contact_email" required>
+                                                <input type="text" name="student_contact_email" value="{{$SafStudentInfo ? $SafStudentInfo->student_contact_email : ""}}" required>
 
                                                 @error('student_contact_email')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -1057,10 +1059,10 @@
                                             <div class="input-flds">
                                                 <label><i class="fa-solid fa-mobile-button"></i>WeChat
                                                     <span>*</span></label>
-                                                <input type="text" name="student_contact_wechat_number" required>
+                                                <input type="text" name="student_contact_wechat_number" value="{{$SafStudentInfo ? $SafStudentInfo->student_contact_wechat_number : ""}}" required>
 
                                                 @error('student_contact_wechat_number')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -1070,10 +1072,10 @@
                                             <div class="input-flds">
                                                 <label><i class="fa-solid fa-mobile-button"></i>Line
                                                     <span>*</span></label>
-                                                <input type="text" name="student_contact_line_number" required>
+                                                <input type="text" name="student_contact_line_number" value="{{$SafStudentInfo ? $SafStudentInfo->student_contact_line_number : ""}}" required>
 
                                                 @error('student_contact_line_number')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -1083,10 +1085,10 @@
                                             <div class="input-flds">
                                                 <label><i class="fa-solid fa-mobile-button"></i>WhatsApp
                                                     <span>*</span></label>
-                                                <input type="text" name="student_contact_whatsApp_number" required>
+                                                <input type="text" name="student_contact_whatsApp_number" value="{{$SafStudentInfo ? $SafStudentInfo->student_contact_whatsApp_number : ""}}" required>
 
                                                 @error('student_contact_whatsApp_number')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -1103,10 +1105,10 @@
                                         <div class="col-md-4 col-sm-4 col-xs-12">
                                             <div class="input-flds">
                                                 <label><i class="fa-solid fa-user"></i>Name<span>*</span></label>
-                                                <input type="text" name="emergency_contact_name" required>
+                                                <input type="text" name="emergency_contact_name" value="{{$SafStudentInfo ? $SafStudentInfo->emergency_contact_name : ""}}" required>
 
                                                 @error('emergency_contact_name')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -1116,10 +1118,10 @@
                                             <div class="input-flds">
                                                 <label><i class="fa-solid fa-user"></i>Relationship to
                                                     Student<span>*</span></label>
-                                                <input type="text" name="emergency_contact_relation" required>
+                                                <input type="text" name="emergency_contact_relation" value="{{$SafStudentInfo ? $SafStudentInfo->emergency_contact_relation : ""}}" required>
 
                                                 @error('emergency_contact_relation')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -1130,10 +1132,10 @@
                                                 <label><i class="fa-solid fa-mobile-button"></i>Cell Phone with
                                                     Country
                                                     Code<span>*</span></label>
-                                                <input type="text" name="emergency_contact_phone_number">
+                                                <input type="text" name="emergency_contact_phone_number" value="{{$SafStudentInfo ? $SafStudentInfo->emergency_contact_phone_number : ""}}">
 
                                                 @error('emergency_contact_phone_number')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -1142,10 +1144,10 @@
                                         <div class="col-md-4 col-sm-4 col-xs-12">
                                             <div class="input-flds">
                                                 <label><i class="fa-solid fa-envelope"></i>Email<span>*</span></label>
-                                                <input type="text" name="emergency_contact_email" required>
+                                                <input type="text" name="emergency_contact_email" value="{{$SafStudentInfo ? $SafStudentInfo->emergency_contact_email : ""}}" required>
 
                                                 @error('emergency_contact_email')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -1184,7 +1186,8 @@
                                                         id="school_name" placeholder="" tabindex="1"
                                                         data-parsley-group="block-0"
                                                         required>
-                                                    <option value=""></option>
+                                                    <option value="{{$SafStudentInfo ? $SafStudentInfo->school_you_attend : ""}}">{{$SafStudentInfo ? $SafStudentInfo->school_you_attend : ""}}</option>
+
                                                     <option value="Academy of Art">Academy of Art</option>
                                                     <option value="Acosta - Hawaii">Acosta - Hawaii</option>
                                                     <option value="Admissions Academy">Admissions Academy</option>
@@ -1609,7 +1612,7 @@
                                                 </select>
 
                                                 @error('school_you_attend')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -1620,10 +1623,10 @@
                                                 <label><i class="fa-solid fa-graduation-cap"></i>School Name if not
                                                     in
                                                     List</label>
-                                                <input type="text" name="school_name_not_in_list">
+                                                <input type="text" name="school_name_not_in_list" value="{{$SafStudentInfo ? $SafStudentInfo->school_name_not_in_list : ""}}">
 
                                                 @error('school_name_not_in_list')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -1633,7 +1636,7 @@
                                             <div class="input-flds">
                                                 <label><i class="fa-solid fa-user"></i>School
                                                     City<span>*</span></label>
-                                                <input type="text" name="school_city" required>
+                                                <input type="text" name="school_city" value="{{$SafStudentInfo ? $SafStudentInfo->school_city : ""}}" required>
                                             </div>
                                         </div>
                                         <div class="col-md-4 col-sm-4 col-xs-12">
@@ -1645,7 +1648,7 @@
                                                         name="school_state"
                                                         id="school_state" placeholder="" tabindex="1"
                                                         data-parsley-group="block-0">
-                                                    <option value=""></option>
+                                                    <option value="{{$SafStudentInfo ? $SafStudentInfo->school_state : ""}}">{{$SafStudentInfo ? $SafStudentInfo->school_state : ""}}</option>
                                                     <option value="Alaska"> Alaska</option>
                                                     <option value="Arizona"> Arizona</option>
                                                     <option value="Arkansas"> Arkansas</option>
@@ -1706,7 +1709,7 @@
                                                     </option>
                                                 </select>
                                                 @error('school_state')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -1716,10 +1719,10 @@
                                             <div class="input-flds">
                                                 <label><i class="fa-solid fa-graduation-cap"></i>Major/Field of
                                                     Study</label>
-                                                <input type="text" name="major_field_of_study">
+                                                <input type="text" name="major_field_of_study" value="{{$SafStudentInfo ? $SafStudentInfo->major_field_of_study : ""}}">
 
                                                 @error('major_field_of_study')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -1743,25 +1746,27 @@
                                             </label>
                                             <div class="payment-ckbx ">
                                                 <label>
-                                                    <input type="radio" value="2 Months" checked="checked"
+                                                    <input type="radio" value="2 Months" {{$SafStudentInfo && $SafStudentInfo->length_of_stay == "2 Months" ? "checked=checked" : "" }}
                                                            name="length_of_stay">
                                                     <span class="checkmark">2 Months</span>
                                                 </label>
 
 
                                                 <label>
-                                                    <input type="radio" value="3 Months" name="length_of_stay">
+                                                    <input type="radio" value="3 Months" {{$SafStudentInfo && $SafStudentInfo->length_of_stay == "3 Months" ? "checked=checked" : "" }}
+                                                           name="length_of_stay">
                                                     <span class="checkmark">3 Months</span>
                                                 </label>
 
 
                                                 <label>
-                                                    <input type="radio" value="Other" name="length_of_stay">
+                                                    <input type="radio" value="Other" {{$SafStudentInfo && $SafStudentInfo->length_of_stay == "Other" ? "checked=checked" : "" }}
+                                                           name="length_of_stay">
                                                     <span class="checkmark">Other (please contact ISP)</span>
                                                 </label>
                                             </div>
                                             @error('length_of_stay')
-                                            <div class="alert alert-danger">
+                                            <div class="saf_msg">
                                                 {{ $message }}
                                             </div>
                                             @enderror
@@ -1771,10 +1776,10 @@
                                                 <label><i class="fa-solid fa-graduation-cap"></i>Contract Start
                                                     Date:
                                                     <span>*</span></label>
-                                                <input type="date" name="contract_start_date">
+                                                <input type="date" name="contract_start_date" value="{{$SafStudentInfo ? $SafStudentInfo->contract_start_date : ""}}">
 
                                                 @error('contract_start_date')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -1784,10 +1789,10 @@
                                             <div class="input-flds">
                                                 <label><i class="fa-solid fa-graduation-cap"></i>Contract End Date:
                                                     <span>*</span></label>
-                                                <input type="date" name="contract_end_date">
+                                                <input type="date" name="contract_end_date" value="{{$SafStudentInfo ? $SafStudentInfo->contract_end_date : ""}}">
 
                                                 @error('contract_end_date')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -1808,21 +1813,22 @@
                                             <div class="payment-ckbx three">
 
                                                 <label>
-                                                    <input type="radio" value="high" checked="checked"
+                                                    <input type="radio" value="high" {{$SafStudentInfo && $SafStudentInfo->what_is_your_english_level == "high" ? "checked=checked" : "" }}
                                                            name="what_is_your_english_level">
                                                     <span class="checkmark">High</span>
                                                 </label>
                                                 <label>
-                                                    <input type="radio" value="medium"
+                                                    <input type="radio" value="medium" {{$SafStudentInfo && $SafStudentInfo->what_is_your_english_level == "medium" ? "checked=checked" : "" }}
                                                            name="what_is_your_english_level">
                                                     <span class="checkmark">Medium</span>
                                                 </label>
-                                                <input type="radio" value="low" name="what_is_your_english_level">
+                                                <input type="radio" value="low" {{$SafStudentInfo && $SafStudentInfo->what_is_your_english_level == "low" ? "checked=checked" : "" }}
+                                                       name="what_is_your_english_level">
                                                 <span class="checkmark">Low</span>
 
 
                                                 @error('what_is_your_english_level')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -1838,22 +1844,22 @@
                                                 years old in your host home?<span>*</span></h6>
                                             <div class="payment-ckbx three">
                                                 <label>
-                                                    <input type="radio" value="yes" checked="checked"
+                                                    <input type="radio" value="yes" {{$SafStudentInfo && $SafStudentInfo->do_you_accept_children_under_8_years_in_host_home == "yes" ? "checked=checked" : "" }}
                                                            name="do_you_accept_children_under_8_years_in_host_home">
                                                     <span class="checkmark">Yes</span>
                                                 </label>
                                                 <label>
-                                                    <input type="radio" value="no"
+                                                    <input type="radio" value="no" {{$SafStudentInfo && $SafStudentInfo->do_you_accept_children_under_8_years_in_host_home == "no" ? "checked=checked" : "" }}
                                                            name="do_you_accept_children_under_8_years_in_host_home">
                                                     <span class="checkmark">No</span>
                                                 </label>
-                                                <input type="radio" value="does not matter"
+                                                <input type="radio" value="does not matter" {{$SafStudentInfo && $SafStudentInfo->do_you_accept_children_under_8_years_in_host_home == "does not matter" ? "checked=checked" : "" }}
                                                        name="do_you_accept_children_under_8_years_in_host_home">
                                                 <span class="checkmark">Does not matter</span>
 
 
                                                 @error('do_you_accept_children_under_8_years_in_host_home')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -1872,19 +1878,19 @@
                                             <div class="payment-ckbx three">
 
                                                 <label>
-                                                    <input type="radio" value="yes" checked="checked"
+                                                    <input type="radio" value="yes" {{$SafStudentInfo && $SafStudentInfo->are_you_allergic_to_animals == "yes" ? "checked=checked" : "" }}
                                                            name="are_you_allergic_to_animals">
                                                     <span class="checkmark">Yes</span>
                                                 </label>
                                                 <label>
-                                                    <input type="radio" value="no"
+                                                    <input type="radio" value="no" {{$SafStudentInfo && $SafStudentInfo->are_you_allergic_to_animals == "no" ? "checked=checked" : "" }}
                                                            name="are_you_allergic_to_animals">
                                                     <span class="checkmark">No</span>
                                                 </label>
 
 
                                                 @error('are_you_allergic_to_animals')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -1893,13 +1899,13 @@
                                             <div class="input-flds db">
                                                 <label><i class="fa-solid fa-file-lines"></i>If yes, please indicate
                                                     which</label><br>
-                                                <input type="text" name="if_yes_please_indicate_animal">
+                                                <input type="text" name="if_yes_please_indicate_animal" value="{{$SafStudentInfo ? $SafStudentInfo->if_yes_please_indicate_animal : ""}}">
                                                 <label>(80% of American households have pets. You will restrict your
                                                     host family
                                                     placement options by saying no to animals)</label>
 
                                                 @error('if_yes_please_indicate_animal')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -1917,18 +1923,19 @@
                                             <div class="payment-ckbx  three">
 
                                                 <label>
-                                                    <input type="radio" value="2 meals per day" checked="checked"
+                                                    <input type="radio" value="2 meals per day" {{$SafStudentInfo && $SafStudentInfo->meal_option == "2 meals per day" ? "checked=checked" : "" }}
                                                            name="meal_option">
                                                     <span class="checkmark">2 meals per day (breakfast & dinner)</span>
                                                 </label>
                                                 <label>
-                                                    <input type="radio" value="No meals" name="meal_option">
+                                                    <input type="radio" value="No meals" {{$SafStudentInfo && $SafStudentInfo->meal_option == "No meals" ? "checked=checked" : "" }}
+                                                           name="meal_option">
                                                     <span class="checkmark">No meals</span>
                                                 </label>
 
 
                                                 @error('meal_option')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -1938,10 +1945,10 @@
                                                 <label><i class="fa-solid fa-file-lines"></i>Please list food
                                                     allergies<span>*</span></label>
                                                 <textarea placeholder="Enter Text Here ..." name="food_restrictions"
-                                                          required></textarea>
+                                                          required>{{$SafStudentInfo ? $SafStudentInfo->food_restrictions : ""}}</textarea>
 
                                                 @error('food_restrictions')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -1962,18 +1969,19 @@
                                             <div class="payment-ckbx three">
 
                                                 <label>
-                                                    <input type="radio" value="yes" checked="checked"
+                                                    <input type="radio" value="yes" {{$SafStudentInfo && $SafStudentInfo->do_you_smoke == "yes" ? "checked=checked" : "" }}
                                                            name="do_you_smoke">
                                                     <span class="checkmark">Yes</span>
                                                 </label>
                                                 <label>
-                                                    <input type="radio" value="no" name="do_you_smoke">
+                                                    <input type="radio" value="no" {{$SafStudentInfo && $SafStudentInfo->do_you_smoke == "no" ? "checked=checked" : "" }}
+                                                           name="do_you_smoke">
                                                     <span class="checkmark">No</span>
                                                 </label>
 
 
                                                 @error('do_you_smoke')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -1991,18 +1999,19 @@
                                             <div class="payment-ckbx three">
 
                                                 <label>
-                                                    <input type="radio" value="yes" checked="checked"
+                                                    <input type="radio" value="yes" {{$SafStudentInfo && $SafStudentInfo->will_you_have_a_car == "yes" ? "checked=checked" : "" }}
                                                            name="will_you_have_a_car">
                                                     <span class="checkmark">Yes</span>
                                                 </label>
                                                 <label>
-                                                    <input type="radio" value="no" name="will_you_have_a_car">
+                                                    <input type="radio" value="no" {{$SafStudentInfo && $SafStudentInfo->will_you_have_a_car == "no" ? "checked=checked" : "" }}
+                                                           name="will_you_have_a_car">
                                                     <span class="checkmark">No</span>
                                                 </label>
 
 
                                                 @error('will_you_have_a_car')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -2034,16 +2043,18 @@
                                     </h6>
                                     <div class="payment-ckbx">
                                         <label>
-                                            <input type="radio" value="no" checked="checked" name="using_agent">
+                                            <input type="radio" value="no" {{$Saf_BasicInfo && $Saf_BasicInfo->using_agent == "no" ? "checked=checked" : "" }}
+                                                   name="using_agent">
                                             <span class="checkmark">No</span>
                                         </label>
                                         <label>
-                                            <input type="radio" value="yes" name="using_agent">
+                                            <input type="radio" value="yes" {{$Saf_BasicInfo && $Saf_BasicInfo->using_agent == "yes" ? "checked=checked" : ""  }}
+                                                   name="using_agent">
                                             <span class="checkmark">Yes</span>
                                         </label>
 
                                         @error('using_agent')
-                                        <div class="alert alert-danger">
+                                        <div class="saf_msg">
                                             {{ $message }}
                                         </div>
                                         @enderror
@@ -2088,10 +2099,10 @@
                                         <div class="col-md-4">
                                             <div class="input-flds">
                                                 <label><i class="fa-solid fa-user"></i>Agency Name</label>
-                                                <input type="text" name="agency_name">
+                                                <input type="text" name="agency_name" value="{{$Saf_BasicInfo && $SafAgentInfo && $Saf_BasicInfo->using_agent == "yes" ? $SafAgentInfo->agency_name : "" }}">
 
                                                 @error('agency_name')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -2101,10 +2112,10 @@
                                             <div class="input-flds">
                                                 <label><i class="fa-solid fa-user"></i>Name of Agency Contact
                                                     Person</label>
-                                                <input type="text" name="agency_contact_person">
+                                                <input type="text" name="agency_contact_person" value="{{$Saf_BasicInfo && $SafAgentInfo && $Saf_BasicInfo->using_agent == "yes" ? $SafAgentInfo->agency_contact_person : "" }}">
 
                                                 @error('agency_contact_person')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -2118,10 +2129,10 @@
                                                         (with
                                                         country
                                                         code)</label>
-                                                    <input type="text" name="agent_phone_number">
+                                                    <input type="text" name="agent_phone_number" value="{{$Saf_BasicInfo && $SafAgentInfo && $Saf_BasicInfo->using_agent == "yes" ? $SafAgentInfo->agent_phone_number : "" }}">
 
                                                     @error('agent_phone_number')
-                                                    <div class="alert alert-danger">
+                                                    <div class="saf_msg">
                                                         {{ $message }}
                                                     </div>
                                                     @enderror
@@ -2133,10 +2144,10 @@
                                         <div class="col-md-4">
                                             <div class="input-flds">
                                                 <label><i class="fa-solid fa-envelope"></i>Agent's Email</label>
-                                                <input type="text" name="agent_email">
+                                                <input type="text" name="agent_email" value="{{$Saf_BasicInfo && $SafAgentInfo && $Saf_BasicInfo->using_agent == "yes" ? $SafAgentInfo->agent_email : "" }}">
 
                                                 @error('agent_email')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -2146,10 +2157,10 @@
                                             <div class="input-flds">
                                                 <label><i class="fa-solid fa-phone-flip"></i>Agent's
                                                     WeChat</label>
-                                                <input type="text" name="agent_wechat_number">
+                                                <input type="text" name="agent_wechat_number" value="{{$Saf_BasicInfo && $SafAgentInfo && $Saf_BasicInfo->using_agent == "yes" ? $SafAgentInfo->agent_wechat_number : "" }}">
 
                                                 @error('agent_wechat_number')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -2159,10 +2170,10 @@
                                             <div class="input-flds">
                                                 <label><i class="fa-solid fa-phone-flip"></i>Agent's
                                                     Line</label>
-                                                <input type="text" name="agent_line_number">
+                                                <input type="text" name="agent_line_number" value="{{$Saf_BasicInfo && $SafAgentInfo && $Saf_BasicInfo->using_agent == "yes" ? $SafAgentInfo->agent_line_number : "" }}">
 
                                                 @error('agent_line_number')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -2172,10 +2183,10 @@
                                             <div class="input-flds">
                                                 <label><i class="fa-solid fa-phone-flip"></i>Agent's
                                                     Whatsapp</label>
-                                                <input type="text" name="agent_whatsapp_number">
+                                                <input type="text" name="agent_whatsapp_number" value="{{$Saf_BasicInfo && $SafAgentInfo && $Saf_BasicInfo->using_agent == "yes" ? $SafAgentInfo->agent_whatsapp_number : "" }}">
 
                                                 @error('agent_whatsapp_number')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -2206,10 +2217,10 @@
                                                 <label><i class="fa-solid fa-file-lines"></i>Specific
                                                     Needs<span>*</span>(0)</label>
                                                 <textarea placeholder="Enter Text Here ..." name="specific_needs"
-                                                          required></textarea>
+                                                          required>{{$SafOtherInfo ? $SafOtherInfo->specific_needs : ""}}</textarea>
 
                                                 @error('specific_needs')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -2222,10 +2233,10 @@
                                                     interests:<span>*</span>(0)</label>
                                                 <textarea placeholder="Enter Text Here ..."
                                                           name="hobbies_and_interest"
-                                                          required></textarea>
+                                                          required>{{$SafOtherInfo ? $SafOtherInfo->hobbies_and_interest : ""}}</textarea>
 
                                                 @error('hobbies_and_interest')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -2239,10 +2250,10 @@
                                                     personality:<span>*</span>(0)</label>
                                                 <textarea placeholder="Enter Text Here ..."
                                                           name="describe_your_personality"
-                                                          required></textarea>
+                                                          required>{{$SafOtherInfo ? $SafOtherInfo->describe_your_personality : ""}}</textarea>
 
                                                 @error('describe_your_personality')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -2254,10 +2265,10 @@
                                                     family:<span>*</span>(0)</label>
                                                 <textarea placeholder="Enter Text Here ..."
                                                           name="describe_your_family"
-                                                          required></textarea>
+                                                          required>{{$SafOtherInfo ? $SafOtherInfo->describe_your_family : ""}}</textarea>
 
                                                 @error('describe_your_family')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -2270,10 +2281,10 @@
                                                     experience:<span>*</span>(0)</label>
                                                 <textarea placeholder="Enter Text Here ..."
                                                           name="describe_your_travel_experience"
-                                                          required></textarea>
+                                                          required>{{$SafOtherInfo ? $SafOtherInfo->describe_your_travel_experience : ""}}</textarea>
 
                                                 @error('describe_your_travel_experience')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -2286,10 +2297,10 @@
                                                     your host:<span>*</span>(0)</label>
                                                 <textarea placeholder="Enter Text Here ..."
                                                           name="write_greeting_to_host"
-                                                          required></textarea>
+                                                          required>{{$SafOtherInfo ? $SafOtherInfo->write_greeting_to_host : ""}}</textarea>
 
                                                 @error('write_greeting_to_host')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -2311,7 +2322,7 @@
                         <section class="my-newfrm">
                             <div class="form_style  main-cardbox">
                                 <div class="medical-info">
-                                    <h5>MEDICAL INFORMATION</h5>
+                                    <h3>MEDICAL INFORMATION</h3>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <h6 class="pay-method"><i class="fa-solid fa-circle-question"></i>Are
@@ -2321,18 +2332,20 @@
                                             <div class="payment-ckbx three">
 
                                                 <label>
-                                                    <input type="radio" value="yes" checked="checked"
+                                                    <input type="radio" value="yes" {{$SafMedicalInfo && $SafMedicalInfo->are_you_in_good_health == "yes" ? "checked=checked" : "" }}
                                                            name="are_you_in_good_health">
                                                     <span class="checkmark">Yes</span>
                                                 </label>
                                                 <label>
-                                                    <input type="radio" value="no" name="are_you_in_good_health">
+                                                    <input type="radio" value="no"
+                                                           {{$SafMedicalInfo && $SafMedicalInfo->are_you_in_good_health == "no" ? "checked=checked" : "" }}
+                                                           name="are_you_in_good_health">
                                                     <span class="checkmark">No</span>
                                                 </label>
 
 
                                                 @error('are_you_in_good_health')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -2342,10 +2355,10 @@
                                             <div class="input-flds db">
                                                 <label><i class="fa-solid fa-file-lines"></i>If no, please explain
                                                     :</label><br>
-                                                <input type="text" name="if_no_please_explain_health">
+                                                <input type="text" name="if_no_please_explain_health" value="{{$SafMedicalInfo ? $SafMedicalInfo->if_no_please_explain_health : ""}}">
 
                                                 @error('if_no_please_explain_health')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -2360,19 +2373,21 @@
                                             <div class="payment-ckbx three">
 
                                                 <label>
-                                                    <input type="radio" value="yes" checked="checked"
+                                                    <input type="radio" value="yes"
+                                                           {{$SafMedicalInfo && $SafMedicalInfo->do_you_have_medical_allergies == "yes" ? "checked=checked" : "" }}
                                                            name="do_you_have_medical_allergies">
                                                     <span class="checkmark">Yes</span>
                                                 </label>
                                                 <label>
                                                     <input type="radio" value="no"
+                                                           {{$SafMedicalInfo && $SafMedicalInfo->do_you_have_medical_allergies == "no" ? "checked=checked" : "" }}
                                                            name="do_you_have_medical_allergies">
                                                     <span class="checkmark">No</span>
                                                 </label>
 
 
                                                 @error('do_you_have_medical_allergies')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -2382,10 +2397,10 @@
                                             <div class="input-flds db">
                                                 <label><i class="fa-solid fa-file-lines"></i>If yes, please
                                                     explain:</label><br>
-                                                <input type="text" name="if_yes_please_explain_medical_allergies">
+                                                <input type="text" name="if_yes_please_explain_medical_allergies" value="{{$SafMedicalInfo ? $SafMedicalInfo->if_yes_please_explain_medical_allergies : ""}}">
 
                                                 @error('if_yes_please_explain_medical_allergies')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -2400,18 +2415,21 @@
                                             <div class="payment-ckbx three">
 
                                                 <label>
-                                                    <input type="radio" value="yes" checked="checked"
+                                                    <input type="radio" value="yes"
+                                                           {{$SafMedicalInfo && $SafMedicalInfo->do_you_take_medication == "yes" ? "checked=checked" : "" }}
                                                            name="do_you_take_medication">
                                                     <span class="checkmark">Yes</span>
                                                 </label>
                                                 <label>
-                                                    <input type="radio" value="no" name="do_you_take_medication">
+                                                    <input type="radio" value="no"
+                                                           {{$SafMedicalInfo && $SafMedicalInfo->do_you_take_medication == "no" ? "checked=checked" : "" }}
+                                                           name="do_you_take_medication">
                                                     <span class="checkmark">No</span>
                                                 </label>
                                             </div>
 
                                             @error('do_you_take_medication')
-                                            <div class="alert alert-danger">
+                                            <div class="saf_msg">
                                                 {{ $message }}
                                             </div>
                                             @enderror
@@ -2420,10 +2438,11 @@
                                             <div class="input-flds db">
                                                 <label><i class="fa-solid fa-file-lines"></i>If yes, please
                                                     explain:</label><br>
-                                                <input type="text" name="if_yes_please_explain_medication">
+                                                <input type="text" name="if_yes_please_explain_medication"
+                                                       value="{{$SafMedicalInfo ? $SafMedicalInfo->if_yes_please_explain_medication : ""}}">
 
                                                 @error('if_yes_please_explain_medication')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -2440,19 +2459,21 @@
                                             <div class="payment-ckbx three">
 
                                                 <label>
-                                                    <input type="radio" value="yes" checked="checked"
+                                                    <input type="radio" value="yes"
+                                                           {{$SafMedicalInfo && $SafMedicalInfo->under_care_of_psychiatrist_past_five_year == "yes" ? "checked=checked" : "" }}
                                                            name="under_care_of_psychiatrist_past_five_year">
                                                     <span class="checkmark">Yes</span>
                                                 </label>
                                                 <label>
                                                     <input type="radio" value="no"
+                                                           {{$SafMedicalInfo && $SafMedicalInfo->under_care_of_psychiatrist_past_five_year == "no" ? "checked=checked" : "" }}
                                                            name="under_care_of_psychiatrist_past_five_year">
                                                     <span class="checkmark">No</span>
                                                 </label>
                                             </div>
 
                                             @error('under_care_of_psychiatrist_past_five_year')
-                                            <div class="alert alert-danger">
+                                            <div class="saf_msg">
                                                 {{ $message }}
                                             </div>
                                             @enderror
@@ -2462,10 +2483,11 @@
                                                 <label><i class="fa-solid fa-file-lines"></i>If yes, please
                                                     explain:</label><br>
                                                 <input type="text"
-                                                       name="if_yes_please_explain_reason_of_psychiatrist">
+                                                       name="if_yes_please_explain_reason_of_psychiatrist"
+                                                       value="{{$SafMedicalInfo ? $SafMedicalInfo->if_yes_please_explain_reason_of_psychiatrist : ""}}">
 
                                                 @error('if_yes_please_explain_reason_of_psychiatrist')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -2481,35 +2503,19 @@
                                             <div class="payment-ckbx three">
 
                                                 <label>
-                                                    <input type="radio" value="yes" checked="checked"
-                                                           name="have_who_approved_vaccination">
+                                                    <input type="radio" value="yes"
+                                                           {{$SafMedicalInfo && $SafMedicalInfo->have_who_approved_vaccination == "yes" ? "checked=checked" : "" }}
+                                                    name="have_who_approved_vaccination">
                                                     <span class="checkmark">Yes</span>
                                                 </label>
                                                 <label>
                                                     <input type="radio" value="no"
+                                                           {{$SafMedicalInfo && $SafMedicalInfo->have_who_approved_vaccination == "no" ? "checked=checked" : "" }}
                                                            name="have_who_approved_vaccination">
                                                     <span class="checkmark">No</span>
                                                 </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            @error('have_who_approved_vaccination')
-                                            <div class="alert alert-danger">
-                                                {{ $message }}
-                                            </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <h6 class="pay-method"><i class="fa-solid fa-circle-question"></i>
-                                                Please attach a photo of your vaccine card with your completed
-                                                application.</h6>
-                                            <div class="form-submit">
-                                                <input type="file" id="myFile" name="vaccine_card_photograph">
-
-                                                @error('vaccine_card_photograph')
-                                                <div class="alert alert-danger">
+                                                @error('have_who_approved_vaccination')
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -2519,22 +2525,44 @@
                                             <div class="input-flds db">
                                                 <label><i class="fa-solid fa-file-lines"></i>Vaccine
                                                     Name:</label><br>
-                                                <input type="text" name="vaccine_name">
+                                                <input type="text" name="vaccine_name"
+                                                       value="{{$SafMedicalInfo ? $SafMedicalInfo->vaccine_name : ""}}">
 
                                                 @error('vaccine_name')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
                                             </div>
 
-                                            <div class="input-flds db">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+
+                                        <div class="col-md-6">
+                                            <h6 class="pay-method"><i class="fa-solid fa-circle-question"></i>
+                                                Please attach a photo of your vaccine card with your completed
+                                                application.</h6>
+                                            <div class="form-submit">
+                                                <input type="file" id="myFile" name="vaccine_card_photograph">
+
+                                                @error('vaccine_card_photograph')
+                                                <div class="saf_msg">
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+
+                                            <div class="input-flds db dts">
                                                 <label><i class="fa-solid fa-calendar-days"></i>Date(s)
                                                     Administered:</label><br>
-                                                <input type="date" name="dates_administered" required>
+                                                <input type="date" name="dates_administered"
+                                                       value="{{$SafMedicalInfo ? $SafMedicalInfo->dates_administered : ""}}" required>
 
                                                 @error('dates_administered')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -2566,19 +2594,21 @@
                                                 <div class="payment-ckbx plane">
 
                                                     <label>
-                                                        <input type="radio" value="yes" checked="checked"
+                                                        <input type="radio" value="yes"
+                                                               {{$SafAirportInfo && $SafAirportInfo->request_for_airport_pickup_driver == "yes" ? "checked=checked" : "" }}
                                                                name="request_for_airport_pickup_driver">
                                                         <span class="checkmark">Yes</span>
                                                     </label>
                                                     <label>
                                                         <input type="radio" value="no"
+                                                               {{$SafAirportInfo && $SafAirportInfo->request_for_airport_pickup_driver == "no" ? "checked=checked" : "" }}
                                                                name="request_for_airport_pickup_driver">
                                                         <span class="checkmark">No</span>
                                                     </label>
 
 
                                                     @error('request_for_airport_pickup_driver')
-                                                    <div class="alert alert-danger">
+                                                    <div class="saf_msg">
                                                         {{ $message }}
                                                     </div>
                                                     @enderror
@@ -2591,9 +2621,10 @@
                                                     <label><i class="fa-solid fa-car"></i>If Driver Required,
                                                         Number of People
                                                         needing ISP Driver:</label><br>
-                                                    <input type="text" name="number_of_people_needing_driver">
+                                                    <input type="text" name="number_of_people_needing_driver"
+                                                           value="{{$SafAirportInfo && $SafAirportInfo->request_for_airport_pickup_driver == "yes" ? $SafAirportInfo->number_of_people_needing_driver : "" }}">
                                                     @error('airport_arrival_number_of_people')
-                                                    <div class="alert alert-danger">
+                                                    <div class="saf_msg">
                                                         {{ $message }}
                                                     </div>
                                                     @enderror
@@ -2611,10 +2642,11 @@
                                                     <div class="input-flds airport">
                                                         <label><i class="fa-solid fa-calendar-days"></i>Arrival
                                                             Date</label><br>
-                                                        <input type="date" name="arrival_date">
+                                                        <input type="date" name="arrival_date"
+                                                               value="{{$SafAirportInfo ? $SafAirportInfo->arrival_date : ""}}">
 
                                                         @error('arrival_date')
-                                                        <div class="alert alert-danger">
+                                                        <div class="saf_msg">
                                                             {{ $message }}
                                                         </div>
                                                         @enderror
@@ -2627,10 +2659,11 @@
                                                         <label><i class="fa-solid fa-plane-departure"></i>Airport
                                                             Arrival
                                                             Time</label>
-                                                        <input type="time" name="airport_arrival_time">
+                                                        <input type="time" name="airport_arrival_time"
+                                                               value="{{$SafAirportInfo ? $SafAirportInfo->airport_arrival_time : ""}}">
 
                                                         @error('airport_arrival_time')
-                                                        <div class="alert alert-danger">
+                                                        <div class="saf_msg">
                                                             {{ $message }}
                                                         </div>
                                                         @enderror
@@ -2644,30 +2677,33 @@
                                         <div class="payment-ckbx plane">
 
                                             <label>
-                                                <input type="radio" value="international" checked="checked"
+                                                <input type="radio" value="international"
+                                                       {{$SafAirportInfo && $SafAirportInfo->flight_type == "international" ? "checked=checked" : "" }}
                                                        name="flight_type">
                                                 <span class="checkmark">International</span>
                                             </label>
                                             <label>
-                                                <input type="radio" value="domestic" name="flight_type">
+                                                <input type="radio" value="domestic"
+                                                       {{$SafAirportInfo && $SafAirportInfo->flight_type == "domestic" ? "checked=checked" : "" }}
+                                                       name="flight_type">
                                                 <span class="checkmark">Domestic</span>
                                             </label>
 
 
                                             @error('flight_type')
-                                            <div class="alert alert-danger">
+                                            <div class="saf_msg">
                                                 {{ $message }}
                                             </div>
                                             @enderror
                                         </div>
-
                                         <div class="input-flds airport before">
                                             <label><i class="fa-solid fa-plane-departure"></i>Arrival
                                                 Airport</label><br>
+
                                             <select class="yd-select " name="arrival_airport"
                                                     id="airport_arrival_airport"
                                                     placeholder="" tabindex="1" data-parsley-group="block-0">
-                                                <option value=""></option>
+                                                <option value="{{$SafAirportInfo ? $SafAirportInfo->arrival_airport : ""}}">{{$SafAirportInfo ? $SafAirportInfo->arrival_airport : ""}}</option>
                                                 <option value="PSP">PSP</option>
                                                 <option value="SFO">SFO</option>
                                                 <option value="SJC">SJC</option>
@@ -2680,7 +2716,7 @@
 
                                             </select>
                                             @error('arrival_airport')
-                                            <div class="alert alert-danger">
+                                            <div class="saf_msg">
                                                 {{ $message }}
                                             </div>
                                             @enderror
@@ -2692,7 +2728,7 @@
                                             <select class="yd-select " name="arrival_airline"
                                                     id="airport_arrival_airline"
                                                     placeholder="" tabindex="1" data-parsley-group="block-0">
-                                                <option value=""></option>
+                                                <option value="{{$SafAirportInfo ? $SafAirportInfo->arrival_airline : ""}}">{{$SafAirportInfo ? $SafAirportInfo->arrival_airline : ""}}</option>
                                                 <option value="American Airlines-Domestic">American
                                                     Airlines-Domestic
                                                 </option>
@@ -2715,7 +2751,7 @@
                                             </select>
 
                                             @error('arrival_airline')
-                                            <div class="alert alert-danger">
+                                            <div class="saf_msg">
                                                 {{ $message }}
                                             </div>
                                             @enderror
@@ -2723,10 +2759,11 @@
                                         <div class="input-flds airport">
                                             <label><i class="fa-solid fa-plane-departure"></i>Arrival Flight
                                                 Number</label><br>
-                                            <input type="text" name="arrival_flight_number">
+                                            <input type="text" name="arrival_flight_number"
+                                                   value="{{$SafAirportInfo ? $SafAirportInfo->arrival_flight_number : ""}}">
 
                                             @error('arrival_flight_number')
-                                            <div class="alert alert-danger">
+                                            <div class="saf_msg">
                                                 {{ $message }}
                                             </div>
                                             @enderror
@@ -2750,26 +2787,29 @@
                                 <!--<div class="form_style five">-->
                                 <div class="refundable-payment">
                                     <div class="row">
-                                        <h5>Payment Form</h5>
-                                        <h6 class="pay-method"><i
-                                                    class="fa-solid fa-circle-question"></i>Payment:<span>*</span>
-                                        </h6>
+                                        <h3>Payment Form</h3>
+{{--                                        <h6 class="pay-method"><i--}}
+{{--                                                    class="fa-solid fa-circle-question"></i>Payment:<span>*</span>--}}
+{{--                                        </h6>--}}
 
                                         <div class="col-md-4">
+                                            <label class="my-lab">Payment:<span>*</span></label>
                                             <div class="payment-ckbx three">
                                                 <label>
-                                                    <input type="radio" value="Credit Card" checked="checked"
+                                                    <input type="radio" value="Credit Card"
+                                                           {{$SafPaymentInfo && $SafPaymentInfo->payment_method == "Credit Card" ? "checked=checked" : "" }}
                                                            name="payment_method">
                                                     <span class="checkmark">Credit Card</span>
                                                 </label>
                                                 <label>
                                                     <input type="radio" value="Check or Money Order"
+                                                           {{$SafPaymentInfo && $SafPaymentInfo->payment_method == "Check or Money Order" ? "checked=checked" : "" }}
                                                            name="payment_method">
                                                     <span class="checkmark">Check or Money Order (send payment to the ISP main office)</span>
                                                 </label>
 
                                                 @error('payment_method')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -2779,11 +2819,12 @@
                                             <div class="input-flds refundable-payment">
                                                 <label><i class="fa-solid fa-user"></i>Student First
                                                     Name<span>*</span></label><br>
-                                                <input type="text" name="card_holder_student_first_name" required>
+                                                <input type="text" name="card_holder_student_first_name"
+                                                       value="{{$Saf_BasicInfo ? $Saf_BasicInfo->first_name : ""}}" required>
                                                 {{--                                <input type="text" name="student_name_1" required>--}}
 
                                                 @error('card_holder_student_first_name')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -2793,10 +2834,11 @@
                                             <div class="input-flds refundable-payment">
                                                 <label><i class="fa-solid fa-user"></i>Student Last
                                                     Name<span>*</span></label><br>
-                                                <input type="text" name="card_holder_student_last_name" required>
+                                                <input type="text" name="card_holder_student_last_name"
+                                                       value="{{$Saf_BasicInfo ? $Saf_BasicInfo->last_name : ""}}" required>
 
                                                 @error('card_holder_student_last_name')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -2806,10 +2848,11 @@
                                             <div class="input-flds refundable-payment">
                                                 <label><i class="fa-solid fa-user"></i>Cardholder First
                                                     Name<span>*</span></label><br>
-                                                <input type="text" name="cardholder_first_name" required>
+                                                <input type="text" name="cardholder_first_name"
+                                                       value="{{$SafPaymentInfo ? $SafPaymentInfo->cardholder_first_name : ""}}"  required>
 
                                                 @error('cardholder_first_name')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -2819,10 +2862,11 @@
                                             <div class="input-flds refundable-payment">
                                                 <label><i class="fa-solid fa-user"></i>Cardholder Last
                                                     Name<span>*</span></label><br>
-                                                <input type="text" name="cardholder_last_name" required>
+                                                <input type="text" name="cardholder_last_name"
+                                                       value="{{$SafPaymentInfo ? $SafPaymentInfo->cardholder_last_name : ""}}"  required>
 
                                                 @error('cardholder_last_name')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -2832,11 +2876,12 @@
                                             <div class="input-flds refundable-payment">
                                                 <label><i class="fa-solid fa-user"></i>Cardholder
                                                     Address<span>*</span></label><br>
-                                                <input type="text" name="cardholder_address">
+                                                <input type="text" name="cardholder_address"
+                                                       value="{{$SafPaymentInfo ? $SafPaymentInfo->cardholder_address : ""}}"  >
                                                 {{--                                <input type="text" name="cardholder_street_address_line_1">--}}
 
                                                 @error('cardholder_address')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -2846,10 +2891,11 @@
                                             <div class="input-flds">
                                                 <label><i class="fa-solid fa-address-card"></i>Cardholder
                                                     City<span>*</span></label>
-                                                <input type="text" name="cardholder_city" required>
+                                                <input type="text" name="cardholder_city"
+                                                       value="{{$SafPaymentInfo ? $SafPaymentInfo->cardholder_city : ""}}" required>
 
                                                 @error('cardholder_city')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -2864,7 +2910,7 @@
                                                         placeholder=""
                                                         tabindex="1" data-parsley-group="block-0">
 
-                                                    <option value=""></option>
+                                                    <option value="{{$SafPaymentInfo ? $SafPaymentInfo->cardholder_state : ""}}">{{$SafPaymentInfo ? $SafPaymentInfo->cardholder_state : ""}}</option>
                                                     <option value="Alaska"> Alaska</option>
                                                     <option value="Arizona"> Arizona</option>
                                                     <option value="Arkansas"> Arkansas</option>
@@ -2925,7 +2971,7 @@
                                                     </option>
                                                 </select>
                                                 @error('cardholder_state')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -2936,10 +2982,11 @@
                                                 <label><i class="fa-solid fa-address-card"></i>Cardholder Postal /
                                                     Zip
                                                     Code<span>*</span></label><br>
-                                                <input type="text" name="cardholder_zipcode" required>
+                                                <input type="text" name="cardholder_zipcode"
+                                                       value="{{$SafPaymentInfo ? $SafPaymentInfo->cardholder_zipcode : ""}}" required>
 
                                                 @error('cardholder_zipcode')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -2954,7 +3001,7 @@
                                                         name="cardholder_country"
                                                         id="cc_cardholder_country" placeholder="" tabindex="1"
                                                         data-parsley-group="block-0">
-                                                    <option value=""></option>
+                                                    <option value="{{$SafPaymentInfo ? $SafPaymentInfo->cardholder_country : ""}}">{{$SafPaymentInfo ? $SafPaymentInfo->cardholder_country : ""}}</option>
                                                     <option value="Afghanistan">Afghanistan</option>
                                                     <option value="Åland Islands">Åland Islands</option>
                                                     <option value="Albania">Albania</option>
@@ -3253,7 +3300,7 @@
                                                     <option value="Zimbabwe">Zimbabwe</option>
                                                 </select>
                                                 @error('cardholder_country')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -3263,34 +3310,40 @@
                                             <div class="input-flds refundable-payment">
                                                 <label><i class="fa-solid fa-envelope"></i>Cardholder
                                                     Email<span>*</span></label><br>
-                                                <input type="text" name="cardholder_email" required>
+                                                <input type="text" name="cardholder_email"
+                                                       value="{{$SafPaymentInfo ? $SafPaymentInfo->cardholder_email : ""}}"  required>
 
                                                 @error('cardholder_email')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
                                             </div>
                                         </div>
-                                        <h6 class="pay-method"><i class="fa-solid fa-credit-card"></i>Credit Card
-                                            Type<span>*</span>
-                                        </h6>
+                                        <div class="col-md-4"></div>
+{{--                                        <h6 class="pay-method"><i class="fa-solid fa-credit-card"></i>Credit Card--}}
+{{--                                            Type<span>*</span>--}}
+{{--                                        </h6>--}}
                                         <div class="col-md-4">
+                                            <label class="my-lab">Credit Card<span>*</span></label>
                                             <div class="payment-ckbx three">
 
                                                 <label>
-                                                    <input type="radio" value="Visa" checked="checked"
+                                                    <input type="radio" value="Visa"
+                                                           {{$SafPaymentInfo && $SafPaymentInfo->credit_card_type == "Visa" ? "checked=checked" : "" }}
                                                            name="credit_card_type">
                                                     <span class="checkmark">Visa</span>
                                                 </label>
                                                 <label>
-                                                    <input type="radio" value="Master Card" name="credit_card_type">
+                                                    <input type="radio" value="Master Card"
+                                                           {{$SafPaymentInfo && $SafPaymentInfo->credit_card_type == "Master Card" ? "checked=checked" : "" }}
+                                                           name="credit_card_type">
                                                     <span class="checkmark">Master Card</span>
                                                 </label>
 
 
                                                 @error('credit_card_type')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -3300,10 +3353,11 @@
                                             <div class="input-flds refundable-payment">
                                                 <label><i class="fa-solid fa-credit-card"></i>Name on
                                                     Card<span>*</span></label><br>
-                                                <input type="text" name="name_on_card" required>
+                                                <input type="text" name="name_on_card"
+                                                       value="{{$SafPaymentInfo ? $SafPaymentInfo->name_on_card : ""}}"   required>
 
                                                 @error('name_on_card')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -3313,10 +3367,11 @@
                                             <div class="input-flds refundable-payment">
                                                 <label><i class="fa-solid fa-credit-card"></i>Credit Card
                                                     Number<span>*</span></label><br>
-                                                <input type="number" name="card_number" required>
+                                                <input type="number" name="card_number"
+                                                       value="{{$SafPaymentInfo ? $SafPaymentInfo->card_number : ""}}" required>
 
                                                 @error('card_number')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -3325,10 +3380,11 @@
                                         <div class="col-md-4">
                                             <div class="input-flds refundable-payment">
                                                 <label><i class="fa-solid fa-credit-card"></i>CVC<span>*</span></label><br>
-                                                <input type="number" name="card_cvc" required>
+                                                <input type="number" name="card_cvc"
+                                                       value="{{$SafPaymentInfo ? $SafPaymentInfo->card_cvc : ""}}" required>
 
                                                 @error('card_cvc')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -3340,10 +3396,11 @@
                                                     Date<span>*</span></label><br>
                                                 <input type="date" name="card_exp_date"
                                                        min="{{"carbon date required"}}"
-                                                       max="{{"carbon date required"}}" required>
+                                                       max="{{"carbon date required"}}"
+                                                       value="{{$SafPaymentInfo ? $SafPaymentInfo->card_exp_date : ""}}" required>
 
                                                 @error('card_exp_date')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -3367,12 +3424,14 @@
                                             <div class="payment-ckbx three">
 
                                                 <label>
-                                                    <input type="checkbox" value="yes" name="placement_fee">
+                                                    <input type="checkbox" value="yes"
+                                                           {{$SafPaymentInfo && $SafPaymentInfo->placement_fee == "yes" ? "checked=checked" : "" }}
+                                                           name="placement_fee">
                                                     <span class="checkmark">Yes</span>
                                                 </label>
 
                                                 @error('placement_fee')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -3389,13 +3448,15 @@
                                             <div class="payment-ckbx three">
 
                                                 <label>
-                                                    <input type="checkbox" value="yes" name="late_fee">
+                                                    <input type="checkbox" value="yes"
+                                                           {{$SafPaymentInfo && $SafPaymentInfo->late_fee == "yes" ? "checked=checked" : "" }}
+                                                           name="late_fee">
                                                     <span class="checkmark">Yes</span>
                                                 </label>
 
 
                                                 @error('late_fee')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -3411,13 +3472,15 @@
                                             <div class="payment-ckbx three">
 
                                                 <label>
-                                                    <input type="checkbox" value="yes" name="deposit_fee">
+                                                    <input type="checkbox" value="yes"
+                                                           {{$SafPaymentInfo && $SafPaymentInfo->deposit_fee == "yes" ? "checked=checked" : "" }}
+                                                           name="deposit_fee">
                                                     <span class="checkmark">Yes</span>
                                                 </label>
 
 
                                                 @error('deposit_fee')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -3429,12 +3492,14 @@
 
                                             <div class="payment-ckbx three">
                                                 <label>
-                                                    <input type="checkbox" value="yes" name="airport_pickup_fee">
+                                                    <input type="checkbox" value="yes"
+                                                           {{$SafPaymentInfo && $SafPaymentInfo->airport_pickup_fee == "yes" ? "checked=checked" : "" }}
+                                                           name="airport_pickup_fee">
                                                     <span class="checkmark">Yes</span>
                                                 </label>
 
                                                 @error('airport_pickup_fee')
-                                                <div class="alert alert-danger">
+                                                <div class="saf_msg">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -3467,12 +3532,14 @@
                                             <div class="col-md-4 col-sm-4 col-xs-12">
                                                 <div class="payment-ckbx three">
                                                     <label class="boxs-siz">
-                                                        <input type="checkbox" value="yes" name="fees_agreement">
+                                                        <input type="checkbox" value="yes"
+                                                               {{$SafAgreementInfo && $SafAgreementInfo->fees_agreement == "yes" ? "checked=checked" : "" }}
+                                                               name="fees_agreement">
                                                         <span class="checkmark ex1">Fees: </br>The placement fee, deposit, late fee, and airport pick up fee will be charged to the student’s credit card when they submit their application. Applications are not processed until the payment is made. If a student decides to cancel the program, all fees are non-refundable.</span>
                                                     </label>
 
                                                     @error('fees_agreement')
-                                                    <div class="alert alert-danger">
+                                                    <div class="saf_msg">
                                                         {{ $message }}
                                                     </div>
                                                     @enderror
@@ -3483,6 +3550,7 @@
                                                 <div class="payment-ckbx three">
                                                     <label class="boxs-siz">
                                                         <input type="checkbox" value="yes"
+                                                               {{$SafAgreementInfo && $SafAgreementInfo->contract_period_agreement == "yes" ? "checked=checked" : "" }}
                                                                name="contract_period_agreement">
                                                         <span class="checkmark ex1">
                                                                 Contract Period:</br> Students must stay with their assigned host for the entire contract period they signed up for. Students can extend their contract with the consent of their host on a month-to-month basis once their initial contract period has concluded. If a student chooses to leave their host home prior to the end of their contract, they must pay rent for the remainder of the contract period. All students must inform their host and ISP 30 days prior to leaving their host home indicating that they are ending their participation in the program.
@@ -3490,7 +3558,7 @@
                                                     </label>
 
                                                     @error('contract_period_agreement')
-                                                    <div class="alert alert-danger">
+                                                    <div class="saf_msg">
                                                         {{ $message }}
                                                     </div>
                                                     @enderror
@@ -3501,6 +3569,7 @@
                                                 <div class="payment-ckbx three">
                                                     <label class="boxs-siz">
                                                         <input type="checkbox" value="yes"
+                                                               {{$SafAgreementInfo && $SafAgreementInfo->payments_agreement == "yes" ? "checked=checked" : "" }}
                                                                name="payments_agreement">
                                                         <span class="checkmark ex1">
                                                                 Payments:</br> Students who pay rent directly to their host will pay on the day they arrive and each month thereafter.  Students must pay the rent in full and on time each month. Failure to do so will result in termination from the program. Students understand that ISP does not get involved in rent disputes between hosts and students. Host payment information and the monthly rent amount will be in the student’s ISP portal.
@@ -3508,7 +3577,7 @@
                                                     </label>
 
                                                     @error('payments_agreement')
-                                                    <div class="alert alert-danger">
+                                                    <div class="saf_msg">
                                                         {{ $message }}
                                                     </div>
                                                     @enderror
@@ -3519,14 +3588,16 @@
                                             <div class="col-md-4 col-sm-4 col-xs-12">
                                                 <div class="payment-ckbx three">
                                                     <label class="boxs-siz">
-                                                        <input type="checkbox" value="yes" name="deposit_agreement">
+                                                        <input type="checkbox" value="yes"
+                                                               {{$SafAgreementInfo && $SafAgreementInfo->deposit_agreement == "yes" ? "checked=checked" : "" }}
+                                                               name="deposit_agreement">
                                                         <span class="checkmark ex1">
                                                                Deposit:</br> Each student pays a deposit to ensure they keep their bedroom and bathroom clean and that no damage was done to the bedroom or bathroom. Students must request their deposit returned from ISP within 30 days of leaving the host home. Deposit checks are payable only in the student’s name and are mailed only to a US address. Students must read and understand the deposit information sheet that is in student’s ISP portal.
                                                             </span>
                                                     </label>
 
                                                     @error('deposit_agreement')
-                                                    <div class="alert alert-danger">
+                                                    <div class="saf_msg">
                                                         {{ $message }}
                                                     </div>
                                                     @enderror
@@ -3537,6 +3608,7 @@
                                                 <div class="payment-ckbx three">
                                                     <label class="boxs-siz">
                                                         <input type="checkbox" value="yes"
+                                                               {{$SafAgreementInfo && $SafAgreementInfo->meal_plans_agreement == "yes" ? "checked=checked" : "" }}
                                                                name="meal_plans_agreement">
                                                         <span class="checkmark ex1">
 
@@ -3548,7 +3620,7 @@
                                                     </label>
 
                                                     @error('meal_plans_agreement')
-                                                    <div class="alert alert-danger">
+                                                    <div class="saf_msg">
                                                         {{ $message }}
                                                     </div>
                                                     @enderror
@@ -3559,6 +3631,7 @@
                                                 <div class="payment-ckbx three">
                                                     <label class="boxs-siz">
                                                         <input type="checkbox" value="yes"
+                                                               {{$SafAgreementInfo && $SafAgreementInfo->student_faq_sheet_agreement == "yes" ? "checked=checked" : "" }}
                                                                name="student_faq_sheet_agreement">
                                                         <span class="checkmark ex1">
                                                                 Student FAQ Sheet: </br> Students must read and understand the Student FAQ sheet that will be in the student’s ISP portal.
@@ -3566,7 +3639,7 @@
                                                     </label>
 
                                                     @error('student_faq_sheet_agreement')
-                                                    <div class="alert alert-danger">
+                                                    <div class="saf_msg">
                                                         {{ $message }}
                                                     </div>
                                                     @enderror
@@ -3578,6 +3651,7 @@
                                                 <div class="payment-ckbx three">
                                                     <label class="boxs-siz">
                                                         <input type="checkbox" value="yes"
+                                                               {{$SafAgreementInfo && $SafAgreementInfo->airport_pickup_agreement == "yes" ? "checked=checked" : "" }}
                                                                name="airport_pickup_agreement">
                                                         <span class="checkmark ex1">
                                                                 Airport Pickup: </br> ISP provides airport pickup only in a few areas in the US. If
@@ -3591,7 +3665,7 @@
                                                     </label>
 
                                                     @error('airport_pickup_agreement')
-                                                    <div class="alert alert-danger">
+                                                    <div class="saf_msg">
                                                         {{ $message }}
                                                     </div>
                                                     @enderror
@@ -3602,6 +3676,7 @@
                                                 <div class="payment-ckbx three">
                                                     <label class="boxs-siz">
                                                         <input type="checkbox" value="yes"
+                                                               {{$SafAgreementInfo && $SafAgreementInfo->transportation_agreement == "yes" ? "checked=checked" : "" }}
                                                                name="transportation_agreement">
                                                         <span class="checkmark ex1">
 
@@ -3613,7 +3688,7 @@
                                                     </label>
 
                                                     @error('transportation_agreement')
-                                                    <div class="alert alert-danger">
+                                                    <div class="saf_msg">
                                                         {{ $message }}
                                                     </div>
                                                     @enderror
@@ -3624,6 +3699,7 @@
                                                 <div class="payment-ckbx three">
                                                     <label class="boxs-siz">
                                                         <input type="checkbox" value="yes"
+                                                               {{$SafAgreementInfo && $SafAgreementInfo->host_possessions_agreement == "yes" ? "checked=checked" : "" }}
                                                                name="host_possessions_agreement">
                                                         <span class="checkmark ex1">
 
@@ -3635,7 +3711,7 @@
                                                     </label>
 
                                                     @error('host_possessions_agreement')
-                                                    <div class="alert alert-danger">
+                                                    <div class="saf_msg">
                                                         {{ $message }}
                                                     </div>
                                                     @enderror
@@ -3669,6 +3745,7 @@
                                                 <div class="payment-ckbx three">
                                                     <label class="boxs-siz">
                                                         <input type="checkbox" value="yes"
+                                                               {{$SafAgreementInfo && $SafAgreementInfo->prohibited_activities_agreement == "yes" ? "checked=checked" : "" }}
                                                                name="prohibited_activities_agreement">
                                                         <span class="checkmark ex1">
 
@@ -3686,7 +3763,7 @@
                                                     </label>
 
                                                     @error('prohibited_activities_agreement')
-                                                    <div class="alert alert-danger">
+                                                    <div class="saf_msg">
                                                         {{ $message }}
                                                     </div>
                                                     @enderror
@@ -3697,6 +3774,7 @@
                                                 <div class="payment-ckbx three">
                                                     <label class="boxs-siz">
                                                         <input type="checkbox" value="yes"
+                                                               {{$SafAgreementInfo && $SafAgreementInfo->medical_agreement == "yes" ? "checked=checked" : "" }}
                                                                name="medical_agreement">
                                                         <span class="checkmark ex1">
 
@@ -3713,7 +3791,7 @@
                                                     </label>
 
                                                     @error('medical_agreement')
-                                                    <div class="alert alert-danger">
+                                                    <div class="saf_msg">
                                                         {{ $message }}
                                                     </div>
                                                     @enderror
@@ -3724,6 +3802,7 @@
                                                 <div class="payment-ckbx three">
                                                     <label class="boxs-siz">
                                                         <input type="checkbox" value="yes"
+                                                               {{$SafAgreementInfo && $SafAgreementInfo->request_for_host_change_agreement == "yes" ? "checked=checked" : "" }}
                                                                name="request_for_host_change_agreement">
                                                         <span class="checkmark ex1">
 
@@ -3737,7 +3816,7 @@
                                                     </label>
 
                                                     @error('request_for_host_change_agreement')
-                                                    <div class="alert alert-danger">
+                                                    <div class="saf_msg">
                                                         {{ $message }}
                                                     </div>
                                                     @enderror
@@ -3749,6 +3828,7 @@
                                                 <div class="payment-ckbx three">
                                                     <label class="boxs-siz">
                                                         <input type="checkbox" value="yes"
+                                                               {{$SafAgreementInfo && $SafAgreementInfo->media_photo_release_agreement == "yes" ? "checked=checked" : "" }}
                                                                name="media_photo_release_agreement">
                                                         <span class="checkmark ex1">
 
@@ -3761,7 +3841,7 @@
                                                     </label>
 
                                                     @error('media_photo_release_agreement')
-                                                    <div class="alert alert-danger">
+                                                    <div class="saf_msg">
                                                         {{ $message }}
                                                     </div>
                                                     @enderror
@@ -3772,6 +3852,7 @@
                                                 <div class="payment-ckbx three">
                                                     <label class="boxs-siz">
                                                         <input type="checkbox" value="yes"
+                                                               {{$SafAgreementInfo && $SafAgreementInfo->covid_19_protocol_for_students_agreement == "yes" ? "checked=checked" : "" }}
                                                                name="covid_19_protocol_for_students_agreement">
                                                         <span class="checkmark ex1">
 
@@ -3820,7 +3901,7 @@
                                                     </label>
 
                                                     @error('covid_19_protocol_for_students_agreement')
-                                                    <div class="alert alert-danger">
+                                                    <div class="saf_msg">
                                                         {{ $message }}
                                                     </div>
                                                     @enderror
@@ -3831,6 +3912,7 @@
                                                 <div class="payment-ckbx three">
                                                     <label class="boxs-siz">
                                                         <input type="checkbox" value="yes"
+                                                               {{$SafAgreementInfo && $SafAgreementInfo->program_termination_agreement == "yes" ? "checked=checked" : "" }}
                                                                name="program_termination_agreement">
                                                         <span class="checkmark ex1">
 
@@ -3842,7 +3924,7 @@
                                                     </label>
 
                                                     @error('program_termination_agreement')
-                                                    <div class="alert alert-danger">
+                                                    <div class="saf_msg">
                                                         {{ $message }}
                                                     </div>
                                                     @enderror
@@ -3854,6 +3936,7 @@
                                                 <div class="payment-ckbx three">
                                                     <label class="boxs-siz">
                                                         <input type="checkbox" value="yes"
+                                                               {{$SafAgreementInfo && $SafAgreementInfo->warranties_consent_agreement == "yes" ? "checked=checked" : "" }}
                                                                name="warranties_consent_agreement">
                                                         <span class="checkmark ex1">
 
@@ -3870,7 +3953,7 @@
                                                     </label>
 
                                                     @error('warranties_consent_agreement')
-                                                    <div class="alert alert-danger">
+                                                    <div class="saf_msg">
                                                         {{ $message }}
                                                     </div>
                                                     @enderror
@@ -3881,6 +3964,7 @@
                                                 <div class="payment-ckbx three">
                                                     <label class="boxs-siz">
                                                         <input type="checkbox" value="yes"
+                                                               {{$SafAgreementInfo && $SafAgreementInfo->limitation_of_liability_agreement == "yes" ? "checked=checked" : "" }}
                                                                name="limitation_of_liability_agreement">
                                                         <span class="checkmark ex1">
 
@@ -3895,7 +3979,7 @@
                                                     </label>
 
                                                     @error('limitation_of_liability_agreement')
-                                                    <div class="alert alert-danger">
+                                                    <div class="saf_msg">
                                                         {{ $message }}
                                                     </div>
                                                     @enderror
@@ -3906,6 +3990,7 @@
                                                 <div class="payment-ckbx three">
                                                     <label class="boxs-siz">
                                                         <input type="checkbox" value="yes"
+                                                               {{$SafAgreementInfo && $SafAgreementInfo->indemnification_agreement == "yes" ? "checked=checked" : "" }}
                                                                name="indemnification_agreement">
                                                         <span class="checkmark ex1">
 
@@ -3923,7 +4008,7 @@
                                                     </label>
 
                                                     @error('indemnification_agreement')
-                                                    <div class="alert alert-danger">
+                                                    <div class="saf_msg">
                                                         {{ $message }}
                                                     </div>
                                                     @enderror
@@ -3935,6 +4020,7 @@
                                                 <div class="payment-ckbx three">
                                                     <label class="boxs-siz">
                                                         <input type="checkbox" value="yes"
+                                                               {{$SafAgreementInfo && $SafAgreementInfo->governing_law_agreement == "yes" ? "checked=checked" : "" }}
                                                                name="governing_law_agreement">
                                                         <span class="checkmark ex1">
 
@@ -3946,7 +4032,7 @@
                                                     </label>
 
                                                     @error('governing_law_agreement')
-                                                    <div class="alert alert-danger">
+                                                    <div class="saf_msg">
                                                         {{ $message }}
                                                     </div>
                                                     @enderror
@@ -3957,6 +4043,7 @@
                                                 <div class="payment-ckbx three">
                                                     <label class="boxs-siz">
                                                         <input type="checkbox" value="yes"
+                                                               {{$SafAgreementInfo && $SafAgreementInfo->force_majeure_agreement == "yes" ? "checked=checked" : "" }}
                                                                name="force_majeure_agreement">
                                                         <span class="checkmark ex1">
 
@@ -3968,7 +4055,7 @@
                                                     </label>
 
                                                     @error('force_majeure_agreement')
-                                                    <div class="alert alert-danger">
+                                                    <div class="saf_msg">
                                                         {{ $message }}
                                                     </div>
                                                     @enderror
@@ -4030,14 +4117,16 @@
                                 <div class="payment-ckbx three">
 
                                     <label>
-                                        <input type="radio" value="yes" checked="checked" name="agree"
+                                        <input type="radio" value="yes"
+                                               {{$Saf_BasicInfo && $Saf_BasicInfo->agree == "yes" ? "checked=checked" : "" }}
+                                               name="agree"
                                                required>
                                         <span class="checkmark">Agree</span>
                                     </label>
 
 
                                     @error('agree')
-                                    <div class="alert alert-danger">
+                                    <div class="saf_msg">
                                         {{ $message }}
                                     </div>
                                     @enderror

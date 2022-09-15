@@ -14,11 +14,12 @@
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="student_2 stu-4">
-                            <a href="{{route('admin_manage_coordinator_details')}}"><i class="fa-solid fa-plus"></i>New Coordinator</a>
+                            <a href="{{route('admin_manage_coordinator_details')}}"><i class="fa-solid fa-plus"></i>New
+                                Coordinator</a>
                         </div>
                     </div>
-                             <div class="col-md-12 col-xs-12 col-xs-12">
-                            <div class="container">
+                    <div class="col-md-12 col-xs-12 col-xs-12">
+                        <div class="container">
                             <table class="table table_content table-bordered data-table">
                                 <thead>
                                 <tr>
@@ -40,23 +41,23 @@
         </div>
 
     </div>
-    
-  @push('js')
-<script type="text/javascript">
-    $(function () {
-        var table = $('.data-table').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: "{{ route('admin_coordinators_details') }}",
-            columns: [
-                { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false },
-                {data: 'first_name', name: 'first_name'},
-                {data: 'last_name', name: 'last_name'},
-                {data: 'email', name: 'email'},
-                {data: 'status', name: 'status'},
-                {data: 'action', name: 'Action', orderable: false, searchable: false},
-            ],
-            createdRow: function (row, data, index) {
+
+    @push('js')
+        <script type="text/javascript">
+            $(function () {
+                var table = $('.data-table').DataTable({
+                    processing: true,
+                    serverSide: true,
+                    ajax: "{{ route('admin_coordinators_details') }}",
+                    columns: [
+                        {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
+                        {data: 'first_name', name: 'first_name'},
+                        {data: 'last_name', name: 'last_name'},
+                        {data: 'email', name: 'email'},
+                        {data: 'status', name: 'status'},
+                        {data: 'action', name: 'Action', orderable: false, searchable: false},
+                    ],
+                    createdRow: function (row, data, index) {
                         console.log(data)
                         if (data['status'] === "Active") {
                             $('td', row).eq(4).css('background-color', '#e0ede0');
@@ -66,9 +67,10 @@
                             $('td', row).eq(4).css('color', '#b4b411');
                         }
                         $('td', row).eq(5).addClass('action-right');
+                        $('td', row).eq(4).css('width', '12%');
                     }
-        });
-    });
-</script>
+                });
+            });
+        </script>
     @endpush
 @endsection

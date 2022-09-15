@@ -28,6 +28,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="{{route('admin_host_details')}}">Host Details </a></li>
+                            <li><a href="{{route('admin_host_applications')}}">Host Applications </a></li>
                             <li><a href="#">Host Visits</a></li>
 {{--                            {{route('admin_host_visits')}}--}}
                         </ul>

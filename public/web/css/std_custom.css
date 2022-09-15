@@ -1047,19 +1047,12 @@ h6.pay-method span {
     display: inline-block;
 }
 
-h6.birhdate {
-    margin: 0;
-    font-weight: 500;
-    color: #fff;
-    padding-top: 25px;
-}
-
-p.birhdate {
-    margin: 0 0 7px;
-    color: white;
+span.birhdate {
+    margin: 0px 10px 0px;
+    color: #000000;
     font-weight: 400;
+    font-size: 16px;
 }
-
 
 .permanent-adress {
     margin-top: 35px;
@@ -3598,9 +3591,10 @@ h6.pay-method span {
     background: #fff;
     color: #575757;
     font-size: 16px;
-    height: 50px;
+    height: 55px;
     border-radius: 6px;
     border: 1px solid #00000059;
+    padding: 0 10px;
 }
 
 .input-flds {
@@ -3611,7 +3605,7 @@ h6.pay-method span {
     margin-bottom: 0px;
     border-radius: 0;
 }
-.input-flds .text-danger {
+.saf_msg {
     color: #dc3545 !important;
     font-size: 20px;
     margin: 4px 0 18px;
@@ -3641,6 +3635,7 @@ h6.pay-method span {
     color: #000;
     font-size: 18px;
     font-weight: 600;
+    margin: 0 1px;
 }
 
 .input-flds i {
@@ -3659,13 +3654,13 @@ h6.birhdate {
     margin: 0;
     font-weight: 500;
     color: #fff;
-    padding-top: 25px;
+    padding-top: 0px;
 }
 h6.age {
     margin: 0;
     font-weight: 500;
     color: #fff;
-    padding-top: 25px;
+    padding-top: 30px;
 }
 h6.age span {
     color: #8E2F2E;
@@ -3689,7 +3684,7 @@ h6.passport-exp {
     margin: 0;
     font-weight: 500;
     color: #fff;
-    padding-top: 25px;
+    padding-top: 2px;
 }
 h6.passport-exp span {
     color: #8E2F2E;
@@ -3703,12 +3698,7 @@ h6.passport-exp span {
 /*    color: white;*/
 /*    font-weight: 400;*/
 /*}*/
-p.birhdate {
-    margin: 0 0 0px;
-    color: white;
-    font-weight: 400;
-    font-size: 16px;
-}
+
 
 .permanent-adress {
     margin-top: 0px;
@@ -3716,12 +3706,12 @@ p.birhdate {
 
 .input-flds select {
     border: 1px solid #0000004d !important;
-    margin: 0;
+    margin: 0px 0 14px;
     background: #fff;
     color: #575757;
-    height: 60px;
+    height: 55px;
+    padding: 0 10px;
 }
-
 
 .using-agent h4 {
     font-size: 18px;
@@ -4025,11 +4015,11 @@ button.payment:hover{
     height: 50px;
     padding: 7px;
     color: #15304e;
-    border: 1px solid #15304e !important;
+    border: 1px solid #a9adb0 !important;
 }
 
 .form-submit form {
-padding: 0;
+    padding: 0;
 }
 /*program section css */
 
@@ -5022,11 +5012,13 @@ h1.other {
     text-align: left;
 }
 
+
 .payment-ckbx span {
     color: black;
     font-size: 16px;
     vertical-align: text-bottom;
-    font-weight: 600;
+    width: 100%;
+    margin: 12px 2px 0;
 }
 a.other {
     float: left;
@@ -5099,6 +5091,12 @@ section.resourses-detals {
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
+}
+label.my-lab {
+    font-size: 18px;
+    color: #040404;
+    font-weight: 600;
+    margin: 2px 10px 2px;
 }
 
 @media screen and (max-height: 450px) {
@@ -5558,21 +5556,15 @@ h6 {
     margin: 0 0 0px;
 }
 
-input[type="text"],
-input[type="password"],
-select,
-input[type="email"],
-input[type="url"],
-input[type="number"],
-textarea,
-input[type="tel"] {
+
+input[type="text"], input[type="password"], select, input[type="email"], input[type="url"], input[type="number"], textarea, input[type="tel"] {
     border: 1px solid #8988888f;
     background-color: #fff;
     font-size: 14px;
     line-height: 20px;
     color: #575757;
-    height: 50px;
-    margin-bottom: 0px;
+    height: 55px;
+    margin: 0px 0 15px;
     width: 100%;
     padding: 0px 15px;
     border-radius: 7px;
@@ -5620,7 +5612,7 @@ select {
 }
 
 input[type="checkbox"],
-input[type="radio"] {padding: 5px 5px 0px 0px;}
+input[type="radio"] {padding: 5px 5px 0px 0px;margin: 15px 11px 0;}
 
 ::-webkit-input-placeholder {
     color: #575757;
@@ -8763,12 +8755,14 @@ hr.hr-style {
     display: inline-flex;
 
 }
-.boxs-siz{
+
+.boxs-siz {
     box-shadow: 0px 1px 7px white;
     margin: 0 0 20px;
     border: 1px solid #7a7878;
     border-radius: 9px;
     padding: 11px;
+    width: 100%;
 }
 /*.accordion-body {*/
 /*    padding: 1rem 1.25rem;*/
@@ -8956,17 +8950,18 @@ article {
     font-weight: 500;
     margin: 0 0 20px;
 }
+
 .my-newfrm h6 {
     font-family: 'Proxima Nova Rg';
     font-size: 18px;
     line-height: 25px;
     color: #000;
-    margin: 2px 0 0px;
+    margin: 2px 9px 5px;
     font-weight: 600;
 }
 .my-newfrm p {
     font-family: 'Proxima Nova Rg';
-    font-size: 16px;
+    font-size: 14px;
     line-height: 25px;
     color: #000;
     font-weight: 400;
@@ -9015,14 +9010,15 @@ article {
     height: 50px;
     color: white;
     border: 1px solid white;
-    border-radius: 5px;
+    border-radius: 10px;
     font-size: 16px;
-    margin: 3px auto 0px;
+    margin: 35px auto 0px;
 }
 .sav-btn button:hover {
     background: white;
     color: black;
     font-size: 20px;
+    border: 1px solid #15304e;
 }
 span.checkmark.ex1 {
     font-weight: 400 !important;
@@ -9051,4 +9047,6 @@ span.checkmark.ex1 {
     border: 2px solid #555555;
     border-radius: 50px;
 }
-
+.input-flds.db.dts{
+    margin:0;
+}

@@ -15,6 +15,16 @@ use Yajra\DataTables\Facades\DataTables;
 
 
 use App\Models\StudentApplicationFormModel;
+//new
+use App\Models\SafStudentBasicInformationModel;
+use App\Models\SafStudentInformationModel;
+use App\Models\SafAgentInformationModel;
+use App\Models\SafOtherInformationModel;
+use App\Models\SafMedicalInformationModel;
+use App\Models\SafAirportInformationModel;
+use App\Models\SafPaymentInformationModel;
+use App\Models\SafAgreementInformationModel;
+use App\Models\SafStatusModel;
 
 class StudentController extends EmailController
 {
@@ -63,148 +73,69 @@ class StudentController extends EmailController
         return view('admin.students.details');
     }
 
-    public function student_applications()
+    public function student_applications(Request $request)
     {
-        $applications = StudentApplicationFormModel::all();
-        return view('admin.students.student_applications', compact('applications'));
+//        $applications = StudentApplicationFormModel::all();
+        // $applications = SafStudentBasicInformationModel::whereRelation('getUser','user_role',2)->whereRelation('getUser','application_submitted',1)
+        // ->get();
+        // dd($applications);
+        // return view('admin.students.student_applications', compact('applications'));
+        
+        
+        
+        if ($request->ajax())
+        {
+            // using eloquent model donot use get()
+            $model = SafStudentBasicInformationModel::whereRelation('getUser','user_role',2)->whereRelation('getUser','application_submitted',1);
+
+            return DataTables::eloquent($model)
+                //adding index or s.no
+                ->addIndexColumn()
+                ->editColumn('status', function ($model) {
+                    if ($model->status === 1) {
+                        return "Approved";
+                    } 
+                    else if($model->status === 2) {
+                        return "Rejected";
+                    }else {
+                        return "Pending";
+                    }
+                    
+                })
+                // ->editColumn('first_name', function ($model) {
+                //     return $model->userHostApplication->first_name;
+                // })
+                //  ->editColumn('last_name', function ($model) {
+                //     return $model->userHostApplication->last_name;
+                // })
+                //  ->editColumn('email', function ($model) {
+                //     return $model->userHostApplication->email;
+                // })
+                //  ->editColumn('cell_phone', function ($model) {
+                //     return $model->userHostApplication->cell_phone;
+                // })
+                ->addColumn('action', function ($model) {
+                    //adding buttons to datatable
+                    $btn = '<a class="blue-text"  href="' . route('admin_view_student_application', [$model->user_id]) . '" ><i class="fa fa-bars"></i></a>';
+                    return $btn;
+                })
+                ->toJson();
+        }
+        return view('admin.students.student_applications');
     }
 
-    public function view_student_applications($application)
+    public function view_student_applications($user_id)
     {
-        $application = StudentApplicationFormModel::where('id', $application)
-            ->with('getProgram')
-            ->with('getStdAppFormImage')
-            ->with('getStdAppFormStudentDetails')
-            ->with('getStdAppFormEmergencyDetails')
-            ->with('getStdAppFormSchoolDetails')
-            ->with('getStdAppFormOtherDetails')
-            ->with('getStdAppFormAirportDetails')
-            ->with('getStdAppFormFeeDetails')
-            ->with('getStdAppFormCardholderDetails')
-//            ->with('getStdAppFormCreditCardDetails')
-            ->with('getStdAppFormElectronicDetails')
-            ->first();
+        $Saf_BasicInfo = SafStudentBasicInformationModel::where('user_id', $user_id)->orderby('id', 'DESC')->first();
+        $SafStudentInfo = SafStudentInformationModel::where('user_id', $user_id)->orderby('id', 'DESC')->first();
+        $SafAgentInfo = SafAgentInformationModel::where('user_id', $user_id)->orderby('id', 'DESC')->first();
+        $SafOtherInfo = SafOtherInformationModel::where('user_id', $user_id)->orderby('id', 'DESC')->first();
+        $SafMedicalInfo = SafMedicalInformationModel::where('user_id', $user_id)->orderby('id', 'DESC')->first();
+        $SafAirportInfo = SafAirportInformationModel::where('user_id', $user_id)->orderby('id', 'DESC')->first();
+        $SafPaymentInfo = SafPaymentInformationModel::where('user_id', $user_id)->orderby('id', 'DESC')->first();
+        $SafAgreementInfo = SafAgreementInformationModel::where('user_id', $user_id)->orderby('id', 'DESC')->first();
 
-//        if($applications->agency_id !== null){
-        //Todo
-//        }
-
-        return view('admin.students.view_student_application', compact('application'));
-    }
-
-    public function student_application_status(Request $request, $app_id)
-    {
-        $data = $request->validate([
-            'application_status' => 'required',
-            'amount' => 'required_if:application_status,==,1',
-        ],
-            [
-                'amount.required_if' => 'The amount field is required',
-            ]);
-
-        /** Getting Application Record to update application status*/
-        $std_application = StudentApplicationFormModel::where('id', $app_id)->first();
-
-        /** Checking if application already rejected */
-        if ($std_application->status == 2 && $request->application_status == 2) {
-            return back()->with('error', 'Application already rejected');
-        }
-        /** Checking if application already approved */
-        if ($std_application->status == 1 && $request->application_status == 1) {
-            return back()->with('error', 'Application already approved');
-        }
-
-        /** Updating Application status */
-        $std_application->status = $request->application_status;
-
-        /** Directly Saving Model if admin rejected student application  */
-        if ($request->application_status == 2) {
-            /** Saving Student Application */
-            $std_application->save();
-        }
-
-
-        /** Calling User Model to shoot student application approval email and for other usage */
-        $userfind = User::where('id', $std_application->user_id)->where('user_role', 2)->first();
-
-
-        /** Checking for both fields */
-        if ($request->application_status == 1 && $request->amount) {
-
-            /** Now we have to save fees amount in student application form fees model
-             * to secure our payment amount and to check payment status
-             */
-
-            /** Calling model to check if student already paid his/her fees */
-            $std_fees = StudentApplicationFormFeesModel::where('user_id', $std_application->user_id)->where('is_paid', 1)->first();
-
-            /** If variable $std_fees not found / Student not paid his/her fees*/
-            if (!$std_fees) {
-
-                // /** Calling User Model to shoot student application approval email and for other usage */
-                // $userfind = User::where('id', $std_application->user_id)->where('user_role', 2)->first();
-
-                /** Calling Student Application Fees Model to store fees amount to that student */
-                $std_fees = new StudentApplicationFormFeesModel();
-
-                /** Adding Student Application Fees Model user id */
-                $std_fees->user_id = $userfind->id;
-
-                /** Adding Student Application Fees Model student fees amount */
-                $std_fees->fees = $request->amount;
-
-                /**
-                 * Adding Student Application Fees Model is_paid
-                 * equal to 0, So that student have to pay fees amount
-                 */
-                $std_fees->is_paid = 0;
-
-                /** Saving Student Application Fees Model */
-                $std_fees->save();
-
-                /** Saving Student Application, which we have open at the start of the function */
-                $std_application->save();
-
-                /** After Saving Student Application approval shooting email to both student and admin */
-                // $this->StdAppAccept_Reject($userfind,'Accepted');
-                $this->GA_StdAppAccept_Reject($userfind->username, $userfind->email, 'Accepted');
-
-                /** Checking process work correctly */
-                if ($std_fees->save()) {
-
-                    /** Shooting email to student for card payment (stripe implemented) */
-                    // $this->StdAppStripe($userfind, $request->amount);
-                    $this->GA_StdAppStripe($userfind->username, $userfind->email, $request->amount, route('web_stripe_form', $userfind->id));
-
-                } else {
-                    /** If process not work correctly */
-                    return back()->with('error', 'please submit your request again');
-                }
-            } else {
-                /** If variable $std_fees found Student already paid his/her fees*/
-                return back()->with('error', 'Student already paid his/her fees.');
-            }
-        }
-
-        /** At the end we to verify if student application status updated */
-        if ($std_application->save()) {
-
-            /** If admin reject student application*/
-            if ($request->application_status == 2) {
-
-                // $this->StdAppAccept_Reject($userfind,'Rejected');
-                $this->GA_StdAppAccept_Reject($userfind->username, $userfind->email, 'Rejected');
-
-
-                return back()->with('error', 'Student application rejected successfully !');
-            }
-            /** Now the process is complete returning back admin to application with the below message */
-            return back()->with('success', 'Student application status updated');
-        } else {
-
-            /** If the process is incomplete returning back admin to application with the below message*/
-            return back()->with('failed', 'Student application status update unsuccessful');
-        }
+        return view('admin.students.view_student_application',  compact('user_id','Saf_BasicInfo', 'SafStudentInfo', 'SafAgentInfo', 'SafOtherInfo', 'SafMedicalInfo', 'SafAirportInfo', 'SafPaymentInfo', 'SafAgreementInfo'));
     }
 
     public function payments(Request $request)

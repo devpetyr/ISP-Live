@@ -66,6 +66,7 @@
                             $('td', row).eq(6).css('color','#b4b411');
                         }
                         $('td', row).eq(6).addClass('text-right');
+                        $('td', row).eq(6).css('width', '12%');
                     }
                 });
             });
