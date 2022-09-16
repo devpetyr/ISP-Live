@@ -22,14 +22,19 @@ use App\Models\CountryModel;
 //use App\Models\FeeDetailsStdAppFormModel;
 //use App\Models\StudentDetailsStdAppFormModel;
 
-use App\Models\SafStudentBasicInformationModel;
-use App\Models\SafStudentInformationModel;
-use App\Models\SafAgentInformationModel;
-use App\Models\SafOtherInformationModel;
-use App\Models\SafMedicalInformationModel;
-use App\Models\SafAirportInformationModel;
-use App\Models\SafPaymentInformationModel;
-use App\Models\SafAgreementInformationModel;
+use App\Models\Saf\
+{
+    SafStudentBasicInformationModel,
+    SafStudentInformationModel,
+    SafAgentInformationModel,
+    SafOtherInformationModel,
+    SafMedicalInformationModel,
+    SafAirportInformationModel,
+    SafPaymentInformationModel,
+    SafAgreementInformationModel,
+    SafStatusModel,
+    SafFeesModel
+};
 
 use App\Models\StateModel;
 use App\Models\User;

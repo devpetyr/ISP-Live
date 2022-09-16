@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\web;
 
 use App\Http\Controllers\Controller;
-use App\Models\StudentApplicationFormFeePaymentModel;
-use App\Models\StudentApplicationFormFeesModel;
+use App\Models\Saf\SafFeePaymentModel;
+use App\Models\Saf\SafFeesModel;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -16,7 +16,7 @@ class WebPaymentController extends Controller
         $user = User::find($userId);
 
         /** Getting student fees from Student Application Form Fees Model,We will also check student already paid fees or not */
-        $user_fees = StudentApplicationFormFeesModel::where('user_id', $userId)->first();
+        $user_fees = SafFeesModel::where('user_id', $userId)->first();
 
         /** Check if $user_fees variable found */
         if ($user_fees) {
@@ -49,7 +49,7 @@ class WebPaymentController extends Controller
 
 
         /** Getting student fees from Student Application Form Fees Model,We will also check student already paid fees or not */
-        $user_fees = StudentApplicationFormFeesModel::where('user_id', $userId)->first();
+        $user_fees = SafFeesModel::where('user_id', $userId)->first();
 
         /** Check if $user_fees variable found */
         if ($user_fees) {
@@ -90,7 +90,7 @@ class WebPaymentController extends Controller
                 $inv_no = time() . rand('111111111', '999999999');
 
                 /** Now we are opening student application form fees payment model to save student transaction */
-                $std_payment = new StudentApplicationFormFeePaymentModel();
+                $std_payment = new SafFeePaymentModel();
 
                 /** Saving transaction details to following columns */
 

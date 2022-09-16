@@ -54,16 +54,21 @@
                         {data: 'last_name', name: 'last_name'},
                         {data: 'email', name: 'email'},
                         {data: 'cell_phone', name: 'cell_phone'},
-                        {data: 'status', name: 'status'},
+                        {data: 'application_status', name: 'application_status'},
                         {data: 'action', name: 'Action', orderable: false, searchable: false},
                     ],
                     createdRow: function (row, data, index) {
                         console.log(data)
-                      
-                        if (data['status'] === "Approved") {
+                        if (data['application_status'] === "Approved") {
                             $('td', row).eq(5).css('background-color', '#e0ede0');
                             $('td', row).eq(5).css('color', '#008000');
-                        } else {
+                        }
+                        else if(data['application_status'] === "Rejected")
+                        {
+                            $('td', row).eq(5).css('background-color', '#e0ede0');
+                            $('td', row).eq(5).css('color', '#008000');
+                        }
+                        else {
                             $('td', row).eq(5).css('background-color', '#fbfbdd');
                             $('td', row).eq(5).css('color', '#b4b411');
                         }

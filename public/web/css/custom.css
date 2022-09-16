@@ -2596,6 +2596,15 @@ p.already_text a:hover{
     text-align: center;
     margin: 0 0 0;
 }
+h3.under_construction {
+    color: #ffffff;
+    margin: 0px 0px 50px 0px;
+    text-transform: uppercase;
+    background-color: #15304e;
+    padding: 10px 0px 0px 0px;
+    text-align: center;
+    height: 60px;
+}
 .login_fild a:hover {
     color: #15304ef2;
 }

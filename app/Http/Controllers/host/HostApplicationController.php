@@ -4,16 +4,22 @@ namespace App\Http\Controllers\host;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\HafSchoolInformationModel;
-use App\Models\HafPetInformationModel;
-use App\Models\HafPersonalInformationModel;
-use App\Models\HafPartnerInformationModel;
-use App\Models\HafEmergencyInformationModel;
-use App\Models\HafChildInformationModel;
-use App\Models\HafBasicInformationModel;
-use App\Models\HafAdultInformationModel;
+
+use App\Models\Haf\
+{
+    HafSchoolInformationModel,
+    HafPetInformationModel,
+    HafPersonalInformationModel,
+    HafPartnerInformationModel,
+    HafEmergencyInformationModel,
+    HafChildInformationModel,
+    HafBasicInformationModel,
+    HafAdultInformationModel
+};
+
 use App\Models\User;
 use Auth;
+use File;
 
 class HostApplicationController extends Controller
 {
@@ -28,7 +34,7 @@ class HostApplicationController extends Controller
         $personalInformation=HafPersonalInformationModel::where('user_id',Auth::user()->id)->orderby('id','DESC')->first();
         $emergencyInformation=HafEmergencyInformationModel::where('user_id',Auth::user()->id)->orderby('id','DESC')->first();
         
-        return view('host.application-form.new-application-form',compact('hostInformation','partnerInformation','adultInformation','childInformation','petInformation','schoolInformation','personalInformation','emergencyInformation'));
+        return view('host.application-form.application-form',compact('hostInformation','partnerInformation','adultInformation','childInformation','petInformation','schoolInformation','personalInformation','emergencyInformation'));
     }
     
     public function host_information_application(Request $request)
@@ -43,13 +49,13 @@ class HostApplicationController extends Controller
             'host_employer'=>'required|regex:/^[\pL\s\-]+$/u',
             'host_work_phone'=>'required ',
             'host_home_address'=>'required',
-            'host_profile_photo'=>'required',
            
             ],
             [
                 'host_first_name.required'=>'The first name field is required.',
                 'host_last_name.required'=>'The last name field is required.',
                 'host_dob.required'=>'The date of birth field is required.',
+                'host_dob.before'=>'The host date of birth must be a date before -13 years.',
                 'host_cell_phone.required'=>'The cell phone field is required.',
                 'host_email.required'=>'The email field is required.',
                 'host_email.email'=>'The emergency contact email must be a valid email address.',
@@ -74,6 +80,11 @@ class HostApplicationController extends Controller
                     $hostInformation->home_address=$request->host_home_address;
                 
                     if($request->file('host_profile_photo')){
+                        
+                        $dest='Host-Image/'.$hostInformation->profile_photo;
+                        File::delete($dest);
+                        $hostInformation->delete();
+                        
                         $file= $request->file('host_profile_photo');
                         $filename= time().rand(9999,9999).'.'.$file->getClientOriginalExtension();
                         $file-> move(public_path('Host-Image'), $filename);
@@ -85,6 +96,15 @@ class HostApplicationController extends Controller
                 }
                 else
                 {
+                    $request->validate([
+                            'host_profile_photo'=>'required',
+           
+                    ],
+                    [
+                        
+                        'host_profile_photo.required'=>'The host image is required.',
+                     
+                    ]);
                     $hostInformation=new HafBasicInformationModel;
                     $hostInformation->user_id=Auth::user()->id;
                     $hostInformation->first_name=$request->host_first_name;
@@ -107,7 +127,7 @@ class HostApplicationController extends Controller
                     $hostInformation->save();
                     $message="Host Form Submited Sucessfully";
                 }
-                return redirect()->route('host_application_form','#partner_application')->with('success',$message);
+                return redirect()->route('web_haf','#partner_application')->with('success',$message);
     }
     
      public function host_partner_application(Request $request)
@@ -128,6 +148,7 @@ class HostApplicationController extends Controller
                 'partner_first_name.required'=>'The first name field is required.',
                 'partner_last_name.required'=>'The last name field is required.',
                 'partner_dob.required'=>'The date of birth field is required.',
+                'partner_dob.before'=>'The partner date of birth must be a date before -13 years.',
                 'partner_cell_phone.required'=>'The cell phone field is required.',
                 'partner_email.required'=>'The email field is required.',
                 'partner_occupation.required'=>'The occupation field is required.',
@@ -168,7 +189,7 @@ class HostApplicationController extends Controller
                     
                     $message="Partner Form Submited Sucessfully";
                 }
-                return redirect()->route('host_application_form','#adult_application')->with('success','Partner Form Submited Sucessfully');
+                return redirect()->route('web_haf','#adult_application')->with('success','Partner Form Submited Sucessfully');
     
     }
     
@@ -198,12 +219,17 @@ class HostApplicationController extends Controller
             [
   
                 'adult1_first_name.required'=>'The first name field is required.',
+                'adult1_first_name.regex'=>'The first name format is invalid.',
                 'adult1_last_name.required'=>'The last name field is required.',
+                'adult1_last_name.regex'=>'The last name format is invalid.',
                 'adult1_work_phone.required'=>'The work phone field is required.',
                 'adult1_relation.required'=>'The relation field is required.',
+                'adult1_relation.regex'=>'The relation format is invalid.',
                 'adult1_occupation.required'=>'The occupation field is required.',
-                'adult1_employer.required'=>'The employe field is required.',
-                'adult1_gender.required'=>'The gender field is required.',
+                'adult1_occupation.regex'=>'The occupation format is invalid.',
+                'adult1_employer.required'=>'The employer field is required.',
+                'adult1_employer.regex'=>'The employer format is invalid.',
+                'adult1_gender.required'=>'Please select your gender.',
                 
         //         'adult2_first_name.required'=>'The first name field is required.',
         //         'adult2_last_name.required'=>'The first name field is required.',
@@ -264,32 +290,34 @@ class HostApplicationController extends Controller
                     
                     $message="Adult Form Submited Sucessfully";
                 }
-                return redirect()->route('host_application_form','#childs_application')->with('success',$message);
+                return redirect()->route('web_haf','#childs_application')->with('success',$message);
     }
     
      public function host_childs_application(Request $request)
     {
         $request->validate([
 
-            'child1_first_name'=>'required',
-            'child1_last_name'=>'required',
+            'child1_first_name'=>'required|regex:/^[\pL\s\-]+$/u',
+            'child1_last_name'=>'required|regex:/^[\pL\s\-]+$/u',
             'child1_dob'=>'required|date_format:Y-m-d|before:tomorrow',
-            'child1_gender'=>'required',
+            'child1_gender'=>'required|regex:/^[\pL\s\-]+$/u',
             
-        //     'child2_first_name'=>'required',
-        //     'child2_last_name'=>'required',
-        //     'child2_dob'=>'required',
-        //     'child2_gender'=>'required',
+        //     'child2_first_name'=>'required|regex:/^[\pL\s\-]+$/u',
+        //     'child2_last_name'=>'required|regex:/^[\pL\s\-]+$/u',
+        //     'child2_dob'=>'required|regex:/^[\pL\s\-]+$/u',
+        //     'child2_gender'=>'required|regex:/^[\pL\s\-]+$/u',
             
-        //     'child3_first_name'=>'required',
-        //     'child3_last_name'=>'required',
-        //     'child3_dob'=>'required',
-        //     'child3_gender'=>'required',
+        //     'child3_first_name'=>'required|regex:/^[\pL\s\-]+$/u',
+        //     'child3_last_name'=>'required|regex:/^[\pL\s\-]+$/u',
+        //     'child3_dob'=>'required|regex:/^[\pL\s\-]+$/u',
+        //     'child3_gender'=>'required|regex:/^[\pL\s\-]+$/u',
       
             ],
             [
                 'child1_first_name.required'=>'The first name field is required.',
+                'child1_first_name.regex'=>'The first name format is invalid.',
                 'child1_last_name.required'=>'The last name field is required.',
+                'child1_last_name.regex'=>'The last name format is invalid.',
                 'child1_dob.required'=>'The date of birth field is required.',
                 'child1_dob.before'=>'The date of birth must be a date before today.',
                 'child1_gender.required'=>'The gender field is required.',
@@ -352,7 +380,7 @@ class HostApplicationController extends Controller
                     
                     $message="Child Form Submited Sucessfully";
             }
-            return redirect()->route('host_application_form','#pets_house_student_school_application')->with('success',$message);
+            return redirect()->route('web_haf','#pets_house_student_school_application')->with('success',$message);
     }
     
      public function host_pets_house_student_school_application(Request $request)
@@ -360,7 +388,7 @@ class HostApplicationController extends Controller
         $request->validate([
           
             'pets_info'=>'required',
-            'pets_info_detail'=>'required',
+            'pets_info_detail'=>'required_if:pets_info,yes',
             
             'home_type'=>'required',
             'home_bedrooms_detail'=>'required',
@@ -373,16 +401,16 @@ class HostApplicationController extends Controller
             
             ],
             [
-                'pets_info.required'=>'The pets info field is required.',
-                'pets_info_detail.required'=>'The pets_info field is required.',
+                'pets_info.required'=>'The pets info is required.',
+                'pets_info_detail.required'=>'The pets info is required.',
                 
-                'home_type.required'=>'The home type field is required.',
-                'home_bedrooms_detail.required'=>'The bedrooms detail field is required.',
+                'home_type.required'=>'The home type is required.',
+                'home_bedrooms_detail.required'=>'The bedrooms detail is required.',
                 
-                'student_gender.required'=>'The gender field is required.',
-                'student_meal.required'=>'The meal detail field is required.',
+                'student_gender.required'=>'The gender is required.',
+                'student_meal.required'=>'The meal detail is required.',
                 
-                'first_school_detail.required'=>'The school detail field is required.',
+                'first_school_detail.required'=>'The school detail is required.',
                 // 'second_school_detail.required'=>'The school detail field is required.',
                 // 'third_school_detail.required'=>'The school detail field is required.',
                 
@@ -441,7 +469,7 @@ class HostApplicationController extends Controller
                 $houseStudentSchoolInformation->save();
                 $message="Details Submited Sucessfully";
             }
-            return redirect()->route('host_application_form','#personal_detail_application')->with('success',$message);
+            return redirect()->route('web_haf','#personal_detail_application')->with('success',$message);
     }
     
      public function host_personal_detail_application(Request $request)
@@ -461,10 +489,10 @@ class HostApplicationController extends Controller
             ],
             [
                 'anyone_residing_in_the_home.required'=>'The field is required.',
-                'criminal_background_check.required'=>'The criminal background check field is required.',
+                'criminal_background_check.required'=>'The field is required.',
                 'anyone_in_your_home_smoke.required'=>'The field is required.',
-                'high_speed_wireless_Internet.required'=>'The wireless internet field is required.',
-                'WHO_approved_COVID_Vaccine.required'=>'The COVID vaccine field is required.',
+                'high_speed_wireless_Internet.required'=>'The field is required.',
+                'WHO_approved_COVID_Vaccine.required'=>'The field is required.',
                 'family_interests.required'=>'The family interests field is required.',
                 'breakfast_food_available_and_prepare_dinner.required'=>'The field is required.',
                 'your_daily_and_weekly_activities.required'=>'The field is required.',
@@ -507,7 +535,7 @@ class HostApplicationController extends Controller
                 
                 $message="Personal Information Form Submited Sucessfully";
             }
-            return redirect()->route('host_application_form','#emergency_contact_application')->with('success',$message);
+            return redirect()->route('web_haf','#emergency_contact_application')->with('success',$message);
     }
     
      public function host_emergency_contact_application(Request $request)
@@ -522,27 +550,27 @@ class HostApplicationController extends Controller
         
         if(!$hostInformation)
         {
-            return redirect()->route('host_application_form','#information_application')->with('error','Please fill out the form');
+            return redirect()->route('web_haf','#information_application')->with('error','Please fill out the form');
         }
         if(!$partnerInformation)
         {
-            return redirect()->route('host_application_form','#partner_application')->with('error','Please fill out the form');
+            return redirect()->route('web_haf','#partner_application')->with('error','Please fill out the form');
         }
         if(!$adultInformation)
         {
-            return redirect()->route('host_application_form','#adult_application')->with('error','Please fill out the form');
+            return redirect()->route('web_haf','#adult_application')->with('error','Please fill out the form');
         }
         if(!$childInformation)
         {
-            return redirect()->route('host_application_form','#childs_application')->with('error','Please fill out the form');
+            return redirect()->route('web_haf','#childs_application')->with('error','Please fill out the form');
         }
         if(!$petsInformation)
         {
-            return redirect()->route('host_application_form','#pets_house_student_school_application')->with('error','Please fill out the form');
+            return redirect()->route('web_haf','#pets_house_student_school_application')->with('error','Please fill out the form');
         }
         if(!$personalInformation)
         {
-            return redirect()->route('host_application_form','#personal_detail_application')->with('error','Please fill out the form');
+            return redirect()->route('web_haf','#personal_detail_application')->with('error','Please fill out the form');
         }
         $request->validate([
            

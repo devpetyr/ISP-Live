@@ -4037,15 +4037,12 @@ button.payment:hover{
 /*    border: 0;*/
 /*}*/
 .form-submit #myFile {
-    width: 14%;
+      width: 100%;
     margin: 0px 0 0px;
-    height: 46px;
-    border-bottom: 1px solid #fff !important;
+    height: 50px;
     padding: 7px;
-    border-radius: 0;
-    color: #ffffff;
-    border: 0;
-    background: #ffffff;
+    color: #15304e;
+    border: 1px solid #a9adb0 !important;
 }
 
 .form-submit form {
@@ -9088,4 +9085,14 @@ input#myFile .custom-file-upload {
     padding: 6px 12px;
     cursor: pointer;
      background-color: yellow;
+}
+.bottom_img{
+    
+    margin-top: 10px;
+    margin-top: 5;
+    width: 150px;
+    height: 90px !important;
+    border-radius: 10px;
+    /*margin-left: 294px;*/
+    /*float: right;*/
 }

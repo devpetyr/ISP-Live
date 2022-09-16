@@ -3578,7 +3578,7 @@
                             </div>
                         </form>
                         <form action="{{route('admin_student_application_status',[$user_id])}}"
-                              method="post">
+                              method="post" id="form-application-status">
                             @csrf
                             <h5 class="saf-main-heading">Student Application Status</h5>
                             <table class="table table-bordered table-data3">
@@ -3615,7 +3615,7 @@
                                     <td>Payment Amount</td>
                                     <td>
                                         <div class="input-flds">
-                                            <input type="text" name="amount" placeholder="$$$">
+                                            <input type="text" name="amount" placeholder="$$$" {{$Saf_fees && $Saf_BasicInfo->application_status == 1 ? "disabled" : ""}} value="{{$Saf_fees && $Saf_BasicInfo->application_status == 1 ? $Saf_fees->fees : ""}}">
 
                                             @error('amount')
                                             <div class="alert alert-danger">
@@ -3633,7 +3633,7 @@
                             </table>
                             @if($Saf_BasicInfo->application_status === 0)
                                 <div class="saf_form_btn">
-                                    <button class="save">Save</button>
+                                    <button class="save">Submit</button>
                                 </div>
                             @endif
                         </form>

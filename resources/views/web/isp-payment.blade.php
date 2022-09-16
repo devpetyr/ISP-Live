@@ -133,8 +133,12 @@
                                 <td>{{$invoice_title}}</td>
                             </tr>
                             <tr>
-                                <th>Student Name</th>
-                                <td>{{$user->username}}</td>
+                                <th>Student First Name</th>
+                                <td>{{$user->first_name}}</td>
+                            </tr>
+                            <tr>
+                                <th>Student Last Name</th>
+                                <td>{{$user->last_name}}</td>
                             </tr>
                             <tr>
                                 <th>Payment Amount</th>

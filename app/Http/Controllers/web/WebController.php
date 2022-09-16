@@ -37,5 +37,9 @@ class WebController extends Controller
     {
         return view('web.contact-us');
     }
+    public function under_construction()
+    {
+        return view('web.under-construction');
+    }
 
 }

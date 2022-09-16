@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\admin\student;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\EmailController;
+
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Carbon\Carbon;
@@ -14,7 +16,7 @@ use Illuminate\Support\Facades\
     Schema,
     Validator
 };
-use App\Models\
+use App\Models\Saf\
 {
     SafStudentBasicInformationModel,
     SafStudentInformationModel,
@@ -25,14 +27,32 @@ use App\Models\
     SafPaymentInformationModel,
     SafAgreementInformationModel,
     SafStatusModel,
-    User
+    SafFeesModel
 };
+use App\Models\User;
 
-
-class AdminStudentApplicationController extends Controller
+class AdminStudentApplicationController extends EmailController
 {
+
+    public function view_student_application($user_id)
+    {
+        $Saf_fees = SafFeesModel::where('user_id', $user_id)->orderby('id', 'DESC')->first();
+
+        $Saf_BasicInfo = SafStudentBasicInformationModel::where('user_id', $user_id)->orderby('id', 'DESC')->first();
+        $SafStudentInfo = SafStudentInformationModel::where('user_id', $user_id)->orderby('id', 'DESC')->first();
+        $SafAgentInfo = SafAgentInformationModel::where('user_id', $user_id)->orderby('id', 'DESC')->first();
+        $SafOtherInfo = SafOtherInformationModel::where('user_id', $user_id)->orderby('id', 'DESC')->first();
+        $SafMedicalInfo = SafMedicalInformationModel::where('user_id', $user_id)->orderby('id', 'DESC')->first();
+        $SafAirportInfo = SafAirportInformationModel::where('user_id', $user_id)->orderby('id', 'DESC')->first();
+        $SafPaymentInfo = SafPaymentInformationModel::where('user_id', $user_id)->orderby('id', 'DESC')->first();
+        $SafAgreementInfo = SafAgreementInformationModel::where('user_id', $user_id)->orderby('id', 'DESC')->first();
+
+        return view('admin.students.view_student_application',  compact('user_id','Saf_fees','Saf_BasicInfo', 'SafStudentInfo', 'SafAgentInfo', 'SafOtherInfo', 'SafMedicalInfo', 'SafAirportInfo', 'SafPaymentInfo', 'SafAgreementInfo'));
+    }
+
     public function saf_submit_1(Request $request, $user_id)
     {
+        
         $bsc_details = SafStudentBasicInformationModel::where('user_id', $user_id)->first();
         if ($bsc_details) {
             $validation = "";
@@ -41,20 +61,26 @@ class AdminStudentApplicationController extends Controller
         }
         $rules = array(
 //           Student Basic information
-            "program" => "required",
-            "first_name" => "required",
-            "last_name" => "required",
-            "dob" => "required",
+            "program" =>"required",
+            "first_name" => "required|regex:/^[\pL\s\-]+$/u",
+            "last_name" => "required|regex:/^[\pL\s\-]+$/u",
+            "dob" => "required|before:tomorrow",
             "age" => "required|numeric|min:1|digits_between:1,3",
             "gender" => "required",
             "country_of_permanent_residence" => "required",
-            "passport_number" => "required",
-            "passport_exp" => "required",
+            "passport_number" => "required|not_regex:/[a-z]/",
+            "passport_exp" => "required|after:today",
             "student_profile_photo" => $validation,
 
         );
+        $customMessages = array(
+            'first_name.regex' =>"The first name format is invalid.",
+            'last_name.regex' =>"The last name format is invalid.",
+            'dob.before' =>"The date of birth must be before tomorrow.",
+            'passport_exp.after' =>"The passport expiration date must be after today.",
+        );
 
-        $validator = Validator::make($request->all(), $rules);
+        $validator = Validator::make($request->all(), $rules,$customMessages);
         if ($validator->fails()) {
             return redirect()->route('admin_view_student_application', $user_id .'/#Form-Section1')->withErrors($validator);
         }
@@ -118,27 +144,62 @@ class AdminStudentApplicationController extends Controller
 
     public function saf_submit_2_1(Request $request, $user_id)
     {
+        // dd($request);
         $rules = array(
             "student_address" => "required",
             "student_country" => "required",
             "student_address_zip_code" => "required",
-            "father_name" => "required",
-            "father_phone" => "required",
-            "father_email" => "required",
-            "mother_name" => "required",
-            "mother_phone" => "required",
-            "mother_email" => "required",
-            "student_contact_phone_number" => "required",
-            "student_contact_email" => "required",
-            "student_contact_wechat_number" => "required",
-            "student_contact_line_number" => "required",
-            "student_contact_whatsApp_number" => "required",
-            "emergency_contact_name" => "required",
-            "emergency_contact_relation" => "required",
-            "emergency_contact_phone_number" => "required",
-            "emergency_contact_email" => "required",
+            "father_name" => "required|regex:/^[\pL\s\-]+$/u",
+            "father_phone" => "required|not_regex:/[a-z]/",
+            "father_email" => "required|email",
+            "mother_name" => "required|regex:/^[\pL\s\-]+$/u",
+            "mother_phone" => "required|not_regex:/[a-z]/",
+            "mother_email" => "required|email",
+            "student_contact_phone_number" => "required|not_regex:/[a-z]/",
+            "student_contact_email" => "required|email",
+            "student_contact_wechat_number" => "required|not_regex:/[a-z]/",
+            "student_contact_line_number" => "required|regex:/(0)[0-9]/|not_regex:/[a-z]/",
+            "student_contact_whatsApp_number" => "required|not_regex:/[a-z]/",
+            "emergency_contact_name" => "required|regex:/^[\pL\s\-]+$/u",
+            "emergency_contact_relation" => "required|regex:/^[\pL\s\-]+$/u",
+            "emergency_contact_phone_number" => "required|not_regex:/[a-z]/",
+            "emergency_contact_email" => "required|email",
         );
-        $validator = Validator::make($request->all(), $rules);
+        $customMessages = array(
+            'student_address.required' =>"The student address is required.",
+            'student_country.required' =>"The student country is required.",
+            'student_address_zip_code.required' =>"The student address zip code is required.",
+            'father_name.required' =>"The student father name is required.",
+            'father_name.regex' =>"The father name format is invalid.",
+            
+            'father_phone.required' =>"The student father phone is required.",
+            'father_email.required' =>"The student father email is required.",
+            'father_email.email' =>"The student father email must be a valid email.",
+            
+            'mother_name.required' =>"The student mother name is required.",
+            'mother_name.regex' =>"The mother name format is invalid.",
+            'mother_phone.required' =>"The student mother phone is required.",
+            'mother_email.required' =>"The student mother email is required.",
+            'mother_email.email' =>"The student mother email must be a valid email.",
+            
+            'student_contact_phone_number.required' =>"The student contact phone number is required.",
+            'student_contact_email.required' =>"The student contact email is required.",
+            'student_contact_email.email' =>"The student contact email must be a valid email.",
+            
+            'student_contact_wechat_number.required' =>"The student contact wechat number is required.",
+            'student_contact_line_number.required' =>"The student contact line number is required.",
+            'student_contact_whatsApp_number.required' =>"The student contact whatsApp number is required.",
+            'emergency_contact_name.required' =>"The student emergency contact name is required.",
+            'emergency_contact_name.regex' =>"The emergency contact name format is invalid.",
+            'emergency_contact_relation.required' =>"The student emergency contact relation is required.",
+            'emergency_contact_relation.regex' =>"The student emergency contact relation format is invalid.",
+            'emergency_contact_phone_number.required' =>"The student emergency contact phone number is required.",
+            'emergency_contact_email.required' =>"The student emergency contact email is required.",
+            'emergency_contact_email.email' =>"The student emergency contact email must be a valid email.",
+            
+
+        );
+        $validator = Validator::make($request->all(), $rules,$customMessages);
         if ($validator->fails()) {
             return redirect()->route('admin_view_student_application', $user_id .'/#Form-Section2-1')->withErrors($validator);
 
@@ -182,15 +243,15 @@ class AdminStudentApplicationController extends Controller
 
     public function saf_submit_2_2(Request $request, $user_id)
     {
-        $rules = array(
-            "school_you_attend" => "required",
-            "school_name_not_in_list" => "required",
+         $rules = array(
+            "school_you_attend" => "required_if:school_name_not_in_list,''",
+            "school_name_not_in_list" => "required_if:school_you_attend,''",
             "school_city" => "required",
             "school_state" => "required",
             "major_field_of_study" => "required",
             "length_of_stay" => "required",
-            "contract_start_date" => "required",
-            "contract_end_date" => "required",
+            "contract_start_date" => "required|after:today",
+            "contract_end_date" => "required|after:today",
             "what_is_your_english_level" => "required",
             "do_you_accept_children_under_8_years_in_host_home" => "required",
             "are_you_allergic_to_animals" => "required",
@@ -200,8 +261,22 @@ class AdminStudentApplicationController extends Controller
             "do_you_smoke" => "required",
             "will_you_have_a_car" => "required",
         );
+        $customMessages = array(
+            'school_you_attend.required' =>"Please select your school.",
+            'school_name_not_in_list.required' =>"Please enter your school name.",
+            'major_field_of_study.required' =>"The major/field of study field is required.",
+            'length_of_stay.required' =>"Please select the length of stay.",
+            'what_is_your_english_level.required' =>"Please select your english level.",  
+            'do_you_accept_children_under_8_years_in_host_home.required' =>"Please select do you accept children under 8 years in host home.",   
+            'are_you_allergic_to_animals.required' =>"Please select are you allergic to animals.",  
+            'meal_option.required' =>"Please select meal option.",  
+            'do_you_smoke.required' =>"Please confirm do you smoke.",
+            'will_you_have_a_car.required' =>"Please confirm do you have a car.",
+            
 
-        $validator = Validator::make($request->all(), $rules);
+        );
+
+        $validator = Validator::make($request->all(), $rules,$customMessages);
         if ($validator->fails()) {
             return redirect()->route('admin_view_student_application', $user_id .'/#Form-Section2-2')->withErrors($validator);
         }
@@ -240,15 +315,15 @@ class AdminStudentApplicationController extends Controller
 
     public function saf_submit_3(Request $request, $user_id)
     {
-        $rules = array(
+       $rules = array(
             "using_agent" => "required",
-            "agency_name" => "required_if:using_agent,yes",
-            "agency_contact_person" => "required_if:using_agent,yes",
+            "agency_name" => "required_if:using_agent,yes|regex:/^[\pL\s\-]+$/u",
+            "agency_contact_person" => "required_if:using_agent,yes|regex:/^[\pL\s\-]+$/u",
             "agent_phone_number" => "required_if:using_agent,yes",
             "agent_email" => "required_if:using_agent,yes",
-            "agent_wechat_number" => "required_if:using_agent,yes",
-            "agent_line_number" => "required_if:using_agent,yes",
-            "agent_whatsapp_number" => "required_if:using_agent,yes",
+            "agent_wechat_number" => "required_if:using_agent,yes|not_regex:/[a-z]/",
+            "agent_line_number" => "required_if:using_agent,yes|not_regex:/[a-z]/",
+            "agent_whatsapp_number" => "required_if:using_agent,yes|not_regex:/[a-z]/",
 
         );
 
@@ -304,7 +379,7 @@ class AdminStudentApplicationController extends Controller
     public function saf_submit_4(Request $request, $user_id)
     {
         $rules = array(
-            "specific_needs" => "required",
+              "specific_needs" => "required",
             "hobbies_and_interest" => "required",
             "describe_your_personality" => "required",
             "describe_your_family" => "required",
@@ -363,11 +438,26 @@ class AdminStudentApplicationController extends Controller
             "if_yes_please_explain_reason_of_psychiatrist" => "required_if:under_care_of_psychiatrist_past_five_year,yes",
             "have_who_approved_vaccination" => "required",
             "vaccine_name" => "required",
-            "dates_administered" => "required",
+            "dates_administered" => "required|before:tomorrow",
             "vaccine_card_photograph" => $validation,
         );
+        $customMessages = array(
+            'are_you_in_good_health.required' =>"Field is required.",
+            'if_no_please_explain_health.required' =>"Field is required.",
+            'do_you_have_medical_allergies.required' =>"Field is required.",
+            'if_yes_please_explain_medical_allergies.required' =>"Field is required.",
+            'do_you_take_medication.required' =>"Field is required.",
+            'if_yes_please_explain_medication.required' =>"Field is required.", 
+            'under_care_of_psychiatrist_past_five_year.required' =>"Field is required.",  
+            'if_yes_please_explain_reason_of_psychiatrist.required' =>"Field is required.",  
+            'have_who_approved_vaccination.required' =>"Field is required.",
+            'vaccine_name.required' =>"Field is required.",
+            'dates_administered.required' =>"Field is required.",
+            
 
-        $validator = Validator::make($request->all(), $rules);
+        );
+
+        $validator = Validator::make($request->all(), $rules,$customMessages);
         if ($validator->fails()) {
             return redirect()->route('admin_view_student_application', $user_id .'/#Form-Section5')->withErrors($validator);
         }
@@ -416,15 +506,21 @@ class AdminStudentApplicationController extends Controller
 
         $rules = array(
             "request_for_airport_pickup_driver" => "required",
-            "number_of_people_needing_driver" => "required_if:request_for_airport_pickup_driver,yes",
-            "arrival_date" => "required",
-            "airport_arrival_time" => "required",
+            "number_of_people_needing_driver" => "required_if:request_for_airport_pickup_driver,yes|integer",
+            "arrival_date" =>  "required|after:today",
+            "airport_arrival_time" =>  "required",
             "flight_type" => "required",
             "arrival_airport" => "required",
             "arrival_airline" => "required",
             "arrival_flight_number" => "required",
         );
-        $validator = Validator::make($request->all(), $rules);
+        $customMessages = array(
+            'request_for_airport_pickup_driver.required' =>"Field is required.",
+            'flight_type.required' =>"Field is required.",
+            'number_of_people_needing_driver.integer' =>"The number of people needing driver is invalid.",
+           
+        );
+        $validator = Validator::make($request->all(), $rules,$customMessages);
         if ($validator->fails()) {
             return redirect()->route('admin_view_student_application', $user_id .'/#Form-Section6')->withErrors($validator);
         }
@@ -459,23 +555,23 @@ class AdminStudentApplicationController extends Controller
     public function saf_submit_7(Request $request, $user_id)
     {
 
-        $rules = array(
+       $rules = array(
             "payment_method" => "required",
 //            "card_holder_student_first_name" => "required", //will be dynamic
 //            "card_holder_student_last_name" => "required", //will be dynamic
-            "cardholder_first_name" => "required",
-            "cardholder_last_name" => "required",
+            "cardholder_first_name" => "required|regex:/^[\pL\s\-]+$/u",
+            "cardholder_last_name" => "required|regex:/^[\pL\s\-]+$/u",
             "cardholder_address" => "required",
-            "cardholder_city" => "required",
-            "cardholder_state" => "required",
-            "cardholder_zipcode" => "required",
-            "cardholder_country" => "required",
-            "cardholder_email" => "required",
+            "cardholder_city" => "required|regex:/^[\pL\s\-]+$/u",
+            "cardholder_state" => "required|regex:/^[\pL\s\-]+$/u",
+            "cardholder_zipcode" => "required|integer",
+            "cardholder_country" => "required|regex:/^[\pL\s\-]+$/u",
+            "cardholder_email" => "required|email",
             "credit_card_type" => "required",
             "name_on_card" => "required",
-            "card_number" => "required",
-            "card_cvc" => "required",
-            "card_exp_date" => "required",
+            "card_number" => "required|not_regex:/[a-z]/",
+            "card_cvc" => "required|integer|not_regex:/[a-z]/",
+            "card_exp_date" => "required|after:today",
 
 //            Won't' be required
 
@@ -528,14 +624,22 @@ class AdminStudentApplicationController extends Controller
 
     public function student_application_status(Request $request, $user_id)
     {
-        dd('work in progress');
-        $data = $request->validate([
+
+        $rules = array(
             'application_status' => 'required',
             'amount' => 'required_if:application_status,==,1',
-        ],
-            [
-                'amount.required_if' => 'The amount field is required',
-            ]);
+        );
+
+        $customMessages = array(
+            'application_status.required' => 'The application status field is required',
+            'amount.required_if' => 'The amount field is required',
+        );
+
+        $validator = Validator::make($request->all(), $rules,$customMessages);
+        if ($validator->fails()) {
+            return redirect()->route('admin_view_student_application', $user_id .'/#form-application-status')->withErrors($validator);
+        }
+
 
         /** Getting Application Record to update application status*/
         $std_application = SafStudentBasicInformationModel::where('user_id',$user_id)->first();
@@ -571,19 +675,16 @@ class AdminStudentApplicationController extends Controller
              */
 
             /** Calling model to check if student already paid his/her fees */
-            $std_fees = StudentApplicationFormFeesModel::where('user_id', $std_application->user_id)->where('is_paid', 1)->first();
+            $std_fees = SafFeesModel::where('user_id', $user_id)->where('is_paid', 1)->first();
 
             /** If variable $std_fees not found / Student not paid his/her fees*/
             if (!$std_fees) {
 
-                // /** Calling User Model to shoot student application approval email and for other usage */
-                // $userfind = User::where('id', $std_application->user_id)->where('user_role', 2)->first();
-
                 /** Calling Student Application Fees Model to store fees amount to that student */
-                $std_fees = new StudentApplicationFormFeesModel();
+                $std_fees = new SafFeesModel();
 
                 /** Adding Student Application Fees Model user id */
-                $std_fees->user_id = $userfind->id;
+                $std_fees->user_id = $user_id;
 
                 /** Adding Student Application Fees Model student fees amount */
                 $std_fees->fees = $request->amount;
@@ -597,19 +698,19 @@ class AdminStudentApplicationController extends Controller
                 /** Saving Student Application Fees Model */
                 $std_fees->save();
 
-                /** Saving Student Application, which we have open at the start of the function */
+                /** Saving Student Application, which we have open at the start of the function to save application status*/
                 $std_application->save();
 
                 /** After Saving Student Application approval shooting email to both student and admin */
                 // $this->StdAppAccept_Reject($userfind,'Accepted');
-                $this->GA_StdAppAccept_Reject($userfind->username, $userfind->email, 'Accepted');
+                $this->GA_StdAppAccept_Reject($userfind->first_name,$userfind->last_name, $userfind->email, 'Accepted');
 
                 /** Checking process work correctly */
                 if ($std_fees->save()) {
 
                     /** Shooting email to student for card payment (stripe implemented) */
                     // $this->StdAppStripe($userfind, $request->amount);
-                    $this->GA_StdAppStripe($userfind->username, $userfind->email, $request->amount, route('web_stripe_form', $userfind->id));
+                    $this->GA_StdAppStripe($userfind->first_name,$userfind->last_name, $userfind->email, $request->amount, route('web_stripe_form', $userfind->id));
 
                 } else {
                     /** If process not work correctly */
@@ -628,7 +729,7 @@ class AdminStudentApplicationController extends Controller
             if ($request->application_status == 2) {
 
                 // $this->StdAppAccept_Reject($userfind,'Rejected');
-                $this->GA_StdAppAccept_Reject($userfind->username, $userfind->email, 'Rejected');
+                $this->GA_StdAppAccept_Reject($userfind->first_name,$userfind->last_name, $userfind->email, 'Rejected');
 
 
                 return back()->with('error', 'Student application rejected successfully !');

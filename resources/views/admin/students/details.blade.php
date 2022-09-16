@@ -14,6 +14,12 @@
 
             <div class="main_table">
                 <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="student_2 stu-4">
+                            <a href="{{route('admin_manage_student_details')}}"><i class="fa-solid fa-plus"></i>New
+                                Student</a>
+                        </div>
+                    </div>
                     <div class="col-md-12 col-xs-12 col-xs-12">
                         <div class="table_content">
                             <table class="display  data-table" style="width:100%">
@@ -26,7 +32,7 @@
                                     <th class="dt-asub-width">Application Submitted</th>
                                     <th class="dt-v-width">Verified</th>
                                     <th class="dt-stat-width">Status</th>
-                                    {{--                                    <th>Actions</th>--}}
+                                    <th>Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -57,12 +63,13 @@
                         {data: 'application_submitted', name: 'application_submitted'},
                         {data: 'is_active', name: 'is_active'},
                         {data: 'status', name: 'status'},
+                        {data: 'action', name: 'Action', orderable: false, searchable: false},
                     ],
                     createdRow: function (row, data, index) {
                         console.log(data)
                         if (data['application_submitted'] === "Submitted") {
                             $('td', row).eq(4).css('background-color', '#e0ede0');
-                            $('td', row).eq(4).css('width', '12%');
+                            $('td', row).eq(4).css('width', '14%');
                             $('td', row).eq(4).css('color', '#008000');
                         } else {
                             $('td', row).eq(4).css('background-color', '#fbfbdd');
@@ -78,15 +85,15 @@
                             $('td', row).eq(5).css('width', '12%');
                             $('td', row).eq(5).css('color', '#b4b411');
                         }
-                        if (data['status'] === "Approved") {
+                        if (data['status'] === "Active") {
                             $('td', row).eq(6).css('background-color', '#e0ede0');
-                            $('td', row).eq(6).css('width', '12%');
                             $('td', row).eq(6).css('color', '#008000');
                         } else {
                             $('td', row).eq(6).css('background-color', '#fbfbdd');
-                            $('td', row).eq(6).css('width', '12%');
                             $('td', row).eq(6).css('color', '#b4b411');
                         }
+                        $('td', row).eq(6).css('width', '10%');
+                        $('td', row).eq(7).addClass('action-right');
                     }
                 });
             });

@@ -120,7 +120,7 @@ class WebAuthController extends EmailController
         }
         elseif(Auth::check() && Auth::user()->user_role === 2)
         {
-            return redirect()->route('student_application_form');
+            return redirect()->route('student_dashboard');
         }
         elseif(Auth::check() && Auth::user()->user_role === 3)
         {
@@ -164,14 +164,12 @@ class WebAuthController extends EmailController
                             $userfind->is_reset = 0;
                             $userfind->save();
                         }
-                        return redirect()->route('student_application_form');
-                        // return redirect()->route('student_dashboard');
+                        return redirect()->route('student_dashboard');
                     }
                     elseif($userfind->user_role === 3)
                     {
                         Auth::login($userfind);
-                        return redirect()->route('host_application_form');
-                        // return redirect()->route('host_dashboard');
+                         return redirect()->route('host_dashboard');
                     }
                     else {
                         return back()->with('error', 'This area is for student and host only.');

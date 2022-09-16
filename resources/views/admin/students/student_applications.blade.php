@@ -22,7 +22,7 @@
                                     <th>S.No</th>
                                     <th>First Name</th>
                                     <th>Last Name</th>
-                                    <th>Gender</th>
+                                    <th>Email</th>
                                     <th>Program</th>
                                     <th>Status</th>
                                     <th>Actions</th>
@@ -52,19 +52,19 @@
                         {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                         {data: 'first_name', name: 'first_name'},
                         {data: 'last_name', name: 'last_name'},
-                        {data: 'gender', name: 'gender'},
+                        {data: 'email', name: 'email'},
                         {data: 'program', name: 'program'},
-                        {data: 'status', name: 'status'},
+                        {data: 'application_status', name: 'application_status'},
                         {data: 'action', name: 'Action', orderable: false, searchable: false},
                     ],
                     createdRow: function (row, data, index) {
                         console.log(data)
                       
-                        if (data['status'] === "Approved") {
+                        if (data['application_status'] === "Approved") {
                             $('td', row).eq(5).css('background-color', '#e0ede0');
                             $('td', row).eq(5).css('color', '#008000');
                         }
-                        else if(data['status'] === "Rejected")
+                        else if(data['application_status'] === "Rejected")
                         {
                             $('td', row).eq(5).css('background-color', '#e0ede0');
                             $('td', row).eq(5).css('color', '#008000');

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -12,7 +13,7 @@ class EmailController extends Controller
 {
     public $adminmail = 'admin@mail.com';
 
-        public function GA_VerifyEmail($fname,$lname, $email, $url)
+    public function GA_VerifyEmail($fname, $lname, $email, $url)
     {
         $fields = array(
             'fields' => array(
@@ -23,7 +24,7 @@ class EmailController extends Controller
                 "EmailSubject" => 'Verify Your Email',
             )
         );
-        
+
         header('Content-Type: application/json');
         $ch = curl_init('https://prod-231.westeurope.logic.azure.com:443/workflows/8677569302c845ff807de46a10f4cc68/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=VEsHM-sUI82mUTMaWV3HajA8m0fbo3H6EvMw0v2_1iA'); // Initialise cURL
         $post = json_encode($fields); // Encode the data array into a JSON string
@@ -45,7 +46,7 @@ class EmailController extends Controller
         return false;
     }
 
- public function GA_ForgotPassword($email, $url)
+    public function GA_ForgotPassword($email, $url)
     {
         $fields = array(
             'fields' => array(
@@ -74,7 +75,7 @@ class EmailController extends Controller
     }
 
 
-    public function GA_StdAppAccept_Reject($fname,$lname,$email, $status)
+    public function GA_StdAppAccept_Reject($fname, $lname, $email, $status)
     {
 
         $fields = array(
@@ -105,8 +106,39 @@ class EmailController extends Controller
         }
         return false;
     }
-    
-        public function GA_StdAppStripe($fname,$lname,$user_email,$amount,$url)
+    public function GA_HafAccept_Reject($fname, $lname, $email, $status)
+    {
+
+        $fields = array(
+            'fields' => array(
+                "AdminEmail" => env('ADMIN_EMAIL'),
+                "HostFirstName" => $fname,
+                "HostLastName" => $lname,
+                "HostEmail" => $email,
+                "HostAppStatus" => $status,
+                "EmailSubject" => 'Host Application Status',
+            )
+        );
+        header('Content-Type: application/json');
+        $ch = curl_init('https://prod-108.westeurope.logic.azure.com:443/workflows/cfc39e3188b646829d5397c05a01d6dc/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=iIC_mQEy0EEDP47VAfIVWHvujDY-Qhj3DEzOM0YR3TM'); // Initialise cURL
+        $post = json_encode($fields); // Encode the data array into a JSON string
+
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json')); // Inject the token into the header
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POST, 1); // Specify th+-+quest method as POST
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $post); // Set the posted fields
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1); // This will follow any redirects
+
+        $result = curl_exec($ch); // Execute the cURL statement
+        $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE); // to get http code
+        curl_close($ch); // Close the cURL connection
+        if ($http_status == 200) {
+            return true;
+        }
+        return false;
+    }
+
+    public function GA_StdAppStripe($fname, $lname, $user_email, $amount, $url)
     {
         $fields = array(
             'fields' => array(

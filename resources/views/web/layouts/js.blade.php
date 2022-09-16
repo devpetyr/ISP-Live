@@ -33,26 +33,29 @@
         @if(Session::has('success'))
             toastr["success"](' {{ Session::get('success') }}');
         @endif
-            @if(Session::has('added'))
+        @if(Session::has('added'))
             toastr["success"](' {{ Session::get('added') }}');
         @endif
-            @if(Session::has('failed'))
+        @if(Session::has('failed'))
             toastr["error"]('{{ Session::get('failed') }}');
         @endif
-            @if(Session::has('out_of_stock'))
+        @if(Session::has('out_of_stock'))
             toastr["error"]('{{ Session::get('out_of_stock') }}');
         @endif
-            @if(Session::has('already_exist'))
+        @if(Session::has('already_exist'))
             toastr["error"]('{{ Session::get('already_exist') }}');
         @endif
-            @if(Session::has('checkFalse'))
+        @if(Session::has('checkFalse'))
             toastr["error"]('{{ Session::get('checkFalse') }}');
         @endif
-            @if(Session::has('checkUserRole'))
+        @if(Session::has('checkUserRole'))
             toastr["error"]('{{ Session::get('checkUserRole') }}');
         @endif
-            @if(Session::has('error'))
+        @if(Session::has('error'))
             toastr["error"]('{{ Session::get('error') }}');
+        @endif
+        @if(Session::has('warning'))
+            toastr["warning"]('{{ Session::get('warning') }}');
         @endif
     });
 

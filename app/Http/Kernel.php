@@ -48,8 +48,8 @@ class Kernel extends HttpKernel
         'AdminAuthMiddleware'=>[
             \App\Http\Middleware\AdminAuthMiddleware::class,
         ],
-        'UserAuthMiddleware'=>[
-            \App\Http\Middleware\UserAuthMiddleware::class,
+        'StudentAuthMiddleware'=>[
+            \App\Http\Middleware\StudentAuthMiddleware::class,
         ],
         'HostAuthMiddleware'=>[
             \App\Http\Middleware\HostAuthMiddleware::class,
@@ -62,6 +62,9 @@ class Kernel extends HttpKernel
         ],
         'StudentApplicationApproved'=>[
             \App\Http\Middleware\StudentApplicationApproved::class,
+        ],
+        'HostApplicationApproved'=>[
+            \App\Http\Middleware\HostApplicationApproved::class,
         ],
     ];
 

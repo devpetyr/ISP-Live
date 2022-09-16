@@ -9050,3 +9050,11 @@ span.checkmark.ex1 {
 .input-flds.db.dts{
     margin:0;
 }
+.bottom_img{
+    
+    margin-top: 10px;
+    margin-top: 5;
+    width: 150px;
+    height: 90px !important;
+    border-radius: 10px;
+}
