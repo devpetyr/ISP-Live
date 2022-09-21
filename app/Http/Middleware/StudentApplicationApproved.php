@@ -23,8 +23,8 @@ class StudentApplicationApproved
             if ($application) {
                 if ($application->application_status === 1) {
 //                     TODO
-                    return redirect()->route('web_under_construction')->with('failed', 'Dashboard under construction please wait for a while');
-//                    return $next($request);
+//                    return redirect()->route('web_under_construction')->with('failed', 'Dashboard under construction please wait for a while');
+                    return $next($request);
                 }
                 return redirect()->route('web_home')->with('failed', 'Your application submitted , please wait for admin approval');
             }

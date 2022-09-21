@@ -95,6 +95,10 @@
 <!--                        <a href="#"><i class="fa-solid fa-right-long"></i>Coordinators</a>-->
 <!--{{--                        {{route('admin_coordinators')}}--}}-->
 <!--                    </li>-->
+                    <li>
+                        <a href="{{route('admin_notifications')}}"><i class="fa-solid fa-right-long"></i>Notification
+                        </a>
+                    </li>
                     <li class="dropdown">
                         <a href="#"><i class="fa-solid fa-right-long"></i>Reports
                         </a>
@@ -118,14 +122,14 @@
         </div>
         <div class="admin_div">
             <img src="{{asset('admin/images/150-26.jpg')}}" class="img-fluid" alt="" />
-            <h4>{{auth()->user()->username}}</h4>
+            <h4>{{ucfirst(auth()->user()->first_name) .' '. ucfirst(auth()->user()->last_name) }}</h4>
             <h5>{{auth()->user()->email}}</h5>
         </div>
         <div class="myDIV">
             <img src="{{asset('admin/images/sp.png')}}" class="img-fluid" alt="" />
             <div class="hide">
                 <img src="{{asset('admin/images/150-26.jpg')}}" class="img-fluid po" alt="" />
-                <h3>{{auth()->user()->username}} <a href="javascript:void(0)">admin</a></h3>
+                <h3><a href="javascript:void(0)">{{ucfirst(auth()->user()->first_name) .' '. ucfirst(auth()->user()->last_name) }}</a></h3>
                 <h4>{{auth()->user()->email}}</h4>
                 <ul>
                     <li><a href="{{route('admin_manage_profile')}}">My Profile</a></li>

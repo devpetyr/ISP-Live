@@ -37,7 +37,7 @@
                         <p>To develop our COVID-19 guidelines, we follow the most recent guidance of the WHO and the CDC
                             and the policies of state and local agencies. We’re in constant communication with our hosts
                             and students, with tips on how minimize the spread of infection to COVID-19 guidelines,
-                            click here </p>
+                           <a href="javascript:void(0)"> click here</a> </p>
 
                         <h4>SAFETY IN HOST HOMES</h4>
                         <p>Student safety is our number one priority and we have a strict protocol for host applicants

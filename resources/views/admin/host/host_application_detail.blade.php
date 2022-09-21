@@ -12,9 +12,57 @@
     <div class="col-md-9 col-sm-9 col-xs-9">
         <div class="main_bg">
             <h4 style="color: #000">Host Application Details</h4> <br>
+            
+                <!-- Modal -->
+    <div class="Modal_main">
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Notes</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <form action="{{ route('admin_add_host_notes',[$hostBasic->user_id]) }}" method="POST">
+            @csrf
+          <div class="modal-body">
+            <div class="Modal_style">
+                <!-- Textarea 8 rows height -->
+            <div class="form-outline">
+                <!--<label class="form-label" for="textAreaExample2">Message</label>-->
+              <textarea class="form-control" id="textAreaExample2" rows="8" name="notes">{{ $hostBasic->notes ?? ''}}</textarea>
+                @error('notes')
+                    <div class="text-danger">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+            
+            </div>
+          </div>
+          <div class="modal-footer">
+            <!--<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+           <button type="submit" class="button-save">Save</button>
+          </div>
+           
+          </form>
+        </div>
+      </div>
+    </div>
+    </div>
+    <!--modal end-->
             <div class="row m-t-30">
                 <div class="col-md-12">
-
+                    <div class="row">
+                                <div class="col-10">
+                                    <h5>Host Details</h5>
+                                </div>
+                                <div class="col-2">
+                                    <div class="blue-icon">
+                                      <h5>Notes</h5><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-regular fa-note-sticky"></i></a>
+                                      
+                                    </div>
+                                </div>
+                    </div>
                     <!-- DATA TABLE-->
                     <div class="table-responsive m-b-40">
 
@@ -23,7 +71,7 @@
                               enctype="multipart/form-data">
                             @csrf
                             <table class="table table-bordered table-data3">
-                                <h5>Host Details</h5>
+                                
                                 <thead>
                                 <tr>
                                     <th>Field</th>

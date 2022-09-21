@@ -37,7 +37,7 @@
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="text_agent2">
-                                <p>Our relationships with more than 450 overseas agents keeps us very busy…. but not too
+                                <p>Our relationships with more than <span class="bleck">450</span> overseas agents keeps us very busy…. but not too
                                     busy to
                                     form new partnerships.
                                     If your agency wants to team up with the most experienced, reliable, and trustworthy

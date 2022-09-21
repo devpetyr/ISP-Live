@@ -12,14 +12,60 @@
     <div class="col-md-9 col-sm-9 col-xs-9">
         <div class="main_bg">
             <h4 style="color: #000">Student Application Details</h4> <br>
+
+
+            <!-- Modal -->
+            <div class="Modal_main">
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Notes</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <form action="{{ route('admin_student_application_notes',$user_id) }}" method="POST">
+                                @csrf
+                                <div class="modal-body">
+                                    <div class="Modal_style">
+                                        <!-- Textarea 8 rows height -->
+                                        <div class="form-outline">
+                                            <!--<label class="form-label" for="textAreaExample2">Message</label>-->
+                                            <textarea class="form-control" id="textAreaExample2" rows="8" name="notes">{{$Saf_BasicInfo && $Saf_BasicInfo->notes  ? $Saf_BasicInfo->notes : "" }}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <!--<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+                                    <button type="submit" class="button-save">Save</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--modal end-->
             <div class="row m-t-30">
                 <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-10">
+                            <h5>Student Details</h5>
+                        </div>
+                        <div class="col-2">
+                            <div class="blue-icon">
+                                <h5>Notes</h5><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"> <i
+                                            class="fa-regular fa-note-sticky"></i></a>
+
+                            </div>
+                        </div>
+                    </div>
                     <!-- DATA TABLE-->
                     <div class="table-responsive m-b-40">
                         <form action="{{ route('admin_saf_submit_1',$user_id) }}" id="Form-Section1" method="POST"
                               enctype="multipart/form-data">
                             @csrf
-                            <h5>Student Details</h5>
+
                             <table class="table table-bordered table-data3">
                                 <thead>
                                 <tr>
@@ -3615,7 +3661,8 @@
                                     <td>Payment Amount</td>
                                     <td>
                                         <div class="input-flds">
-                                            <input type="text" name="amount" placeholder="$$$" {{$Saf_fees && $Saf_BasicInfo->application_status == 1 ? "disabled" : ""}} value="{{$Saf_fees && $Saf_BasicInfo->application_status == 1 ? $Saf_fees->fees : ""}}">
+                                            <input type="text" name="amount" placeholder="$$$"
+                                                   {{$Saf_fees && $Saf_BasicInfo->application_status == 1 ? "disabled" : ""}} value="{{$Saf_fees && $Saf_BasicInfo->application_status == 1 ? $Saf_fees->fees : ""}}">
 
                                             @error('amount')
                                             <div class="alert alert-danger">
@@ -3644,3 +3691,5 @@
         </div>
     </div>
 @endsection
+
+

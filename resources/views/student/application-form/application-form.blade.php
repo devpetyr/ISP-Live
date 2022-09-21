@@ -563,8 +563,8 @@
                                                 <span>*</span></h6>
                                             <div class="form-submit">
                                                 <input type="file" id="myFile" name="student_profile_photo">
-                                                @if(isset($Saf_BasicInfo->student_profile_photo))
-                                                    <img class="bottom_img" src="{{ asset('student/application/'.$Saf_BasicInfo->student_profile_photo ) }}" >
+                                                @if(auth()->check() && auth()->user()->avatar)
+                                                    <img class="bottom_img" src="{{ asset('student/images/profile-images/'.auth()->user()->avatar)}}" >
                                                     @endif
                                                 @error('student_profile_photo')
                                                 <div class="saf_msg">
@@ -2559,7 +2559,7 @@
                                             <div class="form-submit">
                                                 <input type="file" id="myFile" name="vaccine_card_photograph">
                                                 @if(isset($SafMedicalInfo->vaccine_card_photograph))
-                                                    <img class="bottom_img" src="{{ asset('student/application/'.$SafMedicalInfo->vaccine_card_photograph ) }}" >
+                                                    <img class="bottom_img" src="{{ asset('student/images/vaccine-images/'.$SafMedicalInfo->vaccine_card_photograph ) }}" >
                                                     @endif
                                                 @error('vaccine_card_photograph')
                                                 <div class="saf_msg">

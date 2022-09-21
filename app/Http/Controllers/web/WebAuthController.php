@@ -149,6 +149,7 @@ class WebAuthController extends EmailController
         $userfind = User::where('email', $request->email)->where('status', 1)->first();
         if ($userfind)
         {
+
             /*means found user*/
             if($userfind->is_active === 1)
             {

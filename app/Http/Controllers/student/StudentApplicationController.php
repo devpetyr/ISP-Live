@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers\student;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\File;
-use Intervention\Image\Facades\Image;
 use App\Http\Controllers\Controller;
-use App\Models\AgentModel;
-use App\Models\CityModel;
-use App\Models\CountryModel;
+use Illuminate\Http\Request;
 
+use Illuminate\Database\Eloquent\Model;
+use Intervention\Image\Facades\Image;
+
+use Illuminate\Support\Facades\{
+    Schema,
+    Validator,
+    Auth,
+    File
+};
 use App\Models\Saf\
 {
     SafStudentBasicInformationModel,
@@ -26,15 +28,19 @@ use App\Models\Saf\
     SafFeesModel
 };
 
-use App\Models\StateModel;
-use App\Models\User;
+use App\Models\{
+    StateModel,
+    User,
+    AgentModel,
+    CityModel,
+    CountryModel,
+    NotificationModel
+};
+
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\Validator;
 
 class StudentApplicationController extends Controller
 {
-
     /** New */
     public function application_form()
     {
@@ -47,7 +53,7 @@ class StudentApplicationController extends Controller
         $SafPaymentInfo = SafPaymentInformationModel::where('user_id', auth()->id())->orderby('id', 'DESC')->first();
         $SafAgreementInfo = SafAgreementInformationModel::where('user_id', auth()->id())->orderby('id', 'DESC')->first();
 
-        return view('student.application-form.application-form', compact('Saf_BasicInfo', 'SafStudentInfo', 'SafAgentInfo', 'SafOtherInfo', 'SafMedicalInfo', 'SafAirportInfo', 'SafPaymentInfo', 'SafAgreementInfo'));
+        return view('student.profile.profile', compact('Saf_BasicInfo', 'SafStudentInfo', 'SafAgentInfo', 'SafOtherInfo', 'SafMedicalInfo', 'SafAirportInfo', 'SafPaymentInfo', 'SafAgreementInfo'));
     }
 
     public function saf_submit_1(Request $request)
@@ -59,8 +65,8 @@ class StudentApplicationController extends Controller
             $validation = "required";
         }
         $rules = array(
-//           Student Basic information
-            "program" =>"required",
+           /**  Student Basic information */
+            "program" => "required",
             "first_name" => "required|regex:/^[\pL\s\-]+$/u",
             "last_name" => "required|regex:/^[\pL\s\-]+$/u",
             "dob" => "required|before:tomorrow",
@@ -72,71 +78,67 @@ class StudentApplicationController extends Controller
             "student_profile_photo" => $validation,
         );
         $customMessages = array(
-            'first_name.regex' =>"The first name format is invalid.",
-            'last_name.regex' =>"The last name format is invalid.",
-            'dob.before' =>"The date of birth must be before tomorrow.",
-            'passport_exp.after' =>"The passport expiration date must be after today.",
+            'first_name.regex' => "The first name format is invalid.",
+            'last_name.regex' => "The last name format is invalid.",
+            'dob.before' => "The date of birth must be before tomorrow.",
+            'passport_exp.after' => "The passport expiration date must be after today.",
         );
 
-        $validator = Validator::make($request->all(), $rules,$customMessages);
+        $validator = Validator::make($request->all(), $rules, $customMessages);
         if ($validator->fails()) {
-            return redirect()->route('web_saf', '#Form-Section1')->withErrors($validator);
+            return redirect()->route('sd_application', '#Form-Section1')->withErrors($validator);
         }
 
-        $user = User::where('id', Auth::user()->id)->where('application_submitted', 1)->first();
-        if ($user) {
-            return redirect()->route('web_home')->with('failed', 'Your application already submitted please wait for admin approval !');
+        if ($bsc_details) {
+            $msg = 'Basic information application form updated successfully.';
         } else {
-
-            if ($bsc_details) {
-                $msg = 'updated successfully.';
-            } else {
-                $bsc_details = new SafStudentBasicInformationModel();
-                $bsc_details->user_id = Auth()->user()->id;
-                $msg = 'submitted successfully.';
-            }
-
-            $bsc_details->program = $request->program;
-            $bsc_details->first_name = $request->first_name;
-            $bsc_details->last_name = $request->last_name;
-            $bsc_details->dob = $request->dob;
-            $bsc_details->age = $request->age;
-            $bsc_details->gender = $request->gender;
-            $bsc_details->country_of_permanent_residence = $request->country_of_permanent_residence;
-            $bsc_details->passport_number = $request->passport_number;
-            $bsc_details->passport_exp = $request->passport_exp;
-
-
-            /** student_photographs start*/
-            $image = $request->file('student_profile_photo');
-            if ($image) {
-                $imageData = [];
-                /** Make a new filename with extension */
-                $filename = time() . rand(1111111111, 9999999999) . '.' . $image->getClientOriginalExtension();
-
-                /**
-                 * Get real image path using
-                 * @class Intervention\Image\Facades\Image
-                 */
-                $img = Image::make($image->getRealPath());
-
-                /** Set image dimension to conserve aspect ratio */
-                $img->fit(300, 300);
-
-                /** Get image stream to store the image else the tmp file will be stored */
-                $img->stream();
-
-                /** Make a new filename with extension */
-                File::put(public_path('student/application/') . $filename, $img);
-
-                /** Store image for Student Profile Photo */
-                $bsc_details->student_profile_photo = $filename;
-            }
-            /** student_photographs end*/
-
-            $bsc_details->status = 1;
-            $bsc_details->save();
+            $bsc_details = new SafStudentBasicInformationModel();
+            $bsc_details->user_id = Auth()->user()->id;
+            $msg = 'Basic information application form submitted successfully.';
         }
+
+        $bsc_details->program = $request->program;
+        $bsc_details->first_name = $request->first_name;
+        $bsc_details->last_name = $request->last_name;
+        $bsc_details->dob = $request->dob;
+        $bsc_details->age = $request->age;
+        $bsc_details->gender = $request->gender;
+        $bsc_details->country_of_permanent_residence = $request->country_of_permanent_residence;
+        $bsc_details->passport_number = $request->passport_number;
+        $bsc_details->passport_exp = $request->passport_exp;
+
+
+        $user = User::where('id', Auth::user()->id)->first();
+        /** student_photographs start*/
+        $image = $request->file('student_profile_photo');
+        if ($image) {
+            $imageData = [];
+            /** Make a new filename with extension */
+            $filename = time() . rand(1111111111, 9999999999) . '.' . $image->getClientOriginalExtension();
+
+            /**
+             * Get real image path using
+             * @class Intervention\Image\Facades\Image
+             */
+            $img = Image::make($image->getRealPath());
+
+            /** Set image dimension to conserve aspect ratio */
+            $img->fit(300, 300);
+
+            /** Get image stream to store the image else the tmp file will be stored */
+            $img->stream();
+
+            /** Make a new filename with extension */
+            File::put(public_path('student/images/profile-images/') . $filename, $img);
+
+            /** Store image for Student Profile Photo */
+            $user->avatar = $filename;
+            $user->save();
+        }
+        /** student_photographs end*/
+
+        $bsc_details->status = 1;
+        $bsc_details->save();
 
         if ($bsc_details->save()) {
             $saf_status = SafStatusModel::where('user_id', Auth()->user()->id)->first();
@@ -147,7 +149,12 @@ class StudentApplicationController extends Controller
             $saf_status->form_section1 = 1;
             $saf_status->save();
 
-            return redirect()->route('web_saf', '#Form-Section2-1')->with('success', $msg);
+            $notification = new NotificationModel();
+            $notification->user_id = Auth()->user()->id;
+            $notification->description = $msg;
+            $notification->section_id = '#Form-Section1';
+            $notification->save();
+            return redirect()->route('sd_application', '#Form-Section1')->with('success', $msg);
         } else {
             return back()->with('error', 'Please submit application again.');
         }
@@ -176,54 +183,54 @@ class StudentApplicationController extends Controller
             "emergency_contact_email" => "required|email",
         );
         $customMessages = array(
-            'student_address.required' =>"The student address is required.",
-            'student_country.required' =>"The student country is required.",
-            'student_address_zip_code.required' =>"The student address zip code is required.",
-            'father_name.required' =>"The student father name is required.",
-            'father_name.regex' =>"The father name format is invalid.",
-            
-            'father_phone.required' =>"The student father phone is required.",
-            'father_email.required' =>"The student father email is required.",
-            'father_email.email' =>"The student father email must be a valid email.",
-            
-            'mother_name.required' =>"The student mother name is required.",
-            'mother_name.regex' =>"The mother name format is invalid.",
-            'mother_phone.required' =>"The student mother phone is required.",
-            'mother_email.required' =>"The student mother email is required.",
-            'mother_email.email' =>"The student mother email must be a valid email.",
-            
-            'student_contact_phone_number.required' =>"The student contact phone number is required.",
-            'student_contact_email.required' =>"The student contact email is required.",
-            'student_contact_email.email' =>"The student contact email must be a valid email.",
-            
-            'student_contact_wechat_number.required' =>"The student contact wechat number is required.",
-            'student_contact_line_number.required' =>"The student contact line number is required.",
-            'student_contact_whatsApp_number.required' =>"The student contact whatsApp number is required.",
-            'emergency_contact_name.required' =>"The student emergency contact name is required.",
-            'emergency_contact_name.regex' =>"The emergency contact name format is invalid.",
-            'emergency_contact_relation.required' =>"The student emergency contact relation is required.",
-            'emergency_contact_relation.regex' =>"The student emergency contact relation format is invalid.",
-            'emergency_contact_phone_number.required' =>"The student emergency contact phone number is required.",
-            'emergency_contact_email.required' =>"The student emergency contact email is required.",
-            'emergency_contact_email.email' =>"The student emergency contact email must be a valid email.",
-            
+            'student_address.required' => "The student address is required.",
+            'student_country.required' => "The student country is required.",
+            'student_address_zip_code.required' => "The student address zip code is required.",
+            'father_name.required' => "The student father name is required.",
+            'father_name.regex' => "The father name format is invalid.",
+
+            'father_phone.required' => "The student father phone is required.",
+            'father_email.required' => "The student father email is required.",
+            'father_email.email' => "The student father email must be a valid email.",
+
+            'mother_name.required' => "The student mother name is required.",
+            'mother_name.regex' => "The mother name format is invalid.",
+            'mother_phone.required' => "The student mother phone is required.",
+            'mother_email.required' => "The student mother email is required.",
+            'mother_email.email' => "The student mother email must be a valid email.",
+
+            'student_contact_phone_number.required' => "The student contact phone number is required.",
+            'student_contact_email.required' => "The student contact email is required.",
+            'student_contact_email.email' => "The student contact email must be a valid email.",
+
+            'student_contact_wechat_number.required' => "The student contact wechat number is required.",
+            'student_contact_line_number.required' => "The student contact line number is required.",
+            'student_contact_whatsApp_number.required' => "The student contact whatsApp number is required.",
+            'emergency_contact_name.required' => "The student emergency contact name is required.",
+            'emergency_contact_name.regex' => "The emergency contact name format is invalid.",
+            'emergency_contact_relation.required' => "The student emergency contact relation is required.",
+            'emergency_contact_relation.regex' => "The student emergency contact relation format is invalid.",
+            'emergency_contact_phone_number.required' => "The student emergency contact phone number is required.",
+            'emergency_contact_email.required' => "The student emergency contact email is required.",
+            'emergency_contact_email.email' => "The student emergency contact email must be a valid email.",
+
 
         );
-        
+
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
-            return redirect()->route('web_saf', '#Form-Section2-1')->withErrors($validator);
+            return redirect()->route('sd_application', '#Form-Section2-1')->withErrors($validator);
         }
 
         $std_details = SafStudentInformationModel::where('user_id', Auth()->user()->id)->first();
 
         if ($std_details) {
-            $msg = 'updated successfully.';
+            $msg = 'Student information application form updated successfully.';
         } else {
             /** SafStudentInformationModel Table 2 Start*/
             $std_details = new SafStudentInformationModel ();
             $std_details->user_id = Auth()->user()->id;
-            $msg = 'submitted successfully.';
+            $msg = 'Student information application form submitted successfully.';
         }
         $std_details->student_address = $request->student_address;
         $std_details->student_country = $request->student_country;
@@ -255,7 +262,13 @@ class StudentApplicationController extends Controller
             }
             $saf_status->form_section2_1 = 1;
             $saf_status->save();
-            return redirect()->route('web_saf', '#Form-Section2-2')->with('success', $msg);
+
+            $notification = new NotificationModel();
+            $notification->user_id = Auth()->user()->id;
+            $notification->description = $msg;
+            $notification->section_id = '#Form-Section2-1';
+            $notification->save();
+            return redirect()->route('sd_application', '#Form-Section2-1')->with('success', $msg);
         } else {
             return back()->with('error', 'Please submit application again.');
         }
@@ -282,34 +295,35 @@ class StudentApplicationController extends Controller
             "will_you_have_a_car" => "required",
         );
         $customMessages = array(
-            'school_you_attend.required' =>"Please select your school.",
-            'school_name_not_in_list.required' =>"Please enter your school name.",
-            'major_field_of_study.required' =>"The major/field of study field is required.",
-            'length_of_stay.required' =>"Please select the length of stay.",
-            'what_is_your_english_level.required' =>"Please select your english level.",  
-            'do_you_accept_children_under_8_years_in_host_home.required' =>"Please select do you accept children under 8 years in host home.",   
-            'are_you_allergic_to_animals.required' =>"Please select are you allergic to animals.",  
-            'meal_option.required' =>"Please select meal option.",  
-            'do_you_smoke.required' =>"Please confirm do you smoke.",
-            'will_you_have_a_car.required' =>"Please confirm do you have a car.",
-            
+            'school_you_attend.required' => "Please select your school.",
+            'school_name_not_in_list.required' => "Please enter your school name.",
+            'major_field_of_study.required' => "The major/field of study field is required.",
+            'length_of_stay.required' => "Please select the length of stay.",
+            'what_is_your_english_level.required' => "Please select your english level.",
+            'do_you_accept_children_under_8_years_in_host_home.required' => "Please select do you accept children under 8 years in host home.",
+            'are_you_allergic_to_animals.required' => "Please select are you allergic to animals.",
+            'meal_option.required' => "Please select meal option.",
+            'do_you_smoke.required' => "Please confirm do you smoke.",
+            'will_you_have_a_car.required' => "Please confirm do you have a car.",
+
 
         );
 
-        $validator = Validator::make($request->all(), $rules,$customMessages);
+        $validator = Validator::make($request->all(), $rules, $customMessages);
         if ($validator->fails()) {
-            return redirect()->route('web_saf', '#Form-Section2-2')->withErrors($validator);
+            return redirect()->route('sd_application', '#Form-Section2-2')->withErrors($validator);
         }
 
         $std_details = SafStudentInformationModel::where('user_id', Auth::user()->id)->first();
 
         if ($std_details) {
-            $msg = 'updated successfully.';
+            $msg = 'Student school information application form updated successfully.';
+
         } else {
             /** SafStudentInformationModel Table 2 Start*/
             $std_details = new SafStudentInformationModel ();
             $std_details->user_id = Auth()->user()->id;
-            $msg = 'submitted successfully.';
+            $msg = 'Student school information application form submitted successfully.';
         }
         $std_details->school_you_attend = $request->school_you_attend;
         $std_details->school_name_not_in_list = $request->school_name_not_in_list;
@@ -339,7 +353,13 @@ class StudentApplicationController extends Controller
             $saf_status->form_section2_2 = 1;
             $saf_status->save();
 
-            return redirect()->route('web_saf', '#Form-Section3')->with('success', $msg);
+            $notification = new NotificationModel();
+            $notification->user_id = Auth()->user()->id;
+            $notification->description = $msg;
+            $notification->section_id = '#Form-Section2-2';
+            $notification->save();
+
+            return redirect()->route('sd_application', '#Form-Section2-2')->with('success', $msg);
         } else {
             return back()->with('error', 'Please submit application again.');
         }
@@ -361,25 +381,27 @@ class StudentApplicationController extends Controller
 
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
-            return redirect()->route('web_saf', '#Form-Section3')->withErrors($validator);
+            return redirect()->route('sd_application', '#Form-Section3')->withErrors($validator);
         }
 
         $bsc_details = SafStudentBasicInformationModel::where('user_id', Auth::user()->id)->first();
         $agent_details = SafAgentInformationModel::where('user_id', Auth()->user()->id)->first();
 
         if (!$bsc_details) {
-            return redirect()->route('web_saf', '#Form-Section1')->with('error', 'Please fill out the form');
+            return redirect()->route('sd_application', '#Form-Section1')->with('error', 'Please fill out the form');
         }
 
         /** SafAgentInformationModel Table 3 Start*/
         if ($request->using_agent == 'yes') {
 
             if ($agent_details) {
-                $msg = 'updated successfully.';
+                $msg = 'Agent information application form updated successfully.';
+
             } else {
                 $agent_details = new SafAgentInformationModel();
                 $agent_details->user_id = Auth()->user()->id;
-                $msg = 'submitted successfully.';
+                $msg = 'Agent information application form submitted successfully.';
+
             }
             $agent_details->agency_name = $request->agency_name;
             $agent_details->agency_contact_person = $request->agency_contact_person;
@@ -394,7 +416,7 @@ class StudentApplicationController extends Controller
             if ($agent_details) {
                 $agent_details->delete();
             }
-            $msg = 'submitted successfully.';
+            $msg = 'Agent information application form updated successfully.';
         }
         $bsc_details->using_agent = $request->using_agent;
         $bsc_details->save();
@@ -408,7 +430,14 @@ class StudentApplicationController extends Controller
             }
             $saf_status->form_section3 = 1;
             $saf_status->save();
-            return redirect()->route('web_saf', '#Form-Section4')->with('success', $msg);
+
+            $notification = new NotificationModel();
+            $notification->user_id = Auth()->user()->id;
+            $notification->description = $msg;
+            $notification->section_id = '#Form-Section3';
+            $notification->save();
+
+            return redirect()->route('sd_application', '#Form-Section3')->with('success', $msg);
         } else {
             return back()->with('error', 'Please submit application again.');
         }
@@ -427,19 +456,18 @@ class StudentApplicationController extends Controller
         );
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
-            return redirect()->route('web_saf', '#Form-Section4')->withErrors($validator);
+            return redirect()->route('sd_application', '#Form-Section4')->withErrors($validator);
         }
         $other_details = SafOtherInformationModel::where('user_id', Auth()->user()->id)->first();
 
 
         /** SafOtherInformationModel Table 4 Start*/
         if ($other_details) {
-
-            $msg = 'updated successfully.';
+            $msg = 'Other information application form updated successfully.';
         } else {
             $other_details = new SafOtherInformationModel();
             $other_details->user_id = Auth()->user()->id;
-            $msg = 'submitted successfully.';
+            $msg = 'Other information application form submitted successfully.';
         }
         $other_details->specific_needs = $request->specific_needs;
         $other_details->hobbies_and_interest = $request->hobbies_and_interest;
@@ -461,7 +489,14 @@ class StudentApplicationController extends Controller
             }
             $saf_status->form_section4 = 1;
             $saf_status->save();
-            return redirect()->route('web_saf', '#Form-Section5')->with('success', $msg);
+
+            $notification = new NotificationModel();
+            $notification->user_id = Auth()->user()->id;
+            $notification->description = $msg;
+            $notification->section_id = '#Form-Section4';
+            $notification->save();
+
+            return redirect()->route('sd_application', '#Form-Section4')->with('success', $msg);
         } else {
             return back()->with('error', 'Please submit application again.');
         }
@@ -490,35 +525,34 @@ class StudentApplicationController extends Controller
             "vaccine_card_photograph" => $validation,
         );
         $customMessages = array(
-            'are_you_in_good_health.required' =>"Field is required.",
-            'if_no_please_explain_health.required' =>"Field is required.",
-            'do_you_have_medical_allergies.required' =>"Field is required.",
-            'if_yes_please_explain_medical_allergies.required' =>"Field is required.",
-            'do_you_take_medication.required' =>"Field is required.",
-            'if_yes_please_explain_medication.required' =>"Field is required.", 
-            'under_care_of_psychiatrist_past_five_year.required' =>"Field is required.",  
-            'if_yes_please_explain_reason_of_psychiatrist.required' =>"Field is required.",  
-            'have_who_approved_vaccination.required' =>"Field is required.",
-            'vaccine_name.required' =>"Field is required.",
-            'dates_administered.required' =>"Field is required.",
-            
+            'are_you_in_good_health.required' => "Field is required.",
+            'if_no_please_explain_health.required' => "Field is required.",
+            'do_you_have_medical_allergies.required' => "Field is required.",
+            'if_yes_please_explain_medical_allergies.required' => "Field is required.",
+            'do_you_take_medication.required' => "Field is required.",
+            'if_yes_please_explain_medication.required' => "Field is required.",
+            'under_care_of_psychiatrist_past_five_year.required' => "Field is required.",
+            'if_yes_please_explain_reason_of_psychiatrist.required' => "Field is required.",
+            'have_who_approved_vaccination.required' => "Field is required.",
+            'vaccine_name.required' => "Field is required.",
+            'dates_administered.required' => "Field is required.",
+
 
         );
 
-        $validator = Validator::make($request->all(), $rules,$customMessages);
+        $validator = Validator::make($request->all(), $rules, $customMessages);
         if ($validator->fails()) {
-            return redirect()->route('web_saf', '#Form-Section5')->withErrors($validator);
+            return redirect()->route('sd_application', '#Form-Section5')->withErrors($validator);
         }
 
 
         /** SafMedicalInformationModel Table 5 Start*/
         if ($medical_details) {
-
-            $msg = 'updated successfully.';
+            $msg = 'Medical information application form updated successfully.';
         } else {
             $medical_details = new SafMedicalInformationModel();
             $medical_details->user_id = Auth()->user()->id;
-            $msg = 'submitted successfully.';
+            $msg = 'Medical information application form submitted successfully.';
         }
         $medical_details->are_you_in_good_health = $request->are_you_in_good_health;
         $medical_details->if_no_please_explain_health = $request->if_no_please_explain_health;
@@ -539,6 +573,34 @@ class StudentApplicationController extends Controller
             $file->move(public_path('student/application'), $filename);
             $medical_details->vaccine_card_photograph = $filename;
         }
+
+        /** vaccine_card_photograph start*/
+        $image = $request->file('vaccine_card_photograph');
+        if ($image) {
+            $imageData = [];
+            /** Make a new filename with extension */
+            $filename = time() . rand(1111111111, 9999999999) . '.' . $image->getClientOriginalExtension();
+
+            /**
+             * Get real image path using
+             * @class Intervention\Image\Facades\Image
+             */
+            $img = Image::make($image->getRealPath());
+
+            /** Set image dimension to conserve aspect ratio */
+            $img->fit(300, 300);
+
+            /** Get image stream to store the image else the tmp file will be stored */
+            $img->stream();
+
+            /** Make a new filename with extension */
+            File::put(public_path('student/images/vaccine-images/') . $filename, $img);
+
+            /** Store image for Vaccine Photo */
+            $medical_details->vaccine_card_photograph = $filename;
+        }
+        /** vaccine_card_photograph end*/
+
         $medical_details->save();
 
 
@@ -552,7 +614,14 @@ class StudentApplicationController extends Controller
             }
             $saf_status->form_section5 = 1;
             $saf_status->save();
-            return redirect()->route('web_saf', '#Form-Section6')->with('success', $msg);
+
+            $notification = new NotificationModel();
+            $notification->user_id = Auth()->user()->id;
+            $notification->description = $msg;
+            $notification->section_id = '#Form-Section5';
+            $notification->save();
+
+            return redirect()->route('sd_application', '#Form-Section5')->with('success', $msg);
         } else {
             return back()->with('error', 'Please submit application again.');
         }
@@ -563,33 +632,34 @@ class StudentApplicationController extends Controller
         $rules = array(
             "request_for_airport_pickup_driver" => "required",
             "number_of_people_needing_driver" => "required_if:request_for_airport_pickup_driver,yes|integer",
-            "arrival_date" =>  "required|after:today",
-            "airport_arrival_time" =>  "required",
+            "arrival_date" => "required|after:today",
+            "airport_arrival_time" => "required",
             "flight_type" => "required",
             "arrival_airport" => "required",
             "arrival_airline" => "required",
             "arrival_flight_number" => "required",
         );
         $customMessages = array(
-            'request_for_airport_pickup_driver.required' =>"Field is required.",
-            'flight_type.required' =>"Field is required.",
-            'number_of_people_needing_driver.integer' =>"The number of people needing driver is invalid.",
-           
+            'request_for_airport_pickup_driver.required' => "Field is required.",
+            'flight_type.required' => "Field is required.",
+            'number_of_people_needing_driver.integer' => "The number of people needing driver is invalid.",
+
         );
-        $validator = Validator::make($request->all(), $rules,$customMessages);
+        $validator = Validator::make($request->all(), $rules, $customMessages);
         if ($validator->fails()) {
-            return redirect()->route('web_saf', '#Form-Section6')->withErrors($validator);
+            return redirect()->route('sd_application', '#Form-Section6')->withErrors($validator);
         }
 
         $airport_details = SafAirportInformationModel::where('user_id', Auth()->user()->id)->first();
 
         /** SafAirportInformationModel Table 6 Start */
         if ($airport_details) {
-            $msg = 'updated successfully.';
+            $msg = 'Airport information application form updated successfully.';
         } else {
             $airport_details = new SafAirportInformationModel();
             $airport_details->user_id = Auth()->user()->id;
-            $msg = 'submitted successfully.';
+            $msg = 'Airport information application form submitted successfully.';
+
         }
         $airport_details->request_for_airport_pickup_driver = $request->request_for_airport_pickup_driver;
         $airport_details->number_of_people_needing_driver = $request->number_of_people_needing_driver;
@@ -612,7 +682,13 @@ class StudentApplicationController extends Controller
             $saf_status->form_section6 = 1;
             $saf_status->save();
 
-            return redirect()->route('web_saf', '#Form-Section7')->with('success', $msg);
+            $notification = new NotificationModel();
+            $notification->user_id = Auth()->user()->id;
+            $notification->description = $msg;
+            $notification->section_id = '#Form-Section6';
+            $notification->save();
+
+            return redirect()->route('sd_application', '#Form-Section6')->with('success', $msg);
         } else {
             return back()->with('error', 'Please submit application again.');
         }
@@ -648,18 +724,18 @@ class StudentApplicationController extends Controller
         );
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
-            return redirect()->route('web_saf', '#Form-Section7')->withErrors($validator);
+            return redirect()->route('sd_application', '#Form-Section7')->withErrors($validator);
         }
 
         $payment_details = SafPaymentInformationModel::where('user_id', Auth()->user()->id)->first();
 
         /** SafPaymentInformationModel Table 7 Start */
         if ($payment_details) {
-            $msg = 'updated successfully.';
+            $msg = 'Payment information application form updated successfully.';
         } else {
             $payment_details = new SafPaymentInformationModel();
             $payment_details->user_id = Auth()->user()->id;
-            $msg = 'submitted successfully.';
+            $msg = 'Payment information application form submitted successfully.';
         }
         $payment_details->payment_method = $request->payment_method;
         $payment_details->cardholder_first_name = $request->cardholder_first_name;
@@ -692,202 +768,13 @@ class StudentApplicationController extends Controller
             $saf_status->form_section7 = 1;
             $saf_status->save();
 
-            return redirect()->route('web_saf', '#Form-Section8-1-1')->with('success', $msg);
-        } else {
-            return back()->with('error', 'Please submit application again.');
-        }
-    }
+            $notification = new NotificationModel();
+            $notification->user_id = Auth()->user()->id;
+            $notification->description = $msg;
+            $notification->section_id = '#Form-Section7';
+            $notification->save();
 
-    public function saf_submit_8_1_1(Request $request)
-    {
-
-        $rules = array(
-            "fees_agreement" => "required",
-            "contract_period_agreement" => "required",
-            "payments_agreement" => "required",
-            "deposit_agreement" => "required",
-            "meal_plans_agreement" => "required",
-            "student_faq_sheet_agreement" => "required",
-            "airport_pickup_agreement" => "required",
-            "transportation_agreement" => "required",
-            "host_possessions_agreement" => "required",
-        );
-        $validator = Validator::make($request->all(), $rules);
-        if ($validator->fails()) {
-            return redirect()->route('web_saf', '#Form-Section8-1-1')->withErrors($validator);
-        }
-
-        $agreement_details = SafAgreementInformationModel::where('user_id', Auth()->user()->id)->first();
-
-        /** SafAgreementInformationModel Table 8 Start */
-        if ($agreement_details) {
-            $msg = 'updated successfully.';
-        } else {
-            $agreement_details = new SafAgreementInformationModel();
-            $agreement_details->user_id = Auth()->user()->id;
-            $msg = 'submitted successfully.';
-        }
-        $agreement_details->fees_agreement = $request->fees_agreement;
-        $agreement_details->contract_period_agreement = $request->contract_period_agreement;
-        $agreement_details->payments_agreement = $request->payments_agreement;
-        $agreement_details->deposit_agreement = $request->deposit_agreement;
-        $agreement_details->meal_plans_agreement = $request->meal_plans_agreement;
-        $agreement_details->student_faq_sheet_agreement = $request->student_faq_sheet_agreement;
-        $agreement_details->airport_pickup_agreement = $request->airport_pickup_agreement;
-        $agreement_details->transportation_agreement = $request->transportation_agreement;
-        $agreement_details->host_possessions_agreement = $request->host_possessions_agreement;
-        $agreement_details->status = 1;
-        $agreement_details->save();
-        /** SafAgreementInformationModel Table 8 End */
-
-
-        if ($agreement_details->save()) {
-            $saf_status = SafStatusModel::where('user_id', Auth()->user()->id)->first();
-            if (!$saf_status) {
-                $saf_status = new SafStatusModel();
-                $saf_status->user_id = Auth()->user()->id;
-            }
-            $saf_status->form_section8_1_1 = 1;
-            $saf_status->save();
-
-            return redirect()->route('web_saf', '#Form-Section8-1-2')->with('success', $msg);
-        } else {
-            return back()->with('error', 'Please submit application again.');
-        }
-    }
-
-    public function saf_submit_8_1_2(Request $request)
-    {
-        // dd($request);
-
-        $rules = array(
-            "prohibited_activities_agreement" => "required",
-            "medical_agreement" => "required",
-            "request_for_host_change_agreement" => "required",
-            "media_photo_release_agreement" => "required",
-            "media_photo_release_agreement" => "required",
-            "program_termination_agreement" => "required",
-            "warranties_consent_agreement" => "required",
-            "limitation_of_liability_agreement" => "required",
-            "indemnification_agreement" => "required",
-            "governing_law_agreement" => "required",
-            "force_majeure_agreement" => "required",
-            "covid_19_protocol_for_students_agreement" => "required",
-        );
-        $validator = Validator::make($request->all(), $rules);
-        if ($validator->fails()) {
-            return redirect()->route('web_saf', '#Form-Section8-1-2')->withErrors($validator);
-        }
-
-        $agreement_details = SafAgreementInformationModel::where('user_id', Auth()->user()->id)->first();
-
-        /** SafAgreementInformationModel Table 8 Start*/
-        if ($agreement_details) {
-            $msg = 'updated successfully.';
-        } else {
-            $agreement_details = new SafAgreementInformationModel();
-            $agreement_details->user_id = Auth()->user()->id;
-            $msg = 'submitted successfully.';
-        }
-        $agreement_details->prohibited_activities_agreement = $request->prohibited_activities_agreement;
-        $agreement_details->medical_agreement = $request->medical_agreement;
-        $agreement_details->request_for_host_change_agreement = $request->request_for_host_change_agreement;
-        $agreement_details->media_photo_release_agreement = $request->media_photo_release_agreement;
-        $agreement_details->covid_19_protocol_for_students_agreement = $request->covid_19_protocol_for_students_agreement;
-        $agreement_details->program_termination_agreement = $request->program_termination_agreement;
-        $agreement_details->warranties_consent_agreement = $request->warranties_consent_agreement;
-        $agreement_details->limitation_of_liability_agreement = $request->limitation_of_liability_agreement;
-        $agreement_details->indemnification_agreement = $request->indemnification_agreement;
-        $agreement_details->governing_law_agreement = $request->governing_law_agreement;
-        $agreement_details->force_majeure_agreement = $request->force_majeure_agreement;
-        $agreement_details->status = 1;
-        $agreement_details->save();
-        /** SafAgreementInformationModel Table 8 End */
-
-        if ($agreement_details->save()) {
-            $saf_status = SafStatusModel::where('user_id', Auth()->user()->id)->first();
-            if (!$saf_status) {
-                $saf_status = new SafStatusModel();
-                $saf_status->user_id = Auth()->user()->id;
-            }
-            $saf_status->form_section8_1_2 = 1;
-            $saf_status->save();
-
-            return redirect()->route('web_saf', '#Form-Section8-2')->with('success', $msg);
-        } else {
-            return back()->with('error', 'Please submit application again.');
-        }
-    }
-
-    public function saf_submit_8_2(Request $request)
-    {
-        $rules = array(
-            "agree" => "required",
-        );
-        $validator = Validator::make($request->all(), $rules);
-        if ($validator->fails()) {
-            return redirect()->route('web_saf', '#Form-Section8-2')->withErrors($validator);
-        }
-
-        $bsc_details = SafStudentBasicInformationModel::where('user_id', Auth::user()->id)->first();
-
-        /** Main Form SafStudentBasicInformationModel Table 1 Start */
-        if ($bsc_details) {
-            $bsc_details->agree = $request->agree;
-            $bsc_details->status = 1;
-            $bsc_details->save();
-            $msg = 'Application Submitted Successfully.';
-        } else {
-            return redirect()->route('web_saf', '#Form-Section1')->with('error', 'Please fill out the form');
-        }
-        /** Main Form SafStudentBasicInformationModel Table 1 End */
-
-        if ($bsc_details->save()) {
-            $saf_status = SafStatusModel::where('user_id', Auth()->user()->id)->first();
-            if (!$saf_status) {
-                $saf_status = new SafStatusModel();
-                $saf_status->user_id = Auth()->user()->id;
-            }
-            $saf_status->form_section8_2 = 1;
-            $saf_status->save();
-
-            if (!$saf_status->form_section1 == 1) {
-                return redirect()->route('web_saf', '#Form-Section1')->with('error', 'Please fill out the form');
-            }
-            if (!$saf_status->form_section2_1 == 1) {
-                return redirect()->route('web_saf', '#Form-Section2-1')->with('error', 'Please fill out the form');
-            }
-            if (!$saf_status->form_section2_2 == 1) {
-                return redirect()->route('web_saf', '#Form-Section2-2')->with('error', 'Please fill out the form');
-            }
-            if (!$saf_status->form_section3 == 1) {
-                return redirect()->route('web_saf', '#Form-Section3')->with('error', 'Please fill out the form');
-            }
-            if (!$saf_status->form_section4 == 1) {
-                return redirect()->route('web_saf', '#Form-Section4')->with('error', 'Please fill out the form');
-            }
-            if (!$saf_status->form_section5 == 1) {
-                return redirect()->route('web_saf', '#Form-Section5')->with('error', 'Please fill out the form');
-            }
-            if (!$saf_status->form_section6 == 1) {
-                return redirect()->route('web_saf', '#Form-Section6')->with('error', 'Please fill out the form');
-            }
-            if (!$saf_status->form_section7 == 1) {
-                return redirect()->route('web_saf', '#Form-Section7')->with('error', 'Please fill out the form');
-            }
-            if (!$saf_status->form_section8_1_1 == 1) {
-                return redirect()->route('web_saf', '#Form-Section8-1-1')->with('error', 'Please fill out the form');
-            }
-            if (!$saf_status->form_section8_1_2 == 1) {
-                return redirect()->route('web_saf', '#Form-Section8-1-2')->with('error', 'Please fill out the form');
-            }
-            if (!$saf_status->form_section8_2 == 1) {
-                return redirect()->route('web_saf', '#Form-Section8-2')->with('error', 'Please fill out the form');
-            }
-            $user = User::where('id', Auth::user()->id)->where('status', 1)->first();
-            $user->application_submitted = 1;
-            $user->save();
-            return redirect()->route('web_home')->with('success', $msg);
+            return redirect()->route('sd_application', '#Form-Section7')->with('success', $msg);
         } else {
             return back()->with('error', 'Please submit application again.');
         }

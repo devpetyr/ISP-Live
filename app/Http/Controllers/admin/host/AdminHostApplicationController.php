@@ -554,5 +554,26 @@ class AdminHostApplicationController extends EmailController
         /** Now the process is complete returning back admin to application with the below message */
         return back()->with('success', 'Host Application Updated Successfully.');
     }
+    
+    
+    
+    public function host_notes(Request $request,$id )
+    {
+        $request->validate([
+            'notes'=>'required',
+        ],
+        [
+            'notes.required'=>'The notes field is required.',
+        ]);
 
+        $hostInformation=HafBasicInformationModel::where('user_id',$id)->first();
+        if($hostInformation)
+        {
+            $hostInformation->notes=$request->notes;
+            $hostInformation->save();
+            $message="Notes add Sucessfully";
+        }
+
+        return back()->with('success',$message);
+    }
 }

@@ -4,7 +4,7 @@
     <div class="col-md-9 col-sm-9 col-xs-9">
         <div class="main_bg">
         <div class="dash_3">
-            <h4 class="left_home">Hello, {{auth()->user()->username}}</h4>
+            <h4 class="left_home">Hello, {{ucfirst(auth()->user()->first_name) ." ". ucfirst(auth()->user()->last_name) }}</h4>
             <p>“Nothing Adventured, Nothing Attained.” – Peter McWilliams</p>
         </div>
         <div class="row">
