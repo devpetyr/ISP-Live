@@ -25,7 +25,7 @@
         </div>
             <div class="row m-t-30">
                 <div class="col-md-12">
-                    <form action="{{ route('admin_manage_student_process',$id->id) }}" method="post">
+                    <form action="{{ route('admin_manage_student_process',$id->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-xs-12">
@@ -76,6 +76,17 @@
                                     </div>
 
                                     <div class="col-md-12">
+                                        <label class="form-label">Profile Image<span>*</span></label>
+                                        <input type="file" id="myFile" name="student_profile_photo">
+                                        @error('student_profile_photo')
+                                        <div class="alert alert-danger">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+
+                                    </div>
+                                    <div class="row" style="margin-top: 20px;">
+                                    <div class="col-md-6">
                                         <div class="admin-status-radio">
                                             <label for="status" class="control-label mb-1">Status<span
                                                         class="text-danger">*</span></label>
@@ -87,7 +98,15 @@
                                             </label>
                                         </div>
                                     </div>
-
+                                    <div class="col-md-6">
+                                        @if($id && $id->avatar)
+                                            <img class="bottom_img" src="{{ asset('student/images/profile-images/'.$id->avatar)}}" >
+                                        @endif
+                                    </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input type="hidden" name="application_submitted" value="{{ $id->application_submitted ?? '' }}">
+                                    </div>
                                 </div>
                             </div>
 

@@ -22,16 +22,18 @@
                             <li><a href="#">Home Visits</a></li>
                         </ul>
                     </li>
-
                     
-                    <li>
-                        <a href="{{ route('hd_student_profile') }}"><i class="fa-solid fa-right-long"></i>Student Profile
+                    <li class="dropdown">
+                        <a href="#"><i class="fa-solid fa-right-long"></i>Students Details
                         </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ route('hd_student_profile') }}"><i class="fa-solid fa-right-long"></i>Student Profile</a></li>
+                            <li><a href="{{ route('hd_student_list') }}"><i class="fa-solid fa-right-long"></i>Student Requests list</a></li>
+                            <li><a href="{{ route('hd_student_accept_reject_list') }}"><i class="fa-solid fa-right-long"></i>Student Accept/Reject list</a></li>
+                        </ul>
                     </li>
-                    <li>
-                        <a href="{{ route('hd_student_list') }}"><i class="fa-solid fa-right-long"></i>Student list
-                        </a>
-                    </li>
+
+                
                     <li>
                         <a href="{{ route('hd_notification') }}"><i class="fa-solid fa-right-long"></i>Notifications
                         </a>

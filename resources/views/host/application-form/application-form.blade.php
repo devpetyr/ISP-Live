@@ -213,6 +213,47 @@
                                             </div>
                                            
                                         </div>
+                                        
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <div class="input-flds">
+                                                    <label><i class="fa-solid fa-address"></i>City <span>*</span></label>
+                                                <select class="yd-select " name="host_city" id="host_city" tabindex="1" data-parsley-group="block-0">
+                                                    <option value="{{$hostInformation ? $hostInformation->city_id : ""}}">{{$hostInformation ? $hostInformation->getCity->name : "Please select city"}}</option>
+
+                                                    @foreach($citys as $city)
+                                                        <option value="{{$city && $city->id ? $city->id : ""}}">{{$city && $city->name ? $city->name : ""}}</option>
+                                                    @endforeach 
+                                                    
+                                                </select>
+                                                    @error('host_city')
+                                                    <div class="alert alert-danger">
+                                                        {{ $message }}
+                                                    </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <div class="input-flds">
+                                                    <label><i class="fa-solid fa-number"></i>States<span>*</span></label>
+                                                   
+                                                   <select class="yd-select " name="host_state" id="host_state" tabindex="1" data-parsley-group="block-0">
+                                                        <option value="{{$hostInformation && $hostInformation->state_id ? $hostInformation->state_id : ""}}">{{$hostInformation && $hostInformation->state_id ? $hostInformation->getState->name : "Please select state"}}</option>
+                                                        @foreach($states as $state)
+                                                            <option value="{{$state && $state->id ? $state->id : ""}}">{{$state && $state->name ? $state->name : ""}}</option>
+                                                        @endforeach 
+                                                    </select>
+
+                                                    @error('host_state')
+                                                    <div class="alert alert-danger">
+                                                        {{ $message }}
+                                                    </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                           
+                                        </div>
                                     <!--</div>-->
 
                                         <div class="row">

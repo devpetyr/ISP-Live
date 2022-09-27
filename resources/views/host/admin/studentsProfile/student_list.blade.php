@@ -26,9 +26,10 @@
                                 <thead>
                                 <tr>
                                     <th class="dt-sno-width">S.No</th>
+                                    <th class="dt-fn-width">Image</th>
                                     <th class="dt-fn-width">First Name</th>
                                     <th class="dt-ln-width">Last Name</th>
-                                    <th class="dt-e-width">Email</th>
+                                    <th class="dt-e-width">State</th>
                                     <th>Actions</th>
                                 </tr>
                                 </thead>
@@ -54,18 +55,14 @@
                     ajax: "{{ route('hd_student_list') }}",
                     columns: [
                         {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
+                        {data: 'image', name: 'first_name'},
                         {data: 'first_name', name: 'first_name'},
                         {data: 'last_name', name: 'last_name'},
-                        {data: 'email', name: 'email'},
+                        {data: 'state', name: 'state'},
+                        
                        
                         {data: 'action', name: 'Action', orderable: false, searchable: false},
                     ],
-                    createdRow: function (row, data, index) {
-                        console.log(data)
-                       
-                        $('td', row).eq(6).css('width', '10%');
-                        $('td', row).eq(7).addClass('action-right');
-                    }
                 });
             });
         </script>

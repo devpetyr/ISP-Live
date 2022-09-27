@@ -20,13 +20,22 @@
                     <li>
                         <a href="{{route('sd_notifications')}}"><i class="fa-solid fa-right-long"></i>Notifications</a>
                     </li>
+                    <li class="dropdown">
+                        <a href="#"><i class="fa-solid fa-right-long"></i>Host
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{route('sd_host_request')}}"><i class="fa-solid fa-right-long"></i>Request Host</a></li>
+                            <li><a href="#"><i class="fa-solid fa-right-long"></i>Request Change Host</a></li>
+
+                        </ul>
+                    </li>
 
                 </ul>
             </nav>
         </div>
         <div class="admin_div">
             <img src="{{asset('student/images/profile-images/'.auth()->user()->avatar)}}" class="img-fluid" alt=""/>
-            <h4>{{ucfirst(auth()->user()->first_name) .' '. ucfirst(auth()->user()->last_name) }}</h4>
+            <h4>{{ucfirst(auth()->user()->first_name)  }}</h4>
             <h5>{{auth()->user()->email}}</h5>
         </div>
         <div class="myDIV">
@@ -35,7 +44,7 @@
                 <img src="{{asset('student/images/profile-images/'.auth()->user()->avatar)}}" class="img-fluid po"
                      alt=""/>
                 <h3>
-                    <a href="javascript:void(0)">{{ucfirst(auth()->user()->first_name ) .' '. ucfirst( auth()->user()->last_name )}}</a>
+                    <a href="javascript:void(0)">{{ucfirst(auth()->user()->first_name )  }}</a>
                 </h3>
                 <h4>{{auth()->user()->email}}</h4>
                 <ul>

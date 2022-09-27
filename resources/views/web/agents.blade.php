@@ -35,7 +35,7 @@
             <div class="row">
                 <div class="col-md-10 col-sm-10 col-xs-12 centerCol">
                     <div class="row">
-                        <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-md-9 col-sm-9 col-xs-12">
                             <div class="text_agent2">
                                 <p>Our relationships with more than <span class="bleck">450</span> overseas agents keeps us very busy…. but not too
                                     busy to
@@ -60,6 +60,11 @@
                                 <p>
                                     For inquiries, please complete the information below. </p>
                             </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <div class="agent_box">
+                                <p>Over 450 agents in 93 countries choose ISP</p>
+                            </div>    
                         </div>
                     </div>
                     <div class="Agent_fild two">

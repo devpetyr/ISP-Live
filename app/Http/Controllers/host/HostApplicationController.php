@@ -18,8 +18,10 @@ use App\Models\Haf\
 };
 
 use App\Models\User;
+use App\Models\StateModel;
+use App\Models\CityModel;
 use App\Models\NotificationModel;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use File;
 
 use Illuminate\Support\Facades\Hash;
@@ -41,7 +43,9 @@ class HostApplicationController extends Controller
         $hostSchool = HafSchoolInformationModel::where('user_id', $id)->first();
         $hostPersonalInformation = HafPersonalInformationModel::where('user_id', $id)->first();
         $hostEmergencyContact = HafEmergencyInformationModel::where('user_id', $id)->first();
-        return view('host.admin.hostProfile.host-profile', compact('hostBasic', 'hostPartner', 'hostAdult', 'hostChild', 'hostPet', 'hostSchool', 'hostPersonalInformation', 'hostEmergencyContact'));
+        $states = StateModel::get();
+        $citys = CityModel::get();
+        return view('host.admin.hostProfile.host-profile', compact('hostBasic', 'hostPartner', 'hostAdult', 'hostChild', 'hostPet', 'hostSchool', 'hostPersonalInformation', 'hostEmergencyContact','states','citys'));
     }
 
     public function host_information_application(Request $request, $id)
@@ -88,14 +92,24 @@ class HostApplicationController extends Controller
 
             if ($request->file('host_profile_photo')) 
             {
+                $user = User::where('id', Auth::user()->id)->first();
                 $dest = 'Host-Image/' . $hostInformation->profile_photo;
                 File::delete($dest);
-                $hostInformation->delete();
+//                $hostInformation->delete();
 
                 $file = $request->file('host_profile_photo');
                 $filename = time() . rand(9999, 9999) . '.' . $file->getClientOriginalExtension();
                 $file->move(public_path('Host-Image'), $filename);
                 $hostInformation->profile_photo = $filename;
+
+                /** Checking Image if exits in our project */
+                if(File::exists(public_path('Host-Image' . $user->avatar)))
+                {
+                    File::delete(public_path('Host-Image' . $user->avatar));
+                }
+
+                $user->avatar = $filename;
+                $user->save();
             }
             $message = "Host Information form updated successfully";
             $hostInformation->save();

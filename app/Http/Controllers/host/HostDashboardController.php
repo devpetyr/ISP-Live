@@ -5,9 +5,12 @@ namespace App\Http\Controllers\host;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\StudentAssignModel;
 use Illuminate\Support\Facades\Hash;
 use Yajra\DataTables\Facades\DataTables;
 use App\Models\NotificationModel;
+use App\Models\StateModel;
+use App\Models\Saf\SafStudentInformationModel;
 use Auth;
 use File;
 
@@ -73,38 +76,137 @@ class HostDashboardController extends Controller
 
     public function student_list(Request $request)
     {
+        
         if ($request->ajax()) {
             // using eloquent model donot use get()
-            $model = User::where('user_role', 2);
+            $model = StudentAssignModel::with('getUser')->where('host_id', Auth::user()->id)->where('status', 1)->where('host_approve', 0);
 
             return DataTables::eloquent($model)
                 //adding index or s.no
                 ->addIndexColumn()
+                ->editColumn('first_name', function ($model) {
+                    return $model->getUser->first_name;
+                })
+                ->editColumn('last_name', function ($model) {
+                    return $model->getUser->last_name;
+                })
+                ->editColumn('image', function ($model) {
+                    $url = asset('Host-Image/' . $model->getUser->avatar);
+                    return '<img src="' . $url . '" border="0" width="50" class="img-rounded" align="center" />';
+                })
+                ->editColumn('state', function ($model) {
+                    $userInfo=SafStudentInformationModel::where('user_id', $model->student_id)->first();
+                    $state=StateModel::where('id',$userInfo->school_state)->first();
+                    return $state->name;
+                })
                 ->addColumn('action', function ($model) {
                     //adding buttons to datatable
-                    $btn = '<a class="green-text"  href="#" ><i class="fa-sharp fa-solid fa-check"></i></a><a class="red-text"  href="#" ><i class="fa-solid fa-xmark"></i></a>';
+                    $btn = '<a class="green-text"  href="' . route('hd_student_accept', [$model->student_id,$model->host_id]) . '" ><i class="fa-sharp fa-solid fa-check"></i></a><a class="red-text"  href="' . route('hd_student_reject', [$model->student_id,$model->host_id]) . '" ><i class="fa-solid fa-xmark"></i></a>';
                     // ' . route('admin_manage_student_details', [$model->id]) . '
                     return $btn;
                 })
+                ->rawColumns(['image', 'action'])
                 ->toJson();
         }
         return view('host.admin.studentsProfile.student_list');
     }
+     public function reject_student($studentID,$hostID)
+    {
+        $std_reject = StudentAssignModel::where('student_id',$studentID)->where('host_id',$hostID)->first();
+        // dd($std_reject);
+        if($std_reject)
+        {
+            $std_reject->host_approve = 2;
+            $std_reject->save();
+            return back()->with('success','Student request has been Rejected successfully.');
+        }
+        
+        return back()->with('success','Student not found.');
+    }
+    
+    public function accept_student($studentID,$hostID)
+    {
+        $std_accept = StudentAssignModel::where('student_id',$studentID)->where('host_id',$hostID)->first();
+        if($std_accept)
+        {
+            $std_accept->host_approve = 1;
+            $std_accept->save();
+            return back()->with('success','Student request has been Accept successfully.');
+        }
+        
+        return back()->with('success','Student not found.');
+    }
+    
+    public function student_accept_reject_list(Request $request)
+    {
+         $model = StudentAssignModel::with('getUser')->where('host_id', Auth::user()->id)->where('status', 1)->where('host_approve','!=',0)->get();
+        //  dd($model[0]->host_approve);
+        if ($request->ajax()) {
+            // using eloquent model donot use get()
+            $model = StudentAssignModel::with('getUser')->where('host_id', Auth::user()->id)->where('status', 1)->where('host_approve','!=',0);
+
+            return DataTables::eloquent($model)
+                //adding index or s.no
+                ->addIndexColumn()
+                ->editColumn('first_name', function ($model) {
+                    return $model->getUser->first_name;
+                })
+                ->editColumn('last_name', function ($model) {
+                    return $model->getUser->last_name;
+                })
+                ->editColumn('application', function ($model) {
+                    if($model->host_approve == 1)
+                    {
+                        $application="Approved";
+                    }
+                    else
+                    {
+                        $application="Rejected";
+                    }
+                    return $application;
+                })
+                ->editColumn('image', function ($model) {
+                    $url = asset('Host-Image/' . $model->getUser->avatar);
+                    return '<img src="' . $url . '" border="0" width="50" class="img-rounded" align="center" />';
+                })
+                ->editColumn('state', function ($model) {
+                    $userInfo=SafStudentInformationModel::where('user_id', $model->student_id)->first();
+                    $state=StateModel::where('id',$userInfo->school_state)->first();
+                    return $state->name;
+                })
+                ->rawColumns(['image', 'action'])
+                ->toJson();
+        }
+        return view('host.admin.studentsProfile.accept-reject-list');
+    }
+    
+    
     
      public function student_profile(Request $request)
     {
         if ($request->ajax()) {
             // using eloquent model donot use get()
-            $model = User::where('user_role', 2);
+            $model = StudentAssignModel::with('getUser')->where('host_id', Auth::user()->id)->where('status', 1)->where('host_approve',1);
 
             return DataTables::eloquent($model)
                 //adding index or s.no
                 ->addIndexColumn()
-                ->addColumn('action', function ($model) {
-                    //adding buttons to datatable
-                    $btn = '<a class="blue-text"  href="' . route('admin_manage_student_details', [$model->id]) . '" ><i class="fa-solid fa-pencil"></i></a>';
-                    return $btn;
+                ->editColumn('first_name', function ($model) {
+                    return $model->getUser->first_name;
                 })
+                ->editColumn('last_name', function ($model) {
+                    return $model->getUser->last_name;
+                })
+                ->editColumn('state', function ($model) {
+                    $userInfo=SafStudentInformationModel::where('user_id', $model->student_id)->first();
+                    $state=StateModel::where('id',$userInfo->school_state)->first();
+                    return $state->name;
+                })
+                ->editColumn('image', function ($model) {
+                    $url = asset('Host-Image/' . $model->getUser->avatar);
+                    return '<img src="' . $url . '" border="0" width="50" class="img-rounded" align="center" />';
+                })
+                ->rawColumns(['image', 'action'])
                 ->toJson();
         }
         return view('host.admin.studentsProfile.student_profile');
@@ -552,9 +654,10 @@ class HostDashboardController extends Controller
     public function notification()
     {
         $notification=NotificationModel::where('user_id',Auth::user()->id)->orderBy('created_at', 'desc')->get();
-        // dd($notification);
         return view('host.admin.hostProfile.notification',compact('notification'));
     }
+    
+   
 
     
 }

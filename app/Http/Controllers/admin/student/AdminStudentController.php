@@ -276,4 +276,11 @@ class AdminStudentController extends EmailController
         return redirect()->route('admin_student_regions')->with('success', 'Region record deleted successfully.');
     }
     // Region End
+    
+    
+    
+    
+    
+    
+    
 }

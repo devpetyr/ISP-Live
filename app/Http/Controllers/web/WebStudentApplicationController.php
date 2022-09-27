@@ -39,15 +39,17 @@ class WebStudentApplicationController extends Controller
     public function application_form()
     {
         $Saf_BasicInfo = SafStudentBasicInformationModel::where('user_id', auth()->id())->orderby('id', 'DESC')->first();
-        $SafStudentInfo = SafStudentInformationModel::where('user_id', auth()->id())->orderby('id', 'DESC')->first();
+        $SafStudentInfo = SafStudentInformationModel::with('getState')->where('user_id', auth()->id())->orderby('id', 'DESC')->first();
         $SafAgentInfo = SafAgentInformationModel::where('user_id', auth()->id())->orderby('id', 'DESC')->first();
         $SafOtherInfo = SafOtherInformationModel::where('user_id', auth()->id())->orderby('id', 'DESC')->first();
         $SafMedicalInfo = SafMedicalInformationModel::where('user_id', auth()->id())->orderby('id', 'DESC')->first();
         $SafAirportInfo = SafAirportInformationModel::where('user_id', auth()->id())->orderby('id', 'DESC')->first();
         $SafPaymentInfo = SafPaymentInformationModel::where('user_id', auth()->id())->orderby('id', 'DESC')->first();
         $SafAgreementInfo = SafAgreementInformationModel::where('user_id', auth()->id())->orderby('id', 'DESC')->first();
-
-        return view('student.application-form.application-form', compact('Saf_BasicInfo', 'SafStudentInfo', 'SafAgentInfo', 'SafOtherInfo', 'SafMedicalInfo', 'SafAirportInfo', 'SafPaymentInfo', 'SafAgreementInfo'));
+        $states = StateModel::all();
+        $citys = CityModel::all();
+        // dd($SafStudentInfo);
+        return view('student.application-form.application-form', compact('Saf_BasicInfo', 'SafStudentInfo', 'SafAgentInfo', 'SafOtherInfo', 'SafMedicalInfo', 'SafAirportInfo', 'SafPaymentInfo', 'SafAgreementInfo','states','citys'));
     }
 
     public function saf_submit_1(Request $request)
@@ -56,7 +58,7 @@ class WebStudentApplicationController extends Controller
         if ($bsc_details) {
             $validation = "";
         } else {
-            $validation = "required";
+            $validation = "required|mimes:jpg,bmp,png|max:5120";
         }
         $rules = array(
 //           Student Basic information
@@ -111,7 +113,7 @@ class WebStudentApplicationController extends Controller
             /** student_photographs start*/
             $image = $request->file('student_profile_photo');
             if ($image) {
-                $imageData = [];
+                
                 /** Make a new filename with extension */
                 $filename = time() . rand(1111111111, 9999999999) . '.' . $image->getClientOriginalExtension();
 
@@ -130,10 +132,17 @@ class WebStudentApplicationController extends Controller
                 /** Make a new filename with extension */
                 File::put(public_path('student/images/profile-images/') . $filename, $img);
 
+                /** Checking Image if exits in our project */
+                if(File::exists(public_path('student/images/profile-images/' . $user->avatar)))
+                {
+                    File::delete(public_path('student/images/profile-images/' . $user->avatar));
+                }
+
                 /** Store image for Student Profile Photo */
                 $user->avatar = $filename;
+
+                $user->save();
             }
-            $user->save();
             /** student_photographs end*/
 
             $bsc_details->status = 1;
@@ -535,17 +544,10 @@ class WebStudentApplicationController extends Controller
         $medical_details->dates_administered = $request->dates_administered;
         $medical_details->status = 1;
 
-        if ($request->file('vaccine_card_photograph')) {
-            $file = $request->file('vaccine_card_photograph');
-            $filename = time() . rand(9999, 9999) . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path('student/application'), $filename);
-            $medical_details->vaccine_card_photograph = $filename;
-        }
-
         /** vaccine_card_photograph start*/
         $image = $request->file('vaccine_card_photograph');
         if ($image) {
-            $imageData = [];
+            
             /** Make a new filename with extension */
             $filename = time() . rand(1111111111, 9999999999) . '.' . $image->getClientOriginalExtension();
 
@@ -563,6 +565,12 @@ class WebStudentApplicationController extends Controller
 
             /** Make a new filename with extension */
             File::put(public_path('student/images/vaccine-images/') . $filename, $img);
+
+            /** Checking Image if exits in our project */
+            if(File::exists(public_path('student/images/vaccine-images/' . $medical_details->vaccine_card_photograph)))
+            {
+                File::delete(public_path('student/images/vaccine-images/' . $medical_details->vaccine_card_photograph));
+            }
 
             /** Store image for Vaccine Photo */
             $medical_details->vaccine_card_photograph = $filename;

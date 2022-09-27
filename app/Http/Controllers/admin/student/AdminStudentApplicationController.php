@@ -7,6 +7,7 @@ use App\Http\Controllers\EmailController;
 
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
+
 use Carbon\Carbon;
 
 use Illuminate\Support\Facades\
@@ -58,7 +59,7 @@ class AdminStudentApplicationController extends EmailController
         if ($bsc_details) {
             $validation = "";
         } else {
-            $validation = "required";
+            $validation = "required|mimes:jpg,bmp,png|max:5120";
         }
         $rules = array(
 //           Student Basic information
@@ -103,7 +104,7 @@ class AdminStudentApplicationController extends EmailController
                 /** student_photographs start*/
                 $image = $request->file('student_profile_photo');
                 if ($image) {
-                    $imageData = [];
+
                     /** Make a new filename with extension */
                     $filename = time() . rand(1111111111, 9999999999) . '.' . $image->getClientOriginalExtension();
 
@@ -121,6 +122,12 @@ class AdminStudentApplicationController extends EmailController
 
                     /** Make a new filename with extension */
                     File::put(public_path('student/images/profile-images/') . $filename, $img);
+
+                    /** Checking Image if exits in our project */
+                    if(File::exists(public_path('student/images/profile-images/' . $user->avatar)))
+                    {
+                        File::delete(public_path('student/images/profile-images/' . $user->avatar));
+                    }
 
                     /** Store image for Student Profile Photo */
                     $user->avatar = $filename;
@@ -520,7 +527,7 @@ class AdminStudentApplicationController extends EmailController
             /** vaccine_card_photograph start*/
             $image = $request->file('vaccine_card_photograph');
             if ($image) {
-                $imageData = [];
+
                 /** Make a new filename with extension */
                 $filename = time() . rand(1111111111, 9999999999) . '.' . $image->getClientOriginalExtension();
 
@@ -538,6 +545,13 @@ class AdminStudentApplicationController extends EmailController
 
                 /** Make a new filename with extension */
                 File::put(public_path('student/images/vaccine-images/') . $filename, $img);
+
+
+                /** Checking Image if exits in our project */
+                if(File::exists(public_path('student/images/vaccine-images/' . $medical_details->vaccine_card_photograph)))
+                {
+                    File::delete(public_path('student/images/vaccine-images/' . $medical_details->vaccine_card_photograph));
+                }
 
                 /** Store image for Vaccine Photo */
                 $medical_details->vaccine_card_photograph = $filename;

@@ -18,14 +18,17 @@ use App\Models\Haf\
 };
 
 use App\Models\User;
-use Auth;
+use App\Models\StateModel;
+use App\Models\CityModel;
+use Illuminate\Support\Facades\Auth;
 use File;
 
 class WebHostApplicationController extends Controller
 {
     public function host_application_form()
     {
-        $hostInformation=HafBasicInformationModel::where('user_id',Auth::user()->id)->orderby('id','DESC')->first();
+        $hostInformation=HafBasicInformationModel::with('getState','getCity')->where('user_id',Auth::user()->id)->orderby('id','DESC')->first();
+        // dd($hostInformation);
         $partnerInformation=HafPartnerInformationModel::where('user_id',Auth::user()->id)->orderby('id','DESC')->first();
         $adultInformation=HafAdultInformationModel::where('user_id',Auth::user()->id)->orderby('id','DESC')->first();
         $childInformation=HafChildInformationModel::where('user_id',Auth::user()->id)->orderby('id','DESC')->first();
@@ -33,22 +36,26 @@ class WebHostApplicationController extends Controller
         $schoolInformation=HafSchoolInformationModel::where('user_id',Auth::user()->id)->orderby('id','DESC')->first();
         $personalInformation=HafPersonalInformationModel::where('user_id',Auth::user()->id)->orderby('id','DESC')->first();
         $emergencyInformation=HafEmergencyInformationModel::where('user_id',Auth::user()->id)->orderby('id','DESC')->first();
-
-        return view('host.application-form.application-form',compact('hostInformation','partnerInformation','adultInformation','childInformation','petInformation','schoolInformation','personalInformation','emergencyInformation'));
+        $states = StateModel::all();
+        $citys = CityModel::all();
+        return view('host.application-form.application-form',compact('hostInformation','partnerInformation','adultInformation','childInformation','petInformation','schoolInformation','personalInformation','emergencyInformation','states','citys'));
     }
 
     public function host_information_application(Request $request)
     {
+        // dd($request);
         $request->validate([
             'host_first_name'=>'required|regex:/^[\pL\s\-]+$/u',
             'host_last_name'=>'required|regex:/^[\pL\s\-]+$/u',
             'host_dob'=>'required|date_format:Y-m-d|before:tomorrow|before:-13 years',
-            'host_cell_phone'=>'required ',
+            'host_cell_phone'=>'required|not_regex:/[a-z]/ ',
             'host_email'=>'required|email',
             'host_occupation'=>'required|regex:/^[\pL\s\-]+$/u',
             'host_employer'=>'required|regex:/^[\pL\s\-]+$/u',
-            'host_work_phone'=>'required ',
+            'host_work_phone'=>'required|not_regex:/[a-z]/ ',
             'host_home_address'=>'required',
+            'host_city'=>'required',
+            'host_state'=>'required',
 
         ],
             [
@@ -57,57 +64,42 @@ class WebHostApplicationController extends Controller
                 'host_dob.required'=>'The date of birth field is required.',
                 'host_dob.before'=>'The host date of birth must be a date before -13 years.',
                 'host_cell_phone.required'=>'The cell phone field is required.',
+                'host_cell_phone.not_regex'=>'The cell phone field formate is invalid.',
                 'host_email.required'=>'The email field is required.',
                 'host_email.email'=>'The emergency contact email must be a valid email address.',
                 'host_occupation.required'=>'The occupation field is required.',
                 'host_employer.required'=>'The employer field is required.',
                 'host_work_phone.required'=>'The work phone field is required.',
+                'host_work_phone.not_regex'=>'The work phone field formate is invalid.',
                 'host_home_address.required'=>'The home address field is required.',
+                'host_city.required'=>'The city field is required.',
+                'host_state.required'=>'The state field is required.',
 
             ]);
 
         $hostInformation=HafBasicInformationModel::where('user_id',Auth::user()->id)->first();
         if($hostInformation)
         {
-            $hostInformation->first_name=$request->host_first_name;
-            $hostInformation->last_name=$request->host_last_name;
-            $hostInformation->dob=$request->host_dob;
-            $hostInformation->cell_phone=$request->host_cell_phone;
-            $hostInformation->email=$request->host_email;
-            $hostInformation->occupation=$request->host_occupation;
-            $hostInformation->employer=$request->host_employer;
-            $hostInformation->work_phone=$request->host_work_phone;
-            $hostInformation->home_address=$request->host_home_address;
-
-            if($request->file('host_profile_photo')){
-
-                $dest='Host-Image/'.$hostInformation->profile_photo;
-                File::delete($dest);
-                $hostInformation->delete();
-
-                $file= $request->file('host_profile_photo');
-                $filename= time().rand(9999,9999).'.'.$file->getClientOriginalExtension();
-                $file-> move(public_path('Host-Image'), $filename);
-                $hostInformation->profile_photo= $filename;
-            }
-
-            $hostInformation->save();
             $message="Host Form Updated Sucessfully";
         }
         else
         {
             $request->validate([
-                'host_profile_photo'=>'required',
+                'host_profile_photo'=>'required|mimes:jpg,bmp,png|max:5120',
 
             ],
-                [
+            [
 
-                    'host_profile_photo.required'=>'The host image is required.',
+                'host_profile_photo.required'=>'The host image is required.',
 
-                ]);
+            ]);
             $hostInformation=new HafBasicInformationModel;
             $hostInformation->user_id=Auth::user()->id;
-            $hostInformation->first_name=$request->host_first_name;
+            $message="Host Form Submited Sucessfully";
+        }
+        
+        
+        $hostInformation->first_name=$request->host_first_name;
             $hostInformation->last_name=$request->host_last_name;
             $hostInformation->dob=$request->host_dob;
             $hostInformation->cell_phone=$request->host_cell_phone;
@@ -116,17 +108,31 @@ class WebHostApplicationController extends Controller
             $hostInformation->employer=$request->host_employer;
             $hostInformation->work_phone=$request->host_work_phone;
             $hostInformation->home_address=$request->host_home_address;
+            $hostInformation->city_id=$request->host_city;
+            $hostInformation->state_id=$request->host_state;
 
             if($request->file('host_profile_photo')){
+                $user = User::where('id', Auth::user()->id)->first();
+                $dest='Host-Image/'.$hostInformation->profile_photo;
+                File::delete($dest);
+//                $hostInformation->delete();
+
                 $file= $request->file('host_profile_photo');
                 $filename= time().rand(9999,9999).'.'.$file->getClientOriginalExtension();
                 $file-> move(public_path('Host-Image'), $filename);
                 $hostInformation->profile_photo= $filename;
+
+                /** Checking Image if exits in our project */
+                if(File::exists(public_path('Host-Image' . $user->avatar)))
+                {
+                    File::delete(public_path('Host-Image' . $user->avatar));
+                }
+
+                $user->avatar = $filename;
+                $user->save();
             }
 
             $hostInformation->save();
-            $message="Host Form Submited Sucessfully";
-        }
         return redirect()->route('web_haf','#partner_application')->with('success',$message);
     }
 
@@ -137,11 +143,11 @@ class WebHostApplicationController extends Controller
             'partner_first_name'=>'required|regex:/^[\pL\s\-]+$/u',
             'partner_last_name'=>'required|regex:/^[\pL\s\-]+$/u',
             'partner_dob'=>'required|date_format:Y-m-d|before:tomorrow|before:-13 years',
-            'partner_cell_phone'=>'required ',
+            'partner_cell_phone'=>'required|not_regex:/[a-z]/ ',
             'partner_email'=>'required|email',
             'partner_occupation'=>'required|regex:/^[\pL\s\-]+$/u',
             'partner_employer'=>'required|regex:/^[\pL\s\-]+$/u',
-            'partner_work_phone'=>'required ',
+            'partner_work_phone'=>'required|not_regex:/[a-z]/',
 
         ],
             [
@@ -150,10 +156,12 @@ class WebHostApplicationController extends Controller
                 'partner_dob.required'=>'The date of birth field is required.',
                 'partner_dob.before'=>'The partner date of birth must be a date before -13 years.',
                 'partner_cell_phone.required'=>'The cell phone field is required.',
+                'partner_cell_phone.not_regex'=>'The cell phone field formate is invalid.',
                 'partner_email.required'=>'The email field is required.',
                 'partner_occupation.required'=>'The occupation field is required.',
                 'partner_employer.required'=>'The employer field is required.',
                 'partner_work_phone.required'=>'The work phone field is required.',
+                'partner_work_phone.not_regex'=>'The work phone field formate is invalid.',
 
 
             ]);
@@ -177,6 +185,7 @@ class WebHostApplicationController extends Controller
         {
             $partnerInformation=new HafPartnerInformationModel;
             $partnerInformation->user_id=Auth::user()->id;
+            
             $partnerInformation->first_name=$request->partner_first_name;
             $partnerInformation->last_name=$request->partner_last_name;
             $partnerInformation->dob=$request->partner_dob;
@@ -199,21 +208,11 @@ class WebHostApplicationController extends Controller
 
             'adult1_first_name'=>'required|regex:/^[\pL\s\-]+$/u',
             'adult1_last_name'=>'required|regex:/^[\pL\s\-]+$/u',
-            'adult1_work_phone'=>'required',
+            'adult1_work_phone'=>'required|not_regex:/[a-z]/',
             'adult1_relation'=>'required|regex:/^[\pL\s\-]+$/u',
             'adult1_occupation'=>'required|regex:/^[\pL\s\-]+$/u',
             'adult1_employer'=>'required|regex:/^[\pL\s\-]+$/u',
             'adult1_gender'=>'required|regex:/^[\pL\s\-]+$/u',
-
-            // 'adult2_first_name'=>'regex:/^[\pL\s\-]+$/u',
-            // 'adult2_last_name'=>'regex:/^[\pL\s\-]+$/u',
-            // 'adult2_work_phone'=>'regex:/^[\pL\s\-]+$/u',
-            // 'adult2_relation'=>'regex:/^[\pL\s\-]+$/u',
-            // 'adult2_occupation'=>'regex:/^[\pL\s\-]+$/u',
-            // 'adult2_employer'=>'regex:/^[\pL\s\-]+$/u',
-            // 'adult2_gender'=>'regex:/^[\pL\s\-]+$/u',
-
-
 
         ],
             [
@@ -223,6 +222,7 @@ class WebHostApplicationController extends Controller
                 'adult1_last_name.required'=>'The last name field is required.',
                 'adult1_last_name.regex'=>'The last name format is invalid.',
                 'adult1_work_phone.required'=>'The work phone field is required.',
+                'adult1_work_phone.not_regex'=>'The work phone field formate is invalid.',
                 'adult1_relation.required'=>'The relation field is required.',
                 'adult1_relation.regex'=>'The relation format is invalid.',
                 'adult1_occupation.required'=>'The occupation field is required.',
@@ -230,14 +230,6 @@ class WebHostApplicationController extends Controller
                 'adult1_employer.required'=>'The employer field is required.',
                 'adult1_employer.regex'=>'The employer format is invalid.',
                 'adult1_gender.required'=>'Please select your gender.',
-
-                //         'adult2_first_name.required'=>'The first name field is required.',
-                //         'adult2_last_name.required'=>'The first name field is required.',
-                //         'adult2_work_phone.required'=>'The work phone field is required.',
-                //         'adult2_relation.required'=>'The relation field is required.',
-                //         'adult2_occupation.required'=>'The occupation field is required.',
-                //         'adult2_employer.required'=>'The employe field is required.',
-                //         'adult2_gender.required'=>'The gender field is required.',
 
             ]);
 
@@ -301,17 +293,6 @@ class WebHostApplicationController extends Controller
             'child1_last_name'=>'required|regex:/^[\pL\s\-]+$/u',
             'child1_dob'=>'required|date_format:Y-m-d|before:tomorrow',
             'child1_gender'=>'required|regex:/^[\pL\s\-]+$/u',
-
-            //     'child2_first_name'=>'required|regex:/^[\pL\s\-]+$/u',
-            //     'child2_last_name'=>'required|regex:/^[\pL\s\-]+$/u',
-            //     'child2_dob'=>'required|regex:/^[\pL\s\-]+$/u',
-            //     'child2_gender'=>'required|regex:/^[\pL\s\-]+$/u',
-
-            //     'child3_first_name'=>'required|regex:/^[\pL\s\-]+$/u',
-            //     'child3_last_name'=>'required|regex:/^[\pL\s\-]+$/u',
-            //     'child3_dob'=>'required|regex:/^[\pL\s\-]+$/u',
-            //     'child3_gender'=>'required|regex:/^[\pL\s\-]+$/u',
-
         ],
             [
                 'child1_first_name.required'=>'The first name field is required.',
@@ -321,16 +302,6 @@ class WebHostApplicationController extends Controller
                 'child1_dob.required'=>'The date of birth field is required.',
                 'child1_dob.before'=>'The date of birth must be a date before today.',
                 'child1_gender.required'=>'The gender field is required.',
-
-                //         'child2_first_name.required'=>'The first name field is required.',
-                //         'child2_last_name.required'=>'The last name field is required.',
-                //         'child2_dob.required'=>'The date of birth field is required.',
-                //         'child2_gender.required'=>'The gender field is required.',
-
-                //         'child3_first_name.required'=>'The first name field is required.',
-                //         'child3_last_name.required'=>'The last name field is required.',
-                //         'child3_dob.required'=>'The date of birth field is required.',
-                //         'child3_gender.required'=>'The gender field is required.',
 
             ]);
 
@@ -396,8 +367,6 @@ class WebHostApplicationController extends Controller
             'student_meal'=>'required',
 
             'first_school_detail'=>'required',
-            // 'second_school_detail'=>'required',
-            // 'third_school_detail'=>'required',
 
         ],
             [
@@ -411,8 +380,6 @@ class WebHostApplicationController extends Controller
                 'student_meal.required'=>'The meal detail is required.',
 
                 'first_school_detail.required'=>'The school detail is required.',
-                // 'second_school_detail.required'=>'The school detail field is required.',
-                // 'third_school_detail.required'=>'The school detail field is required.',
 
 
             ]);
@@ -576,10 +543,10 @@ class WebHostApplicationController extends Controller
 
             'emergency_contact_name1'=>'required|regex:/^[\pL\s\-]+$/u',
             'emergency_contact_email1'=>'required|email',
-            'emergency_contact_number1'=>'required ',
+            'emergency_contact_number1'=>'required|not_regex:/[a-z]/',
             'emergency_contact_name2'=>'required|regex:/^[\pL\s\-]+$/u',
             'emergency_contact_email2'=>'required|email',
-            'emergency_contact_number2'=>'required ',
+            'emergency_contact_number2'=>'required|not_regex:/[a-z]/ ',
 
         ],
             [
@@ -589,14 +556,14 @@ class WebHostApplicationController extends Controller
                 'emergency_contact_email1.required'=>'The email field is required.',
                 'emergency_contact_email1.email'=>'The emergency contact email must be a valid email address.',
                 'emergency_contact_number1.required'=>'The number field is required.',
-                'emergency_contact_number2.regex'=>'The emergency contact number format is invalid.',
+                'emergency_contact_number1.not_regex'=>'The emergency contact number format is invalid.',
 
                 'emergency_contact_name2.required'=>'The name field is required.',
                 'emergency_contact_name2.regex'=>'The emergency contact name format is invalid.',
                 'emergency_contact_email2.required'=>'The email field is required.',
                 'emergency_contact_email2.email'=>'The emergency contact email must be a valid email address.',
                 'emergency_contact_number2.required'=>'The number field is required.',
-                'emergency_contact_number2.regex'=>'The emergency contact number format is invalid.',
+                'emergency_contact_number2.not_regex'=>'The emergency contact number format is invalid.',
 
             ]);
 

@@ -13,6 +13,9 @@ use App\Models\User;
 use Yajra\DataTables\Facades\DataTables;
 
 use Illuminate\Support\Facades\Hash;
+use Intervention\Image\Facades\Image;
+use File;
+
 
 
 class AdminStudentCrudController extends EmailController
@@ -65,21 +68,25 @@ class AdminStudentCrudController extends EmailController
 
     public function manage_student_process(Request $request, User $id)
     {
+
         if ($id->id > 0) {
             if ($id->user_role !== 2) {
                 return redirect()->route('admin_student_details')->with('error', 'Oops! try again');
             }
             $email_val = 'required|email';
             $password_val = '';
+            $image_val = '';
         } else {
             $email_val = 'required|email|unique:users';
             $password_val = 'required|string|min:8';
+            $image_val = 'required';
         }
         $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => $email_val,
             'password' => $password_val,
+            'student_profile_photo' => $image_val,
         ], [
             'first_name.required' => 'The first name field is required.',
             'last_name.required' => 'The last name field  is required.',
@@ -102,7 +109,41 @@ class AdminStudentCrudController extends EmailController
         $model->user_role = 2;
         $model->status = $request->status;
         $model->is_active = 1;
-        $model->application_submitted = 0;
+        if($request->application_submitted === null){
+            $model->application_submitted = 0;
+        }else{
+            $model->application_submitted = $request->application_submitted;
+        }
+
+
+            /** student_photographs start*/
+            $image = $request->file('student_profile_photo');
+            if ($image) {
+
+
+                $imageData = [];
+                /** Make a new filename with extension */
+                $filename = time() . rand(1111111111, 9999999999) . '.' . $image->getClientOriginalExtension();
+
+                /**
+                 * Get real image path using
+                 * @class Intervention\Image\Facades\Image
+                 */
+                $img = Image::make($image->getRealPath());
+
+                /** Set image dimension to conserve aspect ratio */
+                $img->fit(300, 300);
+
+                /** Get image stream to store the image else the tmp file will be stored */
+                $img->stream();
+
+                /** Make a new filename with extension */
+                File::put(public_path('student/images/profile-images/') . $filename, $img);
+
+                /** Store image for Student Profile Photo */
+                $model->avatar = $filename;
+            }
+            /** student_photographs end*/
 
         $model->save();
 

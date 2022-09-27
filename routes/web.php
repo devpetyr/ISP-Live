@@ -238,6 +238,12 @@ Route::group(['prefix' => 'student', 'middleware' => 'StudentAuthMiddleware'], f
         /** Student Dashboard Route Notification Start*/
         Route::get('notification', [StudentDashboardController::class, 'notification'])->name('sd_notifications');
         /** Student Dashboard Notification Route End*/
+        
+        /** Student Dashboard Route host request Start*/
+        Route::get('host-request', [StudentDashboardController::class, 'host_request'])->name('sd_host_request');
+        Route::get('host-details/{id?}', [StudentDashboardController::class, 'host_details'])->name('sd_host_details');
+        Route::get('request-host/{host_id?}', [StudentDashboardController::class, 'request_host'])->name('sd_request_host');
+        /** Student Dashboard host request End*/
     });
 
 
@@ -279,6 +285,9 @@ Route::group(['prefix' => 'host', 'middleware' => 'HostAuthMiddleware'], functio
         Route::post('host-password-process', [HostDashboardController::class, 'password_update_process'])->name('hd_password_update_process');
         Route::get('host-student-list', [HostDashboardController::class, 'student_list'])->name('hd_student_list');
         Route::get('host-student-profile', [HostDashboardController::class, 'student_profile'])->name('hd_student_profile');
+        Route::get('host-student-reject/{studentID?}/{hostID?}', [HostDashboardController::class, 'reject_student'])->name('hd_student_reject');
+        Route::get('host-student-accept/{studentID?}/{hostID?}', [HostDashboardController::class, 'accept_student'])->name('hd_student_accept');
+        Route::get('host-student-accept-reject-list', [HostDashboardController::class, 'student_accept_reject_list'])->name('hd_student_accept_reject_list');
         
         Route::get('hosts-host-profile', [HostApplicationController::class, 'host_profile'])->name('hd_application');
         Route::post('hosts-information-application/{id?}', [HostApplicationController::class, 'host_information_application'])->name('hd_update_host_application');

@@ -558,11 +558,10 @@
                                             @enderror
                                         </div>
                                         <br>
-                                        @if($Saf_BasicInfo && $Saf_BasicInfo->student_profile_photo)
+                                        @if($Saf_BasicInfo && $Saf_BasicInfo->getUser->avatar)
                                             <img class="bottom_img"
-                                                 src="{{ asset('student/application/'.$Saf_BasicInfo->student_profile_photo) }}">
+                                                 src="{{ asset('student/images/profile-images/'.$Saf_BasicInfo->getUser->avatar) }}">
                                         @endif
-
                                     </td>
                                 </tr>
 

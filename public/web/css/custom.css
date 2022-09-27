@@ -9105,3 +9105,22 @@ input#myFile .custom-file-upload {
 
 
 .covid_heading p a{ color:#15304e; }
+
+.agent_box {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 60px 18px;
+    background: url(../images/border-card-img.png);
+    background-repeat: no-repeat;
+    background-size: 99%;
+    position: relative;
+    right: 0;
+    width: 100%;
+    height: 380px;
+}
+
+
+
+
+

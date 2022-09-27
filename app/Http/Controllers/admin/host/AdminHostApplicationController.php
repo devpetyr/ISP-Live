@@ -26,7 +26,9 @@ use App\Models\User;
 
 use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\Auth;
 use File;
+
 
 class AdminHostApplicationController extends EmailController
 {
@@ -79,17 +81,18 @@ class AdminHostApplicationController extends EmailController
 
     public function host_information_application(Request $request,$id )
     {
+        
         $request->validate([
             'host_first_name'=>'required|regex:/^[\pL\s\-]+$/u',
             'host_last_name'=>'required|regex:/^[\pL\s\-]+$/u',
             'host_dob'=>'required|date_format:Y-m-d|before:tomorrow|before:-13 years',
-            'host_cell_phone'=>'required ',
+            'host_cell_phone'=>'required|not_regex:/[a-z]/ ',
             'host_email'=>'required|email',
             'host_occupation'=>'required|regex:/^[\pL\s\-]+$/u',
             'host_employer'=>'required|regex:/^[\pL\s\-]+$/u',
-            'host_work_phone'=>'required ',
+            'host_work_phone'=>'required|not_regex:/[a-z]/ ',
             'host_home_address'=>'required',
-
+            'host_profile_photo'=>'required|mimes:jpg,bmp,png|max:5120',
         ],
             [
                 'host_first_name.required'=>'The first name field is required.',
@@ -97,18 +100,20 @@ class AdminHostApplicationController extends EmailController
                 'host_dob.required'=>'The date of birth field is required.',
                 'host_dob.before'=>'The host date of birth must be a date before -13 years.',
                 'host_cell_phone.required'=>'The cell phone field is required.',
+                'host_cell_phone.not_regex'=>'The cell phone field formate is invalid.',
                 'host_email.required'=>'The email field is required.',
                 'host_email.email'=>'The emergency contact email must be a valid email address.',
                 'host_occupation.required'=>'The occupation field is required.',
                 'host_employer.required'=>'The employer field is required.',
                 'host_work_phone.required'=>'The work phone field is required.',
+                'host_work_phone.not_regex'=>'The work phone field formate is invalid.',
                 'host_home_address.required'=>'The home address field is required.',
 
             ]);
+            
 
         $hostInformation=HafBasicInformationModel::where('user_id',$id)->first();
-        // dd($hostInformation,$request,$id);
-        // dd($hostInformation->profile_photo);
+        dd($request);
         if($hostInformation)
         {
             $hostInformation->first_name=$request->host_first_name;
@@ -122,15 +127,24 @@ class AdminHostApplicationController extends EmailController
             $hostInformation->home_address=$request->host_home_address;
 
             if($request->file('host_profile_photo')){
-
+                $user = User::where('id', $id)->first();
                 $dest='Host-Image/'.$hostInformation->profile_photo;
                 File::delete($dest);
-                $hostInformation->delete();
+//                $hostInformation->delete();
 
                 $file= $request->file('host_profile_photo');
                 $filename= time().rand(9999,9999).'.'.$file->getClientOriginalExtension();
                 $file-> move(public_path('Host-Image'), $filename);
                 $hostInformation->profile_photo= $filename;
+
+                /** Checking Image if exits in our project */
+                if(File::exists(public_path('Host-Image' . $user->avatar)))
+                {
+                    File::delete(public_path('Host-Image' . $user->avatar));
+                }
+
+                $user->avatar = $filename;
+                $user->save();
             }
 
             $hostInformation->save();
@@ -142,17 +156,16 @@ class AdminHostApplicationController extends EmailController
 
     public function host_partner_application(Request $request,$id)
     {
-        // dd($request,$id);
         $request->validate([
 
             'partner_first_name'=>'required|regex:/^[\pL\s\-]+$/u',
             'partner_last_name'=>'required|regex:/^[\pL\s\-]+$/u',
             'partner_dob'=>'required|date_format:Y-m-d|before:tomorrow|before:-13 years',
-            'partner_cell_phone'=>'required ',
+            'partner_cell_phone'=>'required|not_regex:/[a-z]/ ',
             'partner_email'=>'required|email',
             'partner_occupation'=>'required|regex:/^[\pL\s\-]+$/u',
             'partner_employer'=>'required|regex:/^[\pL\s\-]+$/u',
-            'partner_work_phone'=>'required ',
+            'partner_work_phone'=>'required|not_regex:/[a-z]/',
 
         ],
             [
@@ -161,10 +174,12 @@ class AdminHostApplicationController extends EmailController
                 'partner_dob.required'=>'The date of birth field is required.',
                 'partner_dob.before'=>'The partner date of birth must be a date before -13 years.',
                 'partner_cell_phone.required'=>'The cell phone field is required.',
+                'partner_cell_phone.not_regex'=>'The cell phone field formate is invalid.',
                 'partner_email.required'=>'The email field is required.',
                 'partner_occupation.required'=>'The occupation field is required.',
                 'partner_employer.required'=>'The employer field is required.',
                 'partner_work_phone.required'=>'The work phone field is required.',
+                'partner_work_phone.not_regex'=>'The work phone field formate is invalid.',
 
 
             ]);
@@ -197,7 +212,7 @@ class AdminHostApplicationController extends EmailController
 
             'adult1_first_name'=>'required|regex:/^[\pL\s\-]+$/u',
             'adult1_last_name'=>'required|regex:/^[\pL\s\-]+$/u',
-            'adult1_work_phone'=>'required',
+            'adult1_work_phone'=>'required|not_regex:/[a-z]/',
             'adult1_relation'=>'required|regex:/^[\pL\s\-]+$/u',
             'adult1_occupation'=>'required|regex:/^[\pL\s\-]+$/u',
             'adult1_employer'=>'required|regex:/^[\pL\s\-]+$/u',
@@ -220,6 +235,7 @@ class AdminHostApplicationController extends EmailController
                 'adult1_last_name.required'=>'The last name field is required.',
                 'adult1_last_name.regex'=>'The adult last name format is invalid.',
                 'adult1_work_phone.required'=>'The work phone field is required.',
+                'adult1_work_phone.not_regex'=>'The work phone field format is invalid.',
                 'adult1_relation.required'=>'The relation field is required.',
                 'adult1_relation.regex'=>'The adult relation format is invalid.',
                 'adult1_occupation.required'=>'The occupation field is required.',
@@ -461,10 +477,10 @@ class AdminHostApplicationController extends EmailController
 
             'emergency_contact_name1'=>'required|regex:/^[\pL\s\-]+$/u',
             'emergency_contact_email1'=>'required|email',
-            'emergency_contact_number1'=>'required ',
+            'emergency_contact_number1'=>'required|not_regex:/[a-z]/ ',
             'emergency_contact_name2'=>'required|regex:/^[\pL\s\-]+$/u',
             'emergency_contact_email2'=>'required|email',
-            'emergency_contact_number2'=>'required ',
+            'emergency_contact_number2'=>'required|not_regex:/[a-z]/ ',
 
         ],
             [
@@ -474,14 +490,14 @@ class AdminHostApplicationController extends EmailController
                 'emergency_contact_email1.required'=>'The email field is required.',
                 'emergency_contact_email1.email'=>'The emergency contact email must be a valid email address.',
                 'emergency_contact_number1.required'=>'The number field is required.',
-                'emergency_contact_number2.regex'=>'The emergency contact number format is invalid.',
+                'emergency_contact_number1.not_regex'=>'The emergency contact number format is invalid.',
 
                 'emergency_contact_name2.required'=>'The name field is required.',
                 'emergency_contact_name2.regex'=>'The emergency contact name format is invalid.',
                 'emergency_contact_email2.required'=>'The email field is required.',
                 'emergency_contact_email2.email'=>'The emergency contact email must be a valid email address.',
                 'emergency_contact_number2.required'=>'The number field is required.',
-                'emergency_contact_number2.regex'=>'The emergency contact number format is invalid.',
+                'emergency_contact_number2.not_regex'=>'The emergency contact number format is invalid.',
 
             ]);
 
